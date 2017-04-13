@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="1349" MadCap:lastWidth="1425">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1 class="Heading1">The unblu Filter </h1>
+        <p>If your web site uses only <a href="https://en.wikipedia.org/wiki/Static_web_page">static resources</a> then you do not need the unblu Filter. Even if your site is login-protected, as long as there is no need (during a visitor-engagement session) to access either <a href="https://en.wikipedia.org/wiki/Dynamic_web_page">dynamic resources</a> or protected resources then you do not need the unblu Filter. </p>
+        <p>If, however, you have any resources at all that are protected or dynamically generated then you will need the unblu Filter. There are associated advantages to using the unblu Filter but the technical requirement rests solely on the nature of the resources that will be accessed during visitor-engagement sessions. </p>
+        <p><span class="Bolder">Note</span>: The filter is not required if you are sure you will never need to view session-specific data/images during a co-browsing session. This seems simple enough but it can be tricky to discern whether you will need the filter for session-specific resources. Make sure you are aware of what is ‘session-specific’ and what is not. In general, all personal or customer-specific data, especially in graphical form, is session-specific. See <a href="Session Specific Content.htm#_Session-Specific_Content">Session-Specific Content</a>.</p>
+        <p>The nature of your use cases will determine whether you will need the unblu Filter or not. For example, if you have a public web site (with no login requirement) and all resources are open and available to all visitors then the unblu Filter is not required. This is the simplest case; with no protected resources nor any dynamically generated content to worry about the Agent can see what the visitor sees. However, it should be borne in mind that such a use case strongly implies a site with a lot of traffic. So, while the filter would not be required to perform the technical machinations that enable the Agent to see potentially sensitive information or access protected resources, the bandwidth efficiencies might make the unblu Filter an attractive option (as the unblu Filter would only inject the code snippet when a co-browsing session is started).</p>
+        <p><span class="Bolder">Note</span>: Even if your site is login-protected, as long as you are sure that all of the resources across all visitor-engagement activity are static then you would not need the unblu Filter.</p>
+        <p>As use cases become more complex we must assume that there will be personal or sensitive data that will be shared during a session. For example, loans, mortgages, credit cards; everything that constitutes retail banking, can only be handled with static resources up to a point. That is; one might be able to engage with visitors, help them, direct them to offers or deals or other information that builds relationships, but when you need to actually do some business with visitors then you may need the unblu Filter.</p>
+        <p>For example, as we move up the ‘engagement hierarchy’ to investment banking or trade finance or mergers and acquisitions the complex engagement requirements themselves define your technical requirements. There are many complex activities that can still be performed without the unblu Filter. For example, your analysts can share charts or offer market insight to investors or your economists can outline their recommendations and strategies using static resources. Essentially, if you want to use unblu to do marketing and general relationship management, using static resources, you would not need the unblu Filter. You will need the unblu Filter if you intend to make transactions such as completing contracts or selling services; any engagement that requires your agents to share personal or sensitive information that must be protected will require the filter. </p>
+        <p>Using the unblu Filter can massively lower your web infrastructure requirements by dynamically injecting the unblu snippet only when you need it. Co-browsing will account for only a fraction of your website traffic so, if you have a lot of traffic, it makes sense if only the required unblu JavaScript files are loaded at the right time. </p>
+        <p>The decision on when to inject what is rule based. The rules are the main configuration element of the filter. The unblu Collaboration Server provides a JSON-based configuration, including rules and injection advice for the filter. </p>
+        <p>To deploy the filter see: <a href="Installing the unblu Filter.htm">Installing the unblu Filter (Optional)</a> and <a href="Configuring Apache 2 Example.htm">Configuring Apache 2 Example.htm</a>.</p>
+        <p>The core purposes of the unblu Filter are:</p>
+        <ol start="1" class="ol_1">
+            <li><a href="Resource Histories.htm">Resource Histories</a>
+            </li>
+            <li class="li_1"><a href="Dynamic Snippet Injection.htm">Dynamic snippet injection</a>
+            </li>
+            <li class="li_1"><a href="Session Specific Content.htm">Session-Specific Resources</a>
+            </li>
+            <li class="li_1">Automatic uploads for document co-browsing </li>
+        </ol>
+    </body>
+</html>

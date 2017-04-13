@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="368" MadCap:lastWidth="1268">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h2 class="Heading2">Dynamic Snippet Injection</h2>
+        <p>The unblu Filter can also be configured to ‘decide’ when to inject the unblu JavaScript snippet into your web pages. This is called ‘Dynamic Injection’ as the snippet is injected at runtime according to a rule set that you define. Dynamic Injection makes the process much more efficient as the unblu Filter decides when to inject which unblu JavaScript files and only does this when a co-browsing session has been started.</p>
+        <p><span class="Bolder">Note: </span>The (computational/bandwidth) efficiency gained using dynamic snippet injection scales according to the scale of the traffic on your web site. If, for example, you have instrumented all of the unblu-relevant pages of your web site without the unblu Filter then each time a visitor browser makes a request the unblu snippet will load and execute and thus consume bandwidth and resources (bearing in mind that once the scripts are loaded they are cached and reused). Using dynamic snippet injection, with the unblu Filter in place, means communications between your web pages and the unblu server will only happen when ‘unblu-specific’ requests are made.</p>
+    </body>
+</html>

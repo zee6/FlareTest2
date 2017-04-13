@@ -1,0 +1,435 @@
+/*<meta />*/
+
+p
+{
+	margin-bottom: 8pt;
+	font-family: Calibri;
+	color: #000000;
+	font-size: 12pt;
+	margin-top: 0pt;
+}
+
+ol
+{
+	margin-bottom: 8pt;
+	font-family: Calibri;
+	color: #000000;
+	font-size: 12pt;
+	margin-top: 0pt;
+}
+
+ul
+{
+	margin-bottom: 8pt;
+	font-family: Calibri;
+	color: #000000;
+	font-size: 12pt;
+	margin-top: 0pt;
+}
+
+li
+{
+	margin-bottom: 8pt;
+	font-family: Calibri;
+	color: #000000;
+	font-size: 12pt;
+	margin-top: 0pt;
+}
+
+td
+{
+	margin-bottom: 8pt;
+	font-family: Calibri;
+	color: #000000;
+	font-size: 12pt;
+	vertical-align: top;
+}
+
+p.TOCHeading
+{
+	page-break-after: avoid;
+	page-break-inside: avoid;
+	font-size: 16pt;
+	font-weight: normal;
+	margin-top: 12pt;
+	margin-bottom: 0pt;
+	mc-heading-level: 10;
+	font-family: 'Calibri Light';
+	color: #2E74B5;
+}
+
+p.TOC1
+{
+	color: #000000;
+	font-size: 12pt;
+	margin-bottom: 5pt;
+	font-family: Calibri;
+}
+
+p.TOC2
+{
+	color: #000000;
+	font-size: 12pt;
+	margin-bottom: 5pt;
+	margin-left: 36pt;
+	font-family: Calibri;
+}
+
+p.TOC3
+{
+	color: #000000;
+	font-size: 12pt;
+	margin-bottom: 5pt;
+	margin-left: 50pt;
+	font-family: Calibri;
+}
+
+p.p_1
+{
+	font-family: Arial;
+}
+
+div.div_1
+{
+	left: 10801;
+	top: 9054;
+	visibility: visible;
+	mso-wrap-style: square;
+	v-text-anchor: top;
+}
+
+p.p_2
+{
+	font-family: Arial;
+	color: #F8781A;
+}
+
+div.div_2
+{
+	left: 10998;
+	top: 38785;
+	visibility: visible;
+	mso-wrap-style: square;
+	v-text-anchor: top;
+}
+
+p.p_3
+{
+	font-family: Arial;
+	color: #FFFFFF;
+	font-size: 36pt;
+}
+
+div.div_3
+{
+	left: 10998;
+	top: 41399;
+	visibility: visible;
+	mso-wrap-style: square;
+	v-text-anchor: top;
+}
+
+div.div_4
+{
+	left: 10801;
+	top: 55905;
+	visibility: visible;
+	mso-wrap-style: square;
+	v-text-anchor: top;
+}
+
+a.a_1
+{
+	font-family: Arial;
+	font-weight: bold;
+	color: #F8781A;
+	font-size: 10pt;
+}
+
+div.div_5
+{
+	left: 10998;
+	top: 97234;
+	visibility: visible;
+	mso-wrap-style: square;
+	v-text-anchor: top;
+}
+
+div.div_6
+{
+	left: 19605;
+	top: 97234;
+	visibility: visible;
+	mso-wrap-style: square;
+	v-text-anchor: top;
+}
+
+p.p_4
+{
+	font-family: Arial;
+	color: #AAB1B8;
+	font-size: 10pt;
+}
+
+div.div_7
+{
+	left: 10998;
+	top: 99012;
+	visibility: visible;
+	mso-wrap-style: square;
+	v-text-anchor: top;
+}
+
+div.div_8
+{
+	left: 16117;
+	top: 98516;
+	visibility: visible;
+	mso-wrap-style: square;
+	v-text-anchor: top;
+}
+
+div.div_9
+{
+	left: 16594;
+	top: 99012;
+	visibility: visible;
+	mso-wrap-style: square;
+	v-text-anchor: top;
+}
+
+div.div_10
+{
+	left: 10998;
+	top: 100790;
+	visibility: visible;
+	mso-wrap-style: square;
+	v-text-anchor: top;
+}
+
+p.p_5
+{
+	margin-bottom: 0pt;
+	margin-left: 0pt;
+	margin-right: 509pt;
+}
+
+h1.Heading1
+{
+	page-break-after: avoid;
+	page-break-inside: avoid;
+	margin-top: 20pt;
+	margin-bottom: 9pt;
+	mc-heading-level: 1;
+	font-family: Arial;
+	color: #595959;
+	font-size: 16pt;
+	font-weight: normal;
+}
+
+h2.Heading2
+{
+	page-break-after: avoid;
+	page-break-inside: avoid;
+	margin-top: 16pt;
+	margin-bottom: 12pt;
+	margin-left: 36pt;
+	mc-heading-level: 2;
+	font-family: Arial;
+	color: #595959;
+	font-size: 14pt;
+	font-weight: normal;
+}
+
+h3.Heading3
+{
+	page-break-after: avoid;
+	page-break-inside: avoid;
+	margin-top: 2pt;
+	margin-bottom: 0pt;
+	mc-heading-level: 3;
+	font-family: 'Calibri Light';
+	color: black;
+	font-size: 14pt;
+	font-weight: normal;
+}
+
+span.Hyperlink
+{
+	color: #0563C1;
+	text-decoration: underline;
+}
+
+span.span_1
+{
+	margin-right: 0pt;
+}
+
+p.p_6
+{
+	text-align: justify;
+}
+
+span.span_2
+{
+	font-weight: bold;
+}
+
+li.ListParagraph
+{
+	margin-bottom: 8pt;
+	color: #000000;
+	font-size: 12pt;
+	font-family: Calibri;
+}
+
+ol.ol_1
+{
+	list-style-type: decimal;
+	margin-left: 36pt;
+}
+
+li.ListParagraph_1
+{
+	margin-bottom: 8pt;
+	color: #000000;
+	font-size: 12pt;
+	font-family: Calibri;
+	list-style-type: disc;
+}
+
+ul.ul_1
+{
+	list-style-type: disc;
+	margin-left: 54pt;
+}
+
+p.p_7
+{
+	margin-left: 36pt;
+}
+
+span.span_3
+{
+	font-family: 'Courier New';
+	color: #333333;
+	font-size: 11pt;
+}
+
+img.img_1
+{
+	visibility: visible;
+	mso-wrap-style: square;
+}
+
+p.p_8
+{
+	text-align: center;
+}
+
+p.ListParagraph
+{
+	margin-bottom: 8pt;
+	color: #000000;
+	font-size: 12pt;
+	font-family: Calibri;
+}
+
+li.ListParagraph_2
+{
+	margin-bottom: 8pt;
+	color: #000000;
+	font-size: 12pt;
+	font-family: Calibri;
+	text-align: justify;
+}
+
+ul.ul_2
+{
+	list-style-type: disc;
+	margin-left: 36pt;
+}
+
+p.ListParagraph_1
+{
+	margin-bottom: 8pt;
+	color: #000000;
+	font-size: 12pt;
+	font-family: Calibri;
+	margin-left: 36pt;
+	text-align: justify;
+}
+
+p.p_9
+{
+	margin-left: 18pt;
+	text-align: center;
+}
+
+p.p_10
+{
+	margin-left: 18pt;
+	text-align: justify;
+}
+
+p.p_11
+{
+	margin-left: 36pt;
+	text-align: justify;
+}
+
+p.ListParagraph_2
+{
+	margin-bottom: 8pt;
+	color: #000000;
+	font-size: 12pt;
+	font-family: Calibri;
+	margin-left: 54pt;
+	text-align: justify;
+}
+
+p.p_12
+{
+	margin-left: 18pt;
+}
+
+span.span_4
+{
+	font-family: 'Courier New';
+}
+
+span.span_5
+{
+	font-family: Arial;
+	font-weight: bold;
+	color: #595959;
+	font-size: 8pt;
+}
+
+span.span_6
+{
+	font-family: Arial;
+	color: #595959;
+	font-size: 8pt;
+}
+
+span.span_7
+{
+	font-family: Segoe UI Symbol;
+}
+
+span.span_8
+{
+	font-family: Arial;
+	font-weight: bold;
+	color: #F8781A;
+	font-size: 8pt;
+}
+
+p.p_13
+{
+	margin-bottom: 0pt;
+	margin-left: 0pt;
+	margin-right: 0pt;
+}
+

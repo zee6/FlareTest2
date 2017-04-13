@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="5044" MadCap:lastWidth="2093">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Advanced unblu Server Configuration</h1>
+        <p>The information on this page assumes you have already read <a href="unblu Server Configuration.htm">unblu Server Configuration</a>.</p>
+        <p>In addition to the standard configuration mechanisms described in <a href="unblu Server Configuration.htm">unblu Server Configuration</a>, unblu has a set of additional configuration features that allow for more complex and dynamic setups.</p>
+        <h2><a name="Dynamic"></a>Dynamic Reconfiguration</h2>
+        <p>The unblu server has the ability to dynamically reload configuration while the server is running.</p>
+        <p><span class="Bolder">CAUTION:</span> Not all configuration settings support dynamic reconfiguration. All configuration settings that appear in the STATIC section in the log file at server startup do not support dynamic reconfiguration.</p><pre class="prettyprint"># Static configuration properties as they appear in the log file during startup of the unblu server
+ - Configuration Scope (GLOBAL:SYSTEM_PROPERTY:SystemProperties)
+     com.unblu.textoverlay: /Users/mirko/Unblu/platform-text.xml
+     unblu.deploymentMode: DEVELOPMENT</pre>
+        <p>Dynamic reconfiguration must be triggered explicitly by calling the <code>/sys-unblu/rest/propertyCascade/reload </code>rest service. If your server is running on localhost on port 8080, you need to request <code>http://localhost:8080/sys-unblu/rest/propertyCascade/reload</code> to trigger dynamic reconfiguration.</p>
+        <p><span class="Bolder">CAUTION:</span> Make sure the /sys-unblu path is properly protected. (See <a href="../Spare Topics/System Entry Path Concept.htm"><a href="../Server Security/unblu Server Security.htm#Security"><a href="../Server Security/unblu Server Security.htm#System">System (security) Entry Path Concept</a> - Security Considerations</a></a>.) </p>
+        <p>Dynamic reconfiguration also works for localized text settings. (See <a href="unblu Server i18n Configuration.htm">Unblu Server i18n Configuration</a> and <a href="Advanced unblu Server i18n Configuration.htm">Advanced unblu Server i18n Configuration</a>.)</p>
+        <h2>Using Multiple Configuration Files</h2>
+        <p>Instead of using a single configuration file, it is also possible to split configuration across multiple files. Multiple configuration files are specified using a coma separated list of file path or urls in the com.unblu.propertyoverlay System Property instead of a single value. (See <MadCap:xref href="unblu Server Configuration.htm#Using_Configuration_Files">Using Configuration Files</MadCap:xref>.)</p><pre class="prettyprint"># example for using multiple configuration files (using the JAVA_OPTS OS environment variable, i.e. in Tomcat)
+export JAVA_OPTS="$JAVA_OPTS -
+Dcom.unblu.propertyoverlay=http://configurationserver/unblu/unblu-
+configuration.properties,/etc/unblu/unblu-configuration.properties"</pre>
+        <p>This example specifies two configuration files: <code>http://configurationserver/unblu/unblu-configuration.com</code> and /<code>opt/unblu/unblu-configuration.properties</code>.</p>
+        <p>When using multiple configuration files, the ones that are defined later will always take precedence over the ones defined earlier.</p>
+        <p>In the example above this means that properties defined in <code>/opt/unblu/unblu-configuration.properties</code> will take precedence over properties defined in h<code>ttp://configurationserver/unblu/unblu-configuration.propertie</code>s.</p>
+        <p>Using multiple configuration files can make sense, for instance, in an unblu cluster where servers share some, but not all, of the configuration. A second scenario for using multiple configuration files is when there are multiple environments (i.e. prod, stage, development) that share most of the configuration but still need some individual configuration.</p>
+        <h2>Scope-Specific Configuration</h2>
+        <p>Usually configuration properties are global to the unblu server. This means that a configuration property is always applied.</p>
+        <p>In addition to global configuration properties, unblu also provides a number of other scopes for configuration properties. Scoped configuration properties are only applied in a certain context, i.e. for a specific user or for a specific domain.</p>
+        <p>Scope-specific configuration is only supported if xml files (see <MadCap:xref href="#XML">XML Configuration Files</MadCap:xref> below) are used (instead of java properties files).</p>
+        <p>The available configuration scopes are described below.</p>
+        <h3>Global Scope</h3>
+        <p>The global scope is the default scope. When using properties files for configuration, the scope is always global. Globally-scoped properties are effective for the whole unblu server.</p>
+        <h3>Domain Scope</h3>
+        <p>The domain scope is defined by the origin (schema + fully qualified domain) of the (web-) page the user is currently visiting. If an unblu installation is shared for multiple domains (i.e. <a href="http://trading.bank.com/">http://trading.bank.com</a> and <a href="http://www.bank.com/">http://www.bank.com</a>), then domain-scoped configuration can be used to apply individual configuration settings for the "trading" and the "www" part of the site.</p>
+        <h3>User Scope</h3>
+        <p>The user scope is defined by the currently executing authenticated user. Using user-scoped configuration settings, you can specify individual configuration for users.</p>
+        <h2><a name="XML"></a>XML Configuration Files</h2>
+        <p>In addition to Java properties files, unblu also supports an xml-based configuration file format. Certain configuration features (such as scope-specific configurations, see above) are only supported in the xml-based format.</p>
+        <p>The xml-based format has the following general format:</p><pre class="prettyprint" xml:space="preserve"> &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!-- this is a generic example of an unblu xml configuration file... SECTION1 and SECTION2 must be replaced by valid section elements (global, domain or user)--&gt;
+&lt;configuration&gt;
+ 	&lt;SECTION1&gt;
+ 		&lt;property key="key1"&gt;value 1&lt;/property&gt;
+ 		&lt;property key="key2"&gt;value 2&lt;/property&gt;
+ 	&lt;/SECTION1&gt;
+ 	
+ 	&lt;SECTION2&gt;
+ 		&lt;property key="key1"&gt;value 1&lt;/property&gt;
+ 		&lt;property key="key2"&gt;value 2&lt;/property&gt;
+ 	&lt;/SECTION2&gt; 
+ &lt;/configuration&gt;</pre>
+        <p>The xml file must be a valid xml file starting with a <code>&lt;?xml version="1.0" encoding="&lt;character-encoding&gt;"?&gt;</code> line. We recommend using UTF-8 (as in the sample above) but all other character encodings supported by the Java virtual machine in use are also supported.</p>
+        <p>The document element MUST be named "configuration".</p>
+        <p>The document element can contain any number of sections where every section must be a valid section, as described below, and must be unique within the file.</p>
+        <p>Every section can contain any number of property elements but MUST NOT contain more than one property element using the same key.</p>
+        <p>Every property element MUST define a "key" attribute.</p>
+        <p>The value of the property is the text contents of the property element.</p>
+        <p>Section elements must conform with one of the section types described below.</p>
+        <h3>Section Type "Global"</h3>
+        <p>The "global" section type defines properties that are valid globally (for the whole unblu server):</p><pre class="prettyprint">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!-- example of an xml configuration file with a global section --&gt;
+&lt;configuration&gt;
+	&lt;global&gt;
+		&lt;property key="key1"&gt;value 1&lt;/property&gt;
+		&lt;property key="key2"&gt;value 2&lt;/property&gt;
+	&lt;/global&gt;
+&lt;/configuration&gt;</pre>
+        <p>The "global" section type does not have any attributes and MUST not be declared more than once in a configuration file.</p>
+        <h3>Section Type "Domain"</h3>
+        <p>The "domain" section type defines properties that are valid for a certain domain (fully-qualified domain with protocol, <code>&lt;protocol&gt;://&lt;fqdn&gt;:&lt;optionalport&gt;</code>, i.e. <a href="https://www.unblu.com/">http://www.unblu.com/</a>).</p><pre class="prettyprint">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!-- example of an xml configuration file with a domain section --&gt;
+&lt;configuration&gt;
+	&lt;domain origin="http://www.unblu.com"&gt;
+		&lt;property key="key1"&gt;value 1&lt;/property&gt;
+		&lt;property key="key2"&gt;value 2&lt;/property&gt;
+	&lt;/domain&gt;
+&lt;/configuration&gt;</pre>
+        <p>The "domain" section type MUST declare an "origin" attribute holding the origin of the domain (fully-qualified domain with protocol, no path, no trailing slash, i.e. http://www.unblu.com)</p>
+        <p>A configuration file MUST NOT contain more than one domain section with the same "origin" attribute.</p>
+        <h3>Section Type "User"</h3>
+        <p>The "user" section type defines properties that are valid for a certain authenticated user.</p><pre class="prettyprint">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!-- example of an xml configuration file with a user section --&gt;
+&lt;configuration&gt;
+	&lt;user id="123456"&gt;
+		&lt;property key="key1"&gt;value 1&lt;/property&gt;
+		&lt;property key="key2"&gt;value 2&lt;/property&gt;
+	&lt;/user&gt;
+&lt;/configuration&gt;</pre>
+        <p>The "user" section type MUST declare an "id" attribute holding the id of the user the section is valid for.</p>
+        <p>A configuration file MUST NOT contain more than one user section with the same "id" attribute.</p>
+        <h3>Example XML Configuration File</h3>
+        <p>Example of a valid xml configuration file. Property key must be valid keys (see <a href="https://www.unblu.com/en/doc/latest/unblu-server-configuration-reference">Unblu Server Configuration Reference</a> for real-life files).</p><pre class="prettyprint">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;configuration&gt;
+	&lt;global&gt;
+		&lt;property key="key1"&gt;value 1&lt;/property&gt;
+		&lt;property key="key2"&gt;value 2&lt;/property&gt;
+	&lt;/global&gt;
+	
+	&lt;domain origin="http://www.unblu.com"&gt;
+		&lt;property key="key1"&gt;value 1&lt;/property&gt;
+		&lt;property key="key2"&gt;value 2&lt;/property&gt;
+	&lt;/domain&gt;
+	
+	&lt;domain origin="http://www.unblu.com"&gt;
+		&lt;property key="key1"&gt;value 1&lt;/property&gt;
+		&lt;property key="key2"&gt;value 2&lt;/property&gt;
+	&lt;/domain&gt;	
+	
+	
+	&lt;user id="12345"&gt;
+		&lt;property key="key1"&gt;value 1&lt;/property&gt;
+		&lt;property key="key2"&gt;value 2&lt;/property&gt;
+	&lt;/user&gt;
+	
+	&lt;user id="abcde"&gt;
+		&lt;property key="key1"&gt;value 1&lt;/property&gt;
+		&lt;property key="key2"&gt;value 2&lt;/property&gt;
+	&lt;/user&gt;	
+&lt;/configuration&gt;</pre>
+        <p>&#160;</p>
+    </body>
+</html>

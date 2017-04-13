@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="1177" MadCap:lastWidth="1407">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>unblu Server Configuration Validation</h1>
+        <p>In order to avoid misconfiguration (or configuration that does not have an effect), the unblu server validates its configuration against the configuration schema.</p>
+        <p>This document describes how configuration validation works and how it can be configured, if required.</p>
+        <h1>Default Behaviour</h1>
+        <p>If configuration validation is not specially configured, it behaves as follows.</p>
+        <p>When starting, the unblu server validates the given configuration against its inherent configuration schema and logs errors (if the configuration is not valid) and warning messages (if the configuration is not recommended) to the log file. (See <a href="Unblu Server Logging.htm">Unblu Server Logging</a>.)</p>
+        <p>If one or more errors are detected, the unblu server will refuse to start up and will deliver 503 responses with status text CONFIGURATION_PROBLEM for all requests.</p>
+        <h2>Validation</h2>
+        <p>Configuration validation performs the following validations</p>
+        <ol>
+            <li>Use of a configuration property that is not defined in the configuration schema -&gt; ERROR</li>
+            <li>A configuration value cannot be converted to the expected type according to the configuration schema -&gt; ERROR</li>
+            <li>Use of an internal configuration property -&gt; WARNING</li>
+            <li>A set of special rules that define dependencies between configuration properties -&gt; WARNING or ERROR</li>
+        </ol>
+        <h2>Configuration</h2>
+        <p>Unblu configuration validation is configurable. The table below shows the most important configuration settings:</p>
+        <table style="width: 100%;border-left-style: solid;border-left-width: 1px;border-left-color: ;border-right-style: solid;border-right-width: 1px;border-right-color: ;border-top-style: solid;border-top-width: 1px;border-top-color: ;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: ;">
+            <col />
+            <col />
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>KEY</p>
+                    </th>
+                    <th style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>TYPE</p>
+                    </th>
+                    <th style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>DEFAULT VALUE</p>
+                    </th>
+                    <th style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>DESCRIPTION</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>com.unblu.configuration.validation.severityUndefinedKey</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>severity</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>ERROR</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>Severity for use of a configuration property that is not defined.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>com.unblu.configuration.validation.severityInternalKeyUntrusted</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>severity</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>WARNING</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>Severity for using internal properties. Possible values are: ERROR, WARNING, IGNORE.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>com.unblu.configuration.validation.exitOnError</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>boolean</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>false</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>Whether or not unblu should call System.exit if the configuration is not valid. (Not recommended if using in an application server!)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>com.unblu.configuration.validation.failOnError</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>boolean</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>true</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>Whether or not unblu should deliver 503 responses if configuration is not valid.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>com.unblu.configuration.validation.enabled</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>boolean</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>false</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>Enable/disable configuration validation.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>&#160;</p>
+    </body>
+</html>

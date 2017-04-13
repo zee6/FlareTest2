@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="6554" MadCap:lastWidth="1480">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Airlock 5.3 Web Application Firewall Integration</h1>
+        <p>Airlock is a secure reverse proxy server that manages the data flow between a visitor of the website and the corporate web server(s). When you use unblu collaboration server, you need to configure Airlock as follows:</p>
+        <ol>
+            <li>Set up an ICAP connection to the unblu server. (ICAP is a messaging protocol that proxy servers often use to communicate with other servers.)</li>
+            <li>Specify which requests to forward to the unblu server.</li>
+            <li>Restrict requests and only forward when a co-browsing session is established. (This reduces network traffic.)</li>
+        </ol>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Requirements and Prerequisites</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>To use the unblu module you need an ICAP license. To check the license go to System Setup, click License, and make sure that ICAP is set to on:</p>
+                <p>
+                    <img src="../Resources/Images/airlock_license-5.3.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: auto;" />
+                </p>
+                <p>Before you can configure the Airlock reverse proxy server, you need to install and configure unblu. You can find a minimal configuration for unblu on this page in step 9 'unblu Configuration'. Note that while this minimal configuration is designed to show that unblu works with Airlock, it is intended for quick reference only and does not provide a comprehensive guide to running unblu in a high-security environment.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Specifying the ICAP Connection</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>To specify the ICAP connection, proceed as follows:</p>
+                <ol>
+                    <li>Click <span class="Bolder">System Setup</span>, and then click Network Services. The <span class="Bolder">Network Services</span> panel opens.</li>
+                </ol>
+                <p>
+                    <img src="../Resources/Images/airlock_icap_connectionsettings_5.3.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: auto;" />
+                </p>
+                <ol MadCap:continue="true">
+                    <li>Click the <span class="Bolder">Plus ( + ) </span>button to add a new ICAP server.</li>
+                    <li>In the<span class="Bolder"> Name</span> field, type the name you want to use for the connection.</li>
+                    <li>In the <span class="Bolder">ICAP Service URL</span> field, type the URL of the unblu server (here: http://unbluhost/) followed by the path <span class="Bolder">sys-unblu/airlockicapproxy</span>.</li>
+                    <li>Click the <span class="Bolder">Submit</span> button.</li>
+                </ol>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Adding the unblu Server to Airlock</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Airlock keeps two lists of servers: The list of virtual hosts (that is, all servers that receive requests) and the list of back-end groups (that is, all servers or groups of servers that answer the requests). To add the unblu server to Airlock you need to add it to the back-end group, as follows:</p>
+                <p>
+                    <img src="../Resources/Images/airlock_backendgroupsettings_5.3.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: auto;" />
+                </p>
+                <ol>
+                    <li>In the <span class="Bolder">Reverse Proxy</span> administration screen, click the <span class="Bolder">Plus ( + ) </span>button in the <span class="Bolder">Back-end Group</span> list. Airlock creates a new back-end group (that is, a new group of servers that receive requests). The group contains one empty entry for a server.</li>
+                    <li>Type the<span class="Bolder"> name </span>you want to use for the unblu back-end group.</li>
+                    <li>Type the<span class="Bolder"> protocol</span>, <span class="Bolder">host </span>and <span class="Bolder">port</span> of the unblu server.</li>
+                    <li>Click <span class="Bolder">Submit</span>.</li>
+                </ol>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Mapping the Application Responses</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>To map the application responses, you need to configure Airlock to forward any backend responses to the unblu server via ICAP.</p>
+                <p>
+                    <img src="../Resources/Images/airlock_backend_icapsettings2-5.3.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: auto;" />
+                </p>
+                <ol>
+                    <li>In the <span class="Bolder">Reverse Proxy</span> administration screen, edit the mapping of your application (for this example, we use a mapping called <span class="Bolder">backend</span>).</li>
+                    <li>Click the <span class="Bolder">ICAP </span>tab.</li>
+                    <li>Click the <span class="Bolder">Plus ( + ) </span>button in the <span class="Bolder">ICAP Response Client View</span>. Check the <span class="Bolder">Handle response</span> checkbox. In <span class="Bolder">ICAP service</span> drop-down list, select the unblu-ICAP service you have created in <span class="Bolder">step 3</span> above.</li>
+                    <li>In the <span class="Bolder">Request Header Value Pattern</span> (Value, not Name!), add the regular expression <code>x-unblu-recorder-session=\"[0-9a-z]+\"</code>. (Make sure to be case sensitive and not inverted.)</li>
+                    <li>Click <span class="Bolder">Submit</span>. Airlock now forwards all responses in a running co-browsing session to the unblu server via ICAP.</li>
+                </ol>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Mapping the Co-Browsing Connection</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Now you need to add a new reverse proxy mapping that forwards co-browsing requests to the unblu server. Setting this up is straightforward but requires some configuration to make sure that cookies and HTTP headers are forwarded correctly.</p>
+                <p>
+                    <img src="../Resources/Images/airlock_mappings_unblu_5.3.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: auto;" />
+                </p>
+                <ol>
+                    <li>In the <span class="Bolder">Reverse Proxy </span>administration screen, click the <span class="Bolder">Plus ( + )</span> button in the <span class="Bolder">Mapping</span> list. Airlock adds a new mapping.</li>
+                </ol>
+                <p>
+                    <img src="../Resources/Images/airlock_unblu_basicsettings_5.3.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: auto;" />
+                </p>
+                <ol MadCap:continue="true">
+                    <li>In the <span class="Bolder">Basic</span> tab, give it a name, specify the <span class="Bolder">Entry Path</span> (use Directory type), make sure it is case sensitive and, in the <span class="Bolder">Application</span> panel, make sure the <span class="Bolder">Passthrough Cookies</span> are defined x<code>-unblu-session|x-unblu-recorder-session</code>.</li>
+                    <li>Press the <span class="Bolder">Submit</span> button to apply your changes.</li>
+                </ol>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Configuring the Allow Rules</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../Resources/Images/airlock_mappings_unblu_allowrules_5.3.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: auto;" />
+                </p>
+                <ol>
+                    <li>In the <span class="Bolder">Reverse Proxy</span> administration screen click the <span class="Bolder">Allow Rules</span> tab.</li>
+                    <li>Increase <span class="Bolder">Max path length</span> to at least <span class="Bolder">4kB</span>.</li>
+                    <li>Click <span class="Bolder">Submit</span>.</li>
+                </ol>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Allowing unblu Request/Response Headers</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If you restrict the headers that Airlock forwards, then you need to add unblu‘s request header to the list of allowed headers.</p>
+                <p>
+                    <img src="../Resources/Images/airlock_unblu_requestheadersettings_5.3.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: auto;" />
+                </p>
+                <ol>
+                    <li>In the <span class="Bolder">Reverse Proxy</span> administration screen, click the <span class="Bolder">Request Actions</span> tab.</li>
+                    <li>Select the middle icon of <span class="Bolder">(default) Request header whitelist</span> (on the extreme right of the <span class="Bolder">Default Actions</span> panel) to create a customized version of it.</li>
+                    <li>In the <span class="Bolder">Header Name Pattern</span> field add the following entries to the list of the allowed headers: <span class="Bolder">x-unblu-xui, x-unblu-client, x-unblu-page, x-unblu-referer</span> (ensuring it is case insensitive and inversed).</li>
+                    <li>Click <span class="Bolder">Submit</span> to apply your changes then select the <span class="Bolder">Response Actions</span> tab. The <span class="Bolder">Response Actions</span> screen displays.</li>
+                </ol>
+                <p>
+                    <img src="../Resources/Images/airlock_unblu_responseheadersettings_5.3.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: auto;" />
+                </p>
+                <ol MadCap:continue="true">
+                    <li>Click the middle icon on <span class="Bolder">(default) Response header whitelist </span>(on the right side of the Default Actions panel) to create a customized version of it.</li>
+                    <li>In the <span class="Bolder">Header Name Pattern </span>part add (or make sure they are present) the following headers: <span class="Bolder">Pragma, Cache-Control, Expires,x-unblu-xui, x-unblu-client, x-unblu-page, x-unblu-start-time </span>(ensuring it is case insensitive and inversed.)</li>
+                    <li>Click <span class="Bolder">Submit</span>.</li>
+                </ol>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>unblu Configuration</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Here is a minimal configuration (example) setting to run unblu with Airlock.</p>
+                <p><span class="Bolder">Note:</span> This example is intended only as an overview and not as a guide on how you run unblu in a high-security environment.)</p><pre class="prettyprint">com.unblu.identifier.siteEmbeddedSetup=true
+com.unblu.cobrowsing.hideOfflineFlap=true
+com.unblu.domcap.server.filter.airlock.enableAirlockIcap=true</pre>
+                <p><span class="Bolder">Note:</span> If your Airlock virtual server is configured to use SSL you need to add the following line to your unblu.properties file:</p><pre class="prettyprint">com.unblu.review.server.airlockicap.request.hostScheme=https</pre>
+                <p><span class="Bolder">Note: </span>If you are using Apache Tomcat as a servlet container you need to configure Tomcat to load the property file. There are different ways to do this, depending on how you administer Tomcat and your Java platform. For example, you can add the following line to the Tomcat start script, catalina.sh:</p><pre class="prettyprint">JAVA_OPTS="-Dcom.unblu.propertyoverlay=file:///&lt;path to&gt;/unblu.properties"</pre>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <p>&#160;</p>
+    </body>
+</html>

@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="4266" MadCap:lastWidth="4173">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>How to integrate the unblu agent side using the API</h1>
+        <p><i>The full example implementation shown below can be downloaded from here:</i> <a href="https://dev.unblu.com/confluence/download/attachments/102793249/JSC-4.zip?version=2&amp;modificationDate=1474457210000&amp;api=v2">JSC-4.zip</a> <i>unblu version: 4.x.x (unblu 4 or above). The example must be uploaded to an Apache server, or similar, in order to work correctly.</i></p>
+        <p>This example shows how to use and implement the unblu Agent API.</p>
+        <p>
+            <img src="../Resources/Images/Customization/JSC-4-5.PNG" style="mc-thumbnail: popup;mc-thumbnail-max-height: 200px;" />
+        </p>
+        <p>After clicking the <span class="Bolder">Generate PIN</span> button the PIN displays in order that the agent can pass it to the visitor.</p>
+        <p>
+            <img src="../Resources/Images/Customization/JSC-4-6.PNG" style="mc-thumbnail: popup;mc-thumbnail-max-height: 200px;" />
+        </p>
+        <p>After passing the PIN to the visitor (and the visitor enters the PIN) the co-browsing session starts.</p>
+        <p>
+            <img src="../Resources/Images/Customization/JSC-4-7.PNG" style="mc-thumbnail: popup;mc-thumbnail-max-height: 200px;" />
+        </p>
+        <p><span class="Bolder">Note:</span> All the file/object/function names can be changed according to your needs.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Perform the integration</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <ol>
+                    <li>Create an HTML page (index.html). You can implement the features you want from the agent API in this HTML page. This example includes the basic features which need to be used to start a session with the generated PIN.</li>
+                </ol>
+                <p>You need to add a few things to your HTML file:</p>
+                <p>To generate a PIN add the following code.</p><pre class="prettyprint">&lt;button id="generate_pin"&gt;Generate PIN&lt;/button&gt;</pre>
+                <p>To display the PIN after the button click above, add the following code.</p><pre class="prettyprint">&lt;h4 id="display_pin"&gt;&lt;/h4&gt;</pre>
+                <p>This iframe will be used for the unblu co-browsing session. The session starts after the PIN has been entered from the client side.</p><pre class="prettyprint">&lt;iframe src="" id="session_iframe" frameborder="0"&gt;&lt;/iframe&gt;</pre>
+                <p>This element displays a <span class="Bolder">'joining URL',</span> which can be used to join the session.</p><pre class="prettyprint">&lt;div id="show_join_url"&gt;&lt;/div&gt;</pre>
+                <ol MadCap:continue="true">
+                    <li>Create a JavaScript file called <span class="Bolder">'snippet.js'</span> and paste the snippet into it. The snippet can be found in your account at <a href="http://www.unblu.com/">www.unblu.com</a>. (<span class="Bolder">unblu.com -&gt; myunblu -&gt; administer account -&gt; integration section</span>.)</li>
+                </ol>
+                <p>Keep in mind that the snippet should be placed after the last &lt;meta&gt; tag in the &lt;head&gt; section, but before any other script. All of the other JSAPI-consuming scripts must only appear after the snippet.</p>
+                <ol MadCap:continue="true">
+                    <li>Include the snippet in your HTML file inside the &lt;head&gt; tag (using the appropriate location of the actual <span class="Bolder">'snippet.js' </span>file within your project tree).</li>
+                </ol><pre class="prettyprint">&lt;script type="text/javascript" src="js/snippet.js"&gt;&lt;/script&gt;</pre>
+                <p><span class="Bolder">Note: </span>For this example we used jQuery to make part of the implementation shorter and easier to understand. You would need to add jQuery from a host or to download it locally in order to be able to use it.</p>
+                <ol MadCap:continue="true">
+                    <li>Create an empty JavaScript file and include it in your HTML page after the &lt;body&gt; tag. The unblu Start Session dialog will be triggered by the function in this file.</li>
+                </ol><pre class="prettyprint">&lt;script type="text/javascript" src="js/main.js"&gt;&lt;/script&gt;</pre>
+                <p>In the <span class="Bolder">'main.js'</span> file we can add some actions for the HTML elements, and few more necessary items.</p>
+                <ol MadCap:continue="true">
+                    <li>Declare a few objects and give them some properties.</li>
+                </ol><pre class="prettyprint">
+var x – this object is going to hold almost all of the functions that we use in the implementation.
+var utils – this object is going to be used to hold the logging function.
+var isAgentAuthenticated – as the name suggests, this object holds information about the status of the agent – whether the agent is authenticated or not.
+var defaults – this object is going to hold all the default values/properties that we would like to use in our code. This will allow a faster and easier implementation later on. This can be modified according to your preferences. For more information about the properties used in this object, check the full example code.</pre>
+                <ol MadCap:continue="true">
+                    <li>We need to authenticate the agent. In order to do so, we will use the <span class="Bolder">'x.authenticate()' </span>function. This function checks whether or not the agent is authenticated.</li>
+                </ol>
+                <ol style="list-style-type: lower-alpha;">
+                    <li>First, we need a callback function (<span class="Bolder">authenticateCallback</span>) which is used to notify the other parts of the code about the status of the authentication.</li>
+                </ol><pre class="prettyprint">if (!authenticateCallback) {
+          authenticateCallback = function() {};
+}</pre>
+                <ol style="list-style-type: lower-alpha;" MadCap:continue="true">
+                    <li>Next, we check if the agent is already authenticated using the code below.</li>
+                </ol><pre class="prettyprint">if (isAgentAuthenticated) {
+            authenticateCallback(true);
+            return;
+}</pre>
+                <ol style="list-style-type: lower-alpha;" MadCap:continue="true">
+                    <li>Then, if the agent is NOT authenticated already, we proceed with an asynchronous AJAX call to the server. This call uses the unblu authenticator to check whether the credentials are valid or not. These credentials have been set in the 'defaults' object. They can be filled from an HTML form and passed to this object.</li>
+                </ol>
+                <p>In the case that the credentials are valid, a 'success' callback is called with the code/token generated from the unblu server authenticator.</p>
+                <p>Following this and using the <span class="Bolder">'loginWithAuthenticationToken()'</span> function from the agent API, we can log the agent in with this token.</p>
+                <p>If the login is successful, the function <span class="Bolder">'authenticateCallback()'</span> is set to true. Otherwise, an appropriate error is thrown and <span class="Bolder">'authenticateCallback()'</span> is false.</p>
+                <ol start="7">
+                    <li>In order to generate a PIN after clicking on the button, we need to implement the following functions:</li>
+                </ol>
+                <p><span class="Bolder">'x.createSecurityCode()' </span>and a callback for it<span class="Bolder"> 'x.createSecurityCodeCallback()'</span></p>
+                <p>Inside the <span class="Bolder">'x.createSecurityCode()' </span>function, a few things need to be done:</p>
+                <ul>
+                    <li>check if the agent is authenticated</li>
+                    <li>use <span class="Bolder">'createSecurityCode()'</span> from the API</li>
+                    <li>pass the result from it to the callback</li>
+                </ul>
+                <p>We also need a session termination function. This can be implemented in the following way:</p><pre class="prettyprint">var session = api.core.agent.session.AgentSession;
+          session.terminateSession(window.sessionHandle, {
+              onSuccess: function (agentSessionInfo) {
+                  console.log('Session termination returns -&gt; ' + agentSessionInfo.message);
+                },
+                onFailure: function (error) {
+                    console.log("Error: " + error.message);
+                }
+          });</pre>
+                <ol start="8">
+                    <li>We also need a few event listeners.</li>
+                </ol><pre class="prettyprint">x.securityCodeRedeemedListener</pre>
+                <p>This listener changes the <span class="Bolder">'displayPinElementId'</span> value to <span class="Bolder">'security code redeemed!' </span>once the security code has been redeemed and fills the iframe with the Session Start URL, which comes from the 'event' object.</p><pre class="prettyprint">x.securityCodeExpiredListener</pre>
+                <p>This listener changes the <span class="Bolder">'displayPinElementId'</span> value to <span class="Bolder">“******” </span>once the PIN has expired.</p><pre class="prettyprint">x.agentTerminatedListener</pre>
+                <p>This listener clears the iframe once the session has been terminated. (This can be achieved using the line below.)</p><pre class="prettyprint">$("#" + defaults.sessionIframeId).attr("src", "");</pre><pre class="prettyprint">x.agentAbortListener</pre>
+                <p>This listener clears the iframe as well, but in the case of an 'abort' termination cause.</p>
+                <ol MadCap:continue="true">
+                    <li>Using the jQuery <span class="Bolder">'$(document).ready' </span>function we add two listeners to the HTML elements.</li>
+                </ol><pre class="prettyprint">$('#' + defaults.generatePinElementId).on('click', x.createSecurityCode);</pre>
+                <p>This listener will invoke a creation of the security code using the<span class="Bolder"> 'x.createSecurityCode'</span> function.</p><pre class="prettyprint">$('#' + defaults.terminateSessionButton).on('click', x.terminateSession);</pre>
+                <p>This listener will cause a termination of the session using the<span class="Bolder"> 'x.terminateSession'</span> function.</p>
+                <ol MadCap:continue="true">
+                    <li>Finally, we need to add four unblu event listeners from the API and authenticate the agent in the following way.</li>
+                </ol><pre class="prettyprint">
+api.core.agent.session.AgentSession.addSessionTerminatedListener(x.agentTerminatedListener);
+api.core.agent.session.AgentSession.addSessionAbortedListener(x.agentAbortListener);
+api.core.agent.securitycode.SecurityCodeGenerator.addSecurityCodeRedeemedListener(x.securityCodeRedeemedListener);
+api.core.agent.securitycode.SecurityCodeGenerator.addSecurityCodeExpiredListener(x.securityCodeExpiredListener);
+ 
+x.authenticate();</pre>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <p>&#160;</p>
+    </body>
+</html>

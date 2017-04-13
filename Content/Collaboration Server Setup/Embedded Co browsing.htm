@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="1288" MadCap:lastWidth="1425">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h2 class="Heading2">
+            <MadCap:concept term="Co-browsing" />Embedded Co-browsing </h2>
+        <p>Embedded co-browsing captures the visitor browser DOM within a defined domain scope. </p>
+        <p><span class="Bolder">Note:</span> Universal Co-browsing uses a completely different method and allows co-browsing of public sites (where the domain does not have to be defined within the unblu system) but does not produce a Resource History. It is normal for organizations to require the capability for both Embedded and Universal Co-browsing. Universal co-browsing requires the addition of the unblu Rendering Service and adds document sharing as well as the ability to co-browse public sites. For more information on Universal Co-browsing see: <a href="Universal and Document Co.htm">Universal and Document Co-browsing</a></p>
+        <p>Embedded co-browsing, using the unblu Filter, ensures that the agent browser never has to access the organization backend. All communication with the agent browser is done through the unblu server and the unblu server only ‘sees’ the objects that have been previously uploaded by the filter. The diagram below provides an overview of the flow. (Red arrows represent unblu flows.)</p>
+        <p>
+            <img src="../Resources/Images/Server_Setup_Guide_Pictures/Embedded Co browsing.png" style="float: left;left: 30px;top: 445px;mc-thumbnail: popup;mc-thumbnail-max-height: 300px;max-width: auto;width: auto;height: auto;" class="img_1" MadCap:mediastyle="@media print { position: absolute;z-index: 0; }" />
+        </p>
+        <p><span class="Bolder">Note:</span> It is possible to implement the unblu Filter in the backend, without a proxy, but such special cases can be problematic so you should first talk to us if you feel you have good reason to attempt a ‘backend implementation’.</p>
+        <p>When a visitor requests a web page they receive an HTML file. The browser parses the file then converts it into a Document Object Model (DOM). Once the browser has converted the HTML (plus any JavaScript modifications or enhancements) into a DOM, unblu captures that DOM and uploads it (regularly) to the unblu Collaboration Server. This only transfers the text and structure. In order to transfer the images and style sheets you may need the unblu filter. For each image described on the page, and for associated style sheets, it makes another request asking the unblu Collaboration Server for the content. The unblu Collaboration Server then sends the DOM, associated images and style sheets to the Agent browser. </p>
+        <p><span class="Bolder">Note:</span> In order to minimize bandwidth and upload times, only changes are sent once a session has started.</p>
+        <p>The Agent browser cannot get the images from the organization backend server directly. Once a session is started, everything (the DOM, images, style sheet(s)) is downloaded from the unblu server.</p>
+        <p><span class="Bolder">Note:</span> If you intend to use static resources almost exclusively but you have some resources that you want to be retrieved directly from your own backend server it is possible to configure ‘exceptions’, whereby normally inaccessible, session-specific resources can be retrieved from the backend server directly using patterns for resource URLs.</p>
+        <p>When the image element is transferred the unblu Collaboration Server creates an alternative URL for mapping purposes. The unblu server never communicates directly with the backend: all communication is done through the unblu Filter. For every filter-uploaded resource the unblu Collaboration Server generates an unblu-internal URL. The generated URL is the URL that the Agent browser sees. So, when the visitor makes a request the unblu server has a mapping to retrieve the actual image and send it to the Agent Desk browser.</p>
+        <p><span class="Bolder">Note:</span> The URL (of the resource/image/CSS etc.) contained in the unblu Filter is sent to the unblu Collaboration server and it MUST match the URL (of the same resource) in the visitor browser. This URL can change according to the exact position of the unblu Filter within the filter chain. If the URLs do not match then the Resource History will not work. See <a href="Where to put the Filter.htm#_Where_to_put">Where to put the Filter</a> for more. </p>
+        <p>As the actual images and style sheets are not present within the unblu server at the start of the session the filter must be present in the proxy where all the traffic between the visitor and the backend happens.</p>
+        <p>&#160;</p>
+        <p>
+            <MadCap:conceptLink term="Co-browsing" />
+        </p>
+    </body>
+</html>

@@ -1,0 +1,111 @@
+/*<meta />*/
+
+p
+{
+	font-family: 'Times New Roman';
+	font-size: 12pt;
+	margin-top: 0pt;
+	margin-bottom: 0pt;
+}
+
+ol
+{
+	font-family: 'Times New Roman';
+	font-size: 12pt;
+	margin-top: 0pt;
+	margin-bottom: 0pt;
+}
+
+ul
+{
+	font-family: 'Times New Roman';
+	font-size: 12pt;
+	margin-top: 0pt;
+	margin-bottom: 0pt;
+}
+
+li
+{
+	font-family: 'Times New Roman';
+	font-size: 12pt;
+	margin-top: 0pt;
+	margin-bottom: 0pt;
+}
+
+td
+{
+	font-family: 'Times New Roman';
+	font-size: 12pt;
+	vertical-align: top;
+}
+
+h1.Heading1
+{
+	margin-top: 5pt;
+	margin-bottom: 5pt;
+	mc-heading-level: 1;
+	font-family: 'Times New Roman';
+	font-weight: bold;
+	font-size: 24pt;
+}
+
+h2.Heading2
+{
+	margin-top: 5pt;
+	margin-bottom: 5pt;
+	mc-heading-level: 2;
+	font-family: 'Times New Roman';
+	font-weight: bold;
+	font-size: 18pt;
+}
+
+h3.Heading3
+{
+	margin-top: 5pt;
+	margin-bottom: 5pt;
+	mc-heading-level: 3;
+	font-family: 'Times New Roman';
+	font-weight: bold;
+	font-size: 14pt;
+}
+
+p.HTMLPreformatted
+{
+	font-family: 'Courier New';
+	font-size: 10pt;
+}
+
+p.NormalWeb
+{
+	font-size: 12pt;
+	margin-top: 5pt;
+	margin-bottom: 5pt;
+	font-family: 'Times New Roman';
+}
+
+span.Emphasis
+{
+	font-style: italic;
+}
+
+p.HTMLPreformatted_1
+{
+	font-family: 'Courier New';
+	font-size: 10pt;
+	background-color: #F8F8F8;
+}
+
+p.NormalWeb_1
+{
+	font-size: 12pt;
+	margin-top: 5pt;
+	margin-bottom: 5pt;
+	font-family: 'Times New Roman';
+	background-color: #F8F8F8;
+}
+
+p.p_1
+{
+	background-color: #F8F8F8;
+}
+

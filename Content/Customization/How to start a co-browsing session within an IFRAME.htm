@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="2134" MadCap:lastWidth="1278">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>How to start a co-browsing session within an IFRAME</h1>
+        <p><i>You can download a zip file here, which includes the code from this example. Do not forget to change your Server API Key and Server URL in the snippet.js script. Needs unblu version: 4.x.x (unblu 4 or above). The example must be uploaded to an Apache server, or similar, in order to work correctly:</i> <a href="https://dev.unblu.com/confluence/download/attachments/103252006/iframeExample.zip?version=1&amp;modificationDate=1477468109000&amp;api=v2">iframeExample.zip</a></p>
+        <p>Typical IFRAME example use case:</p>
+        <p>
+            <img src="../Resources/Images/Customization/usecase.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 200px;" />
+        </p>
+        <p>The goal of this example is to show you how you can start a co-browsing session from an IFRAME. For this example we will create two web pages, one HTML page with another (iFrame) embedded in the first.</p>
+        <p>We have created an example folder with two static pages (.zip at the top of this page). Download and paste the folder into the root directory of your web server. If you want this example to work for you, make sure that you can access both pages under: <code>http://localhost/iframeExample/iframeApp.html </code>and <code>http://localhost/iframeExample/unbluApp.html</code>. If you have have a different path to the <span class="Bolder">unbluApp.html</span>, modify the src URL in the IFRAME element in the <span class="Bolder">iframeApp.html</span>.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Add the unblu snippet to the embedded iFrame code</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p><span class="Bolder">snippet.js:</span>
+                </p><pre class="prettyprint">/* unblu snippet V4.2.20160712 */
+unblu = {APIKEY: "MZsy5sFESYqU7MawXZgR_w", SERVER: "http://localhost:8080"};
+ 
+(function() {
+    unblu.c = [];
+    unblu.registerApiConsumer = function(callback, errorCallback, apiNames) {
+        if (callback instanceof Array) {
+            if (window["Promise"]) {
+                return new Promise(function(resolve, reject) {
+                    unblu.c.push({a: callback, c: resolve, e: reject});
+                });
+            } else {
+                throw new Error("Promise not available");
+            }
+        }
+         
+        unblu.c.push({a: apiNames, c: callback, e: errorCallback});
+    }
+    unblu.setLocale = function(locale) {
+        unblu.l = locale;
+    }
+    if (!window["x-unblu-tmp-window-name"]) window["x-unblu-tmp-window-name"]=window.name;
+    var q = document.getElementsByTagName("script")[0];
+    if (q) {
+        var g = document.createElement("script");
+        g.setAttribute("src", unblu.SERVER + "/unblu/starter.js");
+        g.setAttribute("type", "text/javascript");
+        g.setAttribute("defer","defer");
+        q.parentNode.appendChild(g);
+    }
+})();</pre>
+                <p><span class="Bolder">Note: </span>Change the <span class="Bolder">APIKEY</span> and <span class="Bolder">SERVER</span> constants to the real values you want to use. In this example unblu 4.2.5 is running at <code>http://localhost:8080</code></p>
+                <p>The two static pages must be deployed to your web server.</p>
+                <p>
+                    <img src="../Resources/Images/Customization/iframeApp_1_Fixed_small.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 200px;" />
+                </p>
+                <p>
+                    <img src="../Resources/Images/Customization/unbluApp_2__JSAPI_Small.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 200px;" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <p>&#160;</p>
+    </body>
+</html>

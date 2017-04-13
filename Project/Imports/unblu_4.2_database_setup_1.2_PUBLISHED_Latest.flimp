@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MsWordImport
+  PreserveSourceStyles="true"
+  KeepSourceLinks="false"
+  ConvertInlineFormatting="true"
+  AddContinuedLinks="false"
+  AddContinuedFromLinks="false"
+  ContinuedLinkFormat="(continued in {title})"
+  ContinuedFromLinkFormat="(continued from {title})"
+  UseMaxCharLimit="false"
+  UseMinCharLimit="true"
+  MaxCharLimit="10000"
+  MinCharLimit="50"
+  FilenameLength="24"
+  GeneratePageLayouts="false"
+  UseFirstHeadingAsTopicTitle="true"
+  ConvertEquations="true"
+  LastCollectTime="2017-03-22T10:59:13.1547135+01:00"
+  ProjectName="unbluDemo3"
+  ProjectFolder="C:\unbluDemoHelp\unbluHelp\unbluHelp3\"
+  AutoSync="false"
+  AutoFitTables="false"
+  UseHeaderRows="false"
+  LastImport="2017-03-22T10:59:30.2560228+01:00">
+  <Files>
+    <Url
+      Source="../../../../../Work/Database setup 4.2/Published/unblu_4.2_database_setup_1.2_PUBLISHED_Latest.docx"
+      AbsoluteSource="file:///C:/Work/Database setup 4.2/Published/unblu_4.2_database_setup_1.2_PUBLISHED_Latest.docx" />
+  </Files>
+  <ExcludedFiles />
+  <CollectedSourceFiles />
+  <SkippedSourceFiles />
+  <GeneratedFiles>
+    <Url
+      Source="../../Content/unblu_4.2_database_setup_1.2_PUBLISHED_Latest/unblu_4.2_database_setup_1.2_PUBLISHED_Latest.htm"
+      TimeStamp="3/22/2017 10:59:24 AM" />
+    <Url
+      Source="../../Content/unblu_4.2_database_setup_1.2_PUBLISHED_Latest/unblu_4.2_database_setup_1.2_PUBLISHED_Latest_1.htm"
+      TimeStamp="3/22/2017 10:59:24 AM" />
+    <Url
+      Source="../../Content/unblu_4.2_database_setup_1.2_PUBLISHED_Latest/Features.htm"
+      TimeStamp="3/22/2017 10:59:24 AM" />
+    <Url
+      Source="../../Content/unblu_4.2_database_setup_1.2_PUBLISHED_Latest/Supported Platforms.htm"
+      TimeStamp="3/22/2017 10:59:24 AM" />
+    <Url
+      Source="../../Content/unblu_4.2_database_setup_1.2_PUBLISHED_Latest/Database Setup.htm"
+      TimeStamp="3/22/2017 10:59:24 AM" />
+    <Url
+      Source="../../Content/Resources/Images/unblu_4.2_database_setup_1.2_PUBLISHED_Latest/Configuring Different Database.png"
+      TimeStamp="3/22/2017 10:59:23 AM" />
+    <Url
+      Source="../../Content/unblu_4.2_database_setup_1.2_PUBLISHED_Latest/Configuring Different Database.htm"
+      TimeStamp="3/22/2017 10:59:24 AM" />
+    <Url
+      Source="../../Content/unblu_4.2_database_setup_1.2_PUBLISHED_Latest/PostgreSQL Preconditions.htm"
+      TimeStamp="3/22/2017 10:59:24 AM" />
+    <Url
+      Source="../../Content/unblu_4.2_database_setup_1.2_PUBLISHED_Latest/General.htm"
+      TimeStamp="3/22/2017 10:59:24 AM" />
+    <Url
+      Source="../../Content/unblu_4.2_database_setup_1.2_PUBLISHED_Latest/Additional main Settings only.htm"
+      TimeStamp="3/22/2017 10:59:24 AM" />
+    <Url
+      Source="../../Content/Resources/Images/unblu_4.2_database_setup_1.2_PUBLISHED_Latest/New 4 2 Schema.png"
+      TimeStamp="3/22/2017 10:59:24 AM" />
+    <Url
+      Source="../../Content/unblu_4.2_database_setup_1.2_PUBLISHED_Latest/New 4 2 Schema.htm"
+      TimeStamp="3/22/2017 10:59:24 AM" />
+    <Url
+      Source="../../Content/Resources/Images/unblu_4.2_database_setup_1.2_PUBLISHED_Latest/Main Data Model 4 2.png"
+      TimeStamp="3/22/2017 10:59:24 AM" />
+    <Url
+      Source="../../Content/Resources/Images/unblu_4.2_database_setup_1.2_PUBLISHED_Latest/Main Data Model 4 2_1.png"
+      TimeStamp="3/22/2017 10:59:24 AM" />
+    <Url
+      Source="../../Content/unblu_4.2_database_setup_1.2_PUBLISHED_Latest/Main Data Model 4 2.htm"
+      TimeStamp="3/22/2017 10:59:24 AM" />
+    <Url
+      Source="../../Content/Resources/Images/unblu_4.2_database_setup_1.2_PUBLISHED_Latest/Changelog Database Model 4.png"
+      TimeStamp="3/22/2017 10:59:24 AM" />
+    <Url
+      Source="../../Content/unblu_4.2_database_setup_1.2_PUBLISHED_Latest/Changelog Database Model 4.htm"
+      TimeStamp="3/22/2017 10:59:24 AM" />
+    <Url
+      Source="../TOCs/unblu_4.2_database_setup_1.2_PUBLISHED_Latest.fltoc"
+      TimeStamp="3/22/2017 10:59:24 AM" />
+    <Url
+      Source="../../Content/Resources/MasterPages/unblu_4.2_database_setup_1.2_PUBLISHED_Latest.flmsp"
+      TimeStamp="3/22/2017 10:59:24 AM" />
+    <Url
+      Source="../../Content/Resources/Stylesheets/unblu_4.2_database_setup_1.2_PUBLISHED_Latest.css"
+      TimeStamp="3/22/2017 10:59:24 AM" />
+  </GeneratedFiles>
+  <ParagraphStyles>
+    <Map
+      From="Heading 1"
+      To="h1.Heading 1" />
+    <Map
+      From="Heading 2"
+      To="h2.Heading 2" />
+    <Map
+      From="Heading 3"
+      To="h3.Heading 3" />
+  </ParagraphStyles>
+  <CharacterStyles>
+    <Map
+      From="Hyperlink"
+      To="a.(MS Word Style)" />
+  </CharacterStyles>
+  <NewTopicStyles>
+    <StyleName
+      Name="Heading 1" />
+  </NewTopicStyles>
+  <UsedParagraphStyles>
+    <StyleName
+      Name="Heading 1" />
+    <StyleName
+      Name="Heading 2" />
+    <StyleName
+      Name="List Paragraph" />
+    <StyleName
+      Name="TOC 1" />
+    <StyleName
+      Name="TOC 2" />
+    <StyleName
+      Name="TOC Heading" />
+  </UsedParagraphStyles>
+  <UsedCharacterStyles>
+    <StyleName
+      Name="Hyperlink" />
+  </UsedCharacterStyles>
+</MsWordImport>

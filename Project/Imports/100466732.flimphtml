@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HtmlImport
+  KeepSourceLinks="true"
+  ProjectName="unbluDemo2"
+  ProjectFolder="C:\unbluDemoHelp\unbluDemo2\unbluDemo2\"
+  AutoSync="false"
+  SourceFolders=""
+  ImportResources="false"
+  ImportResourcesLocation="NoImport"
+  ImportTopics="specific"
+  ImportLinkedHtmlFiles="false"
+  LastImport="2017-03-02T11:25:20.6047120+01:00"
+  ImportTopicsLocation="Content/KnowledgeBase/">
+  <Files>
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/100466732.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/100466732.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/100827204.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/100827204.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/101974054.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/101974054.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/101974073.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/101974073.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/101974093.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/101974093.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/Can-I-add-the-unblu-snippet-dynamically_97878054.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/Can-I-add-the-unblu-snippet-dynamically_97878054.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/Configure-launch-element_100466756.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/Configure-launch-element_100466756.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/Disable-scrolling-from-the-agent-side_100466727.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/Disable-scrolling-from-the-agent-side_100466727.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/Does-the-unblu-starter-package-contain-file-sharing_97878038.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/Does-the-unblu-starter-package-contain-file-sharing_97878038.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/How-can-I-embed-my-own-button-to-start-unblu_97878036.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/How-can-I-embed-my-own-button-to-start-unblu_97878036.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/How-to-change-the-PIN-code-expiration-time_97878059.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/How-to-change-the-PIN-code-expiration-time_97878059.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/How-to-configure-SMTP-in-an-on-premise-setup_101974050.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/How-to-configure-SMTP-in-an-on-premise-setup_101974050.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/How-to-disable-chat_97878044.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/How-to-disable-chat_97878044.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/How-to-disable-chat-for-on-premise_100466752.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/How-to-disable-chat-for-on-premise_100466752.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/How-to-disable-file-sharing_100466750.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/How-to-disable-file-sharing_100466750.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/How-to-enable-file-sharing_99582040.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/How-to-enable-file-sharing_99582040.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/How-to-enable-social-co-browsing_97878042.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/How-to-enable-social-co-browsing_97878042.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/How-to-hide-specific-page-element-in-a-cobrowsing-session_97878046.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/How-to-hide-specific-page-element-in-a-cobrowsing-session_97878046.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/How-to-overcome-Safari-Third-Party-Cookie-Policy_102794221.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/How-to-overcome-Safari-Third-Party-Cookie-Policy_102794221.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/How-to-set-the-cookie-domain-in-such-a-way-that-an-existing-unblu-session-can-remain-active-after-navigating-to-a-sub-domain_101974099.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/How-to-set-the-cookie-domain-in-such-a-way-that-an-existing-unblu-session-can-remain-active-after-navigating-to-a-sub-domain_101974099.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/How-to-set-the-unblu-user-interface-language_97878061.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/How-to-set-the-unblu-user-interface-language_97878061.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/How-to-set-up-a-failover-solution-for-the-unblu-application-to-maintain-high-availability_101974057.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/How-to-set-up-a-failover-solution-for-the-unblu-application-to-maintain-high-availability_101974057.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/index.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/index.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/Limitations-of-the-select-element_101318720.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/Limitations-of-the-select-element_101318720.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/MySQL-Default-Values-must-be-Overriden_103252071.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/MySQL-Default-Values-must-be-Overriden_103252071.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/Network-Error-0x2ef3-KeepAliveTimeout_102432818.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/Network-Error-0x2ef3-KeepAliveTimeout_102432818.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/Refresh-behavior-in-universal-co-browsing-when-migrating-session_102432825.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/Refresh-behavior-in-universal-co-browsing-when-migrating-session_102432825.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/Trouble-with-rendering-a-site-in-co-browsing-session_104071595.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/Trouble-with-rendering-a-site-in-co-browsing-session_104071595.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/Upgrading-from-a-starter-account-to-teams-or-performance_101318747.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/Upgrading-from-a-starter-account-to-teams-or-performance_101318747.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/What-are-the-requirements-to-run-unblu_97878067.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/What-are-the-requirements-to-run-unblu_97878067.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/Which-languages-can-the-unblu-user-interface-display_97878065.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/Which-languages-can-the-unblu-user-interface-display_97878065.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/Why-does-my-browser-indicate-a-secure-or-insecure-warning_97878057.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/Why-does-my-browser-indicate-a-secure-or-insecure-warning_97878057.html" />
+    <Url
+      Source="../../../../Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/Why-does-starter.js-return-301-redirect_97878050.html"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Knowledge_Base_articles_02032017.html/KB/Why-does-starter.js-return-301-redirect_97878050.html" />
+  </Files>
+  <ExcludedFiles />
+  <CollectedSourceFiles />
+  <SkippedSourceFiles />
+  <GeneratedFiles>
+    <Url
+      Source="../../Content/KnowledgeBase/100466732.html"
+      TimeStamp="3/2/2017 11:25:02 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/100827204.html"
+      TimeStamp="3/2/2017 11:25:02 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/101974054.html"
+      TimeStamp="3/2/2017 11:25:02 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/101974073.html"
+      TimeStamp="3/2/2017 11:25:02 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/101974093.html"
+      TimeStamp="3/2/2017 11:25:02 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/Can-I-add-the-unblu-snippet-dynamically_97878054.html"
+      TimeStamp="3/2/2017 11:25:02 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/Configure-launch-element_100466756.html"
+      TimeStamp="3/2/2017 11:25:03 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/Disable-scrolling-from-the-agent-side_100466727.html"
+      TimeStamp="3/2/2017 11:25:03 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/Does-the-unblu-starter-package-contain-file-sharing_97878038.html"
+      TimeStamp="3/2/2017 11:25:03 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/How-can-I-embed-my-own-button-to-start-unblu_97878036.html"
+      TimeStamp="3/2/2017 11:25:03 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/How-to-change-the-PIN-code-expiration-time_97878059.html"
+      TimeStamp="3/2/2017 11:25:03 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/How-to-configure-SMTP-in-an-on-premise-setup_101974050.html"
+      TimeStamp="3/2/2017 11:25:03 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/How-to-disable-chat_97878044.html"
+      TimeStamp="3/2/2017 11:25:03 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/How-to-disable-chat-for-on-premise_100466752.html"
+      TimeStamp="3/2/2017 11:25:03 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/How-to-disable-file-sharing_100466750.html"
+      TimeStamp="3/2/2017 11:25:03 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/How-to-enable-file-sharing_99582040.html"
+      TimeStamp="3/2/2017 11:25:03 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/How-to-enable-social-co-browsing_97878042.html"
+      TimeStamp="3/2/2017 11:25:03 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/How-to-hide-specific-page-element-in-a-cobrowsing-session_97878046.html"
+      TimeStamp="3/2/2017 11:25:03 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/How-to-overcome-Safari-Third-Party-Cookie-Policy_102794221.html"
+      TimeStamp="3/2/2017 11:25:03 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/How-to-set-the-cookie-domain-in-such-a-way-that-an-existing-unblu-session-can-remain-active-after-navigating-to-a-sub-domain_101974099.html"
+      TimeStamp="3/2/2017 11:25:03 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/How-to-set-the-unblu-user-interface-language_97878061.html"
+      TimeStamp="3/2/2017 11:25:03 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/How-to-set-up-a-failover-solution-for-the-unblu-application-to-maintain-high-availability_101974057.html"
+      TimeStamp="3/2/2017 11:25:03 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/index.html"
+      TimeStamp="3/2/2017 11:25:04 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/Limitations-of-the-select-element_101318720.html"
+      TimeStamp="3/2/2017 11:25:04 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/MySQL-Default-Values-must-be-Overriden_103252071.html"
+      TimeStamp="3/2/2017 11:25:04 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/Network-Error-0x2ef3-KeepAliveTimeout_102432818.html"
+      TimeStamp="3/2/2017 11:25:04 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/Refresh-behavior-in-universal-co-browsing-when-migrating-session_102432825.html"
+      TimeStamp="3/2/2017 11:25:04 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/Trouble-with-rendering-a-site-in-co-browsing-session_104071595.html"
+      TimeStamp="3/2/2017 11:25:04 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/Upgrading-from-a-starter-account-to-teams-or-performance_101318747.html"
+      TimeStamp="3/2/2017 11:25:04 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/What-are-the-requirements-to-run-unblu_97878067.html"
+      TimeStamp="3/2/2017 11:25:04 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/Which-languages-can-the-unblu-user-interface-display_97878065.html"
+      TimeStamp="3/2/2017 11:25:04 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/Why-does-my-browser-indicate-a-secure-or-insecure-warning_97878057.html"
+      TimeStamp="3/2/2017 11:25:04 AM" />
+    <Url
+      Source="../../Content/KnowledgeBase/Why-does-starter.js-return-301-redirect_97878050.html"
+      TimeStamp="3/2/2017 11:25:04 AM" />
+    <Url
+      Source="../TOCs/100466732.fltoc"
+      TimeStamp="3/2/2017 11:25:20 AM" />
+  </GeneratedFiles>
+</HtmlImport>

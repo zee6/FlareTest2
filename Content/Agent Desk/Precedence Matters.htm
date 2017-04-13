@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="3179" MadCap:lastWidth="1399">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1 class="Heading1">Precedence Matters</h1>
+        <p>It is important to have a broad understanding of how inheritance delivers the power to make wholesale changes easily and why, in order to fully access that power, you must take care to make your changes in the ‘right’ place. Once you have grasped the concept of inheritance, where configurations cascade down through the respective levels, there is another small piece of the inheritance model to bear in mind. </p>
+        <p>After a configuration parameter is set, the unblu collaboration server will process the parameters set at the most specific, or granular, level at runtime. So, when you set configuration parameters they propagate downwards and when the unblu server is running it picks up, or consumes, those values from the bottommost levels.</p>
+        <p>There are really three areas where the hierarchical model is present:</p>
+        <ol start="1" class="ol_1">
+            <li><span class="Bolder">Role Hierarchy:</span> Controls permissions and access to features. (Admin, Supervisor, etc.)</li>
+            <li><span class="Bolder">Level Hierarchy:</span> Defines how configuration parameters cascade down through accounts, teams and user levels (on the agent side), and also (on the visitor side) from accounts through domains and APIKeys.</li>
+            <li><span class="Bolder">Runtime Precedence:</span> Decides exactly which parameters are consumed by the unblu collaboration server at runtime according to which value sits at the lowest node in the hierarchy.</li>
+        </ol>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Role Hierarchy versus Level Hierarchy versus Runtime Precedence </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <ul>
+                    <li>The role hierarchy defines ‘what’ configuration parameters a role can see and change. </li>
+                    <li>The level hierarchy describes the structures within which configuration parameters are set.</li>
+                    <li>The runtime precedence defines which parameters are consumed by the unblu collaboration server. </li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Level Inheritance Model for the Visitor Side</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Here is the order of how configuration parameters cascade down through the inheritance tree on the visitor side:</p>
+                <p class="p_7">Global (Settings) &gt; Account (Settings) &gt; Domains (Edit domain &gt; Settings) &gt; API Keys (Edit APIKey &gt; Settings) </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Runtime Precedence Model for the Visitor Side</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Here is the order of how the unblu collaboration server will process configuration settings on the visitor side during runtime (Runtime Precedence):</p>
+                <p class="p_7">API Keys (Edit APIKey &gt; Settings)&#160; &gt; Domains (Edit domain &gt; Settings) &gt; Account (Settings) &gt; Global (Settings)</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Level Inheritance Model for the Agent Side</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Here is the order of how configuration parameters cascade down through the inheritance tree:</p>
+                <p>Global (Settings) -&gt; Account (Settings) -&gt; Teams (Edit team &gt; Settings) -&gt; Users (Edit user &gt; Settings) </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Runtime Precedence Model for the Agent Side</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Here is the order of how the unblu collaboration server will process configuration settings on the agent side during runtime (Runtime Precedence):</p>
+                <p>Users (Edit user &gt; Settings) &gt; Teams (Edit team &gt; Settings) &gt; Account (Settings) &gt; Global (Settings) </p>
+                <p>Changes you make higher up in the dependency tree propagate downwards. However, and this is a crucial point in understanding the hierarchy, downstream configurations are the ones that the unblu collaboration server uses to populate your system. Whatever configuration parameter is set at the lowest node (at the bottom) of any given dependency tree is the configuration parameter that the running system will consume. For example, if you set the language for the help function (Key: <span class="span_3">com.unblu.core.gearmenu.gearMenuUriHelpSupportedLanguages</span>) to be English (<span class="span_3">en</span>) higher up in the tree but a particular agent at the bottom of the tree is set to Italian then that agent will see Italian while all other agents see English because the unblu collaboration server will pick up the setting for Italian for that particular agent and use the inherited values/defaults for the others.</p>
+                <p>All that matters when you are setting configurations is ‘where’ they are set, not by whom they are set. So, if you (no matter whether you are a Super Admin or Admin or a Supervisor) can see the parameter and it allows you to change it you must take care that the configuration parameters deliver what you expect. And if they do not deliver what you expect it may be that a parameter has been set ‘downstream’ that is taking precedence over something you set higher up in the hierarchy. A simple example would be an Admin setting a configuration parameter that will propagate down to supervisors and agents below the Admin level, then a supervisor alters the setting which would take precedence and propagate down through the agents below them in the hierarchy, thus changing the setting from that intended by the Admin. <span class="Bolder">Note that this is how the product is designed to function.</span><![CDATA[  ]]></p>
+                <p>If you set a configuration parameter to ‘A’ at the Account level and set the same parameter to ‘B’ at the Domain level then the parameter that will be used at runtime is ‘B’. And if you then set the same parameter at the APIKeys level to ‘C’ then ‘C’ will take precedence over ‘A’ and ‘B’.</p>
+                <p>Imagine a large organization that has a single domain but wants their site instrumented with two (or more) different versions of unblu. For example, one version uses ‘chat only’ and the other uses ‘PIN only’, then you could define whether unblu uses chat or PIN at the APIKey level using two, or more, generated API keys to differentiate between the functionality applied to a single Domain. In practice this simply means defining the parameter(s), in this case, at: </p>
+                <p><span class="Bolder">Account &gt; APIKeys &gt;</span> (Click the pencil (<img src="../Resources/Images/Agent_Desk_Pictures/Creating Users_9.png" style="height: 19px;width: 18px;" class="img_1" />) icon then the Edit APIKey modal window slides in from the right) <span class="Bolder">&gt; Settings</span> (here you would make the changes that will be consumed by the unblu collaboration server at runtime)</p>
+                <p>The point here regarding hierarchies is that the same results could be obtained by setting configuration values at the Domain level. And if these two settings are at odds with each other then the net effect could cause significant problems.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="Inherita"></a>Inheritance Troubleshooting Tips</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>In the Agent Desk, configuration parameters that have been changed are colored dark gray. Configuration parameters that have not been changed from the default values are light gray.</p>
+                <p>Some default values are ‘factory defaults’ while others are defaults by virtue of the fact that they were set somewhere higher up in the tree. An example might be language, where the default at the Global level is English and German. If these languages are changed, at the Global level, to English, German, and Spanish then the unblu collaboration server will read the change at the Global level as a default for levels below Global. See the pictures below:</p>
+                <p class="p_8">
+                    <img src="../Resources/Images/Agent_Desk_Pictures/Precedence Matters.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 300px;" class="img_1" />
+                </p>
+                <p>The picture above is what this example looks like in the Agent Desk at the <span class="Bolder">Global level</span>. It shows that Spanish has been added (Configured: de,en,es) to the default (English (en) and German (de)) languages.</p>
+                <p class="p_8">
+                    <img src="../Resources/Images/Agent_Desk_Pictures/Precedence Matters_1.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 300px;" class="img_1" />
+                </p>
+                <p>The picture above is what this example looks like when viewing from the Agent Desk at the <span class="Bolder">Account level</span>. At the Account level the new default is the setting that was made (in Global) to add Spanish to the default. Now it is interpreted as the default at the Account level and a further change has been made at this (Account) level, to use only English and Spanish. Therefore, the unblu server will consume the English and Spanish parameters to be used for all agents within this account (unless the configuration parameters are further changed at a level below Account).</p>
+                <p>When troubleshooting, check the most ‘granular’ level first to see if it matches what you think you should be seeing. For example, as the APIKey level will trump the Domains, Account and Global Settings during runtime, then make sure you know what settings have been changed first in the APIKey Settings, then work your way up the tree through Domains then Account then Global.</p>
+                <p>Use the ‘i’ icon beside the configuration value (in Settings) to view inheritance information. To see a little more information about the configuration value use the Advanced button then, from the Options menu, select Technical Labels. In this way you can see the default (or inherited) value and the values that have been altered. </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+    </body>
+</html>

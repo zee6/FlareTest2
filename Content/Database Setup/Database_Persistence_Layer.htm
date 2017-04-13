@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="6656" MadCap:lastWidth="2431">
+    <head><title>Database Persistence Layer</title>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Introduction to the Database</h1>
+        <p>unblu 4.2 now introduces database support for the on-premises version of the product with new features such as user-level session statistics, canned responses and user/team management, which all require the presence of a persistence layer.</p>
+        <p>While it is possible to continue to run unblu without a database (unblu will run with an in-memory database in cases where no persistence layer is attached), the system will then be restricted to the unblu 4.1 feature set as that does not require a persistence layer. We therefore recommended that you run unblu with a database setup from version 4.2 onwards.</p>
+        <p>The new persistence layer has increased the power of the unblu product by an order of magnitude. It is now possible to design your entire visitor-engagement strategy around the unblu Agent Desk.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Features</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <ul>
+                    <li>Supports multiple RDBMS.</li>
+                    <li>Initial table creation and subsequent updates are performed automatically by unblu.</li>
+                    <li>Operational data, structure setup data, and statistic data can be separated into individual databases.</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Supported Platforms</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>With version 4.2 unblu supports the following database platforms within the product standard:</p>
+                <ul>
+                    <li>Oracle ≥ V11.2g</li>
+                    <li>Microsoft SQL ≥ V2012</li>
+                    <li>MySQL ≥ V5.5</li>
+                    <li>PostgreSQL ≥ V9.1.22</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="Database"></a>Database Setup</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Before setup you must ensure the prerequisites are in place:</p>
+                <ul>
+                    <li>The database must be created by a DB Admin with DBO privileges. The initial database creation must be performed manually and may differ slightly between database types. For example, some types require only a database (unblu creates the schema), some require a database and schema. The DB schema will be set up by the unblu system on initial startup.</li>
+                    <li>The default charset must be UTF­8.</li>
+                    <li>The initial DB size requirement is small:&#160;&lt;20MB.</li>
+                    <li>The DB size will grow as the system is used and session audit trails are logged. With unblu 4.2 these sessions will only add a small amount of data (&lt; 20KB per session) to the database as the information stored is purely of textual nature. In future versions of unblu additional rich data elements such as files and screenshots will also be stored, increasing the load on the database. </li>
+                </ul>
+                <p>For the database itself, two users are required: </p>
+                <ol>
+                    <li>User with database owner (DBO) privileges. The DBO must have rights to execute the following statements: CREATE, ALTER, INSERT, UPDATE, DELETE, SELECT, DROP.</li>
+                    <li>Regular DB user with rights to execute the following statements: INSERT, UPDATE, DELETE, SELECT (on unblu-specific schemas).</li>
+                </ol>
+                <p>On initial setup of the system, unblu must be started with DBO privileges so that the DB structure can be established. Once set up, unblu will run with the regular user, ensuring that security policies inside large organizations can be adhered to. </p>
+                <p><b>Note:</b> Subsequent unblu updates will require a start with DBO privileges. </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Configuring Different Database Types</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>There is a separate configuration for each database type. The following specific configurations per database type need to be established.</p>
+                <p><span class="Bolder">Note:</span> In all of the cases below the user and schema must be created manually.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Oracle Preconditions</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody><pre class="prettyprint">User unblu 
+GRANT "RESOURCE" TO unblu WITH ADMIN OPTION;
+GRANT create session to unblu; +
+ALTER USER unblu DEFAULT ROLE "RESOURCE";
+</pre>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Unblu Oracle Configuration Settings</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p><i>Example:</i>
+                </p>
+                <p><span class="Bolder">Note that ‘&lt;ip&gt;:1521:xe’ in the settings below is a placeholder and must be changed to represent the hostname/listening port/database name.</span>
+                </p><pre class="prettyprint">com.unblu.storage.database.platform=org.eclipse.persistence.platform.database.OraclePlatform
+com.unblu.storage.database.driver=oracle.jdbc.driver.OracleDriver
+com.unblu.storage.database.url=jdbc:oracle:thin:@&lt;ip&gt;:1521:xe 
+com.unblu.storage.database.user=unblu
+com.unblu.storage.database.password=&lt;pwd&gt;
+com.unblu.storage.database.schema=unblu
+com.unblu.storage.database.liquibaseSchema=unblu
+</pre>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>MySQL Preconditions - WARNING!</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p><span class="Bolder">Warning:</span> We have observed a serious issue that can occur when using the default MySQL configuration (Linux and Windows). Before creating the schema you must override the MySQL defaults.</p>
+                <p>In MySQL Workbench run the query below to check if the problem exists in your system:</p>
+                <blockquote>
+                    <p><span class="Bolder">show variables like ‘sql_mode’;</span>
+                    </p>
+                </blockquote>
+                <p>Then check the output. If the <span class="Bolder">sql-mode</span> variable contains either or both of the two entries <span class="Bolder">NO_ZERO_IN_DATE,NO_ZERO_DATE</span> then perform the steps below. (If neither of these two entries is present in the variable then carry on with creating the schema.)</p>
+                <p><i>Example of problem code:</i>
+                </p>
+                <p>'sql_mode', </p>
+                <p>'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,<span class="Bolder">NO_ZERO_IN_DATE,NO_ZERO_DATE</span>,<br />ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'</p>
+                <p><span class="Bolder">On Linux:</span> To fix the problem open the <span class="Bolder">my.conf</span> file in <span class="Bolder">/etc/mysql</span> for editing and cut the two entries:</p>
+                <blockquote>
+                    <p><span class="Bolder">NO_ZERO_IN_DATE,NO_ZERO_DATE</span>
+                    </p>
+                </blockquote>
+                <p>Also ensure that the command <span class="Bolder">[mysqld]</span> which runs the MySQL server daemon is present. The picture below is an example of what the line might look like after editing.</p>
+                <p>
+                    <img src="../Resources/Images/Database_Pictures/Configuring Different Database.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 100px;" />
+                </p>
+                <p><span class="Bolder">On Windows:</span> To fix the problem open the <span class="Bolder">my-default.ini</span> file in <span class="Bolder">C:\Program Files\MySQL\MySQL Server (version#) </span>then cut the entries <span class="Bolder">NO_ZERO_IN_DATE,NO_ZERO_DATE</span> and save the file.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>User unblu</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>To create the unblu schema run the following:</p>
+                <blockquote><pre class="prettyprint">Schema unblu 
+(create database unblu DEFAULT CHARACTER SET = utf8 DEFAULT -COLLATE utf8_general_ci)
+</pre>
+                </blockquote>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Unblu MySQL Configuration Settings</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p><i>Example:</i>
+                </p>
+                <p>Note that <span class="CODE">‘&lt;ip&gt;:3306/unblu’</span> in the settings below is a placeholder and must be changed to represent the hostname/listening port/database name.</p><pre class="prettyprint">com.unblu.storage.database.platform=org.eclipse.persistence.platform.database.MySQLPlatform
+com.unblu.storage.database.driver=com.mysql.jdbc.Driver
+com.unblu.storage.database.url=jdbc:mysql://&lt;ip&gt;:3306/unblu
+com.unblu.storage.database.jdbcProperties=connectTimeout=60000,socketTimeout=60000,useUnicode=yes,characterEncoding=UTF-8,useLegacyDatetimeCode=false,serverTimezone=UTC,autoReconnect=true
+com.unblu.storage.database.user=unblu
+com.unblu.storage.database.password=&lt;pwd&gt;
+com.unblu.storage.database.schema=unblu
+</pre>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Microsoft SQL Preconditions</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p><span class="Bolder">User unblu</span>
+                </p>
+                <p><span class="Bolder">Schema unblu</span>
+                </p>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot>Unblu Microsoft SQL Configuration Settings</MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p style="font-style: italic;">Example:</p>
+                        <p>Note that:<span class="CODE">’&lt;server-name&gt;:1433;DatabaseName=unblu’</span> in the settings below is a placeholder and must be changed to represent the hostname/listening port/database name.</p><pre class="prettyprint">com.unblu.storage.database.platform=org.eclipse.persistence.platform.database.SQLServerPlatform
+com.unblu.storage.database.driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+com.unblu.storage.database.url=jdbc:sqlserver://&lt;server-name&gt;:1433;DatabaseName=unblu
+com.unblu.storage.database.user=unblu
+com.unblu.storage.database.password=&lt;pwd&gt;
+com.unblu.storage.database.schema=unblu
+com.unblu.storage.database.liquibaseSchema=unblu
+</pre>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>PostgreSQL Preconditions</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p class="Bolder">User unblu (Privileges: Can create databases)</p>
+                <p class="Bolder">Schema unblu_liqu (Privileges: User: unblu ≥ USAGE + CREATE)</p>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot>Unblu PostgreSQL Configuration Settings</MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p><i>Example:</i>
+                        </p>
+                        <p>Note that:<span class="CODE">’&lt;ip&gt;:5432/postgres’</span> in the settings below is a placeholder and must be changed to represent the hostname/listening port/database name.</p><pre class="prettyprint">com.unblu.storage.database.platform=org.eclipse.persistence.platform.database.PostgreSQLPlatform
+com.unblu.storage.database.driver=org.postgresql.Driver
+com.unblu.storage.database.url=jdbc:postgresql://&lt;ip&gt;:5432/postgres
+com.unblu.storage.database.user=unblu
+com.unblu.storage.database.password=&lt;pwd&gt;
+com.unblu.storage.database.main.schema=unblu_main
+com.unblu.storage.database.stats.schema=unblu_stats
+com.unblu.storage.database.liquibaseSchema=unblu_liqu
+</pre>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>General - Minimal Settings</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody><pre class="prettyprint">com.unblu.storage.database.platform
+com.unblu.storage.database.driver
+com.unblu.storage.database.url
+com.unblu.storage.database.user
+com.unblu.storage.database.password
+com.unblu.storage.database.schema
+</pre>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Additional General Settings</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody><pre class="prettyprint">com.unblu.storage.database.jdbcProperties
+com.unblu.storage.database.adminUser
+com.unblu.storage.database.adminPassword
+com.unblu.storage.database.adminJdbcProperties
+com.unblu.storage.database.liquibaseSchema
+com.unblu.storage.database.poolInitial
+com.unblu.storage.database.poolMax
+com.unblu.storage.database.readPoolUrl
+com.unblu.storage.database.readPoolUser
+com.unblu.storage.database.readPoolPassword
+com.unblu.storage.database.readPoolInitial
+com.unblu.storage.database.readPoolMax
+com.unblu.storage.database.oldSchema
+</pre>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Additional “main” Settings (only for main tables)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody><pre class="prettyprint">com.unblu.storage.database.main.platform
+com.unblu.storage.database.main.driver
+com.unblu.storage.database.main.url
+com.unblu.storage.database.main.jdbcProperties
+com.unblu.storage.database.main.user
+com.unblu.storage.database.main.password
+com.unblu.storage.database.main.schema
+com.unblu.storage.database.main.poolInitial
+com.unblu.storage.database.main.poolMax
+com.unblu.storage.database.main.readPoolUrl
+com.unblu.storage.database.main.readPoolUser
+com.unblu.storage.database.main.readPoolPassword
+com.unblu.storage.database.main.readPoolInitial
+com.unblu.storage.database.main.readPoolMax
+com.unblu.storage.database.main.oldSchema
+com.unblu.storage.database.main.adminJdbcProperties
+com.unblu.storage.database.main.adminUser
+com.unblu.storage.database.main.adminPassword
+</pre>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Additional “stats” Settings (only for statistical tables)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody><pre class="prettyprint">com.unblu.storage.database.stats.platform
+com.unblu.storage.database.stats.driver
+com.unblu.storage.database.stats.url
+com.unblu.storage.database.stats.jdbcProperties
+com.unblu.storage.database.stats.user
+com.unblu.storage.database.stats.password
+com.unblu.storage.database.stats.schema
+com.unblu.storage.database.poolInitial
+com.unblu.storage.database.poolMax
+com.unblu.storage.database.readPoolUrl
+com.unblu.storage.database.readPoolUser
+com.unblu.storage.database.readPoolPassword
+com.unblu.storage.database.readPoolInitial
+com.unblu.storage.database.readPoolMax
+com.unblu.storage.database.stats.oldSchema
+com.unblu.storage.database.stats.adminJdbcProperties
+com.unblu.storage.database.stats.adminUser
+com.unblu.storage.database.stats.adminPassword
+</pre>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>New (4.2) Schema</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Database tables and structure are ‘read-only’ and must not be changed. Any unauthorized changes will break the system.</p>
+                <p class="p_17">
+                    <img src="../Resources/Images/Database_Pictures/New 4 2 Schema.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 200px;" class="img_1" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Main Data Model (4.2)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p class="p_17">
+                    <img src="../Resources/Images/Database_Pictures/Main Data Model 4 2.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 200px;" class="img_1">
+                    </img>
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Statistical Data Model (4.2)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p class="p_17">&#160;</p>
+                <p class="p_17">
+                    <img src="../Resources/Images/Database_Pictures/Main Data Model 4 2_1.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 200px;" class="img_1">
+                    </img>
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Changelog Database Model (4.2)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p class="p_17">
+                    <img src="../Resources/Images/Database_Pictures/Changelog Database Model 4.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 200px;" class="img_1">
+                    </img>
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <p>&#160;</p>
+    </body>
+</html>

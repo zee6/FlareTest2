@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="4971" MadCap:lastWidth="1129">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>On Premises UI Customization</h1>
+        <p>Unblu allows you to customize the unblu product UI to fit your company's corporate design by setting different configuration parameters that will be explained below.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Brand Resources</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <h3>General</h3>
+                <p><span class="Bolder">Configuration key:</span> com.unblu.ui.branding.externalBrandResourcesUrl</p>
+                <p><span class="Bolder">Type:</span> Url (To reference a local file use the file:// prefix. You can add authentication credentials like so: https://username:password@your.domain/path/to/zip/brand.zip)</p>
+                <p><span class="Bolder">Description:</span> With the brand resources you may add your own logos etc., instead of the default unblu logos.</p>
+                <p>The Url must point to a non-encrypted zip file containing the following files: favicon.ico, logo.png, logo_icon.png in the root of the archive.</p>
+                <p>If one of the images is missing or does not fit the specifications the unblu default will be used as fallback.</p>
+                <p>Make sure the temporary directory configured in your servlet container points to a folder that is accessible by the application since the unzipped files are stored there. (Java environment variable:  java . io . tmpdir)</p>
+                <p>Check the server startup log if one of the files does not behave as expected.</p>
+                <p>See the next sections for details and constraints on the different files.</p>
+                <h3>Favicon</h3>
+                <p><span class="Bolder">file name: </span>"favicon"</p>
+                <p><span class="Bolder">file  extension:</span> ".ico"</p>
+                <p><span class="Bolder">max size:</span> 100kb</p>
+                <p><span class="Bolder">description:</span> This file will be used as favicon in the browser. (Typically displayed on the pages tab and in the bookmarks.)</p>
+                <p><span class="Bolder">default:</span>
+                    <img src="../Resources/Images/Customization/2017-04-07_12-00-21.png" />
+                </p>
+                <h3>Logo</h3>
+                <p><span class="Bolder">file name:</span> "logo"</p>
+                <p><span class="Bolder">file extension:</span> ".png"</p>
+                <p><span class="Bolder">max size:</span> 500kb</p>
+                <p><span class="Bolder">min width:</span> 50px</p>
+                <p><span class="Bolder">max width</span>: 300px</p>
+                <p><span class="Bolder">min height</span>: 50px</p>
+                <p><span class="Bolder">max height:</span> 144px</p>
+                <p><span class="Bolder">description:</span> The logo image is displayed on the login, the loading, and the error the page.</p>
+                <p>default: <img src="../Resources/Images/Customization/logo.png" /></p>
+                <h3>Logo Icon</h3>
+                <p><span class="Bolder">file name:</span> "logo_icon"</p>
+                <p><span class="Bolder">file extension: </span>".png"</p>
+                <p><span class="Bolder">max size: </span>100kb</p>
+                <p><span class="Bolder">min width:</span> 46px</p>
+                <p><span class="Bolder">max width:</span> 96px</p>
+                <p><span class="Bolder">min height:</span> 46px</p>
+                <p><span class="Bolder">max height:</span> 46px</p>
+                <p><span class="Bolder">description:</span> If activated, the logo icon is displayed on the right side of the agent tab bar (top bar on the agent desk). It may be activated with the configuration key: com.unblu.core.client.desk.showLogo=true (false by default)</p>
+                <p><span class="Bolder">default: </span>
+                    <img src="../Resources/Images/Customization/logo_icon.png" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Color Customization</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <h3>Brand Colors</h3>
+                <p>By setting the brand colors all non-black/grey/white colors in the unblu product may be changed to the ones of your brand. Shades of these colors used, e.g., for hover states, are automatically calculated on these configurations.</p>
+                <h3>Primary Brand Color</h3>
+                <p><span class="Bolder">configuration key:</span> com.unblu.ui.colorBrandPrimary</p>
+                <p><span class="Bolder">type:</span> CSS compliant color string (e.g. #ff0033 or rgba(255,128,2,0.5) )</p>
+                <p><span class="Bolder">default:</span>
+                    <img src="../Resources/Images/Customization/orange.png" /> unblu orange</p>
+                <p><span class="Bolder">description:</span> The primary color is used mainly for highlighting primary actions and active sections. It should be a catching, highly -saturated color. Text on it is displayed white so it should not be too bright.</p>
+                <h3>Secondary Brand Color</h3>
+                <p><span class="Bolder">configuration key: </span>com.unblu.ui.colorBrandSecondary</p>
+                <p><span class="Bolder">type:</span> CSS compliant color string (e.g. #ff0033 or rgba(255,128,2,0.5) )</p>
+                <p><span class="Bolder">default:</span>
+                    <img src="../Resources/Images/Customization/turquoise.png" /> unblu turquoise</p>
+                <p><span class="Bolder">description: </span>The secondary color is used as a second accent color complementing the primary brand color. It should be a saturated color that goes well with the primary color since they are often used side by side. Text on it is displayed white so it should not be too bright.</p>
+                <h3>Brand Background Color</h3>
+                <p><span class="Bolder">configuration key:</span> com.unblu.ui.colorBrandBackground</p>
+                <p><span class="Bolder">type: CSS</span> compliant color string (e.g. #ff0033 or rgba(255,128,2,0.5) )</p>
+                <p><span class="Bolder">default:</span>
+                    <img src="../Resources/Images/Customization/DarkBlue.png" /> unblu dark blue</p>
+                <p><span class="Bolder">description:</span> The background color is used for backgrounds e.g., modal dialog backdrops. It should be a very dark color. Text on it is displayed white.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Text Colors</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <h3>Dark Text</h3>
+                <p><span class="Bolder">configuration key:</span> com.unblu.ui.colorTextDark</p>
+                <p><span class="Bolder">type: </span>CSS compliant color string (e.g. #ff0033 or rgba(255,128,2,0.5) )</p>
+                <p><span class="Bolder">default:</span> ◼</p>
+                <p><span class="Bolder">description: </span>The dark text color is used for all high-contrast text and should be a very dark color. It is displayed on bright backgrounds.</p>
+                <p>&#160;</p>
+                <h3>Medium Text</h3>
+                <p><span class="Bolder">configuration key:</span> com.unblu.ui.colorTextMid</p>
+                <p><span class="Bolder">type: </span>CSS compliant color string (e.g. #ff0033 or rgba(255,128,2,0.5) )</p>
+                <p><span class="Bolder">default:</span>
+                    <img src="../Resources/Images/Customization/MediumText.png" />
+                </p>
+                <p><span class="Bolder">description: </span>The medium text color is used for secondary text. It is displayed on bright backgrounds.</p>
+                <h3>Light Text</h3>
+                <p><span class="Bolder">configuration key:</span> com.unblu.ui.colorTextLight</p>
+                <p><span class="Bolder">type: </span>CSS compliant color string (e.g. #ff0033 or rgba(255,128,2,0.5) )</p>
+                <p><span class="Bolder">default:</span>
+                    <img src="../Resources/Images/Customization/LightText.png" />
+                </p>
+                <p><span class="Bolder">description: </span>The light text color is used for muted text. It is displayed on bright backgrounds.</p>
+                <p>&#160;</p>
+                <h3>Inverted Text</h3>
+                <p><span class="Bolder">configuration key: </span>com.unblu.ui.colorTextInverted</p>
+                <p><span class="Bolder">type: </span>CSS compliant color string (e.g. #ff0033 or rgba(255,128,2,0.5) )</p>
+                <p><span class="Bolder">default:</span> (white)</p>
+                <p><span class="Bolder">description:</span> The inverted text color is used on brand color and dark backgrounds and should be very bright.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Border Radius</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <h2>General Component Border Radius</h2>
+                <p><span class="Bolder">configuration key:</span> com.unblu.ui.borderRadiusComponent</p>
+                <p><span class="Bolder">type :</span> Non-fractional number (will be used a pixel value in css)</p>
+                <p><span class="Bolder">default:</span> 4</p>
+                <p><span class="Bolder">description:</span> This configuration is used for the border radius of all general components such as dialogs or panels.</p>
+                <h3>Button Border Radius</h3>
+                <p><span class="Bolder">configuration key:</span> com.unblu.ui.borderRadiusButton</p>
+                <p><span class="Bolder">type:</span> Non-fractional number (will be used a pixel value in css)</p>
+                <p><span class="Bolder">default:</span> 100</p>
+                <p><span class="Bolder">description:</span> This configuration is used for the border radius of all buttons.</p>
+                <h3>Input Border Radius</h3>
+                <p><span class="Bolder">configuration key:</span> com.unblu.ui.borderRadiusInput</p>
+                <p><span class="Bolder">type : </span>Non-fractional number (will be used a pixel value in css)</p>
+                <p><span class="Bolder">default:</span> 2</p>
+                <p><span class="Bolder">description:</span> This configuration is used for the border radius of all input elements.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Loading Page</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Since the login page is served as a standalone page detached from the rest of the unblu application, it must be styled separately</p>
+                <h3>Loading Animation Color</h3>
+                <p><span class="Bolder">configuration key:</span> com.unblu.loading.colorLoader</p>
+                <p><span class="Bolder">type :</span> CSS compliant color string (e.g. #ff0033 or rgba(255,128,2,0.5) )</p>
+                <p><span class="Bolder">default: </span>
+                    <img src="../Resources/Images/Customization/orange.png" /> unblu orange</p>
+                <p><span class="Bolder">description:</span> Color used for the animated loader circles.</p>
+                <h3>Web Links Color</h3>
+                <p><span class="Bolder">configuration key:</span> com.unblu.loading.colorLinks</p>
+                <p><span class="Bolder">type:</span> CSS compliant color string (e.g. #ff0033 or rgba(255,128,2,0.5) )</p>
+                <p><span class="Bolder">default:</span>
+                    <img src="../Resources/Images/Customization/DarkBlue.png" />    unblu dark blue</p>
+                <p><span class="Bolder">description:</span> Color used for the links on the loading page.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <p>&#160;</p>
+    </body>
+</html>

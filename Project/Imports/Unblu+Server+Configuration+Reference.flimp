@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MsWordImport
+  PreserveSourceStyles="true"
+  KeepSourceLinks="false"
+  ConvertInlineFormatting="true"
+  AddContinuedLinks="false"
+  AddContinuedFromLinks="false"
+  ContinuedLinkFormat="(continued in {title})"
+  ContinuedFromLinkFormat="(continued from {title})"
+  UseMaxCharLimit="false"
+  UseMinCharLimit="true"
+  MaxCharLimit="10000"
+  MinCharLimit="50"
+  FilenameLength="24"
+  GeneratePageLayouts="false"
+  UseFirstHeadingAsTopicTitle="true"
+  ConvertEquations="true"
+  LastCollectTime="2017-03-02T12:43:02.8113551+01:00"
+  ProjectName="unbluDemo2"
+  ProjectFolder="C:\unbluDemoHelp\unbluDemo2\unbluDemo2\"
+  AutoSync="false"
+  AutoFitTables="false"
+  UseHeaderRows="false"
+  LastImport="2017-03-02T12:44:35.8327177+01:00">
+  <Files>
+    <Url
+      Source="../../../../Exports from Confluence/Unblu+Server+Configuration+Reference.doc"
+      AbsoluteSource="file:///C:/unbluDemoHelp/Exports from Confluence/Unblu+Server+Configuration+Reference.doc" />
+  </Files>
+  <ExcludedFiles />
+  <CollectedSourceFiles />
+  <SkippedSourceFiles />
+  <GeneratedFiles>
+    <Url
+      Source="../../Content/Unblu+Server+Configuration+Reference/Unblu Server Configuration.htm"
+      TimeStamp="3/2/2017 12:43:45 PM" />
+    <Url
+      Source="../TOCs/Unblu+Server+Configuration+Reference.fltoc"
+      TimeStamp="3/2/2017 12:43:44 PM" />
+    <Url
+      Source="../../Content/Resources/Stylesheets/Unblu+Server+Configuration+Reference.css"
+      TimeStamp="3/2/2017 12:43:44 PM" />
+  </GeneratedFiles>
+  <ParagraphStyles>
+    <Map
+      From="Heading 1"
+      To="h1.Heading 1" />
+    <Map
+      From="Heading 2"
+      To="h2.Heading 2" />
+    <Map
+      From="Heading 3"
+      To="h3.Heading 3" />
+  </ParagraphStyles>
+  <CharacterStyles>
+    <Map
+      From="Hyperlink"
+      To="a.(MS Word Style)" />
+  </CharacterStyles>
+  <NewTopicStyles>
+    <StyleName
+      Name="Heading 1" />
+  </NewTopicStyles>
+  <UsedParagraphStyles>
+    <StyleName
+      Name="Heading 1" />
+    <StyleName
+      Name="Heading 2" />
+    <StyleName
+      Name="Heading 3" />
+    <StyleName
+      Name="HTML Preformatted" />
+    <StyleName
+      Name="Normal (Web)" />
+  </UsedParagraphStyles>
+  <UsedCharacterStyles>
+    <StyleName
+      Name="Emphasis" />
+  </UsedCharacterStyles>
+</MsWordImport>

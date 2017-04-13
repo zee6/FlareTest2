@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="1683" MadCap:lastWidth="1365">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>How to use the getUnbluJSAPI wrapper function</h1>
+        <p><i>The full example implementation can be downloaded from here:</i> <a href="https://dev.unblu.com/confluence/download/attachments/102793234/JSC-2.zip?version=1&amp;modificationDate=1474372141000&amp;api=v2">JSC-2.zip. </a><i>Use unblu version: 4.x.x (unblu 4 or above). The example must be uploaded to an Apache server, or similar, in order to work correctly.</i></p>
+        <p>The function <span class="Bolder">'registerApiConsumer()'</span> from our API has certain conditions that need to be checked every time. This can be tedious and error-prone work. This example shows how you can use the wrapper function<span class="Bolder"> 'getUnbluJSAPI'</span> to get the unblu API. This function handles all of the details that need to be considered in order to work properly.</p>
+        <p>What the example page looks like:</p>
+        <p>
+            <img src="../Resources/Images/Customization/image2016-9-19 11-4-44.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 200px;" />
+        </p>
+        <p><span class="Bolder">Note:</span> All the file/object/function names can be changed according to your needs.</p>
+        <ol>
+            <li>Create an HTML page (index.html) with one activation element.</li>
+        </ol><pre class="prettyprint">&lt;input id="showDialog" type="button" value="Start Co-Browsing"&gt;</pre>
+        <p>This is going to be used for triggering the unblu start session dialog through JavaScript.</p>
+        <ol MadCap:continue="true">
+            <li>Create a JavaScript file called <span class="Bolder">'snippet.js'</span> and paste the snippet into it. The snippet can be found in your account at www.unblu.com. (<span class="Bolder">unblu.com -&gt; myunblu -&gt; administer account -&gt; integration section</span>.)</li>
+        </ol>
+        <p>Keep in mind that the snippet should be placed after the last &lt;meta&gt; tag in the &lt;head&gt; section, but before any other script. All of the other JSAPI-consuming scripts must only appear after the snippet.</p>
+        <ol MadCap:continue="true">
+            <li>Include the snippet in your HTML file inside the &lt;head&gt; tag using the appropriate location of the actual <span class="Bolder">'snippet.js'</span> file within your project tree.</li>
+        </ol><pre class="prettyprint">&lt;script type="text/javascript" src="js/snippet.js"&gt;&lt;/script&gt;</pre>
+        <ul>
+            <li>(optional) for this example we used jQuery to add <span class="Bolder">'eventListener'</span> to the element from the first step.  In order to do that, you would need to add jQuery from a host or to download it locally.</li>
+        </ul>
+        <ol start="4">
+            <li>Create an empty JavaScript file and include it in your HTML page after the &lt;body&gt; tag. The unblu Start Session dialog is triggered by the function in this file.</li>
+        </ol><pre class="prettyprint">
+&lt;script type="text/javascript" src="js/main.js"&gt;&lt;/script&gt;</pre>
+        <ol MadCap:continue="true">
+            <li>Inside<span class="Bolder"> 'main.js'</span> there are a few things that you need to do.</li>
+        </ol>
+        <ul>
+            <li>In order to avoid mistakes and unnecessary changes, you need to copy the<span class="Bolder"> 'getUnbluJSAPI'</span> function and paste it right into the file. This function downloads the unblu JS API.</li>
+            <li>In order to use the function afterwards, you need to invoke it in the following way:</li>
+        </ul><pre class="prettyprint">
+getUnbluJSAPI(function (api) {
+        // now, you can use every functionality of our API, starting from this line
+    }, function(error) {
+        alert(error);
+});</pre>
+        <ol start="6">
+            <li>The example continues with attaching an <span class="Bolder">'eventListener'</span>, for click events, to our HTML &lt;input&gt; element. Following this, the unblu API is loaded using the wrapper function and afterwards the <span class="Bolder">'showStartSessionDialog()'</span> function is used to display the unblu Start Session dialog.</li>
+        </ol><pre class="prettyprint">$("#showDialog").click(function() {
+    getUnbluJSAPI(function (api) {
+        api.core.visitor.ui.Dialogs.showStartSessionDialog(); // triggering showStartSession unblu dialog
+    }, function(error) {alert(error);});
+});</pre>
+        <p>&#160;</p>
+    </body>
+</html>

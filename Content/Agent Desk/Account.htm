@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="4423" MadCap:lastWidth="1011">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Account </h1>
+        <p>The Account entry in the main menu can only be seen by Admins and Super Admins.</p>
+        <p>From the main menu select <span class="Bolder">Settings &gt; Account</span>.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Overview</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../Resources/Images/Agent_Desk_Pictures/Account.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 300px;" />
+                </p>
+                <p>The overview contains general information. It lists the Account type, secret key, number of agents in the account, number of teams, domains and API keys. Names and addresses can be edited using the pencil (<img src="../Resources/Images/Agent_Desk_Pictures/Creating Users_9.png" style="height: 19px;width: 18px;" class="img_1" />) icon. </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Settings</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>See <a href="Settings Settings.htm#Settings2">Settings&gt; ... &gt; Settings</a> for more on Settings.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="Text"></a>Text</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This page contains some default messages and dialogs that serve as introduction/welcome messages on visitor ‘first contact’.</p>
+                <p>
+                    <img src="../Resources/Images/Agent_Desk_Pictures/Account_1.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 300px;" />
+                </p>
+                <p>The picture above shows the Advanced view. (Select <span class="Bolder">Account &gt; Text</span> then click on the <span class="Bolder">Advanced</span> button.)</p>
+                <p>The text on the left of the page is the source of the message that will be displayed to the visitor. The text in the Translation box is the actual text the visitor will see. We supply a number of pre-translated versions but you can supply your own translations by writing them in the Translation box and saving.</p>
+                <p><span class="Bolder">Filter:</span> Find items on the page.</p>
+                <p><span class="Bolder">Language:</span> Sets the language the visitor sees.</p>
+                <p><span class="Bolder">Reference:</span> Sets the reference language of the message. Setting the Reference (language) as Default Text will match it to the language set in the Language drop-down list. Note that the Fallback Text is always English. The Fallback Text is what unblu will use if no translation is available.</p>
+                <p><span class="Bolder">Options:</span> The options, <span class="Bolder">Show inherited</span> and <span class="Bolder">Show internal</span> narrow the search, and the <span class="Bolder">Technical Labels</span> option displays the technical label for items on the page. For example, the text (in the picture above) <span class="Bolder">Set chat welcome message</span> becomes <span class="Bolder">chat.chatWelcomeMessage</span> when the <span class="Bolder">Technical Label</span> option is selected.</p>
+                <p><span class="Bolder">Match against:</span> Offers six more choices on what you can filter against. Available filters are: Label, Description, Key, Group, Declaration and Value.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Domains</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>You must add/register all domains where you want to use unblu. This is in addition to the code snippet that must be added to every page of the site where you want to use unblu. unblu maps session requests onto registered domains for enhanced security.</p>
+                <p><span class="span_2">Note:</span> unblu’s advanced authorization supports role-based domain access. This means you can define which sites/domains an agent can access.</p>
+                <ol start="1" class="ol_1">
+                    <li>From the main menu select <span class="Bolder">Settings &gt; Account &gt; Domains</span>. The page displays.</li>
+                </ol>
+                <p>
+                    <img src="../Resources/Images/Agent_Desk_Pictures/Account_2.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 300px;" />
+                </p>
+                <ol start="2" class="ol_1">
+                    <li>Select the <span class="Bolder">+ New domain</span> button. The <span class="Bolder">New domain</span> modal page slides in from the right.</li>
+                </ol>
+                <p>
+                    <img src="../Resources/Images/Agent_Desk_Pictures/Account_3.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 300px;" />
+                </p>
+                <ol start="3" class="ol_1">
+                    <li>In the Domain URL field enter the domain you want to be registered then select a <span class="Bolder">Protocol</span> radiobutton. Choose http, https or Both. </li>
+                    <li>When you are done adding domains click <span class="Bolder">Save</span>.</li>
+                </ol>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="APIKeys"></a>APIKeys</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../Resources/Images/Agent_Desk_Pictures/Account_4.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 300px;" />
+                </p>
+                <p>This page contains your API keys. You can edit it or select <span class="Bolder">+ New APIKey </span>if you need new keys. To create a new API key:</p>
+                <ol start="1" class="ol_1">
+                    <li>From the main menu select <span class="Bolder">Settings &gt; Account &gt; APIKeys</span>.</li>
+                    <li>Click the <span class="Bolder">+ New APIKey</span> button. A modal window slides in from the right telling you that a new API key will be created on the server. The new API key is generated automatically.</li>
+                </ol>
+                <p>
+                    <img src="../Resources/Images/Agent_Desk_Pictures/Account_5.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 300px;" />
+                </p>
+                <ol start="3" class="ol_1">
+                    <li>Click the <span class="Bolder">Save</span>button to create the new API key. The modal page disappears and the new API key is added.</li>
+                </ol>
+                <p>
+                    <img src="../Resources/Images/Agent_Desk_Pictures/Account_6.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 200px;" />
+                </p>
+                <p>Selecting the edit (<img src="../Resources/Images/Agent_Desk_Pictures/Creating Users_9.png" style="height: 19px;width: 18px;" class="img_1" />) icon makes a modal page slide in from the right. This modal page has a number of menu items:</p>
+                <p><span class="Bolder">General:</span> The place where you can generate API keys</p>
+                <p><span class="Bolder">Settings: </span>See <a href="Settings Settings.htm#_Settings_&gt;_…">Settings &gt; … &gt; Settings</a></p>
+                <p><span class="Bolder">Text:</span> See <a href="#Text">Text (on this page)</a></p>
+                <p><span class="Bolder">JavaScript Snippet</span>: A copy of the snippet to add to the &lt;head&gt; section of every page on your site.</p>
+                <p><span class="Bolder">Note</span>: This modal page can also be accessed using the (<img src="../Resources/Images/Agent_Desk_Pictures/Account_7.png" style="height: 13px;width: 18px;" class="img_1" />) icon</p>
+                <p>&#160;</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+    </body>
+</html>

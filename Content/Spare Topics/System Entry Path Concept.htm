@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="684" MadCap:lastWidth="1265" MadCap:searchable="False">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>System Entry Path Concept</h1>
+        <p>Unblu, by default, uses a set of entry paths (http request path prefix) as a high-level distinction for different kinds of requests. In typical on-premises installations these path prefixes are used as a high-level segregation for requests coming from different origins (public internet, intranet or from administrators / other systems). Based on these path prefixes, unblu grants different privileges while executing requests.</p>
+        <p>In typical installations unblu is operated behind a reverse proxy that guarantees requests are restricted according to path prefix and origin of the request.</p>
+        <h2>Public (untrusted) "/unblu" Entry Path</h2>
+        <p>The "/unblu" path prefix is the part of the unblu server that visitors need to have access to. Typically "/unblu" is mapped in a reverse proxy in a way that it can be accessed from within the application that is going to be co-browsed.</p>
+        <h2>Restricted (trusted) "/co-unblu" Entry Path</h2>
+        <p>The "/co-unblu/" path prefix is the part of the unblu server that MUST only be accessible to authenticated users (agents).</p>
+        <h2>System "/sys-unblu" Entry Path</h2>
+        <p>The "/sys-unblu/" path prefix is the part of the unblu server that MUST only be accessible for other systems (i.e. the unblu filter) or administrators.</p>
+        <h2><a name="Security"></a>Security Considerations</h2>
+        <p>The "/sys-unblu/" path prefix needs to be protected in such a way that ensures that only administrators or other systems have access.</p>
+        <p>&#160;</p>
+    </body>
+</html>

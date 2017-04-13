@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="2678" MadCap:lastWidth="1106">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Advanced Authorization</h1>
+        <p>By default, unblu uses implicit authorization policies for authorizing users. Implicit policies are rather coarse-grained and basically only distinguish three roles (WEBUSER, REGISTERED_USER and SUPER_ADMIN). Based on these roles unblu decides whether a certain action is permitted or not.</p>
+        <p>For advanced authorization requirements, unblu supports fine-grained control over user permissions using custom authorization policies.</p>
+        <h2>Unblu Authorization Model</h2>
+        <p>Unblu uses a role-based access control (<a href="http://en.wikipedia.org/wiki/Role-based_access_control">http://en.wikipedia.org/wiki/Role-based_access_control</a> based authorization model built on operations, permissions, roles and users. This means that for all operations that support authorization unblu defines a permission that the user must have in order to perform the operation. Permissions are then assigned to users or roles based on a policy. This model is very flexible because the distribution of permissions to users (based on user and roles, for instance) can be changed independently without changing the unblu product implementation. Unblu does not check if the user has a certain role but if the user has a certain permission.</p>
+        <p>By default, unblu uses an internal policy that assigns permissions based on a set of standard roles (WEBUSER, REGISTERED_USER and SUPER_ADMIN).</p>
+        <h2>Default Policy</h2>
+        <p>The default policy assigns permissions in a way that users with the WEBUSER role can act as a visitor (end user using the collaboration features of unblu). Users with the REGISTERED_USER role can act as an agent (authenticated user using the collaboration features of unblu, representative of the company) and users with the SUPER_ADMIN role can perform administrative operations.</p>
+        <p>If the integration does not manage user role assignment explicitly, then the the WEBUSER, REGISTERED_USER and SUPER_ADMIN roles are assigned based on <a href="../Spare Topics/System Entry Path Concept.htm"><a href="unblu Server Security.htm#System">System (security) Entry Path Concept</a>.</a> Requests that enter the system via the "/unblu/" entry path get the REGISTERED_USER role assigned, requests that enter via "/co-unblu/" get the REGISTERED_USER role assigned and requests that enter through "/sys-unblu" get the SUPER_ADMIN role assigned.</p>
+        <h2>Using Custom Policies</h2>
+        <p>Because writing a custom authorization policy from scratch would include redefining the assignment of all existing required permissions using custom rules and because this would require the author of a policy to know about all permissions unblu requires (internally) in order to work properly, unblu supports selectively changing the default policy instead of writing a completely new policy.</p>
+        <p>Using a custom policy involves the following steps:</p>
+        <p>Disable the default policy for the permissions that will be covered by the custom policy.</p>
+        <p>Provide a permission overlay (external policy) that assigns permissions based on user and roles according to the required policy.</p>
+        <p>The permission overlay file path (or url) is configured using the "com.unblu.authz.permissionOverlay" configuration setting.</p>
+        <p>Permission overlays support <a href="../Collaboration Server Setup/Advanced Unblu Server Configuration.htm#Dynamic">dynamic reconfiguration</a>, everytime dynamic reconfiguration takes place, permission overlays are also reloaded.</p>
+        <h2>Permission Overlay File Format</h2>
+        <p>Permission overlays (external policies) are defined in an xml-based file format.</p>
+        <p>The permission overlay file has the following general format:</p><pre class="prettyprint">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;permissionOverlay&gt;
+
+	&lt;role name="ROLE1"&gt;
+		&lt;permissions&gt;
+			&lt;PERMISSION1/&gt;
+			&lt;PERMISSION2/&gt;
+		&lt;/permissions&gt;
+	&lt;/role&gt;
+	
+	&lt;role name="ROLE2"&gt;
+		&lt;permissions&gt;
+			&lt;PERMISSION3/&gt;
+			&lt;PERMISSION4/&gt;
+		&lt;/permissions&gt;
+	&lt;/role&gt;
+
+	&lt;user id="abcde"&gt;
+		&lt;permissions&gt;
+			&lt;PERMISSION5/&gt;
+			&lt;PERMISSION6/&gt;
+		&lt;/permissions&gt;
+	&lt;/user&gt;
+	
+&lt;/permissionOverlay&gt;</pre>
+        <p>The xml file must be a valid xml file starting with a <code>&lt;?xml version="1.0" encoding="&lt;character-encoding&gt;"?&gt;</code> line. We recommend using UTF-8 (as in the sample above) but all other character encodings supported by the Java virtual machine in use are also supported.</p>
+        <p>The document element MUST be named "permissionOverlay".</p>
+        <p>The document element can contain any number of "user" and "role" elements. Every "user" or "role" element must be unique within the file (based on the "name" attribute for "roles" elements and based on the "id" attribute for "user" elements).</p>
+        <p>Every "user" or "role" element MUST contain exactly one "permissions" element.</p>
+        <p>The "permissions" element CAN contain any number of PERMISSION elements.</p>
+        <p>Permission elements must be valid permissions as described separately. (Example permission element: </p><pre class="prettyprint">&lt;coBrowseDomain origin="http://www.unblu.com"/&gt;)</pre>
+        <p>Permission elements MUST be unique within the "permissions" element; equality is defined separately per permission type.</p>
+        <p>&#160;</p>
+    </body>
+</html>

@@ -1,0 +1,614 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="8" MadCap:lastHeight="12626" MadCap:lastWidth="1187">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Release notes</h1>
+        <p>This page contains the unblu release notes. The release notes are broken down in sections to allow for easier consumption. Release notes are additive, which means that to cover all improvements between to defined release states, all individual release notes have to be considered.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>unblu 4.2.14 Release Notes</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot><span class="Bolder">Bug</span>
+                        </MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>[UNBLU-5022] (Fixed) - localmonitoring fails periodically in production</p>
+                        <p>[UNBLU-5026] (Fixed) - switching from embedded to universal causes unexpected behavior</p>
+                        <p>[UNBLU-5032] (Fixed) - Delete Chat message history for Account "Bundesarchiv" on December 9th.</p>
+                        <p>[UNBLU-5033] (Fixed) - Enhance Server-Log's for HBRunner details (+ test checksum overwrite)</p>
+                        <p>[UNBLU-5034] (Fixed) - cloud: 4.2 universenodes do not report memory usage to cloudwatch anymore</p>
+                        <p>[UNBLU-5049] (Fixed) - Investigate resource leaks</p>
+                        <p>[UNBLU-5050] (Fixed) - Statistics function limited to 1000 result sets; filtering leads to "wrong" results</p>
+                        <p>[UNBLU-5051] (Fixed) - Agent desk stops working</p>
+                        <p>[UNBLU-5054] (Fixed) - File Handle Leak in OpenTok</p>
+                        <p>[UNBLU-5056] (Fixed) - api.core.visitor.agentinfo.AgentInformation not any more a function, does not have a constructor</p>
+                        <p>[UNBLU-5062] (Answered) - need to introduce line breaks in new password email in production cloud</p>
+                        <p>[UNBLU-5070] (Fixed) - (XXX) Bank SVG Co-Browsing - session does not start</p>
+                        <p>[UNBLU-5075] (Fixed) - unblu does not start on WebSphere</p>
+                        <p>[UNBLU-5077] (Fixed) - web notification do not work with obfuscation</p>
+                        <p>[UNBLU-5078] (Fixed) - SAFARI cookie check doesn't open popup window</p>
+                        <p>[UNBLU-5082] (Fixed) - unblu internal filter (that works with ICAP) does injection for a tag that begins with &lt;header</p>
+                        <p>[UNBLU-5085] (Fixed) - failing test</p>
+                        <p>[UNBLU-5088] (Fixed) - Chat requests without a visitor</p>
+                        <p>[UNBLU-5092] (Fixed) - synctool, setting log-level of synctool to debug, and syncing only user, causes exceptions</p>
+                        <p>[UNBLU-5093] (Fixed) - synctool throws exceptions that prevents role/teams to be synchronised.</p>
+                        <p>[UNBLU-5099] (Fixed) - Unblu is not able to start with a DB user without CREATE rights.</p>
+                        <p>[UNBLU-5123] (Fixed) - Font not loaded on chat mobile</p>
+                        <p>[UNBLU-5138] (Fixed) - manually assigned availability state is wrong in user interface/system status</p>
+                        <p>[UNBLU-5149] (Fixed) - showChatSessionDialog, showStartSessionDialog with userDialogName parameter doesn't work</p>
+                        <p>[UNBLU-5158] (Fixed) - Database locks while synchronizing with LDAP via user synchronization tool</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot><span class="Bolder">Fault</span>
+                        </MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>[UNBLU-5148] (Fixed) - DB user password is in the log file output</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot><span class="Bolder">Improvement</span>
+                        </MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>[UNBLU-5031] (Fixed) - Session log should log username as the owner_id (configurable)</p>
+                        <p>[UNBLU-5101] (Fixed) - Getting Started Section in the documentation needs update relative to admin app / new admin interface</p>
+                        <p>[UNBLU-5109] (Fixed) - Mini improvements on CSV parts</p>
+                        <p>[UNBLU-5110] (Fixed) - Make unblu OJR Assert class (more) compatible to org.junit.Assert</p>
+                        <p>[UNBLU-5170] (Fixed) - Store more informations about participant in stats_participant table</p>
+                        <p>[UNBLU-5171] (Fixed) - Stats retrieval service should calculate intersection by default</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot><span class="Bolder">New Feature</span>
+                        </MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>[UNBLU-4985] (Fixed) - Display an error message when a file upload fails (i.e. due to virus scanner rejection)</p>
+                        <p>[UNBLU-5019] (Fixed) - Enhance analytics with unblu Session ID</p>
+                        <p>[UNBLU-5120] (Fixed) - Protocol entry for transition from unauthenticated to authenticated area</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot><span class="Bolder">Problem</span>
+                        </MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>[UNBLU-5086] (Fixed) - Property description in Agent Desk Settings overlap if it is too long.</p>
+                        <p>Requirement</p>
+                        <p>[UNBLU-5043] (Fixed) - Add Forward Queue Visibility for Team Supervisors in Queue View - PF mini feature</p>
+                        <p>[UNBLU-5044] (Fixed) - Provide Ability to remove language filter from Agent Availability Monitor in "chat service status" - PF Mini Feature</p>
+                        <p>[UNBLU-5045] (Fixed) - Provide ability to upload a file also via file explorer (not just drag and drop) for document exchange - PF mini feature</p>
+                        <p>[UNBLU-5076] (Fixed) - provide public release notes on unblu.com</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot><span class="Bolder">Task</span>
+                        </MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>[UNBLU-4927] (Fixed) - Renew *.unblu.com ssl certificate</p>
+                        <p>[UNBLU-5121] (Fixed) - Provide language file export for PF mini feautures</p>
+                        <p>[UNBLU-5168] (Fixed) - move stage cloud to new aws db (config)</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>unblu 4.2.13 Release Notes</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot><span class="Bolder">Bug</span>
+                        </MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>[UNBLU-4957] (Fixed) - There is a misspelling in the chat text</p>
+                        <p>[UNBLU-4960] (Fixed) - Missing style in the current implementation</p>
+                        <p>[UNBLU-4991] (Fixed) - MS Edge defaults end up in unsupported browser</p>
+                        <p>[UNBLU-5007] (Fixed) - Account admin cannot edit all contact details</p>
+                        <p>[UNBLU-5011] (Fixed) - Session log always logs visitor as the terminating actor</p>
+                        <p>[UNBLU-5012] (Fixed) - Language in Filter Queue cannot be set for Supervisors and Users</p>
+                        <p>[UNBLU-5013] (Fixed) - Session start time is wrongly updated for each page view</p>
+                        <p>[UNBLU-5014] (Fixed) - Zookeeper expires on one-node on premises setup causing unblu to fail and not recover</p>
+                        <p>[UNBLU-5015] (Fixed) - Session Rating Dialog is inconsistent and cannot be turned off</p>
+                        <p>[UNBLU-5027] (Fixed) - IE10: click event is not transmitted to HB, in other words, user can't navigate</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot><span class="Bolder">Improvement</span>
+                        </MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>[UNBLU-5023] (Fixed) - Reduce log noise on unblu shutdown</p>
+                        <p>[UNBLU-5025] (Answered) - correct new password email</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot><span class="Bolder">New Feature</span>
+                        </MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>[UNBLU-4947] (Fixed) - LDAP Sync Tool: Multitenancy Support</p>
+                        <p>[UNBLU-4983] (Fixed) - Make launch of a function in the visitor/agent UI on session startup configurable</p>
+                        <p>[UNBLU-4984] (Fixed) - Add "print" button on visitor chat UI</p>
+                        <p>[UNBLU-4986] (Fixed) - Block links from being clickable in the chat function</p>
+                        <p>[UNBLU-4987] (Fixed) - Make the appearance of the preview button in the queue configurable</p>
+                        <p>[UNBLU-5016] (Fixed) - Universal Co-browsing: Introduce configurability for visitor and agent that determines whether they can take control</p>
+                        <p>[UNBLU-5017] (Fixed) - Implement Logic that sets agent automatically to un-available after time of inactivity</p>
+                        <p>[UNBLU-5018] (Fixed) - Disable canned response menu for agents (per config setting)</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>unblu 4.2.12 Release Notes</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot><span class="Bolder">Bug</span>
+                        </MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>[UNBLU-4944] (Fixed) - log file separation in main, session and fatal does not work anymore</p>
+                        <p>[UNBLU-4954] (Fixed) - Select tag is not getting updated in agent browser</p>
+                        <p>[UNBLU-4955] (Fixed) - Production problem with js delivery (hs of undefined)</p>
+                        <p>[UNBLU-4958] (Fixed) - Export Chat Protocol does not work</p>
+                        <p>[UNBLU-4959] (Fixed) - UnbluApi does not fire session aborted and ended event on connection lost</p>
+                        <p>[UNBLU-4962] (Fixed) - Missing visitor chat by start session (in concurrency with mootools-1-2-5)</p>
+                        <p>[UNBLU-4965] (Fixed) - HB is not responding as expected on click event</p>
+                        <p>[UNBLU-4967] (Fixed) - Starting a show session in unblu 4.2.11 creates two duplicate tabs</p>
+                        <p>[UNBLU-4969] (Fixed) - Authentication session idle time default not appropriate for SSO setups</p>
+                        <p>[UNBLU-4974] (Fixed) - White gap in abstract list component on IE11 + IE10</p>
+                        <p>[UNBLU-4975] (Fixed) - Admin UI: IE does not display userlists correclty</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot><span class="Bolder">New Feature</span>
+                        </MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>[UNBLU-4973] (Fixed) - Account generated under "Manage Accounts" -&gt; "New Account" does not have APIKEY</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>unblu 4.2.11 Release Notes</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p><span class="Bolder">No changes</span>
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>unblu 4.2.10 Release Notes</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot><span class="Bolder">Bug</span>
+                        </MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>[UNBLU-4950] (Fixed) - ConcurrentModification exception in SimpleInvalidationService</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>unblu 4.2.09 Release Notes</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot><span class="Bolder">Bug</span>
+                        </MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>[UNBLU-4939] (Fixed) - Changing the Font in the com.unblu.ui.FontFace does not allow to load account anymore</p>
+                        <p>[UNBLU-4946] (Fixed) - Missing error message in Error class</p>
+                        <p>[UNBLU-4948] (Fixed) - ZooGroup race condition on watching a specific node/group</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>unblu 4.2.08 Release Notes</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot><span class="Bolder">Bug</span>
+                        </MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>[UNBLU-4942] (Fixed) - Configuration servlet sends all configuration keys instead of only configured ones</p>
+                        <p>[UNBLU-4943] (Fixed) - unblu api promises reject with the wrong object</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>unblu 4.2.07 Release Notes</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot><span class="Bolder">Bug</span>
+                        </MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>[UNBLU-4119] (Fixed) - The label translation for chat links is inappropriate</p>
+                        <p>[UNBLU-4279] (Fixed) - some localisation texts are missing</p>
+                        <p>[UNBLU-4909] (Fixed) - switching from chat to HB causes unexpected behavior</p>
+                        <p>[UNBLU-4919] (Fixed) - check localisation file (l18n) for statistics time format</p>
+                        <p>[UNBLU-4924] (Fixed) - Chat Panel does not scroll to latest entry in unblu 4.2</p>
+                        <p>[UNBLU-4925] (Fixed) - Localisation: Quota information localisation is missing</p>
+                        <p>[UNBLU-4934] (Fixed) - "getSessionState" is fooled by local browser state</p>
+                        <p>[UNBLU-4936] (Fixed) - Concurrent modification exception while getting configuration settings</p>
+                        <p>[UNBLU-4940] (Fixed) - When contextMigrationEnabled is set to true, a "show session" does not start correctly, agent see a grey screen from HB</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>unblu 4.2.06 Release Notes</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot><span class="Bolder">Bug</span>
+                        </MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>[UNBLU-4469] (Fixed) - Strange "null" agent availability request with on premises installation</p>
+                        <p>[UNBLU-4883] (Fixed) - SyncTool does not assign users to teams properly</p>
+                        <p>[UNBLU-4884] (Fixed) - SyncTool creates all users with REGISTERED_USER role</p>
+                        <p>[UNBLU-4900] (Fixed) - Collaboration Session does not timeout when siteIntegration Participant closes window and never returns</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>unblu 4.2.05 Release Notes</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot><span class="Bolder">Bug</span>
+                        </MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>[UNBLU-4891] (Fixed) - Text properties can not be written after reload</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>unblu 4.2.04 Release Notes</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot><span class="Bolder">Bug</span>
+                        </MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>[UNBLU-4807] (Fixed) - Inconsistence of account information</p>
+                        <p>[UNBLU-4814] (Fixed) - add fallback for organisation name</p>
+                        <p>[UNBLU-4815] (Fixed) - use configuration flag if contact address is mandatory for account</p>
+                        <p>[UNBLU-4816] (Fixed) - Implement general contact info editor</p>
+                        <p>[UNBLU-4833] (Fixed) - "Create new PIN" not working anymore after some time of waiting</p>
+                        <p>[UNBLU-4866] (Fixed) - Check constraints prior to insert user</p>
+                        <p>[UNBLU-4878] (Fixed) - No roll back after sql exception (unique constraint on address primary key)</p>
+                        <p>[UNBLU-4889] (Fixed) - Using expand while creating an entity with one to many properties does not work</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot><span class="Bolder">Improvement</span>
+                        </MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>[UNBLU-4806] (Fixed) - account management refactoring</p>
+                        <p>[UNBLU-4856] (Fixed) - remove billing address id, where it is the same as the contact address id inside account</p>
+                        <p>[UNBLU-4864] (Fixed) - Enhance error page of the headless browser</p>
+                        <p>[UNBLU-4867] (Fixed) - Improve log messages in case of database errors</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot><span class="Bolder">New Feature</span>
+                        </MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>[UNBLU-4857] (Fixed) - defining configuration if contact address is mandatory for account or not</p>
+                        <p>[UNBLU-4917] (Fixed) - Avoid sending additional requests to server after a 401 (or 403) has been received</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>unblu 4.2.03 Release Notes</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot><span class="Bolder">Bug</span>
+                        </MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>[UNBLU-4665] (Fixed) - FindAndJoinQueue Task sometimes fails with message: "invalid ticket"</p>
+                        <p>[UNBLU-4834] (Fixed) - Co-Browsing approval is requested twice</p>
+                        <p>[UNBLU-4846] (Fixed) - relative urls in css don't work with resource history</p>
+                        <p>[UNBLU-4847] (Fixed) - At times, agent availability service fails with NPE</p>
+                        <p>[UNBLU-4851] (Fixed) - LDAP SyncTool updates users with old entity</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot><span class="Bolder">Improvement</span>
+                        </MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>[UNBLU-4799] (Fixed) - Improve API Granularity to the right level of abstraction</p>
+                        <p>[UNBLU-4830] (Fixed) - Entity update on navigation/editing</p>
+                        <p>[UNBLU-4848] (Fixed) - show buildId, branch, revision and tools stream in product info</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot><span class="Bolder">New Feature</span>
+                        </MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>[UNBLU-4820] (Fixed) - Show quota information in the agent desk ui (teams list, users list, apikey list, domain list)</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>unblu 4.2.02 Release Notes</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot><span class="Bolder">Bug</span>
+                        </MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>[UNBLU-4819] (Fixed) - Make com.unblu.cobrowsing.covisitorMouseEnabled=false work in plain old domcap sessions</p>
+                        <p>[UNBLU-4821] (Fixed) - Initialization of system path call origin is wrong</p>
+                        <p>[UNBLU-4828] (Fixed) - Synctool cannot connect to LDAPS using TLS</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot><span class="Bolder">Improvement</span>
+                        </MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>[UNBLU-4822] (Fixed) - Change settings list options: "hide xxx" to "show xxx"</p>
+                        <p>[UNBLU-4823] (Fixed) - Enforce property entitlements (text, configuration) also in storageServices</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>unblu 4.2.01 Release Notes</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot><span class="Bolder">Bug</span>
+                        </MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>[UNBLU-4671] (Fixed) - Input at the login page has the wrong value after autocomplete</p>
+                        <p>[UNBLU-4746] (Fixed) - Database: Offer connection-pooling settings as unblu-properties</p>
+                        <p>[UNBLU-4762] (Fixed) - On agent desk, when PIN is shown, typing works and pressing enter sends a chat message</p>
+                        <p>[UNBLU-4768] (Fixed) - "com.unblu.cobrowsing.cobrowsingButton=true" is not working</p>
+                        <p>[UNBLU-4772] (Fixed) - Agent desktop shows option Available/Unavailable even when no queue is enabled - this is misleading</p>
+                        <p>[UNBLU-4789] (Fixed) - Server-Startup: Liquibase Validation Failed for imported databases</p>
+                        <p>[UNBLU-4792] (Fixed) - Fix filtering on lists</p>
+                        <p>[UNBLU-4793] (Fixed) - canned response &amp; esc blocks session</p>
+                        <p>[UNBLU-4798] (Fixed) - using hideUI configuration causes errors on visitor side</p>
+                        <p>[UNBLU-4800] (Fixed) - User-Profile: Add configuration property to disable the "reset-password"</p>
+                        <p>[UNBLU-4805] (Fixed) - Regression: agent desk should accept ?lang parameter</p>
+                        <p>[UNBLU-4808] (Answered) - Error messages with Umlaute rendered incorrectly in PIN dialog</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot><span class="Bolder">Improvement</span>
+                        </MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>[UNBLU-4788] (Fixed) - Adapt unblu error page with latest unblu design concepts</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot><span class="Bolder">New Feature</span>
+                        </MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>[UNBLU-3697] (Fixed) - create jsapi to do the third party cookie check</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>unblu 4.2.00 Release Notes</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot><span class="Bolder">Bug</span>
+                        </MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>[UNBLU-3527] (Fixed) - Webfonts not available on agent side</p>
+                        <p>[UNBLU-3891] (Fixed) - Android App: when the user from tries to open a link from the app, nothing happens</p>
+                        <p>[UNBLU-3907] (Fixed) - On premises: Resources are not available for agent (probably not in visual), but after a reload/navigation the resources are available</p>
+                        <p>[UNBLU-4044] (Fixed) - JS exception in browser console when using unblu 4</p>
+                        <p>[UNBLU-4049] (Fixed) - Agent API: AgentSession Terminate/Abort events not firing</p>
+                        <p>[UNBLU-4055] (Fixed) - Improve session end dialog (make terminate the default action)</p>
+                        <p>[UNBLU-4133] (Fixed) - Using com.unblu.recorder.idleTimeout as of unblu 4 causes "no data" to be submitted</p>
+                        <p>[UNBLU-4163] (Fixed) - Session is terminated when a back button is used on a blacklisted page</p>
+                        <p>[UNBLU-4164] (Fixed) - Integrate newest Tokbox 2.7 lib to fix Chrome v50 issues</p>
+                        <p>[UNBLU-4170] (Fixed) - certain properties cannot be set as system properties</p>
+                        <p>[UNBLU-4175] (Fixed) - StaticUsers: login with wrong pw displays 'unfriendly' warning</p>
+                        <p>[UNBLU-4176] (Fixed) - IE11 crash after 2h on visitor side without doing anything</p>
+                        <p>[UNBLU-4178] (Fixed) - Mouse cursor invisible</p>
+                        <p>[UNBLU-4181] (Fixed) - Sending request from iOS doesn't appear correctly - wrong language and operating system</p>
+                        <p>[UNBLU-4183] (Fixed) - Mouse click visible in LiveView Chat mode</p>
+                        <p>[UNBLU-4193] (Fixed) - The Virtual select, multi select boxes appear over 2 lines, so the view of visitor and agent are not the same</p>
+                        <p>[UNBLU-4195] (Fixed) - when using IE11 as agent/co-visitor, suddenly after some navigation, the agent's browser stopping updating itself</p>
+                        <p>[UNBLU-4203] (Fixed) - Implement general sibling CSS selector for our internal CSS parser</p>
+                        <p>[UNBLU-4212] (Fixed) - Blacklisted page default message in German not showing correctly</p>
+                        <p>[UNBLU-4214] (Fixed) - Missing resources due to cloud proxy not working</p>
+                        <p>[UNBLU-4244] (Fixed) - com.unblu.cobrowsing.scrollLockButton doesn't work</p>
+                        <p>[UNBLU-4249] (Fixed) - Agent view freezes when Javascript dialog is shown in browser and doesn't continue after the alert</p>
+                        <p>[UNBLU-4260] (Fixed) - Virtual-Mouse on agent side, which represents visitors mouse, is not at correct position</p>
+                        <p>[UNBLU-4269] (Fixed) - Not being able to generate different PIN type when both HB and DOM are activated</p>
+                        <p>[UNBLU-4270] (Fixed) - SVG renders invisible dots visible on co-visitor side</p>
+                        <p>[UNBLU-4282] (Fixed) - Domready handling for URL instruction causes potential race condition when more than one player are used in the same window</p>
+                        <p>[UNBLU-4285] (Fixed) - Set default com.unblu.hbrunner.vaUsername in product.com.unblu.headlessbrowser</p>
+                        <p>[UNBLU-4288] (Fixed) - whitespaces after a config property value are not trimmed</p>
+                        <p>[UNBLU-4320] (Fixed) - Unblu chat (Android, iOS): Different session timeouts</p>
+                        <p>[UNBLU-4322] (Fixed) - Unblu Icons are missing in visitor browser when using IE11</p>
+                        <p>[UNBLU-4325] (Fixed) - Domcap: Player:Navigating from a page with SVG Elements to the next page fails in Chrome (50.0)</p>
+                        <p>[UNBLU-4370] (Fixed) - Chat sessions are not recreated after reconnect due to lost internet connection</p>
+                        <p>[UNBLU-4390] (Fixed) - click on desktop notification for new chat message does not open the chat window</p>
+                        <p>[UNBLU-4447] (Fixed) - Agent API addSessionTerminatedListener and addSessionAbortedListener are not fired/executed</p>
+                        <p>[UNBLU-4455] (Fixed) - HeadlessBrowser: First tab is not responding</p>
+                        <p>[UNBLU-4459] (Fixed) - Issues with "null" and "false" text in chat</p>
+                        <p>[UNBLU-4483] (Fixed) - unblu 4.1: collaboration Icon missing when session started with chat</p>
+                        <p>[UNBLU-4557] (Fixed) - Supervisor has read permission for all teams</p>
+                        <p>[UNBLU-4603] (Fixed) - additional-info not stored in session log with legacy setting</p>
+                        <p>[UNBLU-4623] (Fixed) - Agent maximum number of sessions allowed is wrong (-1)</p>
+                        <p>[UNBLU-4719] (Fixed) - Agent-Forwarding: Timeout leaves a Visitor as single Participand in Session</p>
+                        <p>[UNBLU-4747] (Fixed) - DOM replication interrupted when specific SVG styles are used</p>
+                        <p>[UNBLU-4748] (Fixed) - REST-Services: CreateUser + CreateMetadataProperty SUPER_ADMIN should be able to create entities for any account</p>
+                        <p>[UNBLU-4759] (Fixed) - first name policy should be consistent</p>
+                        <p>[UNBLU-4761] (Fixed) - On the signin page &gt; reset password the "return to login" link does not work</p>
+                        <p>[UNBLU-4763] (Fixed) - Missing closing double quotes in agent desk html code</p>
+                        <p>[UNBLU-4766] (Fixed) - Misconfigured videoChatEnabled results in error when trying to generate PIN code</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot><span class="Bolder">Improvement</span>
+                        </MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>[UNBLU-2394] (Fixed) - Marshalling Registry order of initialisation problems</p>
+                        <p>[UNBLU-3611] (Fixed) - Implement two step reset password</p>
+                        <p>[UNBLU-3628] (Fixed) - js snippet optimizations</p>
+                        <p>[UNBLU-3747] (Fixed) - Introduce Promise library and use it in the API</p>
+                        <p>[UNBLU-3783] (Fixed) - Improve/Refactor the DB-Intergation (OR-Mapper)</p>
+                        <p>[UNBLU-3879] (Fixed) - wjar (war and jar in one file) deployment</p>
+                        <p>[UNBLU-3929] (Fixed) - Util to compare Domain Name // URLs that can handle punycoded domains</p>
+                        <p>[UNBLU-3969] (Fixed) - Migrate private browsing approval to new approval infrastructure</p>
+                        <p>[UNBLU-4056] (Fixed) - Minimal Color Theming for 41x</p>
+                        <p>[UNBLU-4059] (Fixed) - configurable chat window size</p>
+                        <p>[UNBLU-4263] (Fixed) - Augment Chat Request Message Service with session redeem URL</p>
+                        <p>[UNBLU-4265] (Fixed) - Support workspace embedded git repository in tools</p>
+                        <p>[UNBLU-4278] (Fixed) - standard java packages should not be needed to reverence them in manifest files</p>
+                        <p>[UNBLU-4393] (Fixed) - Let CSS parser accept CSS function type properties</p>
+                        <p>[UNBLU-4399] (Fixed) - Admin App: Domain Administration Module Improvements</p>
+                        <p>[UNBLU-4430] (Fixed) - Make the configuration migration ui available via agent desk</p>
+                        <p>[UNBLU-4431] (Fixed) - Make "Track and Target" and "Agent Availability Monitor" available in agent desk</p>
+                        <p>[UNBLU-4480] (Fixed) - Increase Resolution of Video Picture when chat window is maximised</p>
+                        <p>[UNBLU-4774] (Fixed) - Implement a workaround to reduce problems with IE and short http keep-alive timeouts</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot><span class="Bolder">New Feature</span>
+                        </MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>[UNBLU-2986] (Fixed) - Make account configurable to not show "Session Terminated" dialog</p>
+                        <p>[UNBLU-3605] (Fixed) - Provide Rest Service to get Chat-Protocol from database, so that admin user can download the char protocol</p>
+                        <p>[UNBLU-3816] (Fixed) - Provide rest service for Admin-UI to configure all text properties</p>
+                        <p>[UNBLU-3910] (Fixed) - Improved Rest Service Infrastructure</p>
+                        <p>[UNBLU-3931] (Done) - Chat canned responses</p>
+                        <p>[UNBLU-3933] (Fixed) - Organise users in teams</p>
+                        <p>[UNBLU-3934] (Fixed) - Add a "defaultQueueFilter" configuration property</p>
+                        <p>[UNBLU-3935] (Fixed) - Call Forwarding / Enhanced invite agent</p>
+                        <p>[UNBLU-3936] (Fixed) - Enhanced Agent Presence Management</p>
+                        <p>[UNBLU-3938] (Fixed) - Account / Team activitiy tracking</p>
+                        <p>[UNBLU-3939] (Fixed) - New Agent Desk UI</p>
+                        <p>[UNBLU-3941] (Fixed) - More Information in Queue Items</p>
+                        <p>[UNBLU-3943] (Fixed) - Desktop Notifications</p>
+                        <p>[UNBLU-3944] (Fixed) - Configurable alert sounds</p>
+                        <p>[UNBLU-3951] (Done) - Start co-browsing approval</p>
+                        <p>[UNBLU-3952] (Fixed) - Simple visitor session rating at the end of sessions</p>
+                        <p>[UNBLU-3954] (Fixed) - Admin App: Account Administration Module (admin app replacement)</p>
+                        <p>[UNBLU-3955] (Fixed) - Admin App: Domain Administration Module (admin app replacement)</p>
+                        <p>[UNBLU-3956] (Fixed) - Admin App: Integration Settings Module (admin app replacement)</p>
+                        <p>[UNBLU-3957] (Fixed) - Admin App: Statistics Module (admin app replacement)</p>
+                        <p>[UNBLU-3962] (Fixed) - Introduce apikey configuration scope</p>
+                        <p>[UNBLU-3963] (Fixed) - Add allowed scopes (Account, Domain, Team, Apikey, User, Global) to OJRConfigurationProperty</p>
+                        <p>[UNBLU-3964] (Fixed) - Display total number of items and avg. waiting time in queue ui</p>
+                        <p>[UNBLU-3966] (Fixed) - Generic approval ui module</p>
+                        <p>[UNBLU-3967] (Fixed) - Admin App: Teams Administration Module</p>
+                        <p>[UNBLU-3968] (Fixed) - Admin App: APIKEY Administration Module</p>
+                        <p>[UNBLU-3970] (Fixed) - Introduce team configuration scope</p>
+                        <p>[UNBLU-3972] (Fixed) - Admin App: Generic Settings (Conguration) UI</p>
+                        <p>[UNBLU-3973] (Fixed) - Admin App: Users Administration Module</p>
+                        <p>[UNBLU-4103] (Done) - Implement a routable content UI Framework</p>
+                        <p>[UNBLU-4158] (Fixed) - allow modification of resource URLs when resource history is not used</p>
+                        <p>[UNBLU-4189] (Fixed) - Implement new 4.2 navigation</p>
+                        <p>[UNBLU-4240] (Fixed) - Implement a new dialog (configurable) to be appear instead of "Contact us" for un-answered chat -requests</p>
+                        <p>[UNBLU-4255] (Fixed) - Add an "open external git application" action to tools</p>
+                        <p>[UNBLU-4271] (Fixed) - Generic Settings Component</p>
+                        <p>[UNBLU-4312] (Fixed) - Add additional info to queue items on the backend and visual.</p>
+                        <p>[UNBLU-4329] (Fixed) - UI-Component: Flyout-Menu</p>
+                        <p>[UNBLU-4337] (Fixed) - Support custom skip element function / javascript code in domcapturing</p>
+                        <p>[UNBLU-4356] (Fixed) - Add a configuration property to disable the queue in agent desk</p>
+                        <p>[UNBLU-4357] (Fixed) - SshJCommandUtilTest tests fail</p>
+                        <p>[UNBLU-4372] (Fixed) - introduce supervisor role</p>
+                        <p>[UNBLU-4400] (Fixed) - Admin App: Users Administration Module</p>
+                        <p>[UNBLU-4402] (Fixed) - Add an email field to the user entity</p>
+                        <p>[UNBLU-4421] (Fixed) - Account Config Properties UI</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <p>&#160;</p>
+    </body>
+</html>

@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="2203" MadCap:lastWidth="1248">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>How to activate unblu using the snippet and activation elements (without using the API)</h1>
+        <p><i>Click here if you want to download the full example shown below:</i> <a href="https://www.unblu.com/confluence/download/attachments/104071319/JSC-8.zip?version=1&amp;modificationDate=1485159376000&amp;api=v2">JSC-8.zip</a></p>
+        <p>This is an example html page where the unblu snippet is included. unblu sessions are started using the unblu activation elements. There are four different activation elements which are here integrated into a simple web page. The web page is only there to 'hold' the elements. In order to gain any benefit from these samples a developer might want to isolate each element and check what happens after clicking the element(s). For example, if you want to know what happens when you terminate a session, click on the 'Click to terminate the session' link and analyze the behaviour to offer a clue as to how you might integrate these elements into your own web pages.</p>
+        <p>
+            <img src="../Resources/Images/Customization/JSC-8-1.PNG" style="mc-thumbnail: popup;mc-thumbnail-max-height: 200px;" />
+        </p>
+        <p><span class="Bolder">Note:</span> All of the file/object/function names can be changed according to your needs.</p>
+        <ol>
+            <li>Create an HTML page.</li>
+            <li>Create a JavaScript file called <span class="Bolder">'snippet.js'</span> and paste the snippet into it. The snippet can be found in your account at <a href="http://www.unblu.com/">www.unblu.com</a>. (<span class="Bolder">unblu.com -&gt; myunblu -&gt; administer account -&gt; integration section</span>.)</li>
+        </ol>
+        <p>Keep in mind that the snippet should be placed after the last &lt;meta&gt; tag in the &lt;head&gt; section, but before any other script. All of the other JSAPI consuming scripts must only appear after the snippet.</p>
+        <ol MadCap:continue="true">
+            <li>Include the snippet in your HTML file inside the &lt;head&gt; tag (using the appropriate location of the actual <span class="Bolder">'snippet.js'</span> file within your project tree)</li>
+        </ol><pre class="prettyprint">
+&lt;script type="text/javascript" src="js/snippet.js"&gt;&lt;/script&gt;</pre>
+        <p>Following these steps you can use all of the unblu activation elements that we currently support.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>The activation element below activates a dialog with two options; chat or co-browsing.</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody><pre class="prettyprint">&lt;a id="unblu_activation_element_start" href="#"&gt;Click to start&lt;/a&gt;</pre>
+                <p>
+                    <img src="../Resources/Images/Customization/JSC-8-2.PNG" style="mc-thumbnail: popup;mc-thumbnail-max-height: 200px;" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>The activation element below uses a token to start a session.</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody><pre class="prettyprint">&lt;a id="unblu_activation_element_token" href="#"&gt;Click to start co-browsing&lt;/a&gt;</pre>
+                <p>
+                    <img src="../Resources/Images/Customization/JSC-8-3.PNG" style="mc-thumbnail: popup;mc-thumbnail-max-height: 200px;" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>The activation element below is used to invite someone for co-browsing.</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody><pre class="prettyprint">&lt;a id="unblu_activation_element_invitation" href="#"&gt;Click to invite someone for co-browsing&lt;/a&gt;</pre>
+                <p>
+                    <img src="../Resources/Images/Customization/JSC-8-4.PNG" style="mc-thumbnail: popup;mc-thumbnail-max-height: 200px;" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>The activation element below is used to terminate an active session.</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody><pre class="prettyprint">&lt;a id="unblu_activation_element_termination" href="#"&gt;Click to terminate the session&lt;/a&gt;</pre>
+                <p>
+                    <img src="../Resources/Images/Customization/JSC-8-5.PNG" style="mc-thumbnail: popup;mc-thumbnail-max-height: 200px;" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <p>&#160;</p>
+    </body>
+</html>

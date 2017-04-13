@@ -1,0 +1,491 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="8" MadCap:lastHeight="3121" MadCap:lastWidth="1373">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Session Log Output Format</h1>
+        <p>Delete this text and replace it with your own content.</p>
+        <p>The unblu on-premises server logs information about sessions to the file system. The log file contains detailed information about the sessions and uses a JSON format. Sessions are written to the log when they are terminated. To enable session logs you must configure a log output directory. (See <a href="https://www.unblu.com/en/doc/latest/unblu-server-configuration-reference#unbluserverconfigurationreference-com.unblu.logging.outputdirectory">com.unblu.logging.outputDirectory</a>.) The session log can be enabled/disabled by configuration. (See <a href="https://www.unblu.com/en/doc/latest/unblu-server-configuration-reference#unbluserverconfigurationreference-com.unblu.logging.sessionlogenabled">com.unblu.logging.sessionLogEnabled</a>).</p>
+        <h2>Log File Format</h2>
+        <p>For every session a single line id gets written to the session log. Every line consists of a prolog (date, time and session id) and the JSON string holding the details about the session.</p>
+        <p>The sections below describe the data types that are used in the JSON format. SessionStatisticEntry is the main data type that represents a session.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>SessionStatisticEntry</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Main data type, represents a session.</p>
+                <table style="width: 100%;border-left-style: solid;border-left-width: 1px;border-left-color: ;border-right-style: solid;border-right-width: 1px;border-right-color: ;border-top-style: solid;border-top-width: 1px;border-top-color: ;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: ;">
+                    <col />
+                    <col />
+                    <thead>
+                        <tr>
+                            <th style="padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>KEY</p>
+                            </th>
+                            <th style="padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>terminator_name</p>
+                            </td>
+                            <td style="padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>Name of the participant who terminated the session.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>terminator_message</p>
+                            </td>
+                            <td style="padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>Message additionally set upon session termination.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>id</p>
+                            </td>
+                            <td style="padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>Unique id of the SessionStatisticsEntry.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>account_id</p>
+                            </td>
+                            <td style="padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>Unique id of the account to which this entry belongs.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>owner_id</p>
+                            </td>
+                            <td style="padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>User id of the creator of the session.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>type</p>
+                            </td>
+                            <td style="padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>Type of Account.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>start</p>
+                            </td>
+                            <td style="padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>DateTime when a co-browsing session has been started.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>end</p>
+                            </td>
+                            <td style="padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>DateTime when a co-browsing session has been terminated.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>terminator_id</p>
+                            </td>
+                            <td style="padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>User id of the participant who terminated the session.</p>
+                                <p>Can be a system id if it was terminated by timeout.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>termination_reason</p>
+                            </td>
+                            <td style="padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>Whether the session has been terminated by the creator, the guest</p>
+                                <p>or a timeout.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>participations</p>
+                            </td>
+                            <td style="padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>Array of ParticipationStatisticEntry objects.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>windows</p>
+                            </td>
+                            <td style="padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>Array of WindowStatisticEntry objects.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>chat_protocols</p>
+                            </td>
+                            <td style="padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>Array of ChatProtocolStatisticEntry objects (always empty if chat is disabled).</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>ParticipationStatisticEntry</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Represents a user participating in the session.</p>
+                <table style="width: 100%;">
+                    <col />
+                    <col />
+                    <thead>
+                        <tr>
+                            <th style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>KEY</p>
+                            </th>
+                            <th style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>user_name</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>Name of participant.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>remote_ip</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>Client ip of the participant, if available.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>runtime_system</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>Runtime System information from the participant's client.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>id</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>Unique id of the ParticipationStatisticEntry.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>user_id</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>User id of the participant.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>type</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>Type of participant. Can be either OWNER or GUEST.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>start</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>DateTime when the participant joined the session.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>end</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>DateTime when the participant left the session.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>additional_info</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>Additional information about the participant.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>navigation_control_period</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>Array NavigationControlPeriodStatisticEntry objects.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>NavigationControlPeriodStatisticEntry</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Represents a time span a particular participation was in control of the session.</p>
+                <table style="width: 100%;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                    <col />
+                    <col />
+                    <thead>
+                        <tr>
+                            <th style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>KEY</p>
+                            </th>
+                            <th style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>id</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>Unique id of the NavigationControlPeriodStatisticEntry.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>start</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>DateTime when the participant acquired the navigation control.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>end</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>DateTime when the participant released the navigation control.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>WindowStatisticEntry</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Represents a browser window within the co-browsing session.</p>
+                <table style="width: 100%;border-left-style: solid;border-left-width: 1px;border-left-color: ;border-right-style: solid;border-right-width: 1px;border-right-color: ;border-top-style: solid;border-top-width: 1px;border-top-color: ;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: ;">
+                    <col />
+                    <col />
+                    <thead>
+                        <tr>
+                            <th style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>KEY</p>
+                            </th>
+                            <th style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>id</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>Unique id of the WindowStatisticEntry.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>opener_id</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>User id of the participant who opened the browsing window (i.e. tab).</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>start</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>DateTime when the browsing window was been opened.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>end</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>DateTime when the browsing window was closed.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>page_impressions</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>Array PageImpressionStatisticEntry objects.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>PageImpressionStatisticEntry</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Represents a page impression within a browser window.</p>
+                <table style="width: 100%;border-left-style: solid;border-left-width: 1px;border-left-color: ;border-right-style: solid;border-right-width: 1px;border-right-color: ;border-top-style: solid;border-top-width: 1px;border-top-color: ;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: ;">
+                    <col />
+                    <col />
+                    <thead>
+                        <tr>
+                            <th style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>KEY</p>
+                            </th>
+                            <th style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>url</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>Url of the navigated page.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>id</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>Unique id of the PageImpressionStatisticEntry.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>start</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>DateTime when page view started.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>end</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>DateTime when page view ended.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>ChatProtocolStatisticEntry</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Represents a chat message.</p>
+                <table style="width: 100%;border-left-style: solid;border-left-width: 1px;border-left-color: ;border-right-style: solid;border-right-width: 1px;border-right-color: ;border-top-style: solid;border-top-width: 1px;border-top-color: ;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: ;">
+                    <col />
+                    <col />
+                    <thead>
+                        <tr>
+                            <th style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>KEY</p>
+                            </th>
+                            <th style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>message_number</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>Current number of message.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>sender_name</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>Name of the sender of the chat message.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>message</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>Message text sent.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>id</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>Unique id of the ChatProtocolStatisticEntry.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>sender_id</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>User id of message sender.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>time</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                                <p>Timestamp when the message was sent.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2>Further Reading</h2>
+        <p>General information about logging: <a href="Unblu Server Logging.htm">Unblu Server Logging</a>.</p>
+        <p>&#160;</p>
+    </body>
+</html>

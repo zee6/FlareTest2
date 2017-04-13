@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultFileTagSet
+  Type="LinksTo"
+  Comment="My set of author tags">
+  <FileTag
+    Name="FixLinksTo"
+    Comment="This topic has links that go to the old system. Fix 'em."
+    OriginalName="FixLinksTo" />
+  <FileTag
+    Name="Author2"
+    Comment="" />
+  <FileTag
+    Name="NewTag"
+    Comment="" />
+  <FileTag
+    Name="Copy of NewTag"
+    Comment="" />
+  <FileTag
+    Name="Move to new place"
+    Comment="This topic can either be moved written into another topic"
+    OriginalName="Move to new place" />
+</CatapultFileTagSet>

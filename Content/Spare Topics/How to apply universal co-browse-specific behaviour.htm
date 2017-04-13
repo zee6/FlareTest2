@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="398" MadCap:lastWidth="1451">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>How to apply universal co-browse-specific behaviour</h1>
+        <p>An example snippet of how you can apply different behaviour when within a universal co-browsing session.</p>
+        <p>The customer navigates to certain page, which has to be hidden from the agent.</p><pre class="prettyprint">&lt;script type="text/javascript"&gt;
+if( typeof(unbluBrowser) != "undefined" &amp;&amp; unbluBrowser.log) {
+
+	// Your code that runs when within a co-browse session
+	// e.g. Load additional CSS
+}
+&lt;/script&gt;</pre>
+        <p>&#160;</p>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="301" MadCap:lastWidth="1374">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h2 class="Heading2">The unblu Filter Flow</h2>
+        <ol start="1" class="ol_1">
+            <li class="li_1">The visitor browser makes a request.</li>
+        </ol>
+        <p class="p_9">In parallel with the unblu activity, the regular processes of the organization’s web site take place: Requests are forwarded to the organization backend then responses delivered to the visitor’s browser. This (regular) flow is represented in the chart(s) with the black arrows.</p>
+        <ol start="2" class="ol_1">
+            <li class="li_1">The request is intercepted by the unblu Filter and, if the rules apply (only images and style sheets), sent to the unblu Collaboration Server. </li>
+        </ol>
+        <p class="p_9">The flow of unblu-specific requests is represented in the diagram by red arrows. The unblu Collaboration Server creates a URL ‘map’ which allows it to find the requested images and style sheets. As images and style sheets are not transferred with the Document Object Model (although the ‘space’ on the page where they should be placed is recorded) the unblu Collaboration Server uses this ‘URL map’ to find requested objects. As some objects may be held in the visitor browser cache the unblu server calculates what objects must be fetched to recreate the cached objects on the Agent browser.</p>
+        <ol start="3" class="ol_1">
+            <li class="li_1">The reconstructed page is sent to the Agent Desk browser.</li>
+        </ol>
+    </body>
+</html>

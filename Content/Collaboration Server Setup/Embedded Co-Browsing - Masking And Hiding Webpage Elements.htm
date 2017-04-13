@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="539" MadCap:lastWidth="1425">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Masking And Hiding Webpage Elements</h1>
+        <p>(This applies to embedded co-browsing)</p>
+        <h2>Excluding Content</h2>
+        <p>In order to exclude the content (value) of html text input fields (input element with type text or text area element) from being captured by unblu, add a special html attribute to the element, as follows:</p><pre class="prettyprint">&lt;input type="text" unbluCapturingHint="block"/&gt;</pre>
+        <p>The co-browsing partner sees only placeholder characters (asterisks) instead of the content that is entered.</p>
+        <h2>Protecting Content</h2>
+        <p>You can mark elements as protected, so that the consultant cannot edit them. To do so, add the attribute <code>unbluEditingHint </code>to the element, as follows:</p><pre class="prettyprint">&lt;div unbluEditingHint="block"&gt;...blocked content...&lt;/div&gt;</pre>
+        <p>This attribute will show a lock icon for the agent who clicks on the specific element.</p>
+        <p>&#160;</p>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="1998" MadCap:lastWidth="1155">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Unblu Server Logging</h1>
+        <p>The unblu server uses logging for different purposes. The main log is a general purpose log file that is mostly used for status messages, warnings, errors and debug output (if enabled). The fatal log only contains fatal errors (if any). And the session log is a structured log file that logs information about all collaboration sessions that have taken place.</p>
+        <h2>Log Files</h2>
+        <p>Unblu writes tree log files. The sections below describe the purpose and contents of each of them.</p>
+        <h2>Main Log File</h2>
+        <p>The main unblu log file is a general purpose log file. All status messages, errors, warnings and debug messages are written to the main log file. By default the main log file is named unblu.&lt;date&gt;.log.</p>
+        <h2>Session Log File</h2>
+        <p>The session log is a structured log file that holds information about all collaboration sessions that have taken place in a JSON (<a href="https://en.wikipedia.org/wiki/JSON">http://en.wikipedia.org/wiki/JSON</a>) based format. By default, the session log file is named unblu-session.&lt;date&gt;.log.</p>
+        <p>For more details about the session log format please read <a href="Session Log Output Format.htm">Session Log Output Format</a>.</p>
+        <h2>Fatal Log File</h2>
+        <p>The fatal log is an extract of the general purpose log and only contains fatal errors. If anything is written to the fatal log, this means that the unblu server will most probably not work correctly. By default the fatal log file is named unblu-fatal.&lt;date&gt;.log.</p>
+        <h2>Log File Rotation</h2>
+        <p>All log files are rotated on a daily basis. This means that in the logging output directory for every log type (main, session, fatal) you will get a file for each day.</p>
+        <p>By default, unblu cleans out old log files for the main and the fatal log files after seven days. Session logs are not deleted automatically.</p>
+        <h2>Configuration</h2>
+        <p>The unblu logging system can be configured using configuration settings. (See <a href="unblu Server Configuration.htm#unbluserverconfigurationreference-loggingconfigurationloggingconfiguration">Unblu Server Configuration</a>.)</p>
+        <h2>Output Directory</h2>
+        <p>The most important configuration setting regarding logging is <code>"com.unblu.logging.outputDirectory".</code> The <code>"com.unblu.logging.outputDirectory"</code> configuration setting specifies the file system directory unblu logfies should be written to. If no output directory is configured unblu will write log messages to standard output.</p>
+        <p>We recommend always setting a logging output directory when installing an unblu server.</p>
+        <h2>Enabling / Disabling Fatal or Session Log</h2>
+        <p>The fatal log can be disabled / enabled using the <code>"com.unblu.logging.fatalLogEnabled" </code>configuration setting.</p>
+        <p>The session log can be disabled / enabled using the <code>"com.unblu.logging.sessionLogEnabled"</code> configuration setting.</p>
+        <h2>Log File Retention Time</h2>
+        <p>You can use the following configuration settings to define how many days the log files should be kept:</p>
+        <p>"com.unblu.logging.mainLogMaxHistory" (<a href="https://www.unblu.com/en/doc/latest/unblu-server-configuration-reference#unbluserverconfigurationreference-com.unblu.logging.mainlogmaxhistory">com.unblu.logging.mainLogMaxHistory</a>) for the main log.</p>
+        <p>"com.unblu.logging.fatalLogMaxHistory" (<a href="https://www.unblu.com/en/doc/latest/unblu-server-configuration-reference#unbluserverconfigurationreference-com.unblu.logging.fatallogmaxhistory">com.unblu.logging.fatalLogMaxHistory)</a> for the fatal log.</p>
+        <p>"com.unblu.logging.sessionLogMaxHistory" (<a href="https://www.unblu.com/en/doc/latest/unblu-server-configuration-reference#unbluserverconfigurationreference-com.unblu.logging.sessionlogmaxhistory">com.unblu.logging.sessionLogMaxHistory</a>) for the session log.</p>
+        <h2>Log Levels</h2>
+        <p>Unblu logging supports different log levels (ERROR, WARN, INFO and DEBUG). By default the log level for unblu is set to INFO and the log level for integrated third-party libraries is set to WARN.</p>
+        <p>The root level for unblu can be changed using the <code>"com.unblu.logging.rootLevel"</code> configuration setting.</p>
+        <p>The root level for third-party libraries can be changed using the <code>"com.unblu.logging.rootLevelThirdparty" </code>configuration setting.</p>
+        <p>Log levels for individual loggers (packages or classes can be set using the following notation).</p>
+        <p><code>com.unblu.logging.level.&lt;loggerName&gt;=&lt;level&gt;</code>
+        </p>
+        <p>If, for instance, the level of the unblu filter (logger name = <code>"com.unblu.review.server.filter" </code>is to be set to DEBUG, the following configuration setting is required:</p>
+        <p><code>com.unblu.logging.level.com.unblu.review.server.filter=DEBUG.</code>
+        </p>
+        <h2>Advanced Configuration</h2>
+        <p>All logging-related configuration settings can be found in the <a href="https://www.unblu.com/en/doc/latest/unblu-server-configuration-reference#unbluserverconfigurationreference-loggingconfigurationloggingconfiguration">Logging Configuration</a>.</p>
+        <p>&#160;</p>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="1237" MadCap:lastWidth="1362">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Filter Usage</h1>
+        <p>The filter is the component in an unblu integrated system that is responsible for the <MadCap:xref href="#Injectio">Injection</MadCap:xref> and for <MadCap:xref href="#Forward">Forward Webpage Resources</MadCap:xref> (images, css) to unblu so that they can be transmitted to the agent's browser. <a href="Filter Specification.htm">Custom filters</a> may, in addition, be responsible for <MadCap:xref href="#Proxying">Proxying</MadCap:xref> certain browser requests to the unblu server.</p>
+        <p>The filter is the link between unblu and the customer's website (web or application server). Depending on the deployment scenario the filter might be part of (or even implement) a reverse proxy, fully integrated in the client's web or application server or integrated into the customer's website (client side filter).</p>
+        <h2><a name="Injectio"></a>Injection</h2>
+        <p>The filter's main responsibility is to decide when to inject which unblu javascript files and to only do this when a co-browsing session is about to be started or has been started. This is of essential importance since co-browsing is typically only required for a fraction of website visitors. The filter therefore assures that the unblu server infrastructure requirements can remain much lower than the website infrastructure requirements. For example, a website delivering 1,000,000 website visits per month may require multiple servers to bear the load, but still only need one unblu server to provide 3,000 unblu co-browsing sessions.</p>
+        <p>The decision on when to inject what is rule based. The rules are the main configuration element of the filter. They must stay in sync with the unblu server settings. The unblu server provides a json-based configuration, including rules and injection advice for the filter.</p>
+        <h2><a name="Forward"></a>Forward Webpage Resources</h2>
+        <p>Another filter responsibility is to catch resources as they fly-by and send them to the unblu server in case a co-browsing session is active. This is only required for setups that depend on webpage resources delivered by the unblu server. The process of uploading webpage resources is called "add-to-cache" in unblu.</p>
+        <p>Similar to injections, add-to-cache operations are rule based. Again, the corresponding rules can (and should) be retrieved from the unblu server and must stay in sync with it over time. In contrast to injection, the provided filters do not provide uploading functionality out of the box, though. Instead, they provide a means to determine when uploading is required.</p>
+        <h2><a name="Proxying"></a>Proxying</h2>
+        <p>Usually, proxying is the responsibility of the reverse proxy the unblu filter is running / integrated with. Some setups have no proxies in their existing network topology and introducing one only for the purpose of enabling co-browsing may be too expensive or for other reasons not feasible. In such cases, it may be an option to implement simple proxying yourself.</p>
+        <h2>Filter Configuration</h2>
+        <p>The filter configuration is json-based and can be retrieved from the unblu server using: <code>http://&lt;unbluserver&gt;/sys-unblu/filterBackend/read-configuration</code></p>
+        <p>Replace<code> &lt;unbluserver&gt; </code>with the <code>hostname:port </code>of your unblu server and <code>sys-unblu</code> with your configured systemPathPrefix.</p>
+        <h2>Available Filters</h2>
+        <p>See <MadCap:xref href="Supplementary Information.htm#Available Filters">Supplementary Information</MadCap:xref></p>
+        <p>&#160;</p>
+    </body>
+</html>

@@ -1,0 +1,190 @@
+/*<meta />*/
+
+body
+{
+	font-family: Arial;
+}
+
+h1
+{
+	font-weight: bold;
+	font-size: 24.0pt;
+}
+
+h2
+{
+	font-weight: bold;
+	font-size: 18.0pt;
+}
+
+h3
+{
+	font-weight: bold;
+	font-size: 14.0pt;
+}
+
+h4
+{
+	font-weight: bold;
+	font-size: 12.0pt;
+}
+
+h5
+{
+	font-weight: bold;
+	font-size: 10.0pt;
+}
+
+h6
+{
+	font-weight: bold;
+	font-size: 8.0pt;
+}
+
+p
+{
+	font-size: 12.0pt;
+	margin-top: 0pt;
+	margin-bottom: 0pt;
+}
+
+ol,
+ul
+{
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+img
+{
+	border: none;
+}
+
+a.Popup
+{
+	
+}
+
+MadCap|expandingHead
+{
+	font-style: italic;
+	font-weight: normal;
+	cursor: hand;
+	text-decoration: none;
+	color: #006600;
+}
+
+MadCap|expandingBody
+{
+	color: #777777;
+	font-style: italic;
+}
+
+MadCap|dropDownHotspot
+{
+	cursor: hand;
+	font-style: italic;
+	text-decoration: none;
+	color: #364052;
+}
+
+MadCap|breadcrumbsProxy
+{
+	
+}
+
+div.sideContent
+{
+	float: right;
+	margin-left: 10px;
+	margin-bottom: 10px;
+	width: 33.33%;
+}
+
+MadCap|dropDownHotspot:focus
+{
+	color: #f9781a;
+}
+
+p.p_CopyrightMaterial
+{
+	
+}
+
+span.SearchHighlight1
+{
+	color: #ff00ff;
+	background-color: #ffdab9;
+}
+
+span.SearchHighlight2
+{
+	color: #228b22;
+	background-color: #ffdab9;
+}
+
+span.SearchHighlight3
+{
+	color: #9932cc;
+	background-color: #ffdab9;
+}
+
+span.SearchHighlight4
+{
+	color: #8c4f06;
+	background-color: #faf0e8;
+}
+
+span.SearchHighlight5
+{
+	background-color: #ffdab9;
+	color: #08257b;
+}
+
+span.SearchHighlight6
+{
+	color: #ff4500;
+	background-color: #ffdab9;
+}
+
+MadCap|dropDown
+{
+	mc-closed-image: url('../Images/DropDownClosed.png');
+	mc-open-image: url('../Images/DropDownOpen.png');
+}
+
+MadCap|glossaryTerm.Popup
+{
+	mc-closed-image: none;
+	mc-image-position: none;
+	mc-open-image: none;
+}
+
+MadCap|glossaryTerm.Hyperlink
+{
+	mc-closed-image: none;
+	mc-image-position: none;
+	mc-open-image: none;
+}
+
+MadCap|glossaryTerm.Expanding
+{
+	mc-open-image: none;
+	mc-image-position: none;
+	mc-closed-image: none;
+}
+
+MadCap|glossaryTerm:focus
+{
+	mc-closed-image: none;
+	mc-image-position: none;
+	mc-open-image: none;
+}
+
+MadCap|glossaryTerm
+{
+	mc-closed-image: none;
+	mc-image-position: none;
+	mc-open-image: none;
+}
+

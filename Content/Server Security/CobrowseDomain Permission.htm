@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="720" MadCap:lastWidth="1491">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>CobrowseDomain Permission</h1>
+        <p>The "cobrowseDomain" permission grants the ability to co-browse on a certain domain (schema + fully qualified domain + optional port, i.e. <a href="http://www.unblu.com/">http://www.unblu.com</a>) to an agent. Whenever an agent wants to start co-browsing they need the permission to co-browse on the domain the visitor is currently viewing.</p>
+        <h2>Implicit Policy</h2>
+        <p>The implicit (default) policy grants the "cobrowseDomain" for all domains to any user assigned with the REGISTERED_USER role.</p>
+        <h2>External Policy</h2>
+        <p>In order to use the "cobrowseDomain" permission in an external policy, the implicit policy needs to be disabled with the following configuration property (see <a href="https://www.unblu.com/en/doc/latest/unblu-server-configuration-reference" title="Note that this links opens an externally-generated page!" alt="Note that this links opens an externally-generated page!">Unblu Server Configuration Reference</a>) </p><pre class="prettyprint"># add the setting below to your unblu configuration
+com.unblu.authz.permission.cobrowseDomain.implied=false</pre>
+        <p>In the external policy the "cobrowseDomain" permission has the following format:</p><pre class="prettyprint"># extract of an permissionOverlay file
+  &lt;role name="ROLENAME"&gt;
+    &lt;permissions&gt;
+      &lt;coBrowseDomain origin="http://www.unblu.com"/&gt;
+    &lt;/permissions&gt;
+  &lt;/role&gt;</pre>
+        <p>See <a href="Advanced Authorization.htm">Advanced Authorization</a> for details about how external policies are enabled.</p>
+        <p>&#160;</p>
+    </body>
+</html>

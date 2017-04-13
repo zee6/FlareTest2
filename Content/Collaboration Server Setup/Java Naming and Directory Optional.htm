@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="1103" MadCap:lastWidth="1573">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1 class="Heading1">Java Naming and Directory Interface (JNDI) (Optional)</h1>
+        <p>From version 4.2 unblu offers the option to use the Java Naming and Directory Interface (JNDI) when setting up the unblu collaboration server. JNDI is an interface that allows you to bind names to objects (or references to objects) and to look up those objects by name. JNDI allows you to minimize the number of people who need to know the credentials for accessing a production database. Only the Java EE app server needs to know if you use JNDI. See below for an example set up.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Java Naming and Directory Interface Example</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Up until release 4.2 it was necessary to use local system properties to configure the unblu collaboration server. We would strongly recommend that JNDI is used instead of local system properties.</p>
+                <p>You can set any allowed unblu property via JNDI. JNDI configuration should be performed as per your Java Application Server and it will then be applied to the running unblu product.</p>
+                <p>JNDI will work with any application server. When unblu starts it reads the JNDI properties; no matter how they are defined within the applications server. This is done using com.unblu.propertyoverlay&#160;which then references a configuration file. </p>
+                <p>You may still use configuration files when using JNDI but you must tell unblu where the configuration files are. This can be done using JNDI properties or system properties.</p>
+                <p>We cannot offer exact examples as the way JNDI is declared is non-standard but, purely for reference, here is a Tomcat example JNDI configuration for root context path installation:</p>
+                <p>Stored at:</p>
+                <p class="CODE_5">$CATALINA_BASE_DIR/conf/Catalina/localhost/ROOT.xml</p><pre class="prettyprint">&lt;Context&gt;
+	&lt;Environment name="product" value="product.com.unblu.enterprise.universe.sso" type="java.lang.String" override="false"/&gt;
+	&lt;Environment name="com.unblu.propertyoverlay" value"42x-sso.properties" type="java.lang.String" override="false"/&gt;
+	&lt;Environment name="com.unblu.textoverlay" value="42x-sso-text.properties" type="java.lang.String" override="false"/&gt;
+&lt;/Context&gt;</pre>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <p>For more on configuring JNDI for your web application server see the following (external) links:</p>
+        <p><a href="https://tomcat.apache.org/tomcat-7.0-doc/jndi-resources-howto.html">JNDI tomcat</a>
+        </p>
+        <p><a href="http://www.ibm.com/support/knowledgecenter/SSAW57_7.0.0/com.ibm.websphere.nd.doc/info/ae/ae/tnam_view_bindings.html">WebSphere</a>
+        </p>
+        <p><a href="https://docs.oracle.com/cd/E13222_01/wls/docs81/jndi/jndi.html">WebLogic</a>
+        </p>
+        <p><a href="https://docs.jboss.org/jbossweb/3.0.x/jndi-resources-howto.html">JBoss</a>
+        </p>
+        <p>&#160;</p>
+    </body>
+</html>

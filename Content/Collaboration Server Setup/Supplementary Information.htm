@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="1140" MadCap:lastWidth="1103">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h2 class="Heading2">Supplementary Information</h2>
+        <p>Below are some links to the information you will need if you decide to deploy the unblu filter.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Filter Usage</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>For more on filter usage see: <a href="Filter Usage.htm" class="Hyperlink">Filter Usage</a></p>
+                <p>For the complete filter specification see: <a href="Filter Specification.htm" class="Hyperlink">Filter Specification</a></p>
+                <p>For (example) instructions on how to install the unblu Filter using Apache 2 see: <a href="Installing the unblu Filter.htm">Installing the unblu Filter</a></p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Available Filters</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p><a name="Filter"></a>Filter implementations for a number of well-known proxies are provided by and can be requested from unblu in binary or source code form (see below). This includes: native filter (C source code package); typically used for OEM integrations with proxy providers.</p>
+                <ul class="ul_1">
+                    <li><a href="http://httpd.apache.org/docs/2.4/mod/mod_proxy.html">apache reverse proxy</a>&#160;filter (C source code package). Uses native filter under the hood.</li>
+                    <li><a href="https://f5.com/products/big-ip">F5 BIG-IP</a> (Note that integrating with F5 can be complex. If you want to use F5 then, in the first instance, please talk to us about it.) </li>
+                </ul>
+                <p>In addition, the following proxies feature unblu Filter integrations provided by unblu and / or the proxy distributor:</p>
+                <ul class="ul_1">
+                    <li><a href="http://www.adnovum.ch/en/solutions/" class="Hyperlink">AdNovum Nevis Proxy</a>
+                    </li>
+                    <li><a href="https://www.ergon.ch/en/offer/products" class="Hyperlink">Ergon Airlock Web Application Firewall</a>
+                    </li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Reverse Proxy Integration (Optional)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>unblu can be used with or without a reverse proxy but there are a number of general benefits to using a reverse proxy such as load balancing and security, and it allows you to remove the need for direct access to your servers.</p>
+                <p>The main benefit of integrating a reverse proxy, in the case of the unblu product, is that it allows you to use the unblu Filter. The unblu Filter can be used inside the filter chain of a reverse proxy to inject the unblu snippet dynamically and accommodate co-browsing-specific communication automatically.&#160;</p>
+                <p>For maximum security we recommend filter integration due to its ability to capture and secure resources (such as CSS, images, session-specific pdf).</p>
+                <p>For more on the unblu Filter see: <a href="The unblu Filter.htm">The unblu Filter</a> and <a href="Installing the unblu Filter.htm#_Installing_the_unblu">Installing the unblu Filter (Optional)</a></p>
+                <p>For more on configuring the reverse proxy see: <a href="../Server Security/Reverse Proxy Integration.htm">Reverse Proxy Integration</a> and <a href="Configuring Apache 2 Example.htm">Configuring Apache 2 (Example)</a></p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2>Limitations</h2>
+        <p>For a complete description of all embedded co-browsing limitations see: <a href="../Integration/Limitations of embedded Co-browsing.htm">Limitations of Embedded Co-Browsing</a></p>
+        <p>&#160;</p>
+    </body>
+</html>

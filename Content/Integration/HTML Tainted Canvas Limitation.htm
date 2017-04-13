@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="959" MadCap:lastWidth="1195">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>HTML Tainted Canvas Limitation</h1>
+        <p>The Website Requires A Canvas With Images from a Different Origin Which Does Not Allow Cross Origin Resource Sharing (CORS).</p>
+        <p>A canvas is considered 'tainted' by a browser if it has loaded images from a different origin that does not set the Access-Control-Allow-Origin header correctly. For security reasons, browsers block access to such tainted canvases and thus unblu cannot correctly process the contents of such a canvas.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>What do users see?</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The consultant sees a blank area where the contents of a tainted canvas would be.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Is it severe?</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Severity depends on how important the content of the canvas is for using the website or offering support. If it is an ad or something similar, then the co-browsing experience is not significantly affected. If the canvas contains important features of the website, those features will not be available for co-browsing.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Is there a workaround?</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Yes, in fact there are several:</p>
+                <p>- Enable Access-Control-Allow-Origin headers to correctly allow cross resource sharing on the Origin where the image is loaded from and programmatically set the image's crossOrigin property to “Anonymous” (i.e. in Javascript: var img = new Image(); img.src = "http://other-server.com/image.jpg"; img.crossOrigin = "Anonymous"; )</p>
+                <p>- Use your regular website server to also serve the corresponding images used in canvases.</p>
+                <p>- Use a proxy on your website server to proxy image requests to the 3rd party server.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>How do I detect this on a website?</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Canvases usually are used programmatically (i.e. with JavaScript) therefore there is no straightforward way to detect this issue. Consult with your Front-End Developers about this issue.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Further Information - Tainted Canvas</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Further information about tainted canvases is available at h<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image">ttps://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image</a></p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <p>&#160;</p>
+    </body>
+</html>

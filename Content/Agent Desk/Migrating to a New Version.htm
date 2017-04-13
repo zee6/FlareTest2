@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="3235" MadCap:lastWidth="1399">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Migrating to a New Version of unblu</h1>
+        <p>This section covers materials exclusive to the Super Admin and Admin roles. </p>
+        <p><span class="Bolder">Note:</span> This Migration section is only relevant for on-premises installations. Cloud migrations are performed automatically, without the need for any customer action.</p>
+        <p><span class="Bolder">Note:</span> Although the credentials for the Admin role allow them to see the Migration page we would strongly advise that any action taken here is at least overseen by the Super Admin. Missteps here can have serious and/or messy consequences.</p>
+        <p>From 4.2 onward unblu offers a new way to handle version migrations. In versions preceding 4.2 one could either use configuration files (default.properties and text.properties) or use a command line interface to set configuration and text values.</p>
+        <p>Version 4.2 now offers a GUI where you can copy and paste configurations and text in order to have those configuration and text values applied to the latest version.</p>
+        <p><span class="Bolder">Note:</span> Migration must be performed in single steps between each version. Thus, if you want to upgrade from 3.5 to 4.2 you must first migrate from 3.5 to 4.0, then 4.0 to 4.1 then 4.1 to 4.2.</p>
+        <p><span class="Bolder">Note:</span> You must migrate both the source configurations and the text in two separate steps.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Migrating Configuration Values</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <ol start="1" class="ol_1">
+                    <li>From the main menu select <span class="span_2">Settings &gt; Migration</span>.</li>
+                </ol>
+                <p>
+                    <img src="../Resources/Images/Agent_Desk_Pictures/Migrating to a New Version.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 300px;" class="img_1" />
+                </p>
+                <p><span class="Bolder">Note:</span> This procedure is the same for source and text settings (given that one uses&#160; different default.properties and text.properties files).</p>
+                <ol start="2" class="ol_1">
+                    <li>In <span class="Bolder">Config</span> select the appropriate <span class="Bolder">Version Steps</span> radiobutton.</li>
+                    <li>Paste the old configuration settings into the <span class="Bolder">Source</span> box.</li>
+                </ol>
+                <p>
+                    <img src="../Resources/Images/Agent_Desk_Pictures/Migrating to a New Version_1.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 300px;" class="img_1" />
+                </p>
+                <ol start="4" class="ol_1">
+                    <li>Click the <span class="Bolder">Migrate</span> button. </li>
+                </ol>
+                <p>
+                    <img src="../Resources/Images/Agent_Desk_Pictures/Migrating to a New Version_2.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 300px;" class="img_1" />
+                </p>
+                <p>In the picture above the version is already at 4.2. But this allows you to see that in the Protocol box we are getting messages that there are no changes and that the configuration should be kept.</p>
+                <ol start="5" class="ol_1">
+                    <li>Finally, when changes are required, and flagged in the Protocol box, copy the appropriate Destination values into your default.properties file.</li>
+                </ol>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Migrating Text Values</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <ol start="1" class="ol_1">
+                    <li>From the main menu select <span class="Bolder">Settings &gt; Migration</span>.</li>
+                </ol>
+                <p>
+                    <img src="../Resources/Images/Agent_Desk_Pictures/Migrating Text Values.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 300px;" class="img_1">
+                    </img>
+                </p>
+                <p><span class="Bolder">Note:</span> This procedure is the same for source and text settings (given that one uses&#160; different default.properties and text.properties files).</p>
+                <ol start="2" class="ol_1">
+                    <li>In Text select the appropriate <span class="Bolder">Version Steps</span> radiobutton.</li>
+                    <li>Paste the old text settings into the <span class="Bolder">Source</span> box.</li>
+                </ol>
+                <p>
+                    <img src="../Resources/Images/Agent_Desk_Pictures/Migrating Text Values_1.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 300px;" class="img_1">
+                    </img>
+                </p>
+                <ol start="4" class="ol_1">
+                    <li>Click the <span class="Bolder">Migrate</span> button. </li>
+                </ol>
+                <p>
+                    <img src="../Resources/Images/Agent_Desk_Pictures/Migrating Text Values_2.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 300px;" class="img_1">
+                    </img>
+                </p>
+                <p>In the picture above the version is already at 4.2. But this allows you to see that in the Protocol box we are getting messages that there are no changes to the first text configuration and it should be kept, and that the second change has been verified to be dropped.</p>
+                <ol start="5" class="ol_1">
+                    <li>Finally, when changes are required, and flagged in the Protocol box, copy the appropriate Destination values into your text.properties file.</li>
+                </ol>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <p>&#160;</p>
+    </body>
+</html>

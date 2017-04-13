@@ -1,0 +1,435 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultGlossary>
+  <GlossaryEntry
+    glossTerm="Glossary.Term0"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>On-premises</Term>
+    </Terms>
+    <Definition
+      Link="">An 'on-site' integration. That is: Not a cloud integration (unless the customer implements their own cloud solution).</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term1"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>Resource History</Term>
+    </Terms>
+    <Definition
+      Link="">The Resource History replicates resources in order that the agent can see everything in the visitor browser.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term2"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>Embedded Co-browsing</Term>
+    </Terms>
+    <Definition
+      Link="">Embedded co-browsing captures the visitor browser DOM within a defined domain scope.  Ensures that the agent browser never has to access the organization backend. All communication with the agent browser is done through the unblu server and the unblu server only ‘sees’ the objects that have been previously uploaded by the filter.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term3"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>Co-browsing</Term>
+    </Terms>
+    <Definition
+      Link="">The joint navigation through the World Wide Web by two or more people accessing the same web pages at the same time.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term4"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>Universal Co-browsing</Term>
+    </Terms>
+    <Definition
+      Link="">Where a headless browser runs on our server inside the rendering service and we render the graphical output to both the agent and visitor.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term5"
+    TermClass=""
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>Blob</Term>
+    </Terms>
+    <Definition
+      Link="">A Binary Large OBject (BLOB) is a collection of binary data stored as a single entity in a database management system. Blobs are typically images, audio or other multimedia objects, though sometimes binary executable code is stored as a blob.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term6"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>Visitor</Term>
+    </Terms>
+    <Definition
+      Link="">The user requiring co-browsing for assistance. (client, end-user, recorder). 'Recorder' means the visitor's browser is "recording" the Document Object Model (DOM).</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term7"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>Co-visitor</Term>
+    </Terms>
+    <Definition
+      Link="">The Support or Sales agent providing assistance to the visitor. We sometimes also call the co-visitor an "agent". (Also; supporter, agent, consultant.)</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term8"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>Capture</Term>
+    </Terms>
+    <Definition
+      Link="">Used in Enterprise Line product context. This is the data recorded in the visitor's browser and transferred via unblu server to the co-visitor.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term9"
+    Stem=""
+    IgnoreCase="false">
+    <Terms>
+      <Term>PIN</Term>
+    </Terms>
+    <Definition
+      Link="">Or PIN code: The identifier that matches visitor with co-visitor and brings them together into a co-browsing session. This identifier typically has 4 digits and is given to the visitor by the agent. Typically, the agent gives the visitor the PIN code over the phone. The visitor then enters the code to start the co-browsing session. (Also: token, security number, pin)</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term10"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>Joint view vs Sharing</Term>
+    </Terms>
+    <Definition
+      Link="">A "joint view" of a document means that all co-browsing participants are able to see the same document at the same time. Navigation, scrolling, clicking, etc., are updated for all participants, simultaneously.
+"Sharing" a document means that all participants of a co-browse session can receive the same document. This could be a Word or PDF document that all participants are able to view on their respective desktops.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term12"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>Headless browser</Term>
+    </Terms>
+    <Definition
+      Link="">A headless browser is a web browser without a graphical user interface. Headless browsers provide automated control of a web page in an environment similar to popular web browsers, but are executed via a command-line interface or using network communication.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term13"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>SSL</Term>
+    </Terms>
+    <Definition
+      Link="">(Secure Sockets Layer) is the standard security technology for establishing an encrypted link between a web server and a browser. This link ensures that all data passed between the web server and browsers remain private and secure.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term14"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>Hierarchy</Term>
+    </Terms>
+    <Definition
+      Link="">A system of ranking and organizing things or people, where each element of the system (except for the top element) is subordinate to a single other element.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term15"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>Filter</Term>
+    </Terms>
+    <Definition
+      Link="">A computer program or subroutine to process a stream, producing another stream. While a single filter can be used individually, they are frequently strung together to form a pipeline.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term16"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>Reverse proxy</Term>
+    </Terms>
+    <Definition
+      Link="">A  type of proxy server that retrieves resources on behalf of a client from one or more servers. These resources are then returned to the client like they originated from the proxy server itself. Contrary to a forward proxy, which is an intermediary for its associated clients to contact any server, a reverse proxy is an intermediary for its associated servers to be contacted by any client.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term17"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>Cloud</Term>
+    </Terms>
+    <Definition
+      Link="">A type of Internet-based computing that provides shared computer processing resources and data to computers and other devices on demand. It is a model for enabling ubiquitous, on-demand access to a shared pool of configurable computing resources (e.g., computer networks, servers, storage, applications and services) which can be rapidly provisioned and released with minimal management effort.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term18"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>TCP</Term>
+    </Terms>
+    <Definition
+      Link="">The Transmission Control Protocol (TCP) is one of the main protocols of the Internet protocol suite. It originated in the initial network implementation in which it complemented the Internet Protocol (IP). Therefore, the entire suite is commonly referred to as TCP/IP. TCP provides reliable, ordered, and error-checked delivery of a stream of octets between applications running on hosts communicating by an IP network.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term19"
+    Stem=""
+    IgnoreCase="false">
+    <Terms>
+      <Term>EAR</Term>
+    </Terms>
+    <Definition
+      Link="">Enterprise Application aRchive: a file format used by Java EE for packaging one or more modules into a single archive so that the deployment of the various modules onto an application server happens simultaneously and coherently. It also contains XML files called deployment descriptors which describe how to deploy the modules.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term20"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>SSO</Term>
+    </Terms>
+    <Definition
+      Link="">Single sign-on: A property of access control of multiple related, but independent software systems. With this property, a user logs in with a single ID and password to gain access to a connected system or systems without using different usernames or passwords</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term21"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>LiveView Chat</Term>
+    </Terms>
+    <Definition
+      Link="">Provides a secure, visual representation of the visitor browser. Fundamentally the most secure option as it is impossible for agents to manipulate the visitor's browser, nor to control the visitor's pointing device.The agent can only watch and chat.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term22"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>Video chat</Term>
+    </Terms>
+    <Definition
+      Link="">Allows the agent and visitor the possibility to see and talk to each other in real time.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term23"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>Document sharing</Term>
+    </Terms>
+    <Definition
+      Link=""></Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term24"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>Admin desk</Term>
+    </Terms>
+    <Definition
+      Link="">The agent desk. The interface where agents and supervisors and admins do their daily work.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term25"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>Chat</Term>
+    </Terms>
+    <Definition
+      Link="">Both visitor and agent can enter text into a box then send that text to each other.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term26"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>Document co-browsing</Term>
+    </Terms>
+    <Definition
+      Link=""></Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term27"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>Privacy mode</Term>
+    </Terms>
+    <Definition
+      Link="">In private mode the other party can no longer follow activity. Useful when clients want the agent's view masked.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term28"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>Canned responses</Term>
+    </Terms>
+    <Definition
+      Link="">Allows agents to prepare short scripts and standard responses.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term29"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>Snippet</Term>
+    </Terms>
+    <Definition
+      Link="">A small region of re-usable source code, machine code, or text. It allows the user to avoid repetitive typing in the course of routine edit operations.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term30"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>DNS</Term>
+    </Terms>
+    <Definition
+      Link="">A  hierarchical decentralized naming system for computers, services, or other resources connected to the Internet or a private network. It associates various information with domain names assigned to each of the participating entities. It translates more readily-memorized domain names to the numerical IP addresses needed for locating and identifying computer services and devices with the underlying network protocols.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term31"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>Domain</Term>
+    </Terms>
+    <Definition
+      Link="">A distinct subset of the Internet with addresses sharing a common suffix or under the control of a particular organization or individual.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term32"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>Configuration files</Term>
+    </Terms>
+    <Definition
+      Link="">Configuration files, or config files configure the parameters and initial settings.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term33"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>Docker</Term>
+    </Terms>
+    <Definition
+      Link="">An open-source project that automates the deployment of applications inside software container: Contains everything it needs to run: code, runtime, system tools, system libraries – anything you can install on a server. This guarantees that it will always run the same, regardless of the environment it is running in.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term34"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>WAR</Term>
+    </Terms>
+    <Definition
+      Link="">A WAR file (or Web application ARchive is a JAR file used to distribute a collection of JavaServer Pages, Java Servlets, Java classes, XML files, tag libraries, static web pages (HTML and related files) and other resources that together constitute a web application.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term35"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>JAR</Term>
+    </Terms>
+    <Definition
+      Link="">A JAR (Java ARchive) is a package file format typically used to aggregate many Java class files and associated metadata and resources (text, images, etc.) into one file for distribution.JAR files are archive files with which include a Java-specific manifest file. They are built on the ZIP format and typically have a .jar file extension.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term36"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>WJAR</Term>
+    </Terms>
+    <Definition
+      Link="">A '.WAR' file: Called a WJAR because it is a a valid .war file but can also be started directly as if it were a jar file (with something like java -jar unblu.war).</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term37"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>Agent desk</Term>
+    </Terms>
+    <Definition
+      Link="">The graphical  interface where agents control sessions and engage with visitors. The workspace where the daily work gets done, and where processes can be define and parameters configured.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term38"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>Session forwarding</Term>
+    </Terms>
+    <Definition
+      Link="">Allows all agents, regardless of role, to forward sessions to either another agent or another team.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term39"
+    Stem=""
+    IgnoreCase="false">
+    <Terms>
+      <Term>API</Term>
+    </Terms>
+    <Definition
+      Link="">An Application Programming Interface (API) is a set of subroutine definitions, protocols, and tools for building application software. In general terms, it is a set of clearly defined methods of communication between various software components. When used in the context of web development, an API is typically defined as a set of Hypertext Transfer Protocol (HTTP) request messages, along with a definition of the structure of response messages, which is usually in an Extensible Markup Language (XML) or JavaScript Object Notation (JSON) format.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term40"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>APIKey</Term>
+    </Terms>
+    <Definition
+      Link="">A code passed by computer programs calling an application programming interface (API) to identify the calling program, its developer, or its user to the Web site. The API key often acts as both a unique identifier and a secret token for authentication, and will generally have a set of access rights on the API associated with it.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term41"
+    Stem=""
+    IgnoreCase="false">
+    <Terms>
+      <Term>JEE</Term>
+    </Terms>
+    <Definition
+      Link="">Java Platform, Enterprise Edition or Java EE is a widely used computing platform for development and deployment of enterprise software (network and web services). providing an API for object-relational mapping, distributed and multitier architectures, and web services. The platform incorporates a design based largely on modular components running on an application server.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term42"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>Trusted header</Term>
+    </Terms>
+    <Definition
+      Link="">When you use trusted headers, the identity router acts as a proxy server to protect applications from unauthorized access. The applications that use trusted headers determine user access by evaluating user identification data that they receive from the identity router. This data is provided in messages containing HTTP headers that the application trusts.</Definition>
+  </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term43"
+    Stem=""
+    IgnoreCase="false">
+    <Terms>
+      <Term>DOM</Term>
+    </Terms>
+    <Definition
+      Link="">The Document Object Model (DOM) is a cross-platform and language-independent application programming interface that treats an HTML, XHTML, or XML document as a tree structure wherein each node is an object representing a part of the document. The objects can be manipulated programmatically and any visible changes occurring as a result may then be reflected in the display of the document.</Definition>
+  </GlossaryEntry>
+</CatapultGlossary>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="808" MadCap:lastWidth="1425">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h2 class="Heading2">Resource Histories</h2>
+        <p>The Resource History is a temporary cache of all data (DOM, CSS, images, etc) generated during an <a href="In Context Sessions.htm">in-context session</a>. The Resource History is the filter-related functionality that ensures that everything seen in the visitor browser can be seen in the agent browser. If you picture the Resource History as more than just a cache but as a replication machine, or resource replicator, that ensures everything (all resources) in the visitor browser can be replicated on the agent browser, securely, then you will better understand whether or not you require the unblu Filter’s Resource History functionality (in order that your agents can see what the visitor sees, seamlessly and securely).</p>
+        <p>One of the main purposes of the filter is to capture the traffic coming from the organization’s backend. The Document Object Model (DOM) is captured by the JavaScript in the visitor browser and the filter captures resources such as Cascading Style Sheets (CSS), images and PDFs, and uploads them. </p>
+        <p>Everything is passed through the unblu Filter to the unblu Collaboration Server then to the Agent Desk browser, thus ensuring security and enhancing compliance.</p>
+        <p>When a co-browsing session is started and the visitor browser requests images from your organization’s backend, the filter is triggered as soon as the response arrives at the proxy. So, while the backend is supplying images to the visitor browser, the filter duplicates that content and uploads it to the unblu Collaboration Server (which then passes it to the agent browser).</p>
+        <p><span class="Bolder">Note:</span> Without the presence of the unblu Filter within the filter chain it is impossible to view session-specific data. The absence of the filter will not break the session but any image content generated specifically for that session will simply not appear in the Agent’s browser.</p>
+        <p><span class="Bolder">Note:</span> The filter may be required if the agent browser is unable to access images or stylesheets from the agent's location.</p>
+        <p><span class="Bolder">Note:</span> The default behavior is that the DOM and image data is stored in temporary memory for the duration of a session. It is not stored permanently.</p>
+        <ul class="ul_1">
+            <li class="li_1">The Resource History is: A cache of all data generated during an in-context session. </li>
+            <li class="li_1">An in-context session uses a method we call ‘Embedded Co-browsing’.</li>
+            <li class="li_1">Embedded co-browsing may require the unblu Filter.</li>
+        </ul>
+        <p class="p_8">For more on Resource Histories see: <a href="Resource Histories Technical.htm">Resource Histories Technical Detail</a></p>
+    </body>
+</html>

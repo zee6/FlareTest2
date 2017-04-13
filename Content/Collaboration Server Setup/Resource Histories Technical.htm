@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="8" MadCap:lastHeight="5117" MadCap:lastWidth="1573">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1 class="Heading1">Resource Histories Technical Detail</h1>
+        <p>In unblu, resources represent pieces of data which are (usually) not directly contained in a visual but referenced from it (using a URI). Typical resource types are binary resources like images, documents (pdf, doc, etc.) or multimedia content (videos, audio, etc.). Besides those, also textual resources - e.g., style sheet (CSS) files - and theoretically even HTML itself can be classed as resources.</p>
+        <p>There are some exceptions to this rule:</p>
+        <p>The following styles are typically directly contained in a visual and then transformed into resources on the unblu server side:</p>
+        <ul class="ul_2">
+            <li class="li_3">Styles in HTML attributes </li>
+            <li class="li_5">Styles in &lt;style&gt; tags </li>
+        </ul>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Resource Storage and Access</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>An unblu resource consists of two parts:</p>
+                <ol start="1" class="ol_1">
+                    <li class="li_5">The resource itself.</li>
+                    <li class="li_5">The data contained - called a blob (binary large object).</li>
+                </ol>
+                <p class="p_17"><span class="Bolder">Note:</span> The word ‘blob’ is a ‘backronym’. The data type ‘blob’ described data too large and diverse to be managed on older systems. The name was originally taken from the 1958 film of the same name. Current computer systems now can handle such large files easily, thus the&#160;blob was designated the Binary Large Object retrospectively, when it became a viable technology.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>The Resource Object</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The resource object provides the following information:</p>
+                <ul class="ul_1">
+                    <li class="li_5">uuid representing the resource</li>
+                    <li class="li_5">uri of the original resource</li>
+                    <li class="li_5">mime type</li>
+                    <li class="li_5">charset (if textual resource)</li>
+                    <li class="li_5">state (can be PENDING, REQUESTING, REQUESTED, INVALID, MATERIALIZED, DELIVERABLE)</li>
+                    <li class="li_5">origin (can be CSS_PROPERTY, CSS_IMPORT, STYLE_ATTRIBUTE, TAG, OTHER)</li>
+                    <li class="li_5">reference to a blob containing the actual data of the resource</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>The Blob Object</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>A ‘blob’ contains the actual data of the resource. There are two kinds of blobs:</p>
+                <ol start="1" class="ol_1">
+                    <ol>
+                        <li>Basic blob (or just blob).</li>
+                        <li>Typed blob (based on a basic blob).</li>
+                    </ol>
+                </ol>
+                <p>In addition there exists a “dummy” blob, which is marked with a specific id: ]</p>
+                <p class="CODE">d2874f28-96e3-416b-bfed-ecb932b064fa</p>
+                <p>The purpose of this (dummy) blob is to indicate that there is ‘no data available’. The dummy blob is used in resources, where the blob is not available (yet).</p>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot>Basic Blob</MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>Information provided by basic blobs:</p>
+                        <ul class="ul_1">
+                            <li class="li_5">Checksum (currently a CRC32 checksum)</li>
+                            <li class="li_5">Length (in bytes)</li>
+                            <li class="li_6" style="font-weight: normal;">creation date</li>
+                            <li class="li_6" style="font-weight: normal;">binary data</li>
+                        </ul>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot>Typed blob</MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>Information provided by typed blobs:</p>
+                        <p>same as blob plus:</p>
+                        <ul class="ul_1">
+                            <li class="li_6" style="font-weight: normal;">id</li>
+                            <li class="li_6" style="font-weight: normal;">mime type</li>
+                        </ul>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Storage</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>‘Resource storage’ is split into three areas:</p>
+                <ul class="ul_1">
+                    <p>Resource store</p>
+                    <p>Blob store</p>
+                    <p>Resource table</p>
+                </ul>
+                <p>The first two refer to their respective objects (see above). The resource table is the resolution table when looking for resources with a known backend URI (but not a UUID). By default, all three stores are located in memory. The resource and resource table stores have session scope - that is, their content is ‘dropped’ when the unblu session ends. The blob store on the other hand is global - thus the same resources in multiple sessions are stored only once in memory.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Resource Request URI</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>When the Resource History is turned off, URIs arriving at the agent browser directly point to the original image / element of the original backend webserver. Such URIs are directly requested by the agent browser.</p>
+                <p>On the other hand, when the Resource History is turned on, visuals arriving at the agent browser do not contain URIs pointing to the original backend webserver. Instead, the URIs are converted to a specific format pointing to the unblu server.</p>
+                <p>Resource URI with the Resource History turned on:</p><pre class="prettyprint">http://unbluserver/&lt;restricted-path-prefix&gt;/player/resource/res/&lt;blob-uuid&gt;#&lt;resource-uuid&gt;</pre>
+                <p>Example:</p><pre class="prettyprint">http://localhost:7777/unblu/player/resource/res/d38fb660-2b62-4364-8a5b-2fe76de5e78f#8a17c8b5-7b6e-4dc1-a141-5664e6eec307</pre>
+                <p>Note that the resource-UUID is never sent to the unblu server when the resource is requested from an agent browser, since the so called ‘fragment’ is only used in the browser. The reason to have it in our URIs is that it is appended, e.g., in a URI contained in a CSS. Thus, if the CSS is parsed on the server, the resource UUID can be extracted and the relevant information (especially inbound / outbound references) retrieved and processed. As soon as the CSS arrives at the agent browser, the browser will request the CSS but without the resource UUID – (in fact, the resource UUID is not required).</p>
+                <p>The fact that it is actually the blob being retrieved and not the surrounding resource is important. Since blobs are stored only once, the agent browser also only has to retrieve them once (and then have them locally cached). If there are many resources (e.g., many URIs) with the same content (blob) then caching is extremely effective. In extreme cases it is possible that the agent browser can load a web page faster than the visitor browser. This can happen if the original webpage contains hundreds of images with differing URIs but always the same data. In the agent browser, all of those resources would have the same blob, resulting in the same URI and thus would be retrieved only once.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2>Activating Resource Histories</h2>
+        <p>
+In unblu, resources are handled fundamentally differently depending on whether the Resource History is turned on or off. The purpose of the Resource History (when turned on) is to store all resources that are visible on the visitor browser.  </p>
+        <p>The main reason for doing this is to check, validate, and filter resources that will be displayed on the agent browser. </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>How to Activate Resource History</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>In your unblu properties file, add the following line:</p><pre class="prettyprint">com.unblu.visual.resourcehistory.enabled=true</pre>
+                <p class="p_19">The following configuration is optional: If set to true, missing resources will be loaded by the unblu server and thus require the unblu server to be able to access the backend web server (which is not always desired or possible).</p><pre class="prettyprint">#com.unblu.visual.resourcehistory.loadMissingFromBackend=false</pre>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Behaviour with the Resource History switched off</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p class="p_20">Without the Resource History enabled, resource URIs in visuals are left as-is and transferred unchanged from the visitor browser to the agent browser. Thus, the resources themselves are not transferred to the unblu server nor are they stored somewhere. Instead, the agent browser will request the resource directly from the original backend web server on demand.</p>
+                <p class="p_20"><span class="Bolder">Note</span>: Even though the URIs remain as-is in the visitor browser, they are checked on the unblu server and only let through if they correctly point to a resource on the backend webserver. Thus, it is not possible to ‘inject’ a link to some obscure resource on some unknown web server, or at least, this resource will not be requested by the agent’s browser.</p>
+                <p class="p_20"><span class="Bolder">Note</span>: This is the fastest way to access resources.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Behaviour with the Resource History switched on</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p class="p_20">With the Resource History turned on, the agent browser only interacts with the unblu server. There is nothing requested from anywhere else. All resources thus must be uploaded to the unblu server once they are discovered in a visual (e.g., as an image or stylesheet link tag).</p>
+                <p class="p_20">This configuration provides the maximum level of security. If the visitor’s browser sends a link to some other file, the agent’s browser will not be able to resolve that resource - that is, it will request the resource from the unblu server which has no such resource and returns a ‘404 not found’ message.</p>
+                <p class="p_20">Note that browser caching is a problem for this approach. Typically, resources are transferred to unblu, e.g., from a reverse proxy where all data to the end user is flying by. Usually, traffic is only monitored by unblu once an unblu session has been started. That means that it may well happen that an end user surfs on the web site, retrieves images and stylesheets and has them stored in his browser cache from that moment on. Once the unblu session starts, the resources no longer fly by the reverse proxy and thus do not get transferred to unblu. Unblu will detect this and send the visitor browser commands to re-request such files. However, this behaviour may take some time and thus, the performance is typically slower with the Resource History enabled than without.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Resource Processing</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Depending on the resource type, a resource will be ‘processed’ prior to being used or it is used in its raw / original form. A typical (and currently the only) processor is the CSS processor.</p>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot>CSS Processor</MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>The main purpose of the CSS processor is to identify URI reference locations and convert them to unblu resource URIs. The unblu server features two kinds of CSS processors:</p>
+                        <ol start="1" class="ol_1">
+                            <li class="li_7">Full CSS parser-based</li>
+                            <li class="li_7">‘Simple’ regex-based</li>
+                        </ol>
+                        <p>The ‘Full CSS parser-based’ processor is used when the Resource History is turned on. Basically, it simulates a CSS parser as present in the browser and filters the CSS. The full CSS parser thus not only scans for URIs, in addition it also drops unknown / unsafe / problematic CSS rules.</p>
+                        <p>The ‘Simple regex-based’ CSS processor only scans for URIs and verifies / replaces them.</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot>Dependency Processing</MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>Resources can have incoming (inbound) or outgoing (outbound) references. A CSS resource, for example, can have outbound references to background images and inbound references to HTML files or other CSS resources.</p>
+                        <p class="p_20">These references have an impact once a resource changes. Resources can have the following states:</p>
+                        <ul class="ul_1">
+                            <li class="li_7">PENDING: A resource with a certain URI has been seen, e.g., in a visual, but is not present in the resource store. It is expected to arrive on the unblu server later on.</li>
+                            <li class="li_7">REQUESTING: A resource is supposed to have arrived on the server but did not arrive (so far). It is requested from the unblu client again.</li>
+                            <li class="li_7">REQUESTED: A missing resource has been requested.</li>
+                            <li class="li_7">INVALID: A missing resource is invalid - e.g., not available, 404 or similar.</li>
+                            <li class="li_7">MATERIALIZED: A resource has arrived but may need processing.</li>
+                            <li class="li_7">DELIVERABLE: A resource has arrived and has been processed. It is ready for delivery.</li>
+                        </ul>
+                        <p class="p_20">If a resource changes its state, e.g., from PENDING to DELIVERABLE, it typically includes changes in its data (that is, the contained blob has changed). If the blob changes, the URIs in visuals (and possible dependent resources, like CSS files) need to be updated. Thus, a status update always leads to a cascade of resource updates which, in the simplest case, means there is nothing to do (no dependencies) or, for example, if a picture changes this can lead to reprocessing of the imported CSS, the default CSS, as well as the part of the visual where the default CSS was included in the HTML.</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <p>&#160;</p>
+    </body>
+</html>

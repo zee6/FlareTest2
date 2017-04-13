@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="4300" MadCap:lastWidth="1160">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1><a name="top"></a>Settings</h1>
+        <p>Settings are basically ‘switches’. Many are actual binary switches (on, off) and can be enabled/disabled by checking a box. Some are fields that either contain, or have the ability to contain IP addresses, text (e.g., en for English or de for German), numbers or lists.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="Settings2"></a>Settings &gt; … &gt; Settings</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>There are three places where those settings can be accessed and edited:  </p>
+                <p><span class="Bolder">Settings &gt; User profile &gt; Settings</span>  Allows editing&#160; for individual users</p>
+                <p><span class="Bolder">Settings &gt; Account &gt; Settings</span>  Allows editing at the Account level</p>
+                <p><span class="span_2">Settings &gt; </span><span class="span_2">Global</span>  Allows editing at the Global level</p>
+                <ul class="ul_1">
+                    <li>Settings are hierarchical. If you are not a Super Admin you will only see a subset of the available settings that are relevant to your role.</li>
+                    <li>Registered users only see, and only have edit privileges on a very small number of self-explanatory configuration items. This number increases as one moves up the hierarchy.</li>
+                    <li>Basic mode: Note first that there is nothing in the interface that says ‘basic’. This is because ‘basic’ is the default. What you do see is an ‘Advanced’ button.</li>
+                    <li>In Basic mode (that is; you have not clicked the Advanced button and are therefore in ‘basic’ mode) simply hover over an item to see a description of that configuration value’s function.</li>
+                </ul>
+                <p>Here is a picture of a typical registered user’s settings in the User Profile. Note that there are only two configuration items displaying. All other values have been set by a role higher up in the hierarchy (and those values propagate downwards, invisibly). Therefore, configuration is kept almost entirely out of the Registered user’s scope.</p>
+                <p>
+                    <img src="../Resources/Images/Agent_Desk_Pictures/Settings Settings.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 300px;" class="img_1" />
+                </p>
+                <p>Hover the cursor over an item to see a description.</p>
+                <p>
+                    <img src="../Resources/Images/Agent_Desk_Pictures/Settings Settings_1.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 300px;" class="img_1" />
+                </p>
+                <p>
+                    <img src="../Resources/Images/Agent_Desk_Pictures/Settings Settings_2.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 300px;" class="img_1" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="Settings"></a>Settings in Advanced Mode</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>For a Registered user or Supervisor there is probably no need to use the Advanced button at all. But when we move up the hierarchy through Admin to Super Admin the need for an Advanced mode becomes clearer.</p>
+                <p>Here are the same two pictures when seen from the perspective of an Admin user in Advanced mode. Select <span class="Bolder">Settings &gt; User profile &gt; Settings</span> then click the <span class="Bolder">Advanced</span> button.</p>
+                <p>
+                    <img src="../Resources/Images/Agent_Desk_Pictures/Settings Settings_3.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 300px;" class="img_1" />
+                </p>
+                <p>
+                    <img src="../Resources/Images/Agent_Desk_Pictures/Settings Settings_4.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 300px;" class="img_1" />
+                </p>
+                <p>Note that the Advanced mode provides a lot more information. In truth, even an Admin user would probably only need the basic description but Super Admins will need to access this more granular information.</p>
+                <p>Below are some more examples that are a little easier to understand. The picture below lists all the languages that have been selected in the boxes and tells us that these settings are inherited from the default settings.</p>
+                <p>
+                    <img src="../Resources/Images/Agent_Desk_Pictures/Settings Settings_5.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 300px;" class="img_1" />
+                </p>
+                <p>Another example (below) shows what an Admin user sees when they use the Advanced mode to examine whether their configuration allows navigation on Secure Sockets Layer (SSL) sites.</p>
+                <p>The graphic was cut from <span class="Bolder">Settings &gt; User profile &gt; Settings</span>. Now click the <span class="Bolder">Advanced</span> button and scroll down (only Admin users and above will see this item) to <span class="Bolder">Universal Co-Browsing Settings</span> then hover over the item <span class="Bolder">Allow navigation to SSL sites</span>.</p>
+                <p>
+                    <img src="../Resources/Images/Agent_Desk_Pictures/Settings Settings_6.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 300px;" class="img_1" />
+                </p>
+                <p>This Advanced information tells us, among other things, that the default value is false (switched off) but it has been changed at the Account level to true (switched on). </p>
+                <p>Here is the same picture taken from within the same user (Admin) account with the same role but viewing it from the ‘Account’ level. <span class="Bolder">Settings &gt; Account &gt; Settings</span>.</p>
+                <p class="p_8">
+                    <img src="../Resources/Images/Agent_Desk_Pictures/Settings Settings_7.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 300px;" class="img_1" />
+                </p>
+                <p>The picture, taken from higher up the hierarchy (<span class="Bolder">Settings &gt; Account</span>), no longer tells us where the configuration was changed. This means that we can sometimes get a little more information by looking at the lower levels of the hierarchy where the (upstream) ‘source’ of changes may be viewable.</p>
+                <p><span class="Bolder">Note:</span> To get back into ‘basic’ mode click the <span class="Bolder">Advanced</span> button again. There is no text to indicate which mode you are currently in but the Advanced mode always has filters along the top of the page.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+    </body>
+</html>

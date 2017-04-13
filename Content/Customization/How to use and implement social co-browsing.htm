@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="2370" MadCap:lastWidth="1196">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>How to use and implement social co-browsing</h1>
+        <p><i>The full example implementation can be downloaded from here:</i> <a href="https://dev.unblu.com/confluence/download/attachments/102794247/JSC-9.zip?version=1&amp;modificationDate=1475240315000&amp;api=v2">JSC-9.zip </a>.<i> unblu version: 4.x.x (unblu 4 or above). The example must be uploaded to an Apache server, or similar, in order to work correctly.</i></p>
+        <p>This example demonstrates how you can use and implement unblu social co-browsing. When you use the social co-browsing feature, the way the agent interacts with the visitor, in terms of generating the PIN, is reversed (or somewhat inverted). That is; normally, a PIN code is generated on the agent side and the visitor uses the PIN code to join the session. However, when using the social co-browsing feature the session is started on the visitor side, then the PIN is generated on the visitor side and the url/PIN would be transferred to the agent in order for the agent to join the session.</p>
+        <p>
+            <img src="../Resources/Images/Customization/JSC-9-2.PNG" style="mc-thumbnail: popup;mc-thumbnail-max-height: 200px;" />
+        </p>
+        <p>After clicking <span class="Bolder">Start Co-Browsing</span> the following displays.</p>
+        <p>
+            <img src="../Resources/Images/Customization/JSC-9-1.PNG" style="mc-thumbnail-max-height: 200px;mc-thumbnail: popup;" />
+        </p>
+        <p>A Social co-browsing session has been created.</p>
+        <p>After this, a link will be generated with the location on the server, which you can use to invite another participant to the session.</p>
+        <p>
+            <img src="../Resources/Images/Customization/JSC-9-3.PNG" style="mc-thumbnail: popup;mc-thumbnail-max-height: 200px;" />
+        </p>
+        <p><span class="Bolder">Note: </span>Any of the file/object/function names can be changed according to your needs.</p>
+        <ol>
+            <li>Create an HTML page which includes one activation element and one 'p', or any element that can be used to display information later.</li>
+            <li>Create a JavaScript file called <span class="Bolder">'snippet.js' </span>and paste the snippet into it. The snippet can be found in your account at <a href="http://www.unblu.com/">www.unblu.com</a>. (<span class="Bolder">unblu.com -&gt; myunblu -&gt; administer account -&gt; integration section</span>.)</li>
+        </ol>
+        <p>Keep in mind that the snippet should be placed after the last &lt;meta&gt; tag in the &lt;head&gt; section, but before any other script. <span class="Bolder">All of the other JSAPI-consuming scripts must only appear after the snippet.</span></p>
+        <ol MadCap:continue="true">
+            <li>Include the snippet in your HTML file inside the &lt;head&gt; tag (using the appropriate location of the actual <span class="Bolder">'snippet.js'</span> file within your project tree).</li>
+        </ol><pre class="prettyprint">&lt;script type="text/javascript" src="js/snippet.js"&gt;&lt;/script&gt;</pre>
+        <ol MadCap:continue="true">
+            <li>Create an empty JavaScript file and include it in your HTML page after the &lt;body&gt; tag. The unblu Start Session dialog is triggered by the function in this file.</li>
+        </ol><pre class="prettyprint">&lt;script type="text/javascript" src="js/main.js"&gt;&lt;/script&gt;</pre>
+        <ol MadCap:continue="true">
+            <li>Inside <span class="Bolder">'main.js'</span> declare the <span class="Bolder">'loadCobrowsing'</span> function, which gets the unblu API and then activates the unblu social co-browsing using<span class="Bolder"> 'unbluAPI.core.visitor.socialbrowsing.SocialBrowsing.startSession()'</span>.</li>
+        </ol>
+        <p>Using the <span class="Bolder">'SocialBrowsing.startSession' </span>function on line (1) you can start a social-browsing session using our API.</p>
+        <p>Then on line (4) you need to use <span class="Bolder">'addParticipant()'</span> to add a participant to this session.</p>
+        <p>Following this at line (7) fill the paragraph in the HTML with the social browsing invitation link.</p><pre class="prettyprint">unbluAPI.core.visitor.socialbrowsing.SocialBrowsing.startSession(
+  "testSession", {
+    onSuccess : function(sessionInfo) {
+        unbluAPI.core.visitor.socialbrowsing.SocialBrowsing.addParticipant("agent", {
+              onSuccess: function(invitationInfo) {
+              console.log(invitationInfo.invitationLink);
+              document.getElementById("entryURL").innerHTML = invitationInfo.invitationLink;
+            },
+              onFailure: function(err) {
+                  console.log(err.message);
+              }
+           });
+    },
+    onFailure : function(err) {
+      console.log("Fail starting session!" + err.message);
+      // verifying cobrowsing availabililty failed fundamentally.
+      // Unblu api is not available
+    }
+ 
+  });</pre>
+        <p>&#160;</p>
+    </body>
+</html>

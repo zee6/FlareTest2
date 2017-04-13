@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Generiert durch Microsoft Visio 11.0, SVG Export, v1.0 unblu_integration_cloudoverview.svg CloudSetup -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="5.4375in" height="3.875in" viewBox="0 0 391.5 279"
+		xml:space="preserve" color-interpolation-filters="sRGB" class="st13">
+	<v:documentProperties v:langID="1033" v:metric="true" v:viewMarkup="false"/>
+
+	<style type="text/css">
+	<![CDATA[
+		.st1 {fill:none}
+		.st2 {stroke:#919191;stroke-linecap:butt;stroke-width:2}
+		.st3 {fill:#000000;font-family:Calibri;font-size:1.00001em}
+		.st4 {fill:#ffffff;stroke:#919191;stroke-linecap:butt;stroke-width:1.5}
+		.st5 {font-size:1em}
+		.st6 {stroke:#919191;stroke-dasharray:2,4;stroke-linecap:butt;stroke-width:2}
+		.st7 {stroke:#ff9900;stroke-dasharray:2,4;stroke-linecap:butt;stroke-width:2}
+		.st8 {fill:#ffffff;stroke:#919191;stroke-linecap:butt;stroke-width:3}
+		.st9 {fill:#ffffff;stroke:#fba832;stroke-linecap:butt;stroke-width:3}
+		.st10 {fill:#777879;stroke:none;stroke-linecap:butt;stroke-width:2.91429}
+		.st11 {fill:#f7981d;stroke:none;stroke-linecap:butt;stroke-width:2.91429}
+		.st12 {fill:#000000;font-family:Calibri;font-size:0.833336em}
+		.st13 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<g v:mID="0" v:index="1" v:groupContext="foregroundPage">
+		<title>CloudSetup</title>
+		<v:pageProperties v:drawingScale="1" v:pageScale="1" v:drawingUnits="19" v:shadowOffsetX="9" v:shadowOffsetY="-9"/>
+		<v:layer v:name="Verbinder" v:index="0"/>
+		<g id="shape73-1" v:mID="73" v:groupContext="shape" transform="translate(18,-36)">
+			<title>Tabelle.73</title>
+			<desc>browsing</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)"/>
+			<v:textRect cx="84.5" cy="289.597" width="168.63" height="0"/>
+			<path d="M0 279 L168.63 279 L0 279 Z" class="st1"/>
+			<path d="M0 279 L168.63 279" class="st2"/>
+			<text x="62.1" y="293.2" class="st3" v:langID="2055"><v:paragraph v:horizAlign="1"/><v:tabList/>browsing</text>		</g>
+		<g id="group1-5" transform="translate(121.902,-176.625)" v:mID="1" v:groupContext="group">
+			<title>Tabelle.1</title>
+			<g id="shape7-6" v:mID="7" v:groupContext="shape">
+				<title>Tabelle.7</title>
+				<desc>customer&#39;s browser</desc>
+				<v:textBlock v:margins="rect(0,0,0,0)"/>
+				<v:textRect cx="32.8125" cy="254.187" width="65.63" height="49.625"/>
+				<path d="M0 229.37 L65.63 229.37 L65.63 279 L0 279 L0 229.37 Z" class="st4"/>
+				<text x="6.06" y="250.59" class="st3" v:langID="2055"><v:paragraph v:horizAlign="1"/><v:tabList/>customer&#39;s <tspan
+							x="12.69" dy="1.2em" class="st5">browser</tspan></text>			</g>
+			<g id="shape27-10" v:mID="27" v:groupContext="shape" transform="translate(-7.99361E-015,-48)">
+				<title>Tabelle.27</title>
+				<path d="M0 273 L65.63 273 L65.63 279 L0 279 L0 273 Z" class="st4"/>
+			</g>
+		</g>
+		<g id="shape3-12" v:mID="3" v:groupContext="shape" v:layerMember="0" transform="translate(206.313,-216)">
+			<title>Dynamischer Verbinder</title>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+			</v:userDefs>
+			<path d="M0 288 L-18.79 288" class="st6"/>
+		</g>
+		<g id="shape8-15" v:mID="8" v:groupContext="shape" v:layerMember="0" transform="translate(307.875,-79.875)">
+			<title>Dynamischer Verbinder.8</title>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+			</v:userDefs>
+			<path d="M0 279 L-69.37 279 L-69.37 181.69" class="st6"/>
+		</g>
+		<g id="shape9-18" v:mID="9" v:groupContext="shape" v:layerMember="0" transform="translate(130.5,-81)">
+			<title>Dynamischer Verbinder.9</title>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+			</v:userDefs>
+			<path d="M0 279 L25.15 279 L25.15 183.38" class="st6"/>
+		</g>
+		<g id="shape19-21" v:mID="19" v:groupContext="shape" v:layerMember="0" transform="translate(119.652,-72)">
+			<title>Dynamischer Verbinder.19</title>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+			</v:userDefs>
+			<path d="M0 279 L36 279 L36 174.38" class="st7"/>
+		</g>
+		<g id="shape118-24" v:mID="118" v:groupContext="shape" transform="translate(18,-143.101)">
+			<title>Tabelle.118</title>
+			<desc>firewall / security infrastructure</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)"/>
+			<v:textRect cx="178.469" cy="269.426" width="356.94" height="19.1484"/>
+			<path d="M0 263.04 C0 261.28 1.43 259.85 3.19 259.85 L353.75 259.85 C355.51 259.85 356.94 261.28 356.94 263.04 L356.94
+						 275.81 C356.94 277.57 355.51 279 353.75 279 L3.19 279 C1.43 279 0 277.57 0 275.81 L0 263.04 Z" class="st8"/>
+			<text x="100.96" y="273.03" class="st3" v:langID="2055"><v:paragraph v:horizAlign="1"/><v:tabList/>firewall / security infrastructure</text>		</g>
+		<g id="shape10-27" v:mID="10" v:groupContext="shape" transform="translate(204.75,-36)">
+			<title>Tabelle.10</title>
+			<desc>co-browsing</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)"/>
+			<v:textRect cx="84.5" cy="289.597" width="168.63" height="0"/>
+			<path d="M0 279 L168.63 279 L0 279 Z" class="st1"/>
+			<path d="M0 279 L168.63 279" class="st2"/>
+			<text x="54.56" y="293.2" class="st3" v:langID="2055"><v:paragraph v:horizAlign="1"/><v:tabList/>co-browsing</text>		</g>
+		<g id="group4-31" transform="translate(307.875,-49.5)" v:mID="4" v:groupContext="group">
+			<title>Tabelle.4</title>
+			<g id="shape5-32" v:mID="5" v:groupContext="shape">
+				<title>Tabelle.5</title>
+				<desc>agent&#39;s browser</desc>
+				<v:textBlock v:margins="rect(0,0,0,0)"/>
+				<v:textRect cx="32.8125" cy="254.187" width="65.63" height="49.625"/>
+				<path d="M0 229.37 L65.63 229.37 L65.63 279 L0 279 L0 229.37 Z" class="st4"/>
+				<text x="15.3" y="250.59" class="st3" v:langID="2055"><v:paragraph v:horizAlign="1"/><v:tabList/>agent&#39;s <tspan
+							x="12.69" dy="1.2em" class="st5">browser</tspan></text>			</g>
+			<g id="shape6-36" v:mID="6" v:groupContext="shape" transform="translate(1.19904E-014,-48)">
+				<title>Tabelle.6</title>
+				<path d="M0 273 L65.63 273 L65.63 279 L0 279 L0 273 Z" class="st4"/>
+			</g>
+		</g>
+		<g id="group17-38" transform="translate(207.724,-177.187)" v:mID="17" v:groupContext="group">
+			<title>Tabelle.17</title>
+			<g id="shape96-39" v:mID="96" v:groupContext="shape">
+				<title>Tabelle.96</title>
+				<desc>unblu cloud server</desc>
+				<v:textBlock v:margins="rect(0,0,0,0)"/>
+				<v:textRect cx="33" cy="252" width="66.01" height="54"/>
+				<path d="M0 234 C0 229.03 4.03 225 9 225 L57 225 C61.97 225 66 229.03 66 234 L66 270 C66 274.97 61.97 279 57 279
+							 L9 279 C4.03 279 0 274.97 0 270 L0 234 Z" class="st9"/>
+				<text x="4.27" y="248.4" class="st3" v:langID="2055"><v:paragraph v:horizAlign="1"/><v:tabList/>unblu cloud <tspan
+							x="17.79" dy="1.2em" class="st5">server</tspan></text>			</g>
+			<g id="group2-43" transform="translate(12.7243,-58.7645)" v:mID="2" v:groupContext="group">
+				<title>Tabelle.2</title>
+				<g id="shape11-44" v:mID="11" v:groupContext="shape" transform="translate(32.3915,0)">
+					<title>Tabelle.11</title>
+					<path d="M7.73 268.89 C7.52 268.89 7.34 269.07 7.34 269.28 L7.34 274.92 C7.34 276.84 6 278.18 4.04 278.18 C2.16
+								 278.18 0.78 276.8 0.78 274.92 L0.78 269.28 C0.78 269.07 0.6 268.89 0.39 268.89 C0.18 268.89 0 269.07
+								 0 269.28 L0 274.92 C-0 277.26 1.74 279 4.08 279 C6.46 279 8.16 277.26 8.16 274.92 L8.16 269.24 C8.12
+								 269.07 7.95 268.89 7.73 268.89 Z" class="st10"/>
+				</g>
+				<g id="shape12-46" v:mID="12" v:groupContext="shape" transform="translate(0.0354781,-0.0354781)">
+					<title>Tabelle.12</title>
+					<path d="M11.64 268.82 C10.47 268.82 9.44 269.24 8.69 269.99 C8.48 270.2 8.27 270.45 8.12 270.73 L8.12 269.46
+								 C8.12 269.24 7.95 269.07 7.73 269.07 C7.52 269.07 7.34 269.24 7.34 269.46 L7.34 274.92 C7.34 276.84
+								 6 278.18 4.04 278.18 C2.16 278.18 0.78 276.84 0.78 274.92 L0.78 269.46 C0.78 269.24 0.6 269.07 0.39
+								 269.07 C0.18 269.07 0 269.24 0 269.46 L0 274.92 C0 277.26 1.74 279 4.08 279 C5.64 279 6.88 278.25
+								 7.59 277.08 L7.59 278.36 C7.59 278.57 7.77 278.75 7.98 278.75 C8.2 278.75 8.37 278.57 8.37 278.36
+								 L8.37 272.93 C8.37 271.02 9.76 269.67 11.67 269.67 C13.59 269.67 14.94 271.02 14.94 272.93 L14.94
+								 278.4 C14.94 278.61 15.11 278.79 15.33 278.79 C15.54 278.79 15.72 278.61 15.72 278.43 L15.72 272.93
+								 C15.72 270.56 14.01 268.82 11.64 268.82 Z" class="st11"/>
+				</g>
+				<g id="shape13-48" v:mID="13" v:groupContext="shape" transform="translate(17.2423,-0.0354781)">
+					<title>Tabelle.13</title>
+					<path d="M4.83 278.18 C2.63 278.18 0.78 276.27 0.78 273.96 C0.78 271.59 2.59 269.67 4.83 269.67 C7.02 269.67
+								 8.87 271.59 8.87 273.96 C8.87 276.27 7.06 278.18 4.83 278.18 ZM4.83 268.82 C3.12 268.82 1.63 269.78
+								 0.78 271.19 L0.78 265.2 C0.78 264.99 0.6 264.81 0.39 264.81 C0.18 264.81 0 264.99 0 265.2 L0 273.96
+								 C-0 276.73 2.16 279 4.83 279 C7.49 279 9.65 276.73 9.65 273.96 C9.69 271.12 7.52 268.82 4.83 268.82
+								 Z" class="st10"/>
+				</g>
+				<g id="shape14-50" v:mID="14" v:groupContext="shape" transform="translate(28.2405,-0.0709561)">
+					<title>Tabelle.14</title>
+					<path d="M3.37 278.65 C3.37 278.43 3.23 278.25 3.02 278.25 C1.42 278.22 0.78 277.19 0.78 275.63 L0.78 265.23
+								 C0.78 265.02 0.6 264.84 0.39 264.84 C0.18 264.84 0 265.02 0 265.23 L0 275.63 C0 276.66 0.25 277.47
+								 0.78 278.08 C1.28 278.68 2.02 279 2.94 279 L3.02 279 C3.23 279 3.37 278.86 3.37 278.65 Z"
+							class="st10"/>
+				</g>
+				<g id="shape15-52" v:mID="15" v:groupContext="shape" transform="translate(8.14349E-014,-14.1912)">
+					<title>Tabelle.15</title>
+					<path d="M4.72 275.1 C4.93 275.1 4.97 274.99 4.83 274.85 L0.25 270.24 C0.11 270.1 0 270.13 0 270.34 L0 276.84
+								 C0 277.05 0.11 277.08 0.25 276.94 L1.53 275.67 C1.67 275.52 1.84 275.56 1.92 275.74 L3.16 278.72
+								 C3.23 278.89 3.44 279 3.62 278.89 L3.73 278.86 C3.9 278.79 4.01 278.57 3.94 278.4 L2.7 275.42 C2.63
+								 275.24 2.73 275.1 2.91 275.1 L4.72 275.1 Z" class="st11"/>
+				</g>
+			</g>
+		</g>
+		<g id="shape18-54" v:mID="18" v:groupContext="shape" v:layerMember="0" transform="translate(207.724,-189)">
+			<title>Dynamischer Verbinder.18</title>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+			</v:userDefs>
+			<path d="M0 270 L-20.2 270" class="st7"/>
+		</g>
+		<g id="group20-57" transform="translate(19,-51.5975)" v:mID="20" v:groupContext="group">
+			<title>Tabelle.20</title>
+			<g id="shape28-58" v:mID="28" v:groupContext="shape">
+				<title>Tabelle.28</title>
+				<desc>corporate webserver</desc>
+				<v:textBlock v:margins="rect(0,0,0,0)"/>
+				<v:textRect cx="54.75" cy="240.597" width="111.5" height="27"/>
+				<path d="M0 234 C0 229.03 6.81 225 15.2 225 L96.3 225 C104.69 225 111.5 229.03 111.5 234 L111.5 270 C111.5 274.97
+							 104.69 279 96.3 279 L15.2 279 C6.81 279 0 274.97 0 270 L0 234 Z" class="st8"/>
+				<text x="3.69" y="244.2" class="st3" v:langID="2055"><v:paragraph v:horizAlign="1"/><v:tabList/>corporate webserver</text>			</g>
+			<g id="shape16-61" v:mID="16" v:groupContext="shape" transform="translate(44,-6.90252)">
+				<title>Tabelle.16</title>
+				<desc>unblu snippet</desc>
+				<v:textBlock v:margins="rect(0,0,0,0)"/>
+				<v:textRect cx="31.5" cy="270.711" width="63" height="16.579"/>
+				<path d="M0 265.18 C-0 263.66 3.85 262.42 8.59 262.42 L54.41 262.42 C59.15 262.42 63 263.66 63 265.18 L63 276.24
+							 C63 277.76 59.15 279 54.41 279 L8.59 279 C3.85 279 0 277.76 0 276.24 L0 265.18 Z" class="st9"/>
+				<text x="3.57" y="273.71" class="st12" v:langID="2055"><v:paragraph v:horizAlign="1"/><v:tabList/>unblu snippet</text>			</g>
+		</g>
+	</g>
+</svg>

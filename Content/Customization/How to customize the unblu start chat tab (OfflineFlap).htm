@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="2072" MadCap:lastWidth="1456">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>How to customize the unblu start chat tab (OfflineFlap)</h1>
+        <p><i>The full example implementation shown below can be downloaded from here:</i> <a href="https://dev.unblu.com/confluence/download/attachments/102793262/JSC-10.zip?version=1&amp;modificationDate=1474372422000&amp;api=v2">JSC-10.zip </a>. <i>unblu version: 4.x.x (unblu 4 or above). The example must be uploaded to an Apache server, or similar, in order to work correctly</i>.</p>
+        <p>This example shows how the 'initiator' to the unblu start dialog can be customized. For example, you may not want the little 'start' tab displaying at the bottom of your screen and instead want something specific to your organization. For example, you may want a 'Start Chat' button, or other element, on your page instead of the default unblu tab.</p>
+        <p>Note that the scripts here show you how to enable your own activation element(s). In order to suppress the default unblu tab (called the 'OfflineFlap' within the unblu Server Configuration Reference) you can alter the following configuration property: (The OfflineFlap can also be suppressed from within the unblu Agent Desk.)</p>
+        <h2>Whether or not the flap should be hidden when offline:</h2><pre class="prettyprint"># Type: BOOLEAN 
+# Default value: "false" 
+com.unblu.cobrowsing.hideOfflineFlap=true</pre>
+        <p>
+            <img src="../Resources/Images/Customization/JSC-10-1 (1).PNG" style="mc-thumbnail: popup;mc-thumbnail-max-height: 200px;" />
+        </p>
+        <p>After clicking on the 'start chat' button, the following dialog box displays. Note here that after clicking your start element the process is exactly the same as the default behaviour.</p>
+        <p>
+            <img src="../Resources/Images/Customization/JSC-10-2 (1).PNG" style="mc-thumbnail: popup;mc-thumbnail-max-height: 200px;" />
+        </p>
+        <p><span class="Bolder">Note:</span> All file/object/function names can be changed according to your needs.</p>
+        <ol>
+            <li>Create an HTML page.</li>
+            <li>Create a JavaScript file named <span class="Bolder">'snippet.js'</span> and paste the snippet into it. The snippet can be found in your account at <a href="http://www.unblu.com/">www.unblu.com</a>. (<span class="Bolder">unblu.com -&gt; myunblu -&gt; administer account -&gt; integration section</span>.)</li>
+        </ol>
+        <p>Keep in mind that the snippet should be placed after the last &lt;meta&gt; tag in the &lt;head&gt; section, but before any other script. All the other JSAPI consuming scripts must only appear after the snippet.</p>
+        <ol MadCap:continue="true">
+            <li>Include the snippet in your HTML file, inside the &lt;head&gt; tag (using the appropriate location of the actual <span class="Bolder">'snippet.js' </span>file within your project tree).</li>
+        </ol><pre class="prettyprint">&lt;script type="text/javascript" src="js/snippet.js"&gt;&lt;/script&gt;</pre>
+        <ol MadCap:continue="true">
+            <li>Create an empty JavaScript file and include it in your HTML page after the &lt;body&gt; tag. The unblu start session dialog will be triggered by this function when the script is called.</li>
+        </ol><pre class="prettyprint">&lt;script type="text/javascript" src="js/main.js"&gt;&lt;/script&gt;</pre>
+        <ol MadCap:continue="true">
+            <li> Inside <span class="Bolder">'main.js'</span> you need to declare one variable/object to hold the unblu API and one object to hold the activation element from the HTML page. You also need to add <span class="Bolder">'eventListener' </span>to this element.</li>
+        </ol><pre class="prettyprint">var unbluAPI;
+var el; // activation element
+el = document.getElementById('startChat');
+el.addEventListener('click', start, false);</pre>
+        <ol MadCap:continue="true">
+            <li>Declare the 'start' function, which will get the unblu API and then activate the unblu start session dialog using <span class="Bolder">“unbluAPI.core.visitor.ui.Dialogs.showChatSessionDialog()”</span></li>
+        </ol><pre class="prettyprint">function start() {
+    unblu.registerApiConsumer(function (api) {
+        if (typeof api.fatalError != 'undefined') {
+            return;
+        }
+   
+        unbluAPI = api;
+    }, ['core.visitor.ui']); // Add unblu packages at this location depending on which one of them you need
+   
+    if (unbluAPI) { // if the unblu API is loaded
+        unbluAPI.core.visitor.ui.Dialogs.showChatSessionDialog(); // Showing the start chat session unblu dialog
+}};</pre>
+        <p>&#160;</p>
+    </body>
+</html>

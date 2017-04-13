@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="11" MadCap:lastHeight="9871" MadCap:lastWidth="1031" MadCap:searchable="False">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>Set Up the User Management Synchronization Tool (Optional)</h1>
+        <p>Use the topics below first to decide if you want to implement the User Management Synchronization tool, then to implement it.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Overview</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p class="p_7">In on-premises installations, enterprise customers often have an existing central user identity management system where all modifications are applied using the enterprise's own processes. </p>
+                <p class="p_7">Note: We have used ‘LDAP’ here in order to highlight the concepts of the User Management Synchronization Tool, but it is possible to use other identity management access technologies. If you prefer to use something else (for example, a REST-based identity management system) then talk to us about it.</p>
+                <p>The tool syncs from your own identity management system to the unblu database. This is a one-way synchronization. That means that if you decide to use the Synchronization Tool you must choose which attributes/entities should be driven by the Synchronization Tool accessing your identity management system and which attributes/entities are to be handled from within the unblu Agent Desk, or from within the unblu.properties file. </p>
+                <p>It is important to put some serious thought into choosing the right synchronization strategy as there are consequences. For example, it makes sense, in a large complex organization, not to have many systems carrying duplicate user data. You already have the data ordered within your own identity management system so syncing should be a perfect solution. However, if you decide, for example, to ‘sync all’ (teams and users) then this would require you to have confidence that current team structures are entirely appropriate for how you want to use the unblu product(s). This is because when you ascribe precedence to your own identity management system you will not then be able to ‘manipulate’ teams from within the unblu Agent Desk.</p>
+                <p>Note: You may be able to enjoy the ‘best of both worlds’ by syncing users but not teams. In this way you could still use the unblu Agent Desk to create (team) structures on-the-fly that will persist through synchronizations. Syncing users but not teams can be an ideal strategy for a large organization who may be unsure as to exactly how they want to structure their visitor-engagement teams. When you are sure you have defined exactly the right structure (by ‘experimenting’ inside the unblu Agent Desk), you can then define the teams’ structure on your identity management system. In this way you can use the flexibility of the unblu Agent Desk in combination with the efficiency of drawing data and data structures from your own identity management system. A caveat here is that handling teams from within the unblu Agent Desk means that you would have to assign users manually, which can be time consuming and prone to error. (Also note that the Synchronization Tool cannot reproduce nested team structures; nesting must be defined from within the unblu Agent Desk.)</p>
+                <p>The User Management Synchronization Tool can insert or delete teams but it cannot update them. ‘Team’ is a standalone entity; if there are no users assigned to a team then that team, as far as the unblu Collaboration Server is concerned, does not exist. If you try to rename a team from within the LDAP directory unblu will drop/delete that team and create a new team, so your previous team settings would be lost.</p>
+                <p>Note: The User Management Synchronization Tool is integrated into the unblu Collaboration Server but it will not start by default. In order to use the tool you must first configure it in the unblu.properties file. See <a href="../Collaboration Server Setup/Synchronization Tool Configuration.htm#_Synchronization_Tool_Configuration">Synchronization Tool Configuration</a> for more on how to get up and running with the User Management Synchronization Tool.</p>
+                <p>Note: You can also configure the Synchronization Tool from directly within the unblu Agent Desk at the Account level. (Note that while configuring the Synchronization Tool via the Agent Desk is possible it is probably only useful for multi-tenancy installations; as it requires ‘Superadmin’ credentials.) See <a href="../Collaboration Server Setup/Per Account Configuration.htm#_Per_Account_Configuration">Per Account Configuration</a>.</p>
+                <p>When the User Management Synchronization Tool starts it queries the identity management system using LDAP for users. Users are (uniquely) identified by an ID (sourceID) supplied by the identity management system. This sourceID is used to keep the LDAP users and unblu users in sync.</p>
+                <p>If you decide to synchronize from your identity management system using LDAP, Synchronization Tool precedence means that all attributes defined for synchronization must be set on the LDAP server in order to populate the unblu Collaboration Server database. If you make changes from within the unblu Agent Desk those changes will be lost the next time the synchronization tool runs (if you have defined that attribute to be synced).</p>
+                <p>The first time the tool runs it will sync all users and associated attributes. After this initial run the database will remain relatively unchanged with only the differences being synchronized.</p>
+                <p>As an example, if you currently have a team of 100 generalists dealing with incoming requests and a second team populated by specialists, this same structure will exist within the unblu Collaboration Server after the synchronization tool is run. (In this example the first team would deal with the initial visitor engagement then forward those visitors accordingly to the second team, or members within the second team.)</p>
+                <p>The identity management system using LDAP should also contain the ‘Authorization Role’ (Admin, Supervisor, Registered User, etc.) that the unblu Collaboration Server requires to grant users the appropriate permissions.</p>
+                <p>Other information, such as languages or canned responses, can be set from within the unblu Agent Desk and will persist if not bound to a user or team. (If they are bound to a user or team and the Synchronization Tool deletes that user or team then that information will be lost). You can, for example, define these settings at the Account or Global level. But if you, for example, add a new user or team from within the unblu Agent Desk, the next time the synchronization tool runs those users or teams will be lost.</p>
+                <p>Note: The default behavior of the tool is to sync ‘everything’ but user and team parameters can be synced separately. This means you can either sync users or, if the team structure has changed but not user information, you can sync just ‘teams’. </p>
+                <p>Note: The ‘Authorization Role’ identifier is an attribute of the user, not an attribute of the team. Technically, one could create teams populated with many Supervisors, if one wished. This means that the rule of ‘one supervisor per team’, for example, must be enforced by you, and ‘written’ from your LDAP system to the unblu Collaboration Server. However, illogical as it may seem on the face of it, these design options allow you to, for example, create a whole team of supervisors in order that they can ‘see’ everything ‘downstream’. This would mean a team of supervisors at the top level that can see all users and child teams below them.</p>
+                <p>Note: Other information, such as First Name/Last Name, email address, etc., are handled as ‘soft identifiers’. This means that the information is not a technical requirement and that the synchronization tool will accept any information with the correct data type (and the correct data type = ‘string’).</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>General Functionality</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The tool has the following base functionality:</p>
+                <ul class="ul_1">
+                    <li class="li_3">Is integrated into the unblu collaboration server.</li>
+                    <li class="li_3">Provides a scheduler mode that accepts a cron-like action scheduling.</li>
+                    <li class="li_3">Loads entities (users, teams) from a central User Management System.</li>
+                    <li class="li_3">Stores new retrieved entities (users, teams) in unblu.</li>
+                    <li class="li_3">Deletes entities (users, teams) from unblu that no longer exist in the central User Management System.</li>
+                    <li class="li_3">Synchronizes changes from users in the central User Management System to unblu.</li>
+                    <li class="li_3">Only separate syncing of users or teams is allowed. (When syncing ‘all’: teams are synced first then users.)</li>
+                    <li class="li_3">Is configurable (mostly for the entity reader/writer parts, which can require a larger number of options that do not make sense as command-line arguments).</li>
+                    <li class="li_3">Logs to the standard unblu server log.</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>User Model</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The User Model describes how to create the implementation  (internally to your organization) in order that data can be transferred from the source (your identity management system using LDAP) to the target (the unblu Collaboration Server).</p>
+                <p>A user entity model consists of the following parts:</p>
+                <ul class="ul_1">
+                    <ul>
+                        <li>SourceId: A unique identifier which allows you to reliably sync between the central User Management System and unblu (such as employee #)</li>
+                        <li>UserName:<br />UserName is the identifier within the unblu system. (It must be identical to the JEE Principal or Trusted Header UserId and must also be specified in the User Management System.) Note that UserName has an unknown structure and format. The only thing that can be assumed is that it is a string (which does&#160;include&#160;it being a number). In SSO implementations, the UserName is what the corresponding system delivers as output from the authentication process. In reality, that can be technical IDs like i12345, names like ‘Kay Huber’ or anything else that can be represented by a string.</li>
+                        <li>Authorization role (See <a href="../Collaboration Server Setup/Authorization Roles Sync Tool.htm#_Authorization_Roles">Authorization Roles</a>)</li>
+                        <li>TeamName</li>
+                        <li>Email (optional)</li>
+                        <li>FirstName (optional)</li>
+                        <li>LastName (optional)</li>
+                    </ul>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Authorization Roles</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Note: Authorization Roles are purely technical ‘roles’; in that the unblu Role hierarchy bears no relationship to any internal roles in your organization. The roles should be granted according to how you intend to use the Agent Desk.</p>
+                <p>Current Authorization Roles are: SUPER_ADMIN, ADMIN, SUPERVISOR, REGISTERED_USER. </p>
+                <p>Authorization Roles are hierarchical (SUPER_ADMIN is the highest / root node, REGISTERED_USER the lowest role).</p>
+                <p>In the context of the synchronization tool, only ADMIN, SUPERVISOR and REGISTERED_USER are relevant. ADMIN has rights related to the account, all teams and all users. SUPERVISOR has rights related to his team and contained users and REGISTERED_USER only has rights regarding himself.</p>
+                <p>For more on Authorization Roles see: <a href="https://www.unblu.com/en/doc/latest/agent-desk-setup-and-user-guide">https://www.unblu.com/en/doc/latest/agent-desk-setup-and-user-guide</a></p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Team</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>A team is a grouping entity for users:</p>
+                <ul class="ul_1">
+                    <p>Any user can only belong to exactly one team.</p>
+                    <p>A newly-created user that has no particular team applied belongs to a ‘default team’.</p>
+                    <p>Teams can be nested. (But the Synchronization Tool cannot reproduce nested teams.)</p>
+                    <p>Teams are relevant for applying unblu configurations (it is a configuration scope).</p>
+                    <p>A configuration applied for team A automatically also applies to nested child teams A1 and A2 and all users belonging to A, A1 or A2.</p>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Tool Actions</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The Synchronization Tool supports the following actions:</p>
+                <ol start="1" class="ol_1">
+                    <li>Synchronization of ‘team’ information.</li>
+                    <li>Synchronization of ‘user’ information.</li>
+                    <li>Synchronization of ‘everything’ (that is: includes 1. and 2. in that order)</li>
+                    <li>Scheduled mode.</li>
+                </ol>
+                <p>The tool allows you to specify a list of synchronization schedules. Each synchronization schedule consists of a cron-like expression describing when to execute an action (syncteam, syncuser, syncall).</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Entity Source (Internal Identity Management System)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The tool has the functionality to ‘load’ entities from an entity source. Entities to load are team or user entities. The design of the tool is done in such a way that loading the entities can be implemented using various technologies (i.e., there is an interface for an ‘EntitySource’ part with an initial implementation using LDAP to load entities).</p>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot>LDAP Access</MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>LDAP is the initial protocol to use to retrieve users from a central user management system.</p>
+                        <p><a href="https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol" class="Hyperlink_2">https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol</a>
+                        </p>
+                        <p>The tool supports access to the identity management system using normal LDAP or with startTLS.</p>
+                        <p>The tool first binds and then executes searches with the given configuration (see <a href="../Collaboration Server Setup/Entity Source Configuration.htm#_6.2.1._LDAP-Based_Entity">LDAP-Based Entity Reader Configuration</a>) in order to load team or user information.</p>
+                        <p>With the loaded information it creates internal user or team representations and maps the retrieved attributes to the model’s attributes. </p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Entity Target (unblu Database)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The tool has the ability to ‘store’ entities in an entity target (in our case; the unblu Database). Entities to store are team or user entities. </p>
+                <p>The writing process consists of the following actions per entity type (team or user):</p>
+                <ol start="1" class="ol_1">
+                    <li>Retrieve all entity IDs that currently exist in the entity writing target (i.e., the database) -&gt; entityIDsBeforeWrite  </li>
+                    <li>For each entity read from the source (e.g. LDAP):</li>
+                </ol>
+                <ul class="ul_3">
+                    <li class="li_4">Check if an entity for the given entity ID already exists</li>
+                    <li class="li_4">If it does exist, update it</li>
+                    <li class="li_4">If it does not exist, create it</li>
+                    <li class="li_4">From entityIDsBeforeWrite remove the given entity ID</li>
+                </ul>
+                <ol start="3" class="ol_1">
+                    <li>Delete all entities that are still in entityIDsBeforeWrite (they no longer appear to exist in the entity source / LDAP).</li>
+                </ol>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Synchronization Tool Configuration</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>All configuration is based on unblu configuration properties.</p>
+                <p> Scheduling Configuration</p>
+                <p>If the tool is running in scheduling mode it must be configured using the following configuration keys:</p>
+                <p class="p_12">com.unblu.addons.synctool.runAtCronExpressions: A list of cron expressions strings. Each string must contain a valid cron (time) expression and an action. The action is one of syncteam, syncuser, syncall.</p>
+                <p>For quartz cron expressions see <a href="http://www.quartz-scheduler.org/documentation/quartz-2.x/tutorials/tutorial-lesson-06.html">the quartz documentation.</a> Additionally to the quartz cron expressions the expression @reboot may be used to indicate that the action should be executed once when the unblu Collaboration Server starts.</p>
+                <p>Example:</p>
+                <p>To enable the sync tool add (and adapt) the code below to your unblu.properties file</p>
+                <p>com.unblu.addons.synctool.runAtCronExpressions=["@reboot syncall","0 */15 * * * ? syncall"]</p>
+                <p>Note: The code above will synchronize everything (syncall=teams and users) every 15 minutes. All other configuration options (server, teams, roles) are listed below.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Entity Source Configuration</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <h1>LDAP-Based Entity Reader Configuration</h1>
+                <p>The following parts of the LDAP reader are configurable:</p>
+                <p class="CODE">com.unblu.addons.synctool.ldap.serverHostname</p>
+                <p class="CODE">com.unblu.addons.synctool.ldap.serverPort</p>
+                <p class="p_13">com.unblu.addons.synctool.ldap.connectionSecurity: Indicate whether the connection to the identity management system using LDAP should be done using LDAPS, STARTTLS, NONE.</p>
+                <p class="p_13">com.unblu.addons.synctool.ldap.serverUsername: User to use to bind; may need the "cn="-Prefix.</p>
+                <p class="p_13">com.unblu.addons.synctool.ldap.serverPassword: Password to use to bind.</p>
+                <p class="p_13">com.unblu.addons.synctool.ldap.baseDN: The root DN for all records.</p>
+                <p class="p_13">com.unblu.addons.synctool.ldap.userFilter: The filter to use when retrieving user entities.</p>
+                <p class="p_13">com.unblu.addons.synctool.ldap.userSearchScope: LDAP Search Scope: OBJECT, ONELEVEL, SUBTREE.</p>
+                <p class="p_13">com.unblu.addons.synctool.ldap.roleFilter: LDAP filter to retrieve all unblu roles (if they are a groupOfNames); must contain %role% as a wildcard for all roleIdentifiers.</p>
+                <p class="p_13">com.unblu.addons.synctool.ldap.roleSearchScope: LDAP Search Scope: OBJECT, ONELEVEL, SUBTREE.</p>
+                <p class="p_13">com.unblu.addons.synctool.ldap.teamFilter: The filter to use when retrieving team entities.</p>
+                <p class="p_13">com.unblu.addons.synctool.ldap.teamSearchScope: LDAP Search Scope: OBJECT, ONELEVEL, SUBTREE.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>LDAP Attribute Mapping</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The following configuration is required to map LDAP attributes to entity model attributes.</p>
+                <p>User</p>
+                <p class="p_13">com.unblu.addons.synctool.ldap.userIdAttributeName: The attribute name for a field/string that uniquely identifies a user (for instance; Employee Number).</p>
+                <p class="p_13">com.unblu.addons.synctool.ldap.userNameAttributeName: The name of the attribute whose value is the user’s username. </p>
+                <p class="p_13">Note: This is the identifier that needs to be passed to unblu for authentication (JEE Principal/ Trusted Headers UserID).</p>
+                <p class="p_13">com.unblu.addons.synctool.ldap.userEmailAttributeName (Optional) property which contains user’s email.</p>
+                <p class="p_13">com.unblu.addons.synctool.ldap.userLastNameAttributeName (Optional) property which contains user's last name.</p>
+                <p class="p_13">com.unblu.addons.synctool.ldap.userFirstNameAttributeName (Optional) property which contains user's first name.</p>
+                <p>Team</p>
+                <p class="p_13">com.unblu.addons.synctool.ldap.teamIdAttributeName: The name of the attribute which contains the team name.</p>
+                <p class="p_13">com.unblu.addons.synctool.ldap.teamMemberAttributeName: (default ‘member’) the name of the attribute(s) which contains users within that team.</p>
+                <p>Authorization Role</p>
+                <p>com.unblu.addons.synctool.ldap.roleMemberAttributeName: (Default ‘member’) the name of the attribute(s) which contains users that have that role.</p>
+                <p>com.unblu.addons.synctool.ldap.superadminRoleIdentifier: The name of the group that contains super admins. Will be substituted for %role% in the roleFilter.</p>
+                <p>com.unblu.addons.synctool.ldap.adminRoleIdentifier: The name of the group that contains admins. Will be substituted for %role% in the roleFilter.</p>
+                <p>com.unblu.addons.synctool.ldap.supervisorRoleIdentifier: The name of the group that contains supervisors. Will be substituted for %role% in the roleFilter.</p>
+                <p>com.unblu.addons.synctool.ldap.registeredUserRoleIdentifier: The name of the group that contains agents. Will be substituted for %role% in the roleFilter.</p>
+                <p>com.unblu.addons.synctool.ldap.defaultRole (optional): The default role for users that otherwise are not assigned a role (One of: SUPER_ADMIN, ADMIN, SUPERVISOR, REGISTERED_USER).</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Multitenancy Support</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Note: Normally, all unblu Collaboration Server users are associated with a single account but multitenancy allows users to be assigned to multiple accounts.</p>
+                <p>The synchronization tool supports multitenancy usage. That is, syncing different unblu accounts, each with (potentially) different configurations. For instance, each account could connect to a different LDAP system. </p>
+                <p>There are two minor limitations: </p>
+                <ol start="1" class="ol_2">
+                    <li>The sync schedule can only be set globally. </li>
+                    <li>Usernames must be globally unique (no two customers may use the username 'bob', for instance).</li>
+                </ol>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Global Configuration</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Note: ‘Configuring at the account level’ means configuring from within the unblu Agent Desk using Superadmin credentials.</p>
+                <p>To enable multitenancy support, most of the configurations from above should likely be made at the account level (and not globally in the server configuration file), with the following exceptions:</p>
+                <p class="p_15">com.unblu.addons.server.synctool.SyncTool.multitenancySyncMode should be set to true to enable the multitenant sync </p>
+                <p>
+(com.unblu.addons.server.synctool.SyncTool.multitenancySyncMode=true)</p>
+                <p class="p_15">com.unblu.addons.synctool.runAtCronExpressions must be set globally as it cannot be set on a per account level.</p>
+                <p>Any configurations from the ‘Entity Source Configuration’ section can be set globally, with the exception of com.unblu.addons.synctool.ldap.baseDN. This configuration must be set at the account level and it indicates that this account indeed should be synced by LDAP. If an account does not have this property set, it is assumed that the account should not sync from any LDAP system but is configured entirely within the unblu server.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Per Account Configuration</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>To enable the LDAP sync at the account level the property com.unblu.addons.synctool.ldap.baseDN must be configured at the account level.</p>
+                <p>All the other settings from the ‘Entity Source Configuration’ section may be configured globally or individually on a per account basis. For instance, if only one LDAP server is used to sync all accounts, it might make sense to configure the identity management system using LDAP hostname, port and other server-specific settings globally and to set the LDAP structure individually, per account.</p>
+                <p>Edit settings at the account level</p>
+                <ol start="1" class="ol_1">
+                    <li>Log into the unblu Agent Desk as Superadmin.</li>
+                    <li>Click on Manage Accounts below your account name.</li>
+                    <li>In the Account list, click the impersonate button for the account you want to configure. The website will reload and you should now be logged in as a Superadmin of that account.</li>
+                    <li>Select Settings, then Account. The Account window opens.</li>
+                    <li>From the Account window menu select Settings then, in the filter search box, enter ldap and click the Advanced button. You now have all of the LDAP settings available for configuration.</li>
+                    <li>When you are done with entering configuration settings, click Save.</li>
+                </ol>
+                <p class="p_13">The account should now be configured and will initiate an ldap sync the next time the sync process runs, according to the globally-configured schedule. </p>
+                <p class="p_13">Note: You should monitor the server log for potential sync errors due to misconfiguration.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Multitenancy Syncing Limitations</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Multitenancy Syncing has two limitations compared to syncing a single account:</p>
+                <ol start="1" class="ol_1">
+                    <li>The sync schedule (defined in com.unblu.addons.synctool.runAtCronExpressions) must be configured globally and cannot be set on an individual account basis. All accounts are synced according to this schedule. Syncing is performed sequentially, i.e., one account is synced after another.</li>
+                    <li>Usernames must be globally unique, i.e., no two accounts may use the same username. If the name is not unique the existing user will be preserved and syncing of the account containing the new user will fail (due to the username already existing).</li>
+                </ol>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+    </body>
+</html>

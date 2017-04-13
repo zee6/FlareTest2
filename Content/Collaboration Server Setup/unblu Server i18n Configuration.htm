@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="3270" MadCap:lastWidth="2015">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>unblu Server i18n Configuration</h1>
+        <p>The unblu server supports a wide range of localizable text settings. (See <a href="https://www.unblu.com/en/doc/latest/unblu-server-localized-text-reference">Unblu Server Localized Text Reference</a>). This page describes the steps required to use unblu localization in your server installation.</p>
+        <p>Localized text settings are key/value pairs that are passed to the unblu server in a configuration file.</p>
+        <p>Unblu localized text settings are case insensitive (regarding keys). For better readability localized text setting keys are written in camel case (<a href="https://en.wikipedia.org/wiki/Camel_case">http://en.wikipedia.org/wiki/CamelCase</a>) in the documentation and references.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="Using"></a>Using Localized Text Configuration Files</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Localized text settings are held in a configuration file. Unblu localized files use the Java properties file format (see <a href="https://en.wikipedia.org/wiki/.properties">http://en.wikipedia.org/wiki/.properties</a>) with some additional naming conventions.</p>
+                <p>In order to use a localized text settings file you need to specify where the unblu server should load the file from using the <code>"com.unblu.textoverlay"</code> configuration setting. (See <a href="https://www.unblu.com/en/doc/latest/unblu-server-configuration-reference#unbluserverconfigurationreference-com.unblu.textoverlay">com.unblu.textoverlay</a>.)</p>
+                <p>The value of the <code>"com.unblu.textoverlay"</code> configuration setting must point to a valid Java properties file. It can be a local file system path (absolute or relative) or any valid url supported by Java (i.e. <code>http://&lt;host&gt;/&lt;pathtoconfigurationfile&gt; </code>or<code> file:///etc/unblu/unblu.properties)</code>. We recommend always using forward slashes ("/") as the delimiter between path elements (also on windows systems) as using other delimiters (such as back slashes) only works if they are escaped properly.</p>
+                <p>How configuration settings are passed to the unblu server is described in <a href="unblu Server Configuration.htm">Unblu Server Configuration</a>. In short, there are two options: Using System Properties (<MadCap:xref href="unblu Server Configuration.htm#Using">Using System Properties Directly</MadCap:xref>) or using configuration files (<MadCap:xref href="unblu Server Configuration.htm#Using_Configuration_Files">Using Configuration Files</MadCap:xref>).</p><pre xml:space="preserve" class="prettyprint"># how to pass the location of the localized text settings file to unblu in a configuration file (extract of a configuration properties file)
+com.unblu.textoverlay=/etc/unblu/unblu-text.properties</pre><pre xml:space="preserve" class="prettyprint"># how to pass the location of the localized text settings file to unblu using system properties (via the JAVA_OPTS OS environment variable, i.e. in Tomcat)
+export JAVA_OPTS="$JAVA_OPTS -Dcom.unblu.textoverlay=/etc/unblu/unblu-text.properties"</pre>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="Localize"></a>Localized Text File Format</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Unblu localized text files use the Java properties file format with some naming conventions. The Java properties file format is a simple text-based format that consists of key/value pairs that are delimited by the equals sign ("="). Every key/value must start on a new line. You can use \ to escape newlines or other special characters. Blank lines are ignored. Lines that start with # are comments. See <a href="https://en.wikipedia.org/wiki/.properties">http://en.wikipedia.org/wiki/.properties</a> for more details about the Java properties file format.</p>
+                <p><span class="Bolder">CAUTION:</span> The Java properties file must always be encoded using the ISO-88591-1 character encoding. Make sure any special characters are escaped properly. (See <a href="https://en.wikipedia.org/wiki/.properties">http://en.wikipedia.org/wiki/.properties</a>.)</p>
+                <p>Unblu uses a single file for all languages. Every localized text setting can occur multiple times in the same file (once for every supported language). The language is declared using a .&lt;lang&gt; suffix at the end of the property key.</p><pre xml:space="preserve" class="prettyprint"># example of a localized text file with two settings, each for two languages (en,de)
+ 
+tokendialog.title.en=Start Support Session
+tokendialog.title.de=Support Session starten
+ 
+tokendialog.message.en=Please call the following telephone number for co-browsing
+tokendialog.message.de=Für Co-Browsing rufen Sie bitte folgende Telefonnummer an</pre>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Text Arguments</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Some localized text settings support arguments (placeholders that will be replaced by some value at runtime). Supported arguments are described in <a href="https://www.unblu.com/en/doc/latest/unblu-server-localized-text-reference">Unblu Server Localized Text Reference</a>. If a setting supports arguments, then you need to specify placeholders for these arguments in your localized text settings. If you do not define placeholders, the value of the arguments will be missing in the output. Placeholders are formatted like this <code>${&lt;placeholderName&gt;}</code>, i.e. <code>${remainingMinutes}</code>. Placeholders are case insensitive. For better readability placeholders are written in camel case in the documentation and reference.</p><pre xml:space="preserve" class="prettyprint"># example of a lolcalized text setting with arguments
+com.unblu.hbworker.timeoutDialog.textTimeoutAhead.en=Your session will be timing out in ${remainingMinutes} minutes
+com.unblu.hbworker.timeoutDialog.textTimeoutAhead.de=Ihre Sitzung wird in ${remainingMinutes} Minuten wegen Inaktivität geschlossen</pre>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="Language"></a>Language Selection Algorithm</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>When unblu resolves a localized text property to the actual text, it first needs to compute the language that will be used.</p>
+                <p>Computing the effective language happens in two steps. First, the requested language is computed, then the effective language is computed.</p>
+                <p>Computing the requested language uses the following logic:</p>
+                <ol>
+                    <li>If unblu is configured to use language cookies (<a href="#Use">use Language Cookie</a>) AND a language cookie does exist, then the value of the language cookie is used as the requested language.</li>
+                    <li>If step 1 did not define the requested language AND unblu is configured to use the <code>"x-unblu-locale"</code> header (<MadCap:xref href="#Use2"><a href="#Use2">Use Locale Header</a></MadCap:xref>) AND a <code>"x-unblu-locale"</code> header does exist, then the language attribute of the locale in the <code>"x-unblu-locale"</code> header is used as the requested language.</li>
+                    <li>If step 2 did not define the requested language AND unblu is configured to use the browser language (<MadCap:xref href="#Use3"><a href="#Use3">Use Browser Language</a></MadCap:xref>) AND the Accept-Language HTTP request header does exist, then the Accept-Language header is used as the requested language.</li>
+                </ol>
+                <p>Computing the effective language uses the following logic:</p>
+                <ol MadCap:continue="false">
+                    <li>If the requested language is set AND the requested language is one of the supported languages (<MadCap:xref href="#Supporte"><a href="#Supporte">Supported Languages</a></MadCap:xref>) then the requested language is used as the effective language.</li>
+                    <li>If step 1 did not define the effective language then the default language (<MadCap:xref href="#Default"><a href="#Default">Default Language</a></MadCap:xref>) is used as the effective language.</li>
+                </ol>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>i18n-Related Configuration Options</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The behaviour of unblu i18n is configurable using a set of configuration settings.</p>
+                <p>The most important configuration setting that is related to i18n is the <code>"com.unblu.textoverlay"</code> setting mentioned above. Besides this there are a number of additional settings, the most important of which are described, in short, here.</p>
+                <h2><a name="Default"></a>Default Language</h2>
+                <p>The configuration setting "com.unblu.text.defaultLanguage" (see <a href="https://www.unblu.com/en/doc/latest/unblu-server-configuration-reference#unbluserverconfigurationreference-com.unblu.text.defaultlanguage">com.unblu.text.defaultLanguage</a>) defines the language that should be used if no language was provided in the context. (See <MadCap:xref href="#Language">Language Selection Algorithm</MadCap:xref> above.)</p>
+                <h2><a name="Supporte"></a>Supported Languages</h2>
+                <p>The configuration setting <code>"com.unblu.text.supportedLanguages"</code> (see <a href="https://www.unblu.com/en/doc/latest/unblu-server-configuration-reference#unbluserverconfigurationreference-com.unblu.text.supportedlanguages">com.unblu.text.supportedLanguages</a>) defines the set of supported languages. If the detected language from the context (see <a href="#Language">Language Selection Algorithm</a> above) is not in the set of supported languages, then unblu will use the default language instead. (See <MadCap:xref href="#Default">Default Language</MadCap:xref> above.)</p>
+                <h2>Fallback Language</h2>
+                <p>The configuration setting<code> "com.unblu.text.fallbackLanguage"</code> (see <a href="https://www.unblu.com/en/doc/latest/unblu-server-configuration-reference#unbluserverconfigurationreference-com.unblu.text.fallbacklanguage">com.unblu.text.fallbackLanguage</a>) defines the language unblu will use if a certain localized text setting is not defined in the requested language. The default value for this setting is <code>"en"</code> for English and we do not recommended you change this because unblu products are guaranteed to provide a value for every localized text setting in English.</p>
+                <h2><a name="Use3"></a>Use Browser Language</h2>
+                <p>The configuration setting <code>"com.unblu.text.useBrowserLanguage" </code>(see <a href="https://www.unblu.com/en/doc/latest/unblu-server-configuration-reference#unbluserverconfigurationreference-com.unblu.text.usebrowserlanguage">com.unblu.text.useBrowserLanguage</a>) configures whether unblu should take into account the browser language (value of the Accept-Encoding HTTP request header) when calculating the requested language.</p>
+                <h2><a name="Use"></a>Use Language Cookie</h2>
+                <p>The configuration setting "<code>com.unblu.text.useLanguageCookie"</code> (see <a href="https://www.unblu.com/en/doc/latest/unblu-server-configuration-reference#unbluserverconfigurationreference-com.unblu.text.uselanguagecookie">com.unblu.text.useLanguageCookie</a>) configures whether unblu should take into account the value of the language cookie when calculating the requested language.</p>
+                <p>The name of the language cookie defaults to <code>"x-unblu-lang" </code>and can be configured using the <code>"com.unblu.identifier.languageCookieName"</code> setting. (See <a href="https://www.unblu.com/en/doc/latest/unblu-server-configuration-reference#unbluserverconfigurationreference-com.unblu.identifier.languagecookiename"><MadCap:annotation MadCap:createDate="2017-04-11T10:48:12.9147144+02:00" MadCap:creator="David Stars" MadCap:initials="DST" MadCap:comment="This is in unblu Server i18n Configuration and it does not seem to exist&quot;" MadCap:editor="David Stars" MadCap:editDate="2017-04-11T10:48:24.9369280+02:00">com.</MadCap:annotation>unblu.identifier.languageCookieName</a>.)</p>
+                <h2><a name="Use2"></a>Use Locale Header</h2>
+                <p>The configuration setting <code>"com.unblu.text.useLocaleHeader" </code>(see <a href="https://www.unblu.com/en/doc/latest/unblu-server-configuration-reference#unbluserverconfigurationreference-com.unblu.text.uselocaleheader">com.unblu.text.useLocaleHeader</a>) configures whether unblu should take into account the "x-unblu-locale" locale HTTP request header when calculating the requested language.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2>Further Reading (Localized Text)</h2>
+        <p>All available localized text settings are described in the <a href="https://www.unblu.com/en/doc/latest/unblu-server-localized-text-reference">Unblu Server Localized Text Reference</a>.</p>
+        <p>Read about unblu configuration in <a href="unblu Server Configuration.htm">Unblu Server Configuration</a>.</p>
+        <p>&#160;</p>
+    </body>
+</html>

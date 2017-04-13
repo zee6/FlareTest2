@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="1555" MadCap:lastWidth="1031">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Selecting the Language</h1>
+        <h2>Setting the Language / Locale</h2>
+        <p>The locale describes the regional settings for a piece of software, such as a website, or unblu. The most noticeable aspect of the locale is the language in which the user interface is displayed, but the locale can contain other regional aspects (such as date formats, number formats, and so on).</p>
+        <p>If your website has only one locale, you can set that locale for unblu in the configuration. This ensures that the website and unblu use the same locale (that is, the same language and the same (other) regional settings).</p>
+        <p>If your website supports multiple locales, then you have to tell unblu which locale to use.</p>
+        <h2>Using an Attribute</h2>
+        <p>A very straightforward way of telling unblu which locale to use is by using the default html <code>lang</code> attribute in the <code>&lt;html&gt; </code>tag, as follows:</p><pre class="prettyprint">&lt;html lang="en"&gt;</pre>
+        <p><b>IMPORTANT:</b> Although according to the html specification, the <code>lang </code>attribute can be set on any tag, unblu only checks the html tag to pick up the language.</p>
+        <p>Unblu supports either language code or language-region code as defined <a href="http://www.ietf.org/rfc/bcp/bcp47.txt">in http://www.ietf.org/rfc/bcp/bcp47.txt</a> section 2.2.1 (Language), section 2.2.4 (Region) and Appendix A (examples for language-region).  If you do not want to set the language for the entire page, you can tell unblu explicitly what locale to use. To do so, add the (custom) attribute <code>unblu_locale</code> to the html tag as follows:</p><pre class="prettyprint">&lt;html unblu_locale="en-US"&gt;</pre>
+        <p>(Most content management systems will let you add this attribute to all pages with little effort.)</p>
+        <h2>Using a JavaScript Function Call</h2>
+        <p>You can also use a JavaScript function call to set the locale, as follows:</p><pre class="prettyprint">unblu.setLocale(language-code)</pre>
+        <p>Note that you have to call the function after the unblu snippet, but before the page is rendered. If at all possible, we recommend that you place the call immediately after the snippet.</p>
+        <h2>Languages and Regions</h2>
+        <p>The language code follows the IETF convention for language codes, so the following calls set the locales for English, US-English, and German as spoken in Germany:</p><pre class="prettyprint">unblu.setLocale("en")</pre><pre class="prettyprint">unblu.setLocale("en-US")</pre><pre class="prettyprint">unblu.setLocale("de-DE")</pre>
+        <p>To set languages in the Agent Desk see:</p>
+        <p><a href="../Agent Desk/Account.htm#Text">Agent Desk - Text</a> <![CDATA[ ]]></p>
+        <p><a href="../Agent Desk/Settings Settings.htm#top">Agent Desk - Settings</a>
+        </p>
+        <p><a href="../Agent Desk/Settings Settings.htm#Settings">Agent Desk - Settings in Advanced Mode</a>
+        </p>
+        <p><a href="../Agent Desk/Precedence Matters.htm#Inherita">Agent Desk - Inheritance Troubleshooting Tips</a>
+        </p>
+        <p><a href="../Agent Desk/The Queue.htm#Managing">Agent Desk - Managing the Queue: Filtering</a>
+        </p>
+        <p>&#160;</p>
+    </body>
+</html>

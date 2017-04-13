@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="1258" MadCap:lastWidth="1123" MadCap:fileTags="File Tags/FileTagSetRedoLinks.FixLinksTo">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1 style="text-align: left;">CSS Selectors Level 3 Limitations</h1>
+        <p>This section indicates the current state of support of <a href="https://www.w3.org/TR/css3-selectors/">CSS Selectors Level 3</a> in unblu co-browsing. Selectors listed in the "Supported" section are known to work properly in unblu, whereas selectors listed in "Unsupported" have not been tested yet. Selectors not listed in any list are likely unsupported.</p>
+        <table style="width: 100%;border-left-style: solid;border-left-width: 1px;border-left-color: ;border-right-style: solid;border-right-width: 1px;border-right-color: ;border-top-style: solid;border-top-width: 1px;border-top-color: ;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: ;">
+            <caption>Supported CSS Selectors</caption>
+            <col />
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>Selector</p>
+                    </th>
+                    <th style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>Example selector</p>
+                    </th>
+                    <th style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>Support status</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><a href="https://www.w3.org/TR/css3-selectors/#attribute-substrings">Substring matching attribute selectors</a>
+                        </p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><code>[att^=val] </code>(prefix match)</p>
+                        <p><code>[att$=val]</code> (suffix match)</p>
+                        <p><code>[att*=val]</code> (substring match</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>
+                            <img src="../Resources/Images/Server_Setup_Guide_Pictures/Green_Tick.png" /> </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><a href="https://www.w3.org/TR/css3-selectors/#structural-pseudos">Root of the document</a>
+                        </p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><code>E:root</code>
+                        </p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>
+                            <img src="../Resources/Images/Server_Setup_Guide_Pictures/Green_Tick.png" /> </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><a href="https://www.w3.org/TR/css3-selectors/#structural-pseudos">nth child</a>
+                        </p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><code>E:nth-child(n)</code>
+                        </p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>
+                            <img src="../Resources/Images/Server_Setup_Guide_Pictures/Green_Tick.png" /> </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><a href="https://www.w3.org/TR/css3-selectors/#structural-pseudos">nth last child</a>
+                        </p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><code>E:nth-last-child(n)</code>
+                        </p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>
+                            <img src="../Resources/Images/Server_Setup_Guide_Pictures/Green_Tick.png" /> </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><a href="https://www.w3.org/TR/css3-selectors/#structural-pseudos">nth of type</a>
+                        </p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><code>E:nth-of-type(n)</code>
+                        </p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>
+                            <img src="../Resources/Images/Server_Setup_Guide_Pictures/Green_Tick.png" /> </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><a href="https://www.w3.org/TR/css3-selectors/#structural-pseudos">nth last of type</a>
+                        </p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><code>E:nth-last-of-type(n)</code>
+                        </p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>
+                            <img src="../Resources/Images/Server_Setup_Guide_Pictures/Green_Tick.png" /> </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><a href="https://www.w3.org/TR/css3-selectors/#structural-pseudos">first / last child of parent</a>
+                        </p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><code>E:first-child</code>
+                        </p>
+                        <p><code>E:last-child</code>
+                        </p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>
+                            <img src="../Resources/Images/Server_Setup_Guide_Pictures/Green_Tick.png" /> </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><a href="https://www.w3.org/TR/css3-selectors/#structural-pseudos">first / last of type</a>
+                        </p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><code>E:first-of-type</code>
+                        </p>
+                        <p><code>E:last-of-type</code>
+                        </p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>
+                            <img src="../Resources/Images/Server_Setup_Guide_Pictures/Green_Tick.png" /> </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><a href="https://www.w3.org/TR/css3-selectors/#structural-pseudos">only child</a>
+                        </p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><code>E:only-child</code>
+                        </p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>
+                            <img src="../Resources/Images/Server_Setup_Guide_Pictures/Green_Tick.png" /> </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><a href="https://www.w3.org/TR/css3-selectors/#structural-pseudos">only of type</a>
+                        </p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><code>E:only-of-type</code>
+                        </p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>
+                            <img src="../Resources/Images/Server_Setup_Guide_Pictures/Green_Tick.png" /> </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><a href="https://www.w3.org/TR/css3-selectors/#structural-pseudos">empty</a>
+                        </p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><code>E:empty</code>
+                        </p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>
+                            <img src="../Resources/Images/Server_Setup_Guide_Pictures/Green_Tick.png" /> </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><a href="https://www.w3.org/TR/css3-selectors/#UIstates">checked user interface</a>
+                        </p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><code>E:checked</code>
+                        </p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>
+                            <img src="../Resources/Images/Server_Setup_Guide_Pictures/Green_Tick.png" /> </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><a href="https://www.w3.org/TR/css3-selectors/#negation">"not" match selector</a>
+                        </p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><code>E:not(s)</code>
+                        </p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>
+                            <img src="../Resources/Images/Server_Setup_Guide_Pictures/Green_Tick.png" /> </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><a href="https://www.w3.org/TR/css3-selectors/#general-sibling-combinators">general sibling combinator</a>
+                        </p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><code>E ~ F</code>
+                        </p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>
+                            <img src="../Resources/Images/Server_Setup_Guide_Pictures/Green_Tick.png" /> </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="text-align: left;">&#160;</p>
+        <table style="width: 100%;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+            <caption>Unsupported CSS Selectors</caption>
+            <col />
+            <col style="width: 244px;" />
+            <col />
+            <thead>
+                <tr>
+                    <th style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>Selector</p>
+                    </th>
+                    <th style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>Example selector</p>
+                    </th>
+                    <th style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>Support status</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><a href="https://www.w3.org/TR/css3-selectors/#target-pseudo">URI target</a>
+                        </p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><code>E:target</code>
+                        </p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>
+                            <img src="../Resources/Images/Server_Setup_Guide_Pictures/icon_forbidden.png" /> (works syntactically but has not been tested in co-browsing sessions)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><a href="https://www.w3.org/TR/css3-selectors/#UIstates">enabled / disabled user interface elements</a>
+                        </p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p><code>E:enabled</code>
+                        </p>
+                        <p><code>E:disabled</code>
+                        </p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                        <p>
+                            <img src="../Resources/Images/Server_Setup_Guide_Pictures/icon_warning.png" /> (works syntactically but usually, all user interface elements in unblu are disabled - if styled differently, the agent has a different view than the visitor)</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="text-align: left;">&#160;</p>
+    </body>
+</html>

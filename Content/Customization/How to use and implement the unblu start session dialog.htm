@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="1897" MadCap:lastWidth="1404">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>How to use and implement the unblu start session dialog</h1>
+        <p><i>The full example implementation can be downloaded from here:</i> <a href="https://dev.unblu.com/confluence/download/attachments/102432856/JSC-1.zip?version=1&amp;modificationDate=1474371753000&amp;api=v2">JSC-1.zip. </a><i>Use unblu version: 4.x.x (unblu 4 or above). The example must be uploaded to an Apache server, or similar, in order to work correctly.</i></p>
+        <p>This example shows how to start a co-browsing session using the unblu JS API by calling <span class="Bolder">core.visitor.ui.Dialogs.showStartSessionDialog()</span></p>
+        <p>What the example page looks like:</p>
+        <p>
+            <img src="../Resources/Images/Customization/image2016-9-19 10-45-14.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 200px;" />
+        </p>
+        <p>Below is the Start Session dialog after clicking <span class="Bolder">Start Co-Browsing</span>.</p>
+        <p>
+            <img src="../Resources/Images/Customization/image2016-9-19 10-45-34.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 200px;" />
+        </p>
+        <p><span class="Bolder">Note: </span>All the file/object/function names can be changed according to your needs.</p>
+        <ol>
+            <li>Create an HTML page (index.html) with one activation element.</li>
+        </ol><pre class="prettyprint">&lt;input id="showDialog" type="button" value="Start Co-Browsing"&gt;</pre>
+        <p>This is going to be used for triggering the unblu Start Session dialog through JavaScript.</p>
+        <ol MadCap:continue="true">
+            <li>Create a JavaScript file called <span class="Bolder">'snippet.js' </span>and paste the snippet into it. The snippet can be found in your account at <a href="http://www.unblu.com/">www.unblu.com</a>. (<span class="Bolder">unblu.com -&gt; myunblu -&gt; administer account -&gt; integration section</span>.)</li>
+        </ol>
+        <p>Keep in mind that the snippet should be placed after the last &lt;meta&gt; tag in the &lt;head&gt; section, but before any other script. <span class="Bolder">All of the other JSAPI consuming scripts must only appear after the snippet.</span></p>
+        <ol MadCap:continue="true">
+            <li>Include the snippet in your HTML file inside the &lt;head&gt; tag (using the appropriate location of the actual <span class="Bolder">'snippet.js'</span> file within your project tree).</li>
+        </ol><pre class="prettyprint">&lt;script type="text/javascript" src="js/snippet.js"&gt;&lt;/script&gt;</pre>
+        <ol MadCap:continue="true">
+            <li>Create an empty JavaScript file and include it in your HTML page after the &lt;body&gt; tag. The unblu Start Session dialog is triggered by the function in this file.</li>
+        </ol><pre class="prettyprint">&lt;script type="text/javascript" src="js/main.js"&gt;&lt;/script&gt;</pre>
+        <ol MadCap:continue="true">
+            <li>Inside <span class="Bolder">'main.js'</span> you need to declare one variable/object to hold the unblu API and one object to hold the activation element from the HTML page. You need to add the <span class="Bolder">'eventListener'</span> to this element.</li>
+        </ol><pre class="prettyprint">
+var unbluAPI;
+var el; // activation element
+el = document.getElementById('showDialog'); // Getting the activation element from the HTML page
+el.addEventListener('click', start, false);</pre>
+        <ol MadCap:continue="true">
+            <li>Declare the “start” function, which is going to get the unblu API and then activate the unblu Start Session dialog using <span class="Bolder">'unbluAPI.core.visitor.ui.Dialogs.showStartSessionDialog()'</span></li>
+        </ol><pre class="prettyprint">function start() {
+    unblu.registerApiConsumer(function (api) {
+        if (typeof api.fatalError != 'undefined') {
+            return;
+        }
+  
+        unbluAPI = api;
+    }, ['core.visitor.ui']); // Add unblu packages at this location depends on which one of them you need
+  
+    if (unbluAPI) { // if the unblu API is loaded
+        unbluAPI.core.visitor.ui.Dialogs.showStartSessionDialog(); // Showing the start session unblu dialog
+    }};</pre>
+        <p>&#160;</p>
+    </body>
+</html>

@@ -1,0 +1,724 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="17034" MadCap:lastWidth="1703">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Filter Specification</h1>
+        <h2>Purpose</h2>
+        <p>Unblu and some implementation partners provide filters for many integration scenarios (see this page for further informations). Sometimes, however, an adapted integration may be required. This custom filter specification describes, how a filter can be implemented.</p>
+        <h2>Implementation Options</h2>
+        <p>Depending on the way of integration, the filter can be implemented</p>
+        <ol>
+            <li>integrated into and running on the web server</li>
+            <li>integrated into and running on the application server</li>
+            <li>integrated into and running within a (reverse) proxy</li>
+            <li>implemented as a (reverse) proxy</li>
+            <li>running in the end user's browser</li>
+        </ol>
+        <p>This document will not explain all integrations and implementation variations in detail. Instead it will focus on providing all necessary information to allow developers to implement a fitting solution on their own.</p>
+        <h2>Requirements overview</h2>
+        <p>With the following chapters, requirements are split into the responsibilities of the filter:</p>
+        <ol>
+            <li>rule based javascript injection</li>
+            <li>rule based resource catch-and-forward to unblu</li>
+            <li>rule based request proxying (only required when implemented as a reverse proxy)</li>
+        </ol>
+        <h2>"Injection" filter requirements</h2>
+        <p>If the filter is integrated into or implemented as a proxy or if the filter is integrated into the customers web or application server, it must</p>
+        <ul>
+            <li>have access to all http(s) requests and responses that are exchanged between the browser and the backend server</li>
+            <li>be able to intercept requests and/or modify responses (headers and content).</li>
+        </ul>
+        <p>If the filter is running in the end users's browser, it must</p>
+        <ul>
+            <li>be included on all web pages supposed to be co-browsable</li>
+        </ul>
+        <h2>"Resource forwarding" requirements</h2>
+        <p>The filter must have access to all http(s) requests and responses that are exchanged between the browser and the backend server. It can be implemented as a reverse proxy or as a filter directly running on the customers web or application server or the end users browser. It must be able to intercept requests, forward response bodies to unblu and/or modify responses (headers and content). In addition it must be able to redirect certain requests (messages from the browser) to the unblu server instead of letting the backend process them.</p>
+        <h2>"Proxying" filter requirements</h2>
+        <p>When implemented as a proxy, the filter must be able to</p>
+        <ul>
+            <li>redirect certain requests (requests from the browser) to the unblu server instead of letting the backend process them.</li>
+        </ul>
+        <h2>Configuration</h2>
+        <p>In order to keep the configuration in one place, the filter needs to be configured dynamically from the unblu server. Local configuration should be limited to things that cannot be provided by the unblu server (such as locating the unblu server) and to purely impementation specific, technical configuration. When the filter starts up, it must read it's configuration from the unblu server. The configuration contains all information the filter needs in order to do it's work. Because the unblu server might be reconfigured without the filter beeing restarted, a special header containing a configuration version identifier is included in every response unblu sends to the filter. As soon as the version identifier changes, the filter must reload the configuration from the server.</p>
+        <h2>Forward requests to unblu</h2>
+        <p>The configuration defines a list of path prefixes (i.e. /unblu/) that identifies requests that need to be forwarded to the unblu server. All requests from the customers browser starting with this prefix must be forwarded to the unblu server instead of processing them as normal requests to the backend web- or application server.</p>
+        <h2>Cache content</h2>
+        <p>The filter must send the content of the response bodies (enriched by additional information) to the unblu server so that it can be stored for (later) playback in the unblu player. The filter has to decide whether a response needs to be sent to the unblu server according to rules defined in the configuration.</p>
+        <h2>Code injection</h2>
+        <p>The filter must be able to inject javascript and css code into the body of the html response. The content that needs to be injected and the rules defining whether a response needs injection or not are defined in the configuration.</p>
+        <h2>Regex replacements (optional)</h2>
+        <p>The filter must be able to perform regular expression replacements in textual http responses (html, css, javascript...). A list of replacements is included in the filter configuration.</p>
+        <h2>String replacement</h2>
+        <p>Parts of the injected code need to be dynamic (for instance the id of the current cache content). Therefor the filter needs to perform simple string replacements in the javascript content before injecting into the html body of the response. These string replacements are based on the #Environment Variables that the filter provides.</p>
+        <h2>Rule evaluation</h2>
+        <p>The decision whether or not a page needs to be sent to the unblu server or whether it needs code injection must be taken on the filter. A roundtrip to the unblu server is not acceptable. Therefor the filter needs to evaluate a set of rules (provided in the configuration) in order to decide. These rules need to be able to take into account the #Environment Variables.</p>
+        <h2>Environment variables</h2>
+        <p>The filter needs to provide a predifined set of environment variables to be used in #String replacement and #Rule evaluation. Some of these environment variables are static (such as the unbluPath, path to the unblu server), others are dynamic and need to be provided in a request scope (requestUri, cookie values, contentType...)</p>
+        <h2>Non functional requirements</h2>
+        <p>The filter must smoothly continue to deliver backend requests even if the unblu server is (temporarily) not available.</p>
+        <h2>UML Overview</h2>
+        <p>UML overview of the java implementation</p>
+        <p>
+            <img src="../Resources/Images/Filter/Filter-uml.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 400px;" />
+        </p>
+        <h2>Environment variables / String substitution</h2>
+        <p>Filter implementations must provide environment variables and string substitution functionality. This functionality is used by the rule evaluation system and by the code injection.</p>
+        <p>Variable names must be case insensitive.</p>
+        <h2>Scoping</h2>
+        <p>Environment variables must be provided on tree different scopes: filter, configuration and request. In the filter scope, globally valid variables such as the URL of the unblu server are stored. The request scope holds variables that are only valid for a single request (cookie values, response content type...). The request scope environment must fall back on the configuration scope environment if a variable key is not found within the request scope, configuration scope must fall back to filter scope.</p>
+        <h2>String substitution</h2>
+        <p>Filter implementations must be able to search for placeholders in strings and replace them with variable values from the environment. The expansion of placeholders with their value must be performed recursively as variable values can also hold placeholders.</p>
+        <p>Placeholders have the following format: ${PLACEHOLDER_NAME}. Only a to z characters, - and _ are allowed in variable keys. The following regular expression can be used to find placeholders: \${a-zA-Z_-+}.</p>
+        <p>Lookup of placeholders is case insensitive.</p>
+        <h2>Sources of environment variables</h2>
+        <p>There are several sources, environment variables are defined from:</p>
+        <ul>
+            <li>local filter configuration (things the filter must know on its own like the URL of the unblu server)</li>
+            <li>unblu server (the server can send environment variables in its responses)</li>
+            <li>http request headers</li>
+            <li>http response headers</li>
+        </ul>
+        <p>The following tables lists all environment variables, filter implementations must support:</p>
+        <table style="width: 100%;border-left-style: solid;border-left-width: 1px;border-left-color: ;border-right-style: solid;border-right-width: 1px;border-right-color: ;border-top-style: solid;border-top-width: 1px;border-top-color: ;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: ;">
+            <col />
+            <col />
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Variable name</p>
+                    </th>
+                    <th style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Scope</p>
+                    </th>
+                    <th style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Source</p>
+                    </th>
+                    <th style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>remarks</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>UNBLU_PATH</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Filter</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Local filter configuration</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>deprecated, use UNBLU_PUBLIC_PATH instead</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>UNBLU_PUBLIC_PATH</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Filter</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Local filter configuration</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>the path prefix for requests that are redirected to the unblu server (usually /unblu)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>UNBLU_SYSTEM_PATH</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Filter</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Local filter configuration</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>path prefix for requests from the filter to the unblu server (for the filter server communication)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>UNBLU_URL</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Filter</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Local filter configuration</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>the url of the unblu server (i.e. http://localhost:8080)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>ORIGINAL_URL</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Request</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Request</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>The URL of the current request</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>NBLU_START_TIME</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Filter</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Response Headers</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Initially empty as soon as a response with a x-unblu-start-time header has been processed, UNBLU_START_TIME must be set to the value of the header</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>FILTER_START_TIME</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Filter</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Filter implementation</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Set during filter start up. Timestamp of the start time of the filter (milliseconds since 1.1.1970 0:00 UTC).</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>START_TIME</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Filter</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Filter implementation</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>MAX(FILTER_START_TIME, UNBLU_START_TIME)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>ORIGINAL_PATH</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Request</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Request</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>The PATH component of the URL of the current request</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>CONTENT_TYPE</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Request</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Response Headers</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>The content type of the response. If the original header contains a character set, it must be striped away.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>CONTENT_LENGTH</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Request</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Response Headers</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>The content length of the response if known.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>CHARACTER_SET</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Request</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Response Headers</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>The character set of the response if available</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>DEFAULT_CHARACTER_SET</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Filter</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Local filter configuration</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>The default character set of the filter</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>COOKIE_&lt;cookieName&gt;</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Request</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Request Headers</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>For every cookie, the client sent to the filter, an environment variable with the pattern COOKIE_&lt;cookieName&gt; must be generated</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>REQUEST_HEADER_&lt;headerName&gt;</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Request</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Request Headers</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>For every request header, the client sent to the filter, an environment variable with the pattern REQUEST_HEADER_&lt;headerName&gt; must be generated</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>RESPONSE_HEADER_&lt;headerName&gt;</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Request</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Response Headers</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>For every response header, the backend sent to the filter, an environment variable with the pattern RESPONSE_HEADER_&lt;headerName&gt; must be generated</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>whatever sent by the unblu server</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Configuration</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Filter configuration from unblu server</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Every time the filter loads it's configuration, it must put all supplied environment variables into its configuration scope</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>whatever sent by the unblu server</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Request</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>ContentId response from the server</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                        <p>Every time the filter sends a "cacheContent" message to the server, it must put all supplied environment variables into the request scope</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Rule evaluation</h2>
+        <p>Filter implementations must provide rule evaluation support. Rules are boolean expressions that consist of various caparisons (equal, greater than, startsWith...), conjunctive ("and") and disjunctive ("or") combinations and negations ("not"). Rules evaluations are used where the filter needs to decide whether a response needs to be sent to the unblu server for caching and to decide if a code injection needs to be performed or not.</p>
+        <p>Rule evaluation always takes place within an environment scope (filter, configuration or request). The evaluation of every rule within an environment results in a boolean value.</p>
+        <h2>Rule Types</h2>
+        <p><span class="Bolder">Comparison</span>
+        </p>
+        <p>type-property: comparison</p>
+        <p>Comparison rules consist of the following parts:</p>
+        <ul>
+            <li>leftSide: the left side of the comparison</li>
+            <li>operator: the operator of the comparison</li>
+            <li>rightSide: the right side of the comparison</li>
+            <li>caseSensitive: whether or not the comparison should consider case</li>
+        </ul>
+        <p>The operator property can have one of the following values:</p>
+        <table style="width: 100%;border-left-style: solid;border-left-width: 1px;border-left-color: ;border-right-style: solid;border-right-width: 1px;border-right-color: ;border-top-style: solid;border-top-width: 1px;border-top-color: ;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: ;">
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                        <p>operator</p>
+                    </th>
+                    <th style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                        <p>true if</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                        <p>equals</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                        <p>left and right side are equal (string comparison)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                        <p>startsWith</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                        <p>left side string value starts with right side string value</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                        <p>endsWith</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                        <p>left side string value ends with right side string value</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                        <p>contains</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                        <p>left side string value contains right side string value</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                        <p>=</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                        <p>left side is equal to right side (numeric comparison)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                        <p>&gt;</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                        <p>left side is bigger than right side</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                        <p>&lt;</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                        <p>left side is smaller than right side</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                        <p>&gt;=</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                        <p>left side is bigger or equal to right side</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                        <p>&lt;=</p>
+                    </td>
+                    <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom: 3px;">
+                        <p>left side is smaller or equal to right side</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>For example a comparison rule could compare the response content type of a request against a string literal:</p>
+        <ul>
+            <li>leftSide: ${CONTENT_TYPE}</li>
+            <li>operator: equal</li>
+            <li>rightSide: text/html</li>
+            <li>caseSensitive: false</li>
+        </ul>
+        <h2>And</h2>
+        <p>type-property: and</p>
+        <p>And rules consist of a list of compound rules ("rules" property).</p>
+        <p>And rules evaluate to true if all components evaluate to true.</p>
+        <h2>Or</h2>
+        <p>type-property: or</p>
+        <p>Or rules consist of a list of compound rules ("rules" property).</p>
+        <p>Or rules evaluate to true if at least one of the components evaluates to true.</p>
+        <h2>Not</h2>
+        <p>type-property: not</p>
+        <p>Not rules consist of a single rule ("rule" property).</p>
+        <p>Not rules evaluate to true if the contained rule evaluates to false.</p>
+        <h2>UML</h2>
+        <p>UML of the java implementation</p>
+        <p>
+            <img src="../Resources/Images/Filter/Filter-Rule-uml.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 400px;" />
+        </p>
+        <h2>Code Injection</h2>
+        <p>The filter configuration holds a list of ConditionalCodeInjections. A conditional code injection consists of a Rule (condition) an a list of CodeInjections that must be performed if the condition evaluates to true (in the request scope environment).</p>
+        <p>Every CodeInjection consists of reference (place in the html code where the injection must be performed), a type (internal or external javascript, internal or external style sheet) and a value holding the string value of the code injection. The value can hold placeholders so it must be expanded in the request environment prior to injection.</p>
+        <h2>Reference</h2>
+        <p>The code injection references represents the spot in the html code where the injection string must be placed.</p>
+        <h3>BEFORE_BODY_CLOSE</h3>
+        <p>Before body close means that the string must be inserted just in front of the closing body tag.</p><pre class="prettyprint">&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+what ever content
+INJECTION GOES HERE&lt;/body&gt;
+&lt;/html&gt;</pre>
+        <h3>AFTER_HEAD_START</h3>
+        <p>After head start means that the string must be inserted just after the opening head tag.</p><pre class="prettyprint">&lt;html&gt;
+&lt;head&gt;
+INJECTION GOES HERE
+&lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+what ever content
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+        <h3>BEFORE_HEAD_CLOSE</h3>
+        <p>Before head close means that the string must be inserted just before the closing head tag.</p><pre class="prettyprint">&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;&lt;/title&gt;
+INJECTION GOES HERE
+&lt;/head&gt;
+&lt;body&gt;
+what ever content
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+        <h3>AFTER_LAST_META</h3>
+        <p>after last meta means that the string must be inserted just after the last meta tag that occurs between starting head and ending head tag.</p><pre class="prettyprint">&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;&lt;/title&gt;
+&lt;meta&gt;
+&lt;meta&gt;
+&lt;anyothertag&gt;
+&lt;meta&gt;
+INJECTION GOES HERE
+&lt;anyothertag&gt;
+&lt;/head&gt;
+&lt;body&gt;
+what ever content
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+        <h2>Type</h2>
+        <p>The code injection type defines, how the injection string must be modified before it is inserted in the html.</p>
+        <h3>INTERNAL_JAVASCRIPT</h3>
+        <p>Expanded value:</p><pre class="prettyprint">var unbluConfig = {sessionCookieName: "x-unblu-sid", contentId: "iidzzllei889088d88kke8dujd"}</pre>
+        <p>Injected string:</p><pre class="prettyprint">&lt;script type="text/javascript" charset="UTF-8"&gt;
+var unbluConfig = {sessionCookieName: "x-unblu-sid", contentId: "iidzzllei889088d88kke8dujd"}
+&lt;/script&gt;</pre>
+        <h3>EXTERNAL_JAVASCRIPT</h3>
+        <p>Expanded value:</p><pre class="prettyprint">/unblu/javascript/consultant.js</pre>
+        <p>Injected string:</p><pre class="prettyprint">&lt;script type="text/javascript" charset="UTF-8" src="/unblu/javascript/consultant.js"&gt;&lt;/script&gt;</pre>
+        <h3>INTERNAL_STYLE_SHEET</h3>
+        <p>Expanded value:</p><pre class="prettyprint">.unbluSupportLink { background-color: #FF0000 }</pre>
+        <h3>Injected string:</h3><pre class="prettyprint">&lt;style type="text/css"&gt;
+.unbluSupportLink { background-color: #FF0000 }
+&lt;/style&gt;</pre>
+        <h3>EXTERNAL_STYLE_SHEET</h3>
+        <p>Expanded value:</p><pre class="prettyprint">/unblu/css/consultant.css</pre>
+        <p>Injected string:</p><pre class="prettyprint">&lt;link rel="stylesheet" href="/unblu/css/consultant.css" type="text/css" media="all"&gt;&lt;/link&gt;</pre>
+        <h3>HTML_CONTENT</h3>
+        <p>Expanded value</p><pre class="prettyprint">&lt;div id="myDiv"&gt;&lt;/div&gt;</pre>
+        <p>Injected string:</p><pre class="prettyprint">&lt;div id="myDiv"&gt;&lt;/div&gt;</pre>
+        <h2>Regex Replacements (optional)</h2>
+        <p>The filter configuration holds a list of ConditionalRegexReplacement instances. Every ConditionalRegexReplacement holds a rule (condition property), if this condition evaluates to true in the request scope environment, the regular expression based string replacement must be performed on the response body. All matches of the given pattern must be replaced with the given replacement string. The replacement must be expanded in the request scope environment as it can contain placeholders.</p>
+        <h2>Communication with unblu server</h2>
+        <p>Filter implementations need to communicate with the unblu server in the following situations:</p>
+        <ul>
+            <li>forward (proxy) requests that start with ${UNBLU_PUBLIC_PATH} to the unblu server</li>
+            <li>read configuration</li>
+            <li>send HTTP responses to unblu server for caching</li>
+        </ul>
+        <p>In the first case, the filter simply proxies incoming requests to the unblu server by translating the request path and forwarding query string, body and parts of the headers.</p>
+        <p>For the other cases (read configuration, cache contents), the unblu server provides a simple HTTP interface.</p>
+        <h2>Proxy requests to unblu</h2>
+        <p>The filter has to forward all requests that have a path that starts with ${UNBLU_PUBLIC_PATH} to the unblu server.</p>
+        <p>For instance if the filter is reachable at <code>http://foo.com/</code> and the unblu server URL is <code>http://localhost:8080/unblu/</code> and <code>${UNBLU_PUBLIC_PATH}</code> is /unblu then a request to <code>http://foo.com/unblu/js/bar.js </code>has to be forwarded to <code>http://localhost:8080/unblu/js/bar.js</code>. The request to the unblu server has to include the original query string and the body of the request (if it is a POST request). When forwarding a request to the unblu server, generally all request headers (as sent from the browser) must also be set in the request to the unblu server and all response headers (as sent from the unblu server) must also be set in the response to the browser.</p>
+        <p>In most cases forwarding request to unblu is realized using an already in place reverse proxy (i.e. apache mod_proxy or similar). The proxy must at least implement the "GET" and "POST" HTTP methods.</p>
+        <h2>HTTP interface</h2>
+        <p>When the filter reads configuration from the unblu server or sends a response to the unblu server for caching, it uses a simple HTTP interface.</p>
+        <p>The HTTP interface is reachable trough the URL ${UNBLU_SYSTEM_URL}/filterBackend.</p>
+        <p>Requests to this interface consist of a set of key/value pairs. These pairs can be sent in the form of proprietary headers (x-unblu-&lt;name&gt;: &lt;value&gt;) or as request parameters in the query string (i.e. <code>http://localhost:8080/unblu/rest/filterBackend?x-unblu-action=add-to-cache</code>...). In addition to proprietary headers or query string parameters, binary data (body of responses to be cached) is transmitted in the body of a post request. If data is transmitted, content-type has to be set to application/octet-stream and the content-length header must be set.</p>
+        <p>Responses from the HTTP interface always consist of a JSON string holding either a response (depending on the action) or an error message.</p>
+        <p>In addition to the response body, the HTTP interface responses include the following proprietary headers:</p>
+        <ul>
+            <li>x-unblu-configuration-version (the currently valid configuration version)</li>
+            <li>x-unblu-session-invalid: true if the session is not valid (anymore)</li>
+        </ul>
+        <p>The following parameters must be set in every request to the HTTP interface:</p>
+        <ul>
+            <li>interface-version: the version of the interface, the filter implements (for now this is always 1)</li>
+            <li>action: the action that the filter wants to perform</li>
+            <li>configuration-version: the version of the current configuration, the filter uses if available or an empty string if no configuration has been loaded so far</li>
+        </ul>
+        <p>Depending on the "action" parameter additional parameters are required...</p>
+        <h3>Action "ping"</h3>
+        <p>Type of response: empty object</p>
+        <h3>Action "read-configuration"</h3>
+        <p>This action reads the configuration for the filter and returns it as a JSON object.</p>
+        <p>Type of response: FilterConfiguration</p>
+        <h3>Action "add-to-cache"</h3>
+        <p>This action adds a response to the cache.</p>
+        <p>Type of response: ContentId</p>
+        <p>The following additional parameters are required:</p>
+        <ul>
+            <li>cache-date: the date the response was received</li>
+            <li>content-type: the content type of the response body (without the character set part)</li>
+            <li>character-set: the character set, the response body is encoded with if available</li>
+            <li>http-status-code: the status code of the response</li>
+            <li>original-url: the url of the request as it was sent to the filter</li>
+        </ul>
+        <p>file-name: a human readable file-name (is used for downloads) in generic implementations the content-dispsition headers "filename" fragment can be used (if present)</p>
+        <p><span class="Bolder">Note:</span> You need to have a valid unblu session id (received after logging in) which has to be transmitted in the Cookies.</p>
+        <p>The body of the response must be sent to unblu in the body of the post request.</p>
+        <h3>Data Types</h3>
+        <p>All returned JSON data types are based on a base type with the following structure</p><pre class="prettyprint">{
+	"class": &lt;dataTypeName&gt;
+	"environment": {
+		"key1": "value1",
+		"key2": "value2",
+ 		"keyn" : "valuen"
+ 	}
+}</pre>
+        <p>"class" holds the name of the data type, "environment" holds a set of key/value pairs. The elements in the environment must be added the the environment of the scope, the request is executed in (read-configuration: filter scope, add-to-cache: request scope).</p>
+        <h3>FilterBackendError</h3>
+        <p>Whenever something went wrong.</p><pre class="prettyprint">{
+ "class": "FilterBackendError"
+ "environment": {
+ "key1": "value1",
+ "key2": "value2",
+ ...
+ }
+ "code": &lt;int error code&gt;,
+ "message": &lt;error message&gt;
+ }</pre>
+        <h3>CacheContentId</h3>
+        <p>In responses to "add-to-cache"</p><pre class="prettyprint">{
+ "class": "CacheContentId"
+ "environment": {
+ "key1": "value1",
+ "key2": "value2",
+ ...
+ }
+ "contentId": &lt;string id of the cache content&gt;
+ }</pre>
+        <h3>FilterConfiguration</h3>
+        <p>In responses to "read-configuration"</p><pre class="prettyprint">{
+ "class": "FilterConfiguration",
+ "environment": {
+ "key1": "value1",
+ "key2": "value2",
+ ...
+ }
+ "version": &lt;string version of the configuration&gt;
+ "cacheCondition": &lt;Rule that must be evaluated in order to decide if a response must be added to the cache&gt;
+ "codeInjections": &lt;array of ConditionalCodeInjection objects&gt;
+ }</pre>
+        <h3>ConditionalRegexReplacement</h3>
+        <p>A regular expression based string replacement that must be performed if the condition evaluates to true in the request scope</p><pre class="prettyprint">{
+	"class": "ConditionalRegexReplacement",
+	"condition": &lt;Rule, if it evaluates to true, the replacement must be performed&gt;,
+	"pattern": &lt;the regex pattern&gt;
+	"replacement": &lt;the string that must be inserted as a replacement for all matches&gt;
+}</pre>
+        <h3>ConditionalCodeInjection</h3>
+        <p>A set of code injections that must be performed if a given condition (rule) evaluates to true.</p><pre class="prettyprint">{
+	"class": "ConditionalCodeInjection",
+	"condition": &lt;Rule that decides if the injection takes place for the current request&gt;,
+	"injections": &lt;array of CodeInjection objects&gt;
+}</pre>
+        <h3>CodeInjection</h3>
+        <p>A code injection.</p><pre class="prettyprint">{
+	"class": "CodeInjection",
+	"reference": &lt;BEFORE_BODY_CLOSE|AFTER_HEAD_START|BEFORE_HEAD_CLOSE&gt;, // place in the HTML where the injection must go
+	"type": &lt;INTERNAL_JAVASCRIPT|EXTERNAL_JAVASCRIPT|INTERNAL_STYLE_SHEET|EXTERNAL_STYLE_SHEET|HTML_CONTENT&gt;, // type of the injection
+	"value": &lt;string value of the injection, must be expanded within the request scope&gt;
+}</pre>
+        <h3>ComparisonRule</h3><pre class="prettyprint">{
+	"class": "ComparisonRule",
+	"leftSide": &lt;leftSide string value&gt;,
+	"rightSide": &lt;rightSide string value&gt;,
+	"operator": &lt;equals|startsWith|endsWith|contains|=|&lt;|&lt;=|&gt;|&gt;=&gt;,
+	"caseSensitive": &lt;boolean&gt;
+}</pre>
+        <h3>AndRule</h3><pre class="prettyprint">{
+	"class": "AndRule",
+	"rules": &lt;array of Rules&gt;
+}</pre>
+        <h3>OrRule</h3><pre class="prettyprint">{
+	"class": "OrRule",
+	"rules": &lt;array of Rules&gt;
+}</pre>
+        <h3>NotRule</h3><pre class="prettyprint">{
+	"class": "NotRule",
+	"rule": &lt;Rules&gt;
+}</pre>
+        <h2>Request Processing</h2>
+        <p>This section describes the actual work a filter has to do. A filter implementation must intercept all requests (whether as a module in the HTTP server or as a proxy). For every request the following steps need to be performed (pseudo code).</p><pre class="prettyprint">if (path startsWith ${UNBLU_PUBLIC_PATH} {
+	proxy request to unblu
+} else {
+	let backend process request
+	build request scope environment variables
+	perform regex replacements
+	if (cachCondition evaluates to true) {
+		send response to unblu HTTP filter interface "add-to-cache" action
+		add returned environment variables to request scope
+		set ${UNBLU_USER_COOKIE_NAME} "set-cookie" header if ${UNBLU_USER_ID} is set
+		set ${UNBLU_SESSION_COOKIE_NAME} "set-cookie" header if ${UNBLU_USER_SESSION_ID} is set
+ 	}
+	perform code injections if their conditions evaluate to true in request scope environment
+ 	if (a code injection took place) {
+		clear "etag" header in response
+		clear "last-modified" header in response
+ 	}
+	send (potentially modified response body to the browser)
+}</pre>
+        <p>If the unblu server is (temporarily) not available, the filter must not disturb the normal operation of the backend HTTP server. In order to achieve this, it might make sense to remember the state of the unblu server within the filter. Like this running into timeouts at every request can be avoided.</p>
+        <p>This could be done similar to:</p>
+        <p>As soon as the filter fails to call the unblu server one, it starts a background thread that waits for unblu to come up again. Until unblu is up again, the filter does not attempt to send requests to unblu anymore. As soon as unblu is up again, the filter starts sending request so it again. In order to check if unblu is up, the "ping" action of the HTTP interface can be used.</p>
+        <h2>Lifecycle</h2>
+        <p>This section describes the life cycle of a filter.</p>
+        <h3>Startup</h3>
+        <p>When the filter starts up, it must load it's initial configuration from the server (by sending a "read-configuration") request to the unblu filter HTTP interface. The filter must store the version of the configuration for later comparison to the server's actual configuration version.</p>
+        <h3>Reconfiguration</h3>
+        <p>Every time the filter sends a request to the unblu server (whether it calls the HTTP interface of if it forwards a request to unblu), it must compare the value of the x-unblu-configuration-version value with the version of the configuration it got when last loading the configuration from the server. If the version does not match, the filter must reload the configuration and apply it.</p>
+        <h3>Development</h3>
+        <p>When developing a filter implementation, a local tomcat runing a unblu server can be used as the filter backend.</p>
+        <p>To deploy unblu to a local tomcat, it makes sense to rename the original product.&lt;productId&gt;&lt;version&gt;&lt;qualifier&gt;.war to ROOT.war (i.e. product.com.unblu.review-2.2.0-2011090191106.war). After renaming it, it can be simply copied into the webapp directory of the tomcat installation. If autodeploy is enabled in the tomcat, unblu will be available at &lt;tomcatSchema&gt;://&lt;tomcatHost&gt;:&lt;tomcatport&gt;/unblu/ (i.e <code>http://localhost:8080</code>). The UNBLU_URL is <code>http://localhost:8080/unblu</code> in this case.</p>
+        <p>&#160;</p>
+    </body>
+</html>

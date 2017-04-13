@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="4051" MadCap:lastWidth="2548">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Configuring User Names Displayed</h1>
+        <p>This page describes the way of displaying user names as of unblu release 3.2.6. User names in this context are the names displayed for authenticated users.</p>
+        <p>Display names here can be:</p>
+        <ul>
+            <li>The name displayed for a mouse cursor in a running co-browsing session.</li>
+            <li>The name displayed in the chat.</li>
+            <li>The name displayed in agent workspace.</li>
+        </ul>
+        <h2>User Display Names as of unblu Version 3.2.6</h2>
+        <p>From unblu version 3.2.6 the way user names are displayed and how the correct name to display is selected has changed slightly. It is mainly simplified in the code and receives a better separation of concerns.</p>
+        <p>The improved solution is oriented at the MVC (model view controller) pattern and separates:</p>
+        <ul>
+            <li>The user model (the data representing a user).</li>
+            <li>The evaluation of the display name depending on the purpose (controller providing the view).</li>
+            <li>The localization of the display name (if a configured name should be taken, e.g., "agent" for a support agent in English or "Berater" in German).</li>
+        </ul>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>The User Model</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The user model is created by a number of different product parts:</p>
+                <p><span class="Bolder">In the cloud</span>, user information includes username, firstname, lastname and roles.</p>
+                <p><span class="Bolder">In on-premises setups</span> with unblu Single Sign-On (SSO) distribution, these sources are currently supported:</p>
+                <ul>
+                    <li>trusted headers: HTTP request headers received with each request (provided, e.g., by a proxy in front of the unblu server) are taken as authentication information (username, displayname, roles can be provided)</li>
+                    <li>JEE: The servlet container running unblu inside can provide Authentication information to unblu per request (provides username). Additional information can be provided again using HTTP request headers (displayname)</li>
+                    <li>edbs (finnova interface): Proprietary interface essentially providing similar information to the cloud version</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Display Name Evaluation</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Since not all sources can provide the same model information it is important to define a consistent way of selecting model parts for the display name - depending on the display name purpose.</p>
+                <p>Example requirements:</p>
+                <ul>
+                    <li>The cloud can provide first and last name. Co-browsing users should be displayed with the last name of the agent as mouse cursor label.</li>
+                    <li>The mouse cursor label should always be displaying a localized text "Agent" (en), "Berater" (de) etc. but the name displayed in the agent workspace should be the real name of the authenticated support agent.</li>
+                    <li>The mouse label of the co-browsing visitor should be the technical id submitted to the unblu server but the agent mouse label should represent the real name of the support agent.</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Display Name Usage</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Display names are used for these purposes:</p>
+                <ul>
+                    <li>As a mouse label of a co-browsing visitor or co-visitor / agent.</li>
+                    <li>As a chat label of a co-browsing visitor or co-visitor / agent.</li>
+                    <li>As real name of an authenticated user (e.g. on top of agent workspace).</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Evaluation Order Configuration</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The following configuration settings exist (<span class="Bolder">as of unblu version 3.2.6</span>). They specify the selection order of data to use for particular purposes. Evaluation is done in such a way that if data is available for a key listed further in front, it overrides data available further back in the configuration.</p>
+                <p>The first example is shows how personal or <code>privatename</code> display should be configured. This can be used when you want the user to see thier own name as confirmation of a correct login.</p><pre class="prettyprint" xml:space="preserve">
+privatenamedefault.displayNameEvaluationOrder=displayname,firstlast,username,identifier 
+# available are: 'firstlast', 'displayname', 'username', 'identifier'
+</pre>
+                <p>This configuration would take a <code>displayname</code> if available (only available with unblu SSO when using JEE and trusted header sources and not always provided). As a fallback it would use <code>firstname</code> and <code>lastname</code> if available, then the <code>username</code> and last the <code>identifier</code>.</p>
+                <p>The order of evaluation can be changed by changing the order of the keys in the configuration list. Also, it is possible to only provide a subset:</p><pre class="prettyprint">privatenamedefault.displayNameEvaluationOrder=firstlast,username</pre>
+                <p>Note that certain configurations are useless and misleading:</p><pre class="prettyprint" xml:space="preserve">privatenamedefault.displayNameEvaluationOrder=identifier,firstlast,username 
+# will always pick identifier since this is mandatory in the model. The other options listed are never taken and thus are misleading in this list</pre>
+                <p>Also note that providing an empty display name evaluation order is an error:</p><pre class="prettyprint" xml:space="preserve">privatenamedefault.displayNameEvaluationOrder= 
+# this is logged as an error,the server starts but will always return 'empty' display names</pre>
+                <p>Display name evaluation exists for <code>privatename</code> as well as <code>participantname</code> usage. The latter has two flavours: visitor (old name <code>recorder</code>) as well as co-visitor (old name <code>player)</code>.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>List of Display Name Configuration Properties</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The following list represents all configuration options available regarding display name evaluation as of unblu version 3.2.6. The list always shows the default configuration for each property and as a comment at the end of the list of available options</p><pre class="prettyprint"># settings affecting the private display name
+privatenamedefault.displayNameEvaluationOrder=displayname,firstlast,username,identifier # available are: 'firstlast', 'displayname', 'username', 'identifier'
+
+# settings affecting the co-visitor display name
+participantnamedefault.player.displayNameEvaluationOrder=firstlast,displayname,nickname,staticname # available are: 'firstlast', 'displayname', 'nickname', 'username', 'staticname', 'identifier'
+participantnamedefault.player.showFirstnameEnabled=true # whether or not display name should include firstname if evaluation order picked 'firstlast'
+participantnamedefault.player.showLastnameEnabled=true # whether or not display name should include lastname if evaluation order picked 'firstlast'
+participantnamedefault.player.participantNameDefaultPlayerKey=participantnamedefault.player # the name of the text property to use when 'staticname' is chosen
+
+# settings affecting the visitor display name
+participantnamedefault.recorder.displayNameEvaluationOrder=firstlast,displayname,nickname,staticname # available are: 'firstlast', 'displayname', 'nickname', 'username', 'staticname', 'identifier'
+participantnamedefault.recorder.showFirstnameEnabled=true # whether or not display name should include firstname if evaluation order picked 'firstlast'
+participantnamedefault.recorder.showLastnameEnabled=true # whether or not display name should include lastname if evaluation order picked 'firstlast'
+participantnamedefault.recorder.participantNameDefaultPlayerKey=participantnamedefault.recorder # the name of the text property to use when 'staticname' is chosen</pre>
+                <h2>&#160;</h2>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2>Additional information:</h2>
+        <p>If <code>firstname </code>or <code>lastname</code> is available but excluded with <code>showXXnameEnabled=false</code>, it will be ignored in the evaluation order and the next evaluation order element is used.</p>
+        <h2>List of Display Name Localized Text Properties</h2>
+        <p>The following list represents the localized text properties typically taken into account if <code>staticname</code> has been chosen in the evaluation order (only available for <code>participantname</code>) or no option was left, but a participant name has to be evaluated (final fallback).</p><pre class="prettyprint">participantnamedefault.player.&lt;lang&gt;=
+participantnamedefault.recorder.&lt;lang&gt;=</pre>
+        <h2>Examples</h2>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>In a Cloud Setup</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Co-browsing users must see the last name of the agent as the mouse cursor label.</p><pre class="prettyprint">participantnamedefault.player.displayNameEvaluationOrder=firstlast
+participantnamedefault.player.showFirstnameEnabled=false</pre>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>In an On-Premises Setup using JEE</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The mouse cursor label must always be displaying a localized text "Agent" (en), "Berater" (de) etc., but the name displayed in the agent workspace must be the real name of the authenticated support agent (falling back to the user id if no real name should be available for some reason).</p><pre class="prettyprint"># JEE providing username as additional header
+com.unblu.authentication.idpropagation.jee.enabled=true
+com.unblu.authentication.idpropagation.jee.headerDisplayNameTrusted=x-unblu-user-displayname
+
+participantnamedefault.player.displayNameEvaluationOrder=nickname,staticname
+privatenamedefault.displayNameEvaluationOrder=displayname,identifier</pre><pre class="prettyprint"># localized text properties
+participantnamedefault.player.de=Berater
+participantnamedefault.player.en=Agent</pre>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>In an On Premises Setup using Trusted Headers</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The mouse label of the co-browsing visitor to be the technical id submitted to the unblu server in the <code>REMOTE-USER</code> HTTP header (falling back to a static default configuration, in case the id is missing).</p><pre class="prettyprint">com.unblu.authentication.idpropagation.trustedheader.enabled=true
+com.unblu.authentication.idpropagation.trustedheader.headerUserId=REMOTE-USER
+participantnamedefault.recorder.displayNameEvaluationOrder=identifier,staticname</pre>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <p>&#160;</p>
+    </body>
+</html>

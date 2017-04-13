@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="1596" MadCap:lastWidth="939">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Integration Overview</h1>
+        <p>With unblu, users do not need to download and launch executable files, install browser plugins or use Java applets to use co-browsing. Instead, the unblu co-browsing functionality is delivered by the website in the form of Javascript. There are a number of different approaches on how to integrate that Javascript into an existing website. </p>
+        <h2>Using the unblu cloud deployment option</h2>
+        <p style="text-align: center;">
+            <img src="../Resources/Images/unblu_integration_cloudoverview.svg" />
+        </p>
+        <p>See the product comparison chart and check the deployment options for the various products. All products with deployment option "cloud" result in an integration setup as shown in the picture above. This integration requires you to integrate a JavaScript snippet into the web pages of your website. <a href="../Integration/Integrating unblu in your website.htm">Integrating unblu into your Website</a> explains how the unblu JavaScript snippet needs to be integrated into your website. </p>
+        <h2>unblu business line used with cloud deployment</h2>
+        <p>When using products from the unblu business line, the unblu snippet must be placed in those pages, where you want visitors to start co-browsing or where you'd like to use the unblu JSAPI. Depending on your use case, it may be useful to have a single page equipped with the unblu snippet.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>When to do integration directly in the website</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The following points outline when the unblu cloud service offering should be your integration of choice:</p>
+                <ul>
+                    <li>Minimal integration costs, quick start.</li>
+                    <li>Business line product must be used for some reason (currently only available as cloud service).</li>
+                    <li>You do not need to host a service and want operations to be simple and inexpensive (all costs are  included in the cloud service offering).</li>
+                    <li>Your website does not have session images or other dynamic resources that should be co-browsed.</li>
+                    <li>When simple document co-browsing is required (available via business line cloud offering to date).</li>
+                    <li>When your infrastructure does not comply to the requirements for an <a href="../Collaboration Server Setup/On-Premises Requirements.htm">on-premises installation</a>.</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>When to do an on-premises installation</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The following list provides major decision points about when to install unblu on premises:</p>
+                <p>When your company has strict requirements regarding data privacy. For example, when all or some of your website data must not be accessed outside your country.</p>
+                <p>Your website has dynamic resources, which are generated for, or only valid within, a specific user session.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <p>For more on on-premises integration see: <a href="../Collaboration Server Setup/Introduction to the Collaboration Server.htm">Introduction to the  Collaboration Server</a></p>
+    </body>
+</html>

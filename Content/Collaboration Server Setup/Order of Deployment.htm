@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="823" MadCap:lastWidth="1425">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>Order of Deployment</h1>
+        <p>Before you start you should have <a href="Installing the unblu Filter.htm" title="This takes you to the Apache 2 module building" alt="This takes you to the Apache 2 module building">Apache 2</a>, apxs and your application server already deployed.</p>
+        <p><span class="Bolder">Note:</span> For clarity’s sake the examples herein assume an installation with Apache 2 and Tomcat but you may use any web and application server of choice.</p>
+        <p>To install unblu in one of the configurations outlined in this guide you need to deploy the following components: </p>
+        <ul class="ul_1">
+            <li>The unblu Collaboration Server which connects the visitor’s computer and the agent’s computer. See: <a href="WJAR Deployment Collaboration Server Setup.htm#_WJAR_Deployment">WJAR Deployment</a></li>
+            <li>An optional filter on the reverse proxy server which identifies co-browsing requests and forwards them to the unblu collaboration server. See: <a href="Installing the unblu Filter.htm#_Installing_the_unblu">Installing the unblu Filter</a></li>
+            <li>The database. See <a href="../Database Setup/Database_Persistence_Layer.htm#Database">Database Setup</a></li>
+        </ul>
+        <p><span class="Bolder">Note:</span> The three items above should be deployed first. The remaining features can be deployed according to the most convenient path for your particular system. Although it may make sense to deploy the unblu Agent Desk as soon as possible after the steps above in order that you can get unblu up and running.</p>
+        <ul class="ul_1">
+            <li>The optional User Management Synchronization Tool (identity management). See <a href="User Management Synchronization.htm#_User_Management_Synchronization">User Management Synchronization Tool (Optional)</a></li>
+            <li>The optional unblu rendering service. See <a href="Universal and Document Co.htm#Enable">Enable the Rendering Service Appliance</a></li>
+            <li>Optional video/audio chat. See Video and Audio Requirements</li>
+            <li>Optional Java Naming and Directory Interface (JNDI). Deploy this if you want to more easily apply configuration values. See <a href="Java Naming and Directory Optional.htm#_Java_Naming_and_1">Java Naming and Directory Interface (JNDI) (Optional)</a></li>
+        </ul>
+        <p>To complete the full installation in order that your agents can start engaging with visitors you must set up the agent desk: https://www.unblu.com/en/doc/latest/agent-desk-setup-and-user-guide</p>
+        <p>After these steps are completed you must configure the collaboration server. Note that ‘Configuration’ is outside of the scope of this concise setup guide. See <a href="unblu Server Configuration.htm">unblu Server Configuration</a> and <a href="https://www.unblu.com/en/doc/latest/unblu-server-configuration-reference">unblu Server Configuration Reference (External)</a></p>
+        <p><span class="Bolder">Note:</span> After initial setup and configuration you can change the (<a href="../Agent Desk/Introduction to the Agent Desk.htm">Agent Desk</a>) configuration at any time  using configuration files or by setting values ‘on-the-fly’ through the unblu Agent Desk GUI.</p>
+    </body>
+</html>

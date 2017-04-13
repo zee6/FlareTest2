@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="8" MadCap:lastHeight="5915" MadCap:lastWidth="1937">
+    <head><title>On-Premises Requirements</title>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1 class="Heading1">Minimal Requirements </h1>
+        <p>All requirements associated with unblu are on this page.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Hardware Recommendations for unblu Collaboration Server</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The unblu collaboration server needs to be accessible for the visitor and agents. In minimal configuration, the server does not communicate with other servers and thus does not require Internet access.</p>
+                <p>If additional modules are deployed see the following sections to find out which network connectivity requirements apply.</p>
+                <p>A single server setup (optionally with a hot standby) is the most robust, lowest cost to maintain, solution required to run a co-browsing infrastructure. To accommodate 10-20 concurrent co-browsing sessions (this means active usage of co-browsing in parallel), the following minimum requirements apply:</p>
+                <ul class="ul_1">
+                    <li class="li_3">10 GB hard drive</li>
+                    <li class="li_3">1 Recent CPU core running at 2.4GHz or higher</li>
+                    <li class="li_3">4 GB RAM</li>
+                    <li class="li_3">4 Mbit bandwidth</li>
+                </ul>
+                <p>Any additional 10-20 concurrent sessions require 1 additional core, 4 additional GB of RAM, and 4 additional Mbit of bandwidth.</p>
+                <p>With the outlined specs below, it is possible to scale up to 250 concurrent sessions. In our experience with existing large-scale clients in the financial services space, 250 concurrent sessions support up to 2500 agent seats. </p>
+                <p class="p_14">We recommend you run a fully-productive server with a hot standby configuration to cover redundancy.</p>
+                <ul class="ul_1">
+                    <li class="li_3">Recent 16 core CPU with 2.4GHz or better</li>
+                    <li class="li_3">64 GB RAM</li>
+                    <li class="li_3">Gigabit Ethernet or fiber channel network</li>
+                    <li class="li_3">SSD (min 100 GB available space on top of OS)</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Software Server Requirements</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The unblu Collaboration Server is built to be deployed to any Servlet Container that supports Servlet API Version 2.5 or higher running on Java 8 or higher.</p>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot>Recommended Containers</MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <ul class="ul_1">
+                            <li><a href="http://tomcat.apache.org/">Tomcat</a> Version 7 or higher</li>
+                            <li><a href="http://www.ibm.com/software/websphere">WebSphere</a> 6.1 or higher</li>
+                            <li><a href="http://www.oracle.com/us/products/middleware/cloud-app-foundation/weblogic/overview/index.html">WebLogic</a> 10.0 or higher</li>
+                        </ul>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Web Server</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If you are using the Apache 2 web server, in order to build the mod_unblu filter the Apache 2-specific development assistance tool apxs is a requirement.</p>
+                <p>See: <a href="Configuring Apache 2 Example.htm">http://httpd.apache.org/docs/2.2/programs/apxs.html</a></p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Network Requirements</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The unblu Collaboration Server needs to be accessible to both visitors and agents. In minimal configuration the server does not communicate with other servers and thus does not require Internet access (although Internet access may be required for certain setup procedures).</p>
+                <p>If additional modules are deployed see the following sections to find out which network connectivity requirements apply.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Universal and Document Co-browsing Requirements</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The optional unblu document sharing component requires the unblu Collaboration Server to be installed with the unblu rendering service.</p>
+                <p>The unblu Collaboration Server must be able to communicate with the unblu rendering service via SSH protocol on port 22.</p>
+                <p>The unblu rendering service must be able to communicate with the unblu Collaboration Server on ports 80 and 443 in both directions (inbound and outbound). </p>
+                <p><span class="Bolder">Note:</span> Either no proxy must be between these two servers, or the proxy must support the WebSocket protocol.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Hardware for the unblu Rendering Service based on Docker image </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Some optional modules, such as unblu document co-browsing or universal co-browsing, require the unblu rendering service to be installed in addition. The unblu rendering service is based on docker (<a href="https://www.docker.com/">https://www.docker.com/</a>). It requires a separate host to run docker with the rendering service docker image available at <a href="https://hub.docker.com/r/unblu/renderingservice/">https://hub.docker.com/r/unblu/renderingservice/</a>.</p>
+                <p>The Docker image is available on the Docker marketplace. The unblu Collaboration Server needs to have access to the Internet for installation.</p>
+                <p>Resource consumption is entirely dependent on the size of the documents loaded, dynamic elements of websites visited and the amount of scrolling performed on the target.&#160; </p>
+                <p><span class="Bolder">Recommended starting configuration:</span>
+                </p>
+                <ul class="ul_1">
+                    <li>Recent 16 core CPU with 2.4GHz or better </li>
+                    <li>32 GB RAM </li>
+                    <li>Gigabit Ethernet or fiber channel Network </li>
+                    <li>SSD with 100 GB </li>
+                </ul>
+                <p><span class="Bolder">Supports:&#160;</span> <![CDATA[ ]]></p>
+                <ul class="ul_1">
+                    <li>32 parallel rendering sessions with constant throughput </li>
+                </ul>
+                <p><span class="Bolder">Note:</span> Loaded documents which are not being scrolled do not generate load.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Browser Requirements</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Unblu is optimized to run on modern browsers. We do not support browsers older than the following:</p>
+                <ul class="ul_1">
+                    <li class="li_3">Internet Explorer 9 (or newer)</li>
+                    <li class="li_3">Google Chrome 40 (or newer)</li>
+                    <li class="li_3">Apple Safari 7 (or newer)</li>
+                    <li class="li_3">Mozilla Firefox 30 (or newer)</li>
+                </ul>
+                <p><span class="Bolder">Note</span>: The browsers listed here will give you optimal performance:</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="Video"></a>Video and Audio Requirements</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The unblu Collaboration Server communicates with the tokbox cloud service to offer video and audio facilities. Currently, video is not provided as an embedded on-premises service. Tokbox provides an API that we use to allocate video sessions.</p>
+                <p>This may seem like a problem for financial institutions who prefer everything to sit behind their own firewalls. However, using the tokbox cloud service is no different, in principle, from making a telephone call through a provider.  </p>
+                <p>Running Unblu's audio / video service requires the Browser to access the audio / video chat services over specific ports in order to work. A network administrator in your organization can configure these firewall settings:</p>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot>Minimal Requirement:</MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>The minimal Requirement is that TCP port 443 is open. Some firewall/proxy rules only allow for SSL traffic over port 443. You will need to make sure that non-web traffic can also pass over this port.</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot>Better Experience:</MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>In addition to the minimal requirements being met, we also recommend that UDP port 3478 is open. The User Datagram Protocol (UDP) favours low latency over error-correction and is well-suited to audio and video communications. </p>
+                        <p>Port 3478 only accepts inbound traffic after an outbound request is sent. The connection is bidirectional but is always initiated from the corporate network/client so it is not possible for an external entity to send malicious traffic in the opposite direction.</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot>Best Experience:</MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>For the best possible experience, we recommend that UDP ports 1025 - 65535 be open.</p>
+                        <p>You can test if a network meets the connectivity requirements by using the OpenTok Connectivity Doctor: <a href="http://www.tokbox.com/tools/connectivity/">http://www.tokbox.com/tools/connectivity/</a> (you must use Chrome). There is also a Connectivity Doctor app in the&#160;<a href="https://itunes.apple.com/us/app/opentok-connectivity-doctor/id902048239?mt=8">Apple App Store</a>&#160;as well as the&#160;<a href="https://play.google.com/store/apps/details?id=com.tokbox.connectivitydoctor&amp;hl=en">Google Play Store</a>.</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot>Whitelist the following domains:</MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>*.tokbox.com</p>
+                        <p>*.opentok.com</p>
+                        <p>Whitelist the following HTTPS verification servers for the unblu HTTPS certificate:</p>
+                        <p>oscp.godaddy.com</p>
+                        <p>crl.godaddy.com</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot>Bandwidth Requirements</MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <ul class="ul_1">
+                            <li class="li_3">Video: 300 kbps per stream (recommended lowest level)</li>
+                            <li class="li_3">Audio: 50 kbps per stream (recommended lowest level)</li>
+                        </ul>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot>Browser requirements for Video/Audio</MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>Running Unblu's audio / video service requires WebRTC support which is provided by the following Browsers:</p>
+                        <ul class="ul_1">
+                            <li class="li_3">Google Chrome (latest release version)</li>
+                            <li class="li_3">Firefox (latest release version)</li>
+                            <li class="li_3">Internet Explorer 10 and 11 (with the Opentok Plugin for Internet Explorer provided at the start of an audio / video chat)</li>
+                            <li class="li_3">Microsoft Edge</li>
+                            <li class="li_3">Google Chrome for Android (latest release version)</li>
+                            <li class="li_3">Firefox for Android (latest release version)</li>
+                        </ul>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot>Server Communication with Opentok</MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>The unblu Collaboration Server must be able to communicate with <a href="https://api.opentok.com/">https://api.opentok.com</a> which is a service located on the Internet. Thus, port 443 must be open for outbound traffic to api.opentok.com.</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Mobile Requirements</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p><span class="Bolder">iOS Tablets:</span> Safari on iOS 7 (or newer). In-page chat UI renders top right of viewport.</p>
+                <p><span class="Bolder">Android Tablets:</span> Chrome on Android 4.2+. In-page chat UI renders top right of viewport.</p>
+                <p><span class="Bolder">Smartphones:</span> Android (Chrome) and iOS supported in principal. Usability restrictions apply for small screens.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="unblu"></a>unblu Collaboration Server Network Ports</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>In addition to the ports mentioned throughout this document it may be necessary to configure the various ports used by unblu itself or its components (Cassandra, Zookeeper). The following sections list the addresses and ports used by unblu. The proper configuration of server and client parts is explained. </p>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot>Zookeeper Server</MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody><pre class="prettyprint">com.unblu.zookeeper.server.hostname=AAAA (default: localhost)
+
+com.unblu.zookeeper.server.clientPort=xxxx (default: 2181)</pre>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot>Zookeeper Client</MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody><pre class="prettyprint">com.unblu.zookeeper.client.hosts=AAAA:xxxx (default: 2181)</pre>
+                        <p><span class="Bolder">Note:</span> If you change AAAA or xxxx for either the server or client part, you must configure the other part correspondingly! Changing AAAA in the zookeeper server part to unbluserver.intra thus must include unbluserver.intra in the client.hosts configuration!</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot>Cassandra Configuration</MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <h3 class="Heading3">Cassandra Server</h3><pre class="prettyprint">com.unblu.cassandra.server.rpcListenAddress=BBBB (default: localhost)
+
+com.unblu.cassandra.server.rpcPort=yyyy (default: 9160)</pre>
+                        <p>Other Cassandra server ports must be different if multiple unblu instances are started on the same physical machine but they do not have to be considered for the client settings below:</p><pre class="prettyprint">com.unblu.cassandra.server.nodeListenAddress=CCCC (default: localhost)
+
+com.unblu.cassandra.server.storagePort=uuuu (default: 7000)
+
+com.unblu.cassandra.server.sslStoragePort=vvvv (default: 7001)
+
+com.unblu.cassandra.server.nativeTransportPort=wwww (default: 9042) -&gt; available as of 3.4.2 (as of 3.3 included in the product but not configurable)</pre>
+                        <h3 class="Heading3">Cassandra Client</h3><pre class="prettyprint">com.unblu.cassandra.connection.host=BBBB
+
+com.unblu.cassandra.connection.port=yyyy</pre>
+                        <p><span class="Bolder">Note:</span> If you change BBBB, or yyyy for either the server or client part, you must configure the other part correspondingly!</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <p>&#160;</p>
+    </body>
+</html>

@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="2528" MadCap:lastWidth="1677">
+    <head>
+        <link href="Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>TESTPage2</h1>
+        <p>Delete this text and replace it with your own content.</p><pre class="prettyprint">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;configuration&gt;
+	&lt;global&gt;
+		&lt;property key="key1"&gt;value 1&lt;/property&gt;
+		&lt;property key="key2"&gt;value 2&lt;/property&gt;
+	&lt;/global&gt;
+	
+	&lt;domain origin="http://www.unblu.com"&gt;
+		&lt;property key="key1"&gt;value 1&lt;/property&gt;
+		&lt;property key="key2"&gt;value 2&lt;/property&gt;
+	&lt;/domain&gt;
+	
+	&lt;domain origin="http://www.unblu.com"&gt;
+		&lt;property key="key1"&gt;value 1&lt;/property&gt;
+		&lt;property key="key2"&gt;value 2&lt;/property&gt;
+	&lt;/domain&gt;	
+	
+	
+	&lt;user id="12345"&gt;
+		&lt;property key="key1"&gt;value 1&lt;/property&gt;
+		&lt;property key="key2"&gt;value 2&lt;/property&gt;
+	&lt;/user&gt;</pre><pre class="prettyprint"> var unbluAPI;
+ unblu.registerApiConsumer(
+   function(api) { 
+     if (typeof api.fatalError != "undefined") {
+      
+        // the unblu server has detected, that this browser is not supported
+         
+     }
+     
+     api.core.system.SystemInfo.isCoBrowsingAvailable({
+       onSuccess: function(isAvailable) {
+         if (isAvailable) {
+           unbluAPI = api;
+           
+           // the API is available at this point and ready to use
+           
+         } else {
+         
+           // it appears not to be available - e.g. due to unsupported browser mode (i.e. quirks mode in Internet Explorer, etc.)
+           
+         }
+       }, onFailure: function(failReason) {
+       
+       	// verifying cobrowsing availabililty failed fundamentally. Unblu api is not available
+       
+       }
+     });
+  }, 
+  ["core.system"]
+ );
+			
+			
+ // note that the API is not available at this point of the execution line!</pre><pre class="prettyprint"><code> var unbluAPI;
+ unblu.registerApiConsumer(
+   function(api) { 
+     if (typeof api.fatalError != "undefined") {
+      
+        // the unblu server has detected, that this browser is not supported
+         
+     }
+     
+     api.core.system.SystemInfo.isCoBrowsingAvailable({
+       onSuccess: function(isAvailable) {
+         if (isAvailable) {
+           unbluAPI = api;
+           
+           // the API is available at this point and ready to use
+           
+         } else {
+         
+           // it appears not to be available - e.g. due to unsupported browser mode (i.e. quirks mode in Internet Explorer, etc.)
+           
+         }
+       }, onFailure: function(failReason) {
+       
+       	// verifying cobrowsing availabililty failed fundamentally. Unblu api is not available
+       
+       }
+     });
+  }, 
+  ["core.system"]
+ );
+
+ // note that the API is not available at this point of the execution line!</code></pre>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+    </body>
+</html>

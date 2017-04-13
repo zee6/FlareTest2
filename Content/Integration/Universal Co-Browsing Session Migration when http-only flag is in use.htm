@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="8" MadCap:lastHeight="2178" MadCap:lastWidth="1070">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Universal Co-Browsing Session Migration when http-only flag is in use</h1>
+        <p><b>Note:</b> This applies to the <b>unblu universal co-browsing</b> component only</p>
+        <p>Unblu teams/performance supports in-context session migration when co-browsing is initiated. A prerequisite for this capability is that the corresponding setting is in place in the account configuration. In unblu's standard session migration procedure, unblu reads the session cookie through a java script activity on the visitor's browser when the co-browsing session is initiated. The cookie values are passed to the co-browsing session and through a re-load the visitors session state is re-established (i.e., the items already placed in a shopping cart are now also present in the co-browsing sessions.) For session cookies which are secured via an http-only flag, unblu's out of the box session migration process does not work as unblu cannot read the cookie value through java script. This section describes the necessary additional configuration and instrumentation that needs to be in place so that session migration can also function with http-only secured session cookies. Note that this feature is only available in the unblu performance product. The feature makes use of your account specific unblu secret, which can be found in the <a href="https://www.unblu.com/admin/#/public/login">Integration Section</a> (requires login) of the unblu administrative application.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Additional Configuration for Session Migration with HTTP-Only Cookies</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>To support the migration of sessions secured through http-only cookies, a secure and temporary bridge between the web application's session and the unblu session needs to be established. This can be achieved with some additional steps implemented in your web application as per the description below. For our example we assume that a backend session (the session that creates the session cookie in your web application) already exists before the user requests an unblu co-browsing session. For example, in our simple sample code the user has already clicked on the button "click to add item to your cart" so that a session cookie is created.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Steps to achieve the Session Migration as per Sample Code Provided</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>(When we refer to “server” in this example, we are referring to the instrument web application.)</p>
+                <p>On request of a co-browsing session (user clicks on "Click Here For Live Support"), client sends an AJAX request to the server and creates the bridge.</p>
+                <p>The server creates a temporary cookie with no http-only flag; this cookie has a short expiration time to maintain security (i.e. 2 minutes).</p>
+                <p>The cookie value has the encrypted value of the original session cookie.</p>
+                <p>The server then sends a 200 status code to the client.</p>
+                <p>As soon as the client gets the success response, it calls the "onSuccess" callback, which creates the unblu dialog to start a session.</p>
+                <p>The unblu server always sends a cookie with the response header that carries the name "x-unblu-account-secret”; the value of that cookie is your account-specific secret key.</p>
+                <p>On the server side you have a check for session migration; use the bridge you created in step 1 and check for the "x-unblu-account-secret".</p>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot>The server checks whether the bridge exists. If yes:</MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <ul>
+                            <li>Its value is read and decrypted.</li>
+                            <li>The decrypted value is checked against DB/Session-Storage to see whether it is a valid session cookie.</li>
+                            <li>If a-2 is true, then the server checks whether your account secret key matches with the value of the cookie that comes from the unblu server.</li>
+                            <li>If a-2 and a-3 are both true the server creates the original cookie with the value (a-1) of the http-only cookie.</li>
+                            <li>The server deletes the bridge and the temporary cookie.</li>
+                        </ul>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Sample Code</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>In the File <a href="https://www.unblu.com/confluence/download/attachments/102793849/SessionMigration.zip?version=1&amp;modificationDate=1414589953000&amp;api=v2">SessionMigrationCodeSample</a> we provide a sample implementation for a session migration in PHP. The sample code is an implementation on a test page to illustrate the necessary instrumentation. The implementation contains:</p>
+                <p>Index.php: A simple html page with only 4 elements; a title, a button to add an item to a shopping-cart, a shopping-cart and a link to start an unblu session.</p>
+                <p>Preparebridge.php: A simple PHP code element that performs steps 2 and 4 described above.</p>
+                <p>Utils.php: Includes the scripts to handle steps 2 and 7 described above.</p>
+                <p>Unbluintegration.js: Includes client side scripts; steps 1 and 5 described above.</p>
+                <p>Base.css: Contains some simple css rules.</p>
+                <p>Empty.png and full.png images to show the status of the shopping-cart.</p>
+                <p><b>Notes:</b>
+                </p>
+                <p>If you want to try the sample in your environment or on a test server, please make sure that:</p>
+                <ul>
+                    <li>In the file unbluintegration.js, the APIKEY is replaced/set with a valid unblu APIKEY -&gt; unblu = {APIKEY: "your-api-key-here", SERVER: "<a href="https://start.unblu.com/">https://start.unblu.com</a>"};</li>
+                    <li>In the file utils.php, the constants MY_COOKIE_DOMAIN and MY_ACCOUNT_SECRET_KEY are replaced/set with actual value.</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <p>&#160;</p>
+    </body>
+</html>

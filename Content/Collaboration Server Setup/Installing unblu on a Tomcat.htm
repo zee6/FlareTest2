@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="1191" MadCap:lastWidth="1425">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1 class="Heading1">Installing unblu on a Tomcat Server (Example)</h1>
+        <p>This section describes how to install unblu on an existing Tomcat server. The installation described here aims to provide a straightforward way to ensure that unblu runs on the server. Depending on your server environment and your practices, you may choose to deviate from the steps suggested here.</p>
+        <p><span class="Bolder">Note:</span> This example, using a Tomcat server, is designed as an illustrative guide only. unblu can be installed on virtually any web server. You should consult your web server’s documentation to get the specific information you need to get up and running with unblu on your web server solution.</p>
+        <p>To install unblu manually on a Tomcat server:</p>
+        <ol start="1" class="ol_1">
+            <li>Copy the .war file from the unblu distribution package into the folder webapps of the Tomcat folder.</li>
+            <li>Start Tomcat. After a few seconds, Tomcat unpacks the file automatically and extracts the files and folders. After Tomcat has finished unpacking, delete the .war file in the webapps folder.</li>
+            <li>Next, you need to make unblu the root Web application. Because Tomcat does not have configuration options for this, you need to do it manually by changing the folder name of the unblu web application. So, in the file system, go to the webapps folder, and rename the web apps as follows:</li>
+        </ol>
+        <p class="p_12">Rename the folder ROOT to ROOT-archive</p>
+        <p class="p_12">Rename the unblu webapp folder to ROOT</p>
+        <ol start="4" class="ol_1">
+            <li>Now, unblu runs as the root application in Tomcat. (You may have to restart Tomcat to make the change effective and to make sure that unblu runs properly.)</li>
+            <li>If you use the Tomcat web server for more than a quick test or demo, then remove all the other folders (except ROOT) from the webapps folder. This ensures that the Tomcat server runs only the unblu web application.</li>
+        </ol>
+        <p>To test if unblu runs correctly:</p>
+        <ol start="1" class="ol_1">
+            <li>With your browser, go to http://localhost:8080 (or the address where the Tomcat server runs). If unblu runs correctly, you will see the login screen for the agent view. </li>
+            <li>Login with the username unblu and the password secret. unblu displays the code screen.</li>
+        </ol>
+        <p>To enable a configuration file for unblu, proceed as follows:</p>
+        <ul class="ul_2">
+            <li class="li_3">If you have received an unblu.properties file for your installation, put the file into the folder of the Tomcat server, for example into the conf folder. Make sure that the file can be read by the user running the Tomcat server.</li>
+            <li class="li_3">If you have not received a file create a new empty text file where you can store the configuration entries.</li>
+            <li class="li_3">To enable the properties file you need to define a Java system property named com.unblu.propertyoverlay that contains a link to the configuration file, in the form of file:///full/path/to/unblu.properties. In a default Tomcat installation you can do so with the following command:</li>
+        </ul><pre class="prettyprint">export JAVA_OPTS="$JAVA_OPTS -Dcom.unblu.propertyoverlay=file:///full/ path/to/unblu.properties"</pre>
+        <p class="p_13"><span class="Bolder">Note:</span> In a default Tomcat installation you can put the command at the top of the catalina.sh file</p><pre class="prettyprint">&lt;tomcatHome&gt;/bin/catalina.sh</pre>
+        <p class="p_13">so that it is always executed when Tomcat starts.</p>
+    </body>
+</html>

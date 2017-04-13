@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="8" MadCap:lastHeight="5344" MadCap:lastWidth="1196">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1 class="Heading1">
+            <MadCap:concept term="Co-browsing" />Universal and Document Co-browsing (Optional)</h1>
+        <p>The information on this page assumes you are already familiar with how to set up and configure an unblu collaboration server. See <a href="WJAR Deployment Collaboration Server Setup.htm">Unblu Server Setup</a> and <a href="unblu Server Configuration.htm">Unblu Server Configuration</a>.</p>
+        <p>In order to be able to use universal co-browsing and/or document sharing in an unblu collaboration server running on your application server, the unblu/renderingservice appliance is required.</p>
+        <p>Document co-browsing and universal co-browsing require the unblu Rendering Service appliance to be installed. <span class="Bolder">The unblu Rendering Service is based on Docker</span> (<a href="https://www.docker.com/">https://www.docker.com/</a>). It requires a separate host to run Docker with the rendering service Docker image available at <a href="https://hub.docker.com/r/unblu/renderingservice/">https://hub.docker.com/r/unblu/renderingservice/</a></p>
+        <p>For more information on how to install and run a docker engine visit <a href="https://www.docker.com/">https://www.docker.com/</a>.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Universal Versus Embedded  Co-browsing</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Embedded co-browsing is where we capture the Document Object Model (DOM), images and style sheets using the unblu Filter and the visitor stays inside their browser while we use JavaScript to replicate the browser on the agent side.</p>
+                <p>Universal co-browsing is where a headless browser runs on our server inside the rendering service and we render the graphical output to both the agent and visitor.</p>
+                <p><span class="Bolder">Note:</span> Context sharing is not possible with universal co-browsing. Context sharing means that visitors do not lose their login or shopping cart information when they start co-browsing.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="Enable"></a>
+                    <MadCap:concept term="Co-browsing" />Enable Universal and Document Co-browsing (Optional)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The unblu rendering service appliance is a helper appliance that augments the unblu Collaboration Server with the capability to perform universal co-browsing and document sharing.</p>
+                <p>
+                    <img src="../Resources/Images/Server_Setup_Guide_Pictures/Enable Universal and Document.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 400px;" class="img_1" />
+                </p>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot>Network Connectivity Requirements to run the Rendering Service</MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <MadCap:dropDown>
+                            <MadCap:dropDownHead>
+                                <MadCap:dropDownHotspot>SSH unblu Collaboration Server to the unblu Rendering Service</MadCap:dropDownHotspot>
+                            </MadCap:dropDownHead>
+                            <MadCap:dropDownBody>
+                                <p>The unblu Collaboration Server must be able to connect to the unblu rendering service using the SSH protocol on a tcp port on the Docker host that is mapped to the tcp port 22 in the unblu Rendering Service container.</p>
+                            </MadCap:dropDownBody>
+                        </MadCap:dropDown>
+                        <MadCap:dropDown>
+                            <MadCap:dropDownHead>
+                                <MadCap:dropDownHotspot>HTTP(s) from the unblu rendering service to the unblu Collaboration Server</MadCap:dropDownHotspot>
+                            </MadCap:dropDownHead>
+                            <MadCap:dropDownBody>
+                                <p>The unblu Rendering Service container must be able to connect to the unblu Collaboration Server using http(s) with the URL provided in the <code>com.unblu.hbworker.headlessBrowserReverseBaseUrl</code> configuration property.</p>
+                            </MadCap:dropDownBody>
+                        </MadCap:dropDown>
+                        <MadCap:dropDown>
+                            <MadCap:dropDownHead>
+                                <MadCap:dropDownHotspot>HTTP(S) unblu Rendering Service to Internet / Intranet</MadCap:dropDownHotspot>
+                            </MadCap:dropDownHead>
+                            <MadCap:dropDownBody>
+                                <p>If the unblu Rendering Service is used for universal co-browsing then the unblu rendering service container needs to be able to access all web servers (using HTTP(S)) that need to be available within universal co-browsing. Note that this requirement does not apply when the rendering service is only used for document sharing.</p>
+                            </MadCap:dropDownBody>
+                        </MadCap:dropDown>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="Configure_and_run_the_Rendering_Service_Appliance"></a>Configure and Run the Rendering Service Appliance</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The unblu rendering service appliance is installed / started using the Docker command line tool with the following command:</p><pre class="prettyprint" xml:space="preserve"><span class="Bolder"># Create and start the rendering service container</span>
+# &lt;name&gt;: name of the docker container that is created on the docker  
+# host 
+# &lt;port&gt;: tcp port mapping for the unblu/renderingservice on the docker # host 
+#         (the unblu collaboration server will connect to the
+#          unblu/renderingservice through this tcp port)
+# &lt;password&gt;: password for the unblu collaboration server to connect to
+#             the unblu/renderingservice
+docker run -d --name &lt;name&gt; -p &lt;port&gt;:22 -e PASSWORD=&lt;password&gt; unblu/renderingservice</pre>
+                <p>This command creates and starts a container from the unblu rendering service image on the Docker host.</p>
+                <p>To stop the rendering service container:</p><pre class="prettyprint" xml:space="preserve"><span class="Bolder"># Stopping the rendering service container</span>
+# &lt;name&gt;: name of the docker container as given in the "docker run" command above
+docker stop &lt;name&gt;</pre>
+                <p>and to start the container again:</p><pre class="prettyprint" xml:space="preserve"><span class="Bolder"># Starting the rendering service container</span>
+# &lt;name&gt;: name of the docker container as given in the "docker run" command above
+docker start &lt;name&gt;</pre>
+                <p>The unblu rendering service Docker image is stateless and does not store any persistent data, thus it is also possible to use a transient container (create a new container on every start of the system) instead of using a persistent container.</p>
+                <p>If you want to remove the rendering service use the following command:</p><pre class="prettyprint" xml:space="preserve"><span class="Bolder"># Stop and remove the rendering service</span>
+# &lt;name&gt;: name of the docker container as given in the "docker run" command above
+docker -t 10 stop &lt;name&gt;; docker rm -f &lt;name&gt;</pre>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Configure the unblu Collaboration Server to use the unblu Rendering Service</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>With the rendering service started you can configure the unblu Collaboration Server to use it with the following configuration properties:</p><pre class="prettyprint"># &lt;collaborationServerBaseUrl&gt;: fully qualified base url of the unblu 
+#          collaboration server (reachable from the renderingservice), 
+#          i.e. https://unbluserver.mycompany.com 
+#          (format: &lt;protocol&gt;://&lt;host&gt;[:&lt;optionalPort&gt;]
+# &lt;dockerHost&gt;: host name or IP of the docker host where the unblu/renderingservice 
+#               container is running
+# &lt;renderingServicePort&gt;: tcp port of the unblu/renderingservice container 
+#                         as mapped using the -p &lt;renderingServicePort&gt;:22 
+#                         argument in the "docker run" command
+# &lt;password&gt;: the password of the unblu/renderingservice
+com.unblu.hbrunner.runnerStrategy=HB_RUNNER_POOL_SINGLE_VA
+com.unblu.hbworker.headlessBrowserReverseBaseUrl=&lt;collaborationServerBaseUrl&gt;/sys-unblu
+com.unblu.hbrunner.vaHostname=&lt;dockerHost&gt;
+com.unblu.hbrunner.vaSSHPort=&lt;renderingServicePort&gt;
+com.unblu.hbrunner.vaPassword=&lt;password&gt;</pre>
+                <p>While the above block deals with the technical requirements to establish connections between the unblu Collaboration Server and the rendering service, the following property is required to enable universal and document co-browsing in unblu as a whole:</p><pre class="prettyprint"># enable universal co-browsing options in agent desk
+com.unblu.collaborationsession.headlessBrowserEnabled=true</pre>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Test Connectivity of Docker to Collaboration Server</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Once Docker has been started with docker run (see above), try to connect from the unblu Collaboration Server into Docker as follows:</p><pre class="prettyprint">Connecting to the docker image
+# &lt;port&gt;: port on which docker host is providing access to the image 
+#         (corresponds to &lt;port&gt; from docker run command)
+# &lt;dockerHost&gt;: host name or IP of the docker host where the 
+#               unblu/renderingservice container is running
+# &lt;password&gt;: the password specified when starting the unblu rendering service 
+#             with docker run
+ssh -p &lt;port&gt; unblu@&lt;dockerHost&gt;
+Password: &lt;password&gt;</pre>
+                <p>Within the Docker image you should also check whether the connection back to the unblu Collaboration Server works. For that purpose make sure the unblu Collaboration Server has been successfully started. Once it is started, login to the Docker image using ssh (see above) and execute the following:</p><pre class="prettyprint">Connecting back to collaboration server
+# &lt;collaborationServerBaseUrl&gt;: fully qualified base url of the unblu collaboration server. 
+#                               Must eventually match with what's specified in the 
+#                               unblu.properties file 
+#                               (see com.unblu.hbworker.headlessBrowserReverseBaseUrl 
+#                               above) 
+curl &lt;collaborationServerBaseUrl&gt;/sys-unblu/rest/product/all
+ 
+# example output from the above command:
+product.com.unblu.core_4.1.7.RELEASE 
+product.com.unblu.headlessbrowser.model_0.0.1 
+product.com.unblu.thirdparty_1.0.0 
+product.com.unblu.enterprise.universe.base_4.1.7.RELEASE 
+product.com.unblu.domcap_0.0.1 
+product.com.unblu.dispatcher_3.0.0 
+product.com.unblu.filemanager_0.0.1 
+product.com.unblu.platform_2.0.2 
+product.com.unblu.proxy_1.0.3 
+product.com.unblu.runtime.jetty_1.0.3 
+product.com.unblu.node_4.1.7.RELEASE 
+product.com.unblu.cloud.storage.immutable_3.0.0 
+product.com.unblu.zookeeper_3.3.3 
+product.com.unblu.enterprise.universe.staticusers_4.1.7.RELEASE MAIN
+product.com.unblu.chat_0.0.1 
+product.com.unblu.authenticator_3.0.0 
+product.com.unblu.cassandra_1.2.18 
+product.com.unblu.headlessbrowser_0.0.1 </pre>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Diagnostic Tools</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Some other network diagnostic tools that may help to analyze problems when you are connected with SSH into the unblu Docker image (example):</p><pre class="prettyprint">Example diagnostic tools
+# check if dns lookups work
+# &lt;collaborationServerHostname&gt;: Hostname or IP of the unblu collaboration server
+nslookup &lt;collaborationServerHostname&gt;
+ 
+# check if ping works. Note: must be called with sudo. Operation is not permitted otherwise.
+# &lt;collaborationServerHostname&gt;: Hostname or IP of the unblu collaboration server
+sudo ping &lt;collaborationServerHostname&gt; </pre>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <p>&#160;</p>
+    </body>
+</html>

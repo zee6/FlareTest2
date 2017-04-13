@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="8" MadCap:lastHeight="4844" MadCap:lastWidth="1131">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1 class="Heading1">Installing the unblu Filter (Optional)</h1>
+        <h2>Native Apache2 Unblu Module and unblu Core Filter Library</h2>
+        <p>Now that unblu runs, you can add the unblu Filter to your reverse proxy server so that it forwards the co-browsing requests to the unblu collaboration server.</p>
+        <p>By way of an example, this section describes how to build the Apache 2 modules <code>mod_unblufilter</code>  and <code>libunblufilter</code>. </p>
+        <p><span class="Bolder">Warning:</span> When attempting to run Microsoft Internet Explorer with web servers there are some (‘Keep-alive’ timeout) issues to bear in mind. For more on this see: <a href="../Server Security/Reverse Proxy Integration.htm">Reverse Proxy Integration</a></p>
+        <p><span class="Bolder">Note:</span> You can run the unblu Filter on a number of common proxies or web application firewalls, including AdNovum nevisProxy or Airlock or F5. It is even possible to run the filter in a custom installation. If you have any doubts as to whether the unblu Filter will run on your reverse proxy solution then contact us with your details.</p>
+        <p><span class="Bolder">Note:</span> This document focuses on Unix/Linux OS (x86 and x86_64 platforms) but unblu supports a variety of other platforms. </p>
+        <p>For more on the unblu Filter see: <a href="Filter Usage.htm">Filter Usage</a></p>
+        <p><span class="Bolder">Note:</span> If you need to adapt the filter integration you can find a full specification here: <a href="Filter Specification.htm" title="Filter Specification" alt="Filter Specification">Filter Specification.htm</a></p>
+        <p>In order to install unblu as a filter in your Apache 2 web server, we deliver two packages (<code>.tar.gz</code>) in source code form which is based on <code>GNU autobuild</code> for building and installation convenience under Linux and Unix.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Source Packages</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The distribution contains the following packages (.tar.gz) in source code form, which is based on GNU Autobuild for building and installation convenience under Linux and Unix:</p>
+                <p class="CODE_4">libunblufilter</p>
+                <p>provides the core unblu functions, such as adding unblu‘s functions to the website.</p>
+                <p class="CODE_4">mod_unblufilter</p>
+                <p>wraps the core functions and provides libunblufilter to Apache 2 as a filter.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>General Package Dependencies</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>mod_unblufilter depends directly on libunblufilter (so you need to build libunblufilter first). In addition, it depends on the following:</p>
+                <p><code>curl </code>(curl at runtime, curl-dev at build time)</p>
+                <p class="p_12"><code>libexpat</code> (at runtime)</p>
+                <p class="p_12"><code>uuid</code> (at build time)</p>
+                <p class="p_12"><code>libidn</code> ( libidn at runtime, libidn-dev at build time)</p>
+                <p>See the README file of the mod_unblufilter distribution package. It contains more detailed information about dependencies as well as package names for each distribution.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Apache Dependencies</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Building <code>mod_unblufilter</code> requires Apache 2 as well as the Apache 2-specific development assistance tool apxs. (See <a href="http://httpd.apache.org/docs/2.2/programs/apxs.html%20">http://httpd.apache.org/docs/2.2/programs/apxs.html</a> for details). See the README file for details; especially concerning the required package name to include for your distribution.</p>
+                <p>At runtime <code>mod_unblufilter</code> will require the mod_filter module to be present (see <a href="http://httpd.apache.org/docs/2.2/mod/mod_filter.html">http://httpd.apache.org/docs/2.2/mod/mod_filter.html</a>). This is required for the sake of simplicity when it comes to configuring <code>mod_unblufilter</code> as a filter in Apache 2 in the required filter chain position.</p>
+                <p>Usually, the following are required to forward any requests to /unblu/ (the unblu Collaboration Server - except if you use your own proxy setup):</p>
+                <p class="CODE_4">mod_proxy</p>
+                <p class="CODE_4">mod_proxy_http</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>libunblufilter Dependency</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Building <code>mod_unblufilter </code>requires building <code>libunblufilter</code> first. In order to have a simple setup in the end, we recommend you include <code>libunblufilter</code> as a static library in <code>mod_unblufilter</code>. Thus, there is no runtime dependency to <code>libunblufilter.so</code>. Instead, mod_unblufilter is self-contained and only depends on typical system libraries ( libc etc.).</p>
+                <p><span class="Bolder">Note:</span> This is a recommendation, not a hard requirement. If you prefer to use shared objects, building and using them is possible with little extra effort. You can configure this during the build process.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Building</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>For both builds, <code>mod_unblufilter</code> as well as <code>libunblufilter</code>, it is possible to build DEBUG or RELEASE versions. They differ in that DEBUG is not optimized for speed, and stack traces / core dumps are more reliable. However, both build types will include symbols by default. In addition, DEBUG builds may have additional or slightly different diagnostic code enabled. We recommend you build both versions. In development and early test environments DEBUG builds are typically better. In late system integration or acceptance test environments, we recommend you use RELEASE versions.</p>
+                <p><span class="Bolder">Note</span>: Production environments must use RELEASE versions only.</p>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot>Building libunblufilter</MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <p>In order to build libunblufilter unpack it with the following commands:</p><pre class="prettyprint">tar zxf libunblufilter.tar.gz </pre><pre class="prettyprint">cd libunblufilter</pre>
+                        <p>If the tar command is not able to unpack the file directly, use gunzip first:</p><pre class="prettyprint">gunzip libunblufilter.tar.gz </pre><pre class="prettyprint">tar xf libunblufilter.tar </pre><pre class="prettyprint">cd libunblufilter</pre>
+                        <p>All build commands below will assume that you are in the extracted <code>libunblufilter</code> directory.</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+                <MadCap:dropDown>
+                    <MadCap:dropDownHead>
+                        <MadCap:dropDownHotspot>Release Build Options</MadCap:dropDownHotspot>
+                    </MadCap:dropDownHead>
+                    <MadCap:dropDownBody>
+                        <ul class="ul_1">
+                            <li class="li_3">--with-pic  is required to make sure that position-independent code is generated (this is required if a library is used in another library – as in the case here with the apache module). Libtool generally generates PIC code as well as non-PIC code. PIC code is used for the shared module, non-PIC for the static library. Here, both libraries need to be PIC, since both are intended for a shared library.</li>
+                            <li class="li_3">--disable-shared will not build a shared object. This means that when you build a module later that depends on <code>libunblufilter</code>, the target will be the static library and not the shared module. This is the recommended build configuration. Remove this option if you want to use <code>libunblufilter</code> as a shared module.</li>
+                            <li class="li_3">--libdir: The library installation directory. If the build is x86_64 and <code>/usr/local/lib64</code> exists, the default is <code>/usr/local/lib64</code> . You may override the default by specifying libdir.</li>
+                        </ul>
+                        <p class="p_13"><span class="Bolder">Note:</span> Specifying libdir will not affect the installation directory of the u<code>nblu_filter_api.h</code> header file. This will still default to <code>/usr/local/include.</code> Specify a prefix if you want to alter this, for example:</p><pre class="prettyprint">../../configure --with-pic --libdir=/usr/lib64</pre>
+                        <ul class="ul_1">
+                            <li class="li_3">DESTDIR (option): The prefix used when installing the library and the header file. Use this if the output should not be used directly but for a packaged example. Note that this will prefix the previous –libdir command as well.</li>
+                        </ul>
+                        <p>The following example uses DESTDIR:</p><pre class="prettyprint">../../configure --with-pic --libdir=/usr/lib64 make install DESTDIR=/tmp/libunblufilter</pre>
+                        <p>This produces a directory structure like /<code>tmp/libunblufilter/usr/lib64/libunblufilter.so</code> as well as <code>/tmp/libunblufilter/usr/local/include/unblu_filter_api.h</code></p>
+                        <p><span class="Bolder">Note:</span> Installation into directories such as <code>/usr/lib</code> or <code>/usr/local/lib</code> may require root access. This is why in the above example the installation uses sudo make install.</p>
+                    </MadCap:dropDownBody>
+                </MadCap:dropDown>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="_Toc474140748"></a>Debug / test build</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Building the debug version is generally the same as the release version, except that you add the option <span class="CODE_1">--enable-debug</span>  to the configure command. All other options are the same as for the release version.</p><pre class="prettyprint">mkdir -p build/DEBUG </pre><pre class="prettyprint">cd build/DEBUG ../../configure --enable-debug --with-pic --disable-shared </pre><pre class="prettyprint">make </pre><pre class="prettyprint">sudo make install</pre>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Building mod_unblufilter</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p><code>mod_unblufilter</code> is the Apache 2 (filter) module that is installed to Apache 2 to support unblu.</p>
+                <p>In order to build <code>mod_unblufilter</code>, unpack it as follows:</p><pre class="prettyprint">tar zxf mod_unblufilter-1.0.0.tar.gz </pre><pre class="prettyprint">cd mod_unblufilter-1.0.0</pre>
+                <p>If the tar command is not able to unpack the file directly, use gunzip first:</p><pre class="prettyprint">gunzip mod_unblufilter-1.0.0.tar.gz&#160;&#160;&#160;&#160; </pre><pre class="prettyprint">tar xf mod_unblufilter-1.0.0.tar&#160;&#160;&#160;&#160; </pre><pre class="prettyprint">cd mod_unblufilter-1.0.0&#160;&#160;&#160;&#160; </pre>
+                <p>Once unpacked, build <code>mod_unblufilter</code> as follows:</p><pre class="prettyprint">mkdir -p build/RELEASE </pre><pre class="prettyprint">cd build/RELEASE ../../configure --with-apxs=/usr/sbin/apxs </pre><pre class="prettyprint">make</pre><pre class="prettyprint">make install DESTDIR=/tmp/mod_unblufilter</pre>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Options</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <ul class="ul_1">
+                    <li class="li_3">with-apxs: specify the path to the apxs tool. (If apxs is in standard directories or can be reached via $PATH, this is not necessary.)</li>
+                    <li class="li_3">DESTDIR: Without specifying DESTDIR, the target of the installation is the Apache 2 modules directory as retrieved via apxs. For packaging builds this may not be intended. Instead, you may prefer to use a ‘staged’ installation in a different directory. In such situations, DESTDIR specifies a prefix to be used. In the above example if Apache 2 modules are located in <code>/usr/lib64/httpd/modules</code>, after installation, <code>mod_unblufilter</code> would be located under <code>/tmp/mod_unblufilter/usr/lib64/httpd/modules/</code></li>
+                </ul>
+                <p><span class="Bolder">Note:</span> Make install does not require root access rights if using DESTDIR with a target that is writable by the current user (such as /tmp). Such rights are required, though, if no DESTDIR is specified.</p>
+                <p>Building the debug version is generally the same as the release version, except that you add the option --enable-debug to the configure command. All other options are the same as for the release version.</p><pre class="prettyprint">mkdir -p build/DEBUG </pre><pre class="prettyprint">cd build/DEBUG ../../configure --enable-debug --with-apxs=/usr/sbin/apxs make</pre><pre class="prettyprint">make install DESTDIR=/tmp/mod_unblufilter</pre>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <p class="CODE_4">&#160;</p>
+    </body>
+</html>

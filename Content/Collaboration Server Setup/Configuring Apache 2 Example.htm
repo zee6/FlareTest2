@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="3107" MadCap:lastWidth="1399">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1 class="Heading1">Configuring Apache 2 (Example)</h1>
+        <p><span class="Bolder">Note:</span> For a more complete description on how to build the Apache 2 module and unblu Filter see: <a href="Installing the unblu Filter.htm">Installing the unblu Filter</a></p>
+        <p>The dist package of mod_unblufilter provides a config directory containing a number of example configurations for various platforms. </p>
+        <p>The following example is ‘self-contained’. That is: With this configuration, all Apache 2 configurations required to run unblu via this apache server are included. In particular, this includes configuration of a reverse proxy path for /unblu requests, adding mod_unblufilter using the mod_filter Apache 2 module and the mod_unblufilter configuration itself.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Example Configuration</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody><pre class="prettyprint">############################################################
+# Configure reverse proxy to /unblu of unblu server
+ 
+&lt;IfModule !mod_proxy.c&gt;
+LoadModule proxy_module modules/mod_proxy.so
+&lt;IfModule !mod_proxy_http.c&gt; LoadModule proxy_http_module modules/mod_proxy_http.so
+&lt;/IfModule&gt;
+&lt;/IfModule&gt;
+ 
+ProxyRequests Off
+ 
+&lt;Proxy *&gt;
+Order deny,allow
+Allow from all
+&lt;/Proxy&gt;
+ 
+ProxyPass /unblu/ http://unbluserver/unblu/
+ProxyPassReverse /unblu/ http://unbluserver/unblu/
+#############################################################
+# Configure unblu
+ 
+LoadModule unblufilter_module modules/mod_unblufilter.so UnbluServerUrl http://unbluserver/
+UnbluConfigOrigin local
+UnbluConfigDirectory /etc/httpd/unblu/unblu.conf
+#############################################################
+# Advanced Unblu Configuration
+# the following settings are defaults - uncomment and adapt them
+#UnbluPublicPathPrefix /unblu
+#UnbluSystemPathPrefix /sys-unblu       
+#UnbluServerAdminBackend rest/filterBackend
+#UnbluDefaultCharset ISO-8859-1
+#UnbluConfigOrigin local
+#UnbluConfigDirectory /etc/httpd/unblu/unblu.conf
+#UnbluConfigExpiration 3600
+#UnbluMaxResponseSizeResource 100kb
+#UnbluMaxResponseSizeInjection 10kb
+#############################################################
+# Add the filter module to the filter chain
+ 
+&lt;IfModule !mod_filter.c&gt;
+LoadModule filter_module modules/mod_filter.so
+&lt;/IfModule&gt;
+ 
+# The following lines require filter_module to be active
+# See http://httpd.apache.org/docs/2.1/mod/mod_filter.html
+# for details about filters
+# FilterProvider Syntax:
+# FilterProvider filter-name provider-name  [req|resp|env]=dispatch match
+# NOTE: do not change the provider-name (unblufilter) - it is hardcoded
+# and connects this configuration to the filter module
+ 
+FilterProvider unblufilter resp=Content-Type *
+ 
+# FilterChain Syntax:
+# FilterChain [+=-@!]filter-name ...
+# NOTE: The @ before the filter-name ensures # that the filter is inserted at # the first position
+ 
+FilterChain @unblufilter    
+#############################################################</pre>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Configuration Parameter Description</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p class="p_14">Reverse proxy server</p>
+                <p>The following settings are generic and usually need no adaptation:</p>
+                <ul class="ul_1">
+                    <li class="li_3">IfModule !mod_proxy.c:&#160; loads mod_proxy if not loaded already</li>
+                    <li class="li_3">IfModule !mod_proxy_http.c: loads mod_proxy_http if not loaded already</li>
+                    <li class="li_3">ProxyRequests: Configure this as a reverse proxy (thus set to ‘no’ to disable forward proxy capabilities).</li>
+                    <li class="li_3">Proxy section: configure access control to proxy (allow all).</li>
+                </ul>
+                <p>The following two lines require adaptation: unbluserver must be replaced with the hostname plus port (if non-standard) of the backend unblu collaboration server.</p>
+                <ul class="ul_1">
+                    <li class="li_3">ProxyPass: configure /unblu requests to be proxied.</li>
+                    <li class="li_3">ProxyPassReverse: Make sure response headers are adapted to have a transparent reverse proxy unblu configuration.</li>
+                </ul>
+                <p>The following settings are required and must be adapted accordingly:</p>
+                <ul class="ul_1">
+                    <li class="li_3">LoadModule: load mod_unblufilter</li>
+                    <li class="li_3">UnbluServerUrl: hostname and path of the backend unblu Collaboration Server or a proxy, where the server can be reached.</li>
+                </ul>
+                <p>The following settings are commented out (in the provided example configuration) because they represent default values:</p>
+                <ul class="ul_1">
+                    <li class="li_3">UnbluPublicPathPrefix: Must have a leading slash and otherwise match the setting of com.unblu.identifier.publicPathPrefixPattern in the unblu Collaboration Server ( unblu by default).</li>
+                    <li class="li_3">UnbluSystemPathPrefix: Must have a leading slash and otherwise match the setting of com.unblu.identifier.systemPathPrefixPattern in the unblu Collaboration Server ( sys-unblu by default).</li>
+                    <li class="li_3">UnbluServerAdminBackend: The URL of the admin backend to be used by the Apache 2 unblu filter. Typically fixed to the default rest/filterBackend (unlikely to change).</li>
+                    <li class="li_3">UnbluConfigOrigin: Can be either local or remote (default).</li>
+                </ul>
+                <p class="p_12">If local, the configuration file must be located at UnbluConfigDirectory  (UnbluConfigDirectory is the path and filename in this case).</p>
+                <p><span class="Bolder">Note</span>: UnbluConfigExpiration is ignored when local is selected.</p>
+                <p class="p_12">If remote, the configuration file will be downloaded from the remote Collaboration Server and stored in the directory given by UnbluConfigDirectory (which must be writable and readable in this case).</p>
+                <ul class="ul_1">
+                    <li class="li_3">UnbluDefaultCharset: Character set used if none is specified in an http (text) response.</li>
+                    <li class="li_3">UnbluConfigDirectory: If UnbluConfigOrigin is set to remote, this is not required. If UnbluConfigOrigin is set to local, this must specify the path and filename of the configuration file.</li>
+                    <li class="li_3">UnbluConfigExpiration: Time, in seconds, until the downloaded configuration of the unblu Collaboration Server expires and must be re-downloaded. Ignored if UnbluConfigOrigin is set to local.</li>
+                </ul>
+                <p>mod_filter configuration: </p>
+                <ul class="ul_1">
+                    <li class="li_3">FilterProvider: mod_filter specific command to enable mod_unblufilter as a filter in Apache 2</li>
+                    <li class="li_3">FilterChain: Specifies where in the filter chain unblu is called. unblu must be called before any URL transformations are performed (such as URL encryption or decryption).</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+    </body>
+</html>

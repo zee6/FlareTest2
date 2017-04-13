@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultDestination
+  Version="1"
+  Comment="This is my Linux publish destination"
+  Host="davidtest.unblu.com"
+  User="MyAccountId"
+  Password=""
+  Directory="/HTML5/unblu2/HTML5/Content/Default.htm"
+  Port="21"
+  ViewUrl="http://10.10.1.213//HTML5/unblu2/HTML5/Content/"
+  Type="ftp"
+  AnonymousLogin="true"></CatapultDestination>

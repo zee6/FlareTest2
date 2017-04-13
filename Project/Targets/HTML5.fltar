@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultTarget
+  Version="2"
+  Comment="HTML5 Target"
+  Type="WebHelp2"
+  GlossaryTermConversion="first"
+  MasterStylesheetOverride="true"
+  MasterToc="/Project/TOCs/OnlineOutput (Master).fltoc"
+  MasterPage="/Content/Resources/MasterPages/OtherTopics.flmsp"
+  SearchFilterSet="/Project/Advanced/Search Filters/TestFilterSet.flsfs"
+  MobileBreakpoint="767"
+  UseDeviceWidth="false"
+  EnableSitemap="true"
+  SitemapWebUrl="http://127.0.0.1:8887/HTML5/Sitemap/"
+  TabletBreakpoint="1279"
+  Skin="/Project/Skins/HTML5 - Top Navigation.flskn"
+  IncludeGlossarySearchResults="false"
+  DefaultUrl="/Content/Home.htm"
+  PartialWordSearch="true"
+  AbstractLength="500"
+  OutputFile="unbluHelpV4-3-PrettifyTest1"
+  ExcludeNonWords="true"
+  SearchDatabaseChunkSize="100000">
+  <PrintedOutput
+    CollapseMargins="true"
+    GenerateTOCProxy="true"
+    GenerateIndexProxy="true"
+    GenerateGlossaryProxy="true" />
+  <Destinations>
+    <Destination
+      Link="/Project/Destinations/Destination.fldes" />
+  </Destinations>
+</CatapultTarget>

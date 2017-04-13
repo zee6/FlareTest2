@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="2160" MadCap:lastWidth="1859">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>unblu Server Configuration</h1>
+        <p>The unblu server supports a wide range of configuration settings (see <a href="https://www.unblu.com/en/doc/latest/unblu-server-configuration-reference">unblu Server Configuration Reference (External)</a>). This page describes the steps required to use unblu configuration settings in your server installation.</p>
+        <p>Configuration settings are key/value pairs that are passed to the unblu server (using one of the mechanisms described below).</p>
+        <p><span class="Bolder">Unblu configuration settings are case insensitive</span> (regarding keys). For better readability configuration setting keys are written in camel case (<a href="https://en.wikipedia.org/wiki/Camel_case">http://en.wikipedia.org/wiki/CamelCase</a>) in the documentation and references.</p>
+        <h2><a name="Using_Configuration_Files"></a>Using Configuration Files</h2>
+        <p>The most common way to set configuration settings is to use a configuration file. Unblu configuration files use the Java properties file format (see <a href="https://en.wikipedia.org/wiki/.properties">http://en.wikipedia.org/wiki/.properties</a>).</p>
+        <p>In order to use a configuration file, you need to specify where the unblu server should load the configuration file from using the <code>"com.unblu.propertyoverlay"</code> Java System Property.</p>
+        <p>The value of the <code>"com.unblu.propertyoverlay"</code> Java System Property must point to a valid Java properties file. It can be a local file system path (absolute or relative) or any valid url supported by Java (i.e. <code>http://&lt;host&gt;/&lt;pathtoconfigurationfile&gt;</code> or <code>file:///etc/unblu/unblu-configuration.properties</code>). We recommend always using forward slashes ("/") as the delimiter between path elements (also on windows systems) as using other delimiters (such as back slashes) only work if they are escaped properly.</p>
+        <p>How Java System Properties are specified depends on the server software you are using. A general way to set the <code>"com.unblu.propertyoverlay" </code>Java System Property is using the following notation when the Java process is started:</p><pre xml:space="preserve" class="prettyprint">java -Dcom.unblu.propertyoverlay=/etc/unblu/unblu-configuration.properties com.mycompany.mypackage.MyMainClass</pre>
+        <p>Many Java Application Servers support OS environment variables for setting additional Java System Properties. Tomcat, for instance, supports the <code>"JAVA_OPTS"</code> OS environment variable for declaring additional System Properties.</p><pre xml:space="preserve" class="prettyprint"># example that adds a com.unblu.propertyoverlay System Property using the JAVA_OPTS environment variable
+export JAVA_OPTS="$JAVA_OPTS -Dcom.unblu.propertyoverlay=/etc/unblu/unblu-configuration.properties"</pre>
+        <h2>Configuration File Format</h2>
+        <p>Unblu configuration files use the Java properties file format. The Java properties file format is a simple text-based format that consists of key/value pairs that are delimited by the equals sign ("="). Every key/value must start on a new line. You can use \ to escape newlines or other special characters. Blank lines are ignored. Lines that start with # are comments. See <a href="https://en.wikipedia.org/wiki/.properties">http://en.wikipedia.org/wiki/.properties</a> for more details about the Java properties file format.</p>
+        <p><span class="Bolder">CAUTION:</span> The Java properties file must always be encoded using the ISO-88591-1 character encoding. Make sure any special characters are escaped properly. (See h<a href="https://en.wikipedia.org/wiki/.properties">http://en.wikipedia.org/wiki/.properties</a>)</p>
+        <h2><a name="Using"></a>Using System Properties Directly</h2>
+        <p>In addition to using configuration files (or as an alternative), it is also possible to set configuration settings using Java System Properties directly. If you want to set the <code>"com.unblu.logging.outputDirectory" </code>configuration setting you can do this by defining <code>"com.unblu.logging.outputDirectory" </code>as a Java System Property directly (instead of using an external properties file as described above).</p><pre xml:space="preserve" class="prettyprint"># example for how to use a Java System Property to set an unblu configuration setting using the -D notation in an OS level environment variable
+export JAVA_OPTS="$JAVA_OPTS -Dcom.unblu.logging.outputDirectory=/var/log/unblu"</pre>
+        <h2>Configuration Setting Types</h2>
+        <p>Every configuration setting has a type associated (one of Boolean, String, Enum, Integer, Float, URL and Pattern).</p>
+        <p>For Boolean settings the value must be either "true" or "false".</p>
+        <p>For Enum settings the value must be one of the allowed values.</p>
+        <p>For Integer settings the value must be a valid integer.</p>
+        <p>For Float settings the value must be a valid float.</p>
+        <p>For URL settings the value must be a valid (fully qualified) URL.</p>
+        <p>For Pattern settings the value must be a valid Java regular expression.</p>
+        <p>Some configuration properties support lists of values (described in the configuration settings reference <a href="https://www.unblu.com/en/doc/latest/unblu-server-configuration-reference">unblu Server Configuration Reference</a>). List values can be declared in two ways: separated by a comma or using the JSON list notation.</p><pre xml:space="preserve" class="prettyprint"># example of a list using comma separated values (CAUTION: no way to escape the , character here)
+com.unblu.text.supportedLanguages=en,fr,de
+ 
+# example of a list using the JSON format 
+com.unblu.text.supportedLanguages=["en","fr","de"]</pre>
+        <h2>Further Reading</h2>
+        <p>Read about configuration validation in <a href="unblu Server Configuration Validation.htm">unblu Server Configuration Validation</a>.</p>
+        <p>All available configuration settings and their types are described in the <a href="https://www.unblu.com/en/doc/latest/unblu-server-configuration-reference">unblu Server Configuration Reference</a>.</p>
+        <p>Read about i18n configuration in <a href="unblu Server i18n Configuration.htm">unblu Server i18n Configuration</a>.</p>
+        <p>&#160;</p>
+    </body>
+</html>

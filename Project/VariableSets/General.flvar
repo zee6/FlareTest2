@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultVariableSet>
+  <Variable
+    Name="Phone"
+    Comment=""
+    EvaluatedDefinition="+41 (41) 511 27 11">+41 (41) 511 27 11</Variable>
+  <Variable
+    Name="CompanyName"
+    Comment=""
+    EvaluatedDefinition="unblu Inc.">unblu Inc.</Variable>
+  <Variable
+    Name="NewDateTimeVariable"
+    Comment=""
+    Type="DateTime"
+    LastUpdated="2017-02-28T15:16:07.1346506+01:00"
+    EvaluatedDefinition="&quot;Help System Build Date:&quot; MMMM dd, yyyy hh:mm:ss tt">"Help System Build Date:" MMMM dd, yyyy hh:mm:ss tt</Variable>
+  <Variable
+    Name="CreatedNewDateTimeVariable"
+    Comment=""
+    Type="DateTimeFileCreated"
+    LastUpdated="2017-02-28T15:25:46.2102528+01:00"
+    EvaluatedDefinition="&quot;Page Creation Date:&quot; ddd MM/dd/yy">"Page Creation Date:" ddd MM/dd/yy</Variable>
+  <Variable
+    Name="SoftwareVersionNumber"
+    Comment=""
+    EvaluatedDefinition="Software version number: 4.3">Software version number: 4.3</Variable>
+</CatapultVariableSet>

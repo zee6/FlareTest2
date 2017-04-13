@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="8465" MadCap:lastWidth="1599">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Single Sign-on (SSO) Setup</h1>
+        <p>If unblu co-browsing must be integrated into your existing authentication systems we recommend the unblu Enterprise Single Sign-On (SSO) distribution package. This section explains, in detail, what this means.</p>
+        <h2>Single Sign-On in unblu</h2>
+        <p>Single Sign On is a concept of authentication which allows users to access a number of different protected web applications by only having to login ("sign on") once. Usually, this can be achieved by delegating the users's authentication action for all web applications that should be accessible with only a single sign-on to a central authentication instance. In enterprise environments, such central authentication instances usually already exist. If not, or if they are not suitable to be integrated with unblu for some reason, there are still a number of options using, for example, authentication provided by the Servlet Container, see <a href="http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html">http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html</a>) for instance. There are even ways of providing authentication information completely independently of Servlet Containers (by using request headers described below).</p>
+        <p>It is important to understand that unblu SSO distribution was designed in such a way that it does not depend on particular Servlet Containers or their functionality. Instead, a number of ways exist to provide authentication information to unblu. As such, unblu SSO distribution integration can be more powerful than, for example, the <a href="http://tomcat.apache.org/tomcat-7.0-doc/config/host.html#Single Sign On">SSO concept of Tomcat</a>, since it is not bound to a particular implementation. On the other hand, it is sometimes considered more complex, because it is not always obvious as to how to approach the integration.</p>
+        <h2>Authentication with the unblu SSO Distribution</h2>
+        <p>The unblu SSO distribution does not include any functionality to do the authentication itself. Even more, it does not include functionality to store or manage users. Instead, it expects authentication to be done by a surrounding party, be it the Servlet Container (including specific authentication filters) or a reverse proxy, which is used for traffic to and from the unblu server.</p>
+        <p>The unblu SSO distribution can be configured to use user information provided via</p>
+        <ol>
+            <li>JEE <a href="http://docs.oracle.com/cd/E17802_01/products/products/servlet/2.5/docs/servlet-2_5-mr2/javax/servlet/http/HttpServletRequest.html#getUserPrincipal()">HttpServletRequest.getUserPrincipal()</a>.</li>
+            <li>Trusted (request) headers, or <a href="http://docs.oracle.com/cd/E17802_01/products/products/servlet/2.5/docs/servlet-2_5-mr2/javax/servlet/ServletRequest.html#getAttribute(java.lang.String)">request attributes</a>.</li>
+        </ol>
+        <p>Although the configuration triggers for JEE and trusted headers are both boolean values, they are mutually exclusive: It is only possible to enable one of them at a time. Unblu will complain in the logs during start time if both values are set to true.</p>
+        <h2><a name="JEE-base"></a>JEE-based Authentication</h2>
+        <p>To enable JEE-based authentication, use <a href="https://www.unblu.com/en/doc/latest/unblu-server-configuration-reference#unbluserverconfigurationreference-com.unblu.authentication.idpropagation.jee.enabled">com.unblu.authentication.idpropagation.jee.enabled</a>:</p><pre xml:space="preserve" class="prettyprint"># enable jee based authentication (using HttpServletRequest.getUserPrincipal() internally)
+com.unblu.authentication.idpropagation.jee.enabled=true</pre>
+        <p>Once JEE-based authentication is enabled unblu will retrieve HttpServletRequest.getUserPrincipal() for each request and if the value is non-null then you can assume this to be the properly authenticated user. Setting the principal is possible, for example, by using a filter in the same Servlet Container. See <a href="http://www.oracle.com/technetwork/java/filters-137243.html">this Oracle document</a> for an introduction to servlet filters.</p>
+        <h2><a name="Trusted"></a>Trusted Header-based Authentication</h2>
+        <p>To enable request header (or request attribute) based authentication, use </p>
+        <p><code>com.unblu.authentication.idpropagation.trustedheader.useRequestHeaders</code> :</p><pre xml:space="preserve" class="prettyprint"># enable trusted header based authentication
+com.unblu.authentication.idpropagation.trustedheader.useRequestHeaders=true</pre>
+        <p>When trusted header-based authentication is enabled, it is possible to choose between particular http request headers to be used as the authentication information, or request attributes. Request attributes can be set by filters running in the same servlet container. See this <a href="http://www.oracle.com/technetwork/java/filters-137243.html">this Oracle document</a> for an introduction to servlet filters, including some details about request attributes.</p>
+        <h2><a name="Access"></a>Access Control</h2>
+        <p>Unblu currently defines three separate access groups:</p>
+        <ul>
+            <li>Public (untrusted) access</li>
+            <li>Internal (trusted) access</li>
+            <li>System access</li>
+        </ul>
+        <p>The access type is identified by a path element of a request. By default, public access is mapped to <code>/unblu</code>. Interernal access is mapped to <code>/co-unblu</code> and system access is mapped to <code>/sys-unblu</code>. All of these defaults can be changed by configuration (and not within the application's <code>web.xml</code>, so no redeployment is required for such changes).</p>
+        <p>Consult <a href="../Server Security/unblu Server Security.htm#System">System (security) Entry Path Concept</a> for more details (including configuration details) about the access groups.</p>
+        <h2>Access Configuration by Access Group</h2>
+        <p>For each access group, the way authorization is executed can be configured. The first decision to make is which access group must be accessible to authenticated users only.</p>
+        <h2>JEE-based Authentication Access Configuration</h2>
+        <p>When using <a href="https://www.unblu.com/en/doc/latest/unblu-server-configuration-reference#unbluserverconfigurationreference-com.unblu.authentication.idpropagation.jee.enabled">JEE-based authentication</a>, the following properties configure access to the respective access group:</p><pre xml:space="preserve" class="prettyprint"># access to public (untrusted) group requires authorization (default: true)
+com.unblu.authentication.idpropagation.jee.forceAuthenticationUntrusted=true
+ 
+# access to internal (trusted) group requires authorization (default: true)
+com.unblu.authentication.idpropagation.jee.forceAuthenticationTrusted=true
+ 
+# system access requires authorization (default: false)
+com.unblu.authentication.idpropagation.jee.forceAuthenticationSystem=true</pre>
+        <p><span class="Bolder">NOTE:</span> Since system access must be a protected access with other means (for example, by using reverse proxies preventing access to system access group; except for valid servers or reverse proxies), it does not require authorization by default. Turning it on may cause problems when reverse proxies transmit resources to unblu. <span class="Bolder">Missing images or stylesheets in the agent view may be the consequence.</span></p>
+        <p>When authentication is required for a certain access group according to the above configuration settings (property is set to true), unblu's behaviour for a request to the given access group will be as follows:</p>
+        <ul>
+            <li>If <a href="http://docs.oracle.com/cd/E17802_01/products/products/servlet/2.5/docs/servlet-2_5-mr2/javax/servlet/http/HttpServletRequest.html#getUserPrincipal()">HttpServletRequest.getUserPrincipal()</a> returns non-null, access is granted, the request is processed normally.</li>
+            <li>If <a href="http://docs.oracle.com/cd/E17802_01/products/products/servlet/2.5/docs/servlet-2_5-mr2/javax/servlet/http/HttpServletRequest.html#getUserPrincipal()">HttpServletRequest.getUserPrincipal()</a> returns null, access is denied. Unblu stops processing the current request and sends back http error 403 FORBIDDEN.</li>
+        </ul>
+        <h2>Trusted Header-based Authentication Access Configuration</h2>
+        <p>When using Trusted Header-based Authentication, the following properties configure access to the respective access group:</p><pre xml:space="preserve" class="prettyprint"># access to public (untrusted) group requires authorization (default: true)
+com.unblu.authentication.idpropagation.trustedheader.forceAuthentication=true
+ 
+# access to internal (trusted) group requires authorization (default: true)
+com.unblu.authentication.idpropagation.trustedheader.forceAuthenticationTrusted=true
+ 
+# system access (default: false)
+com.unblu.authentication.idpropagation.trustedheader.forceAuthenticationSystem=true</pre>
+        <p>The authentication information is read out of either http request headers or request attributes, depending on the following configuration:</p><pre xml:space="preserve" class="prettyprint"># use http request headers (default: true -&gt; yes)
+com.unblu.authentication.idpropagation.trustedheader.useRequestHeaders=true
+ 
+# use request attributes (default: true -&gt; yes)
+com.unblu.authentication.idpropagation.trustedheader.useRequestAttributes=true</pre>
+        <p>If authentication information is available in both request attribute as well as http request header, and both are enabled, request attribute will take precedence.</p>
+        <p>The names of the headers and request attributes can be configured with the following properties for each access group separately:</p><pre xml:space="preserve" class="prettyprint"># user id header name expected for public (untrusted) access group
+com.unblu.authentication.idpropagation.trustedheader.headerUserId=x-unblu-trusted-user-id
+ 
+# user id header name expected for internal (trusted) access group (default: falling back to untrusted user id header name)
+com.unblu.authentication.idpropagation.trustedheader.headerUserIdTrusted=
+ 
+# user id header name expected for system access group (default: falling back to untrusted user id header name)
+com.unblu.authentication.idpropagation.trustedheader.headerUserIdSystem=</pre>
+        <p>It is not required to configure header names for all access groups. Instead, it is enough to just configure the header name for the public access group and leave the internal and system access groups with their defaults. Internal and system access groups will pick the public access group header name in that case.</p>
+        <p>Unblu's behaviour when retrieving authentication information for a request to the given access group is as follows:</p>
+        <ol>
+            <li>Identify the access group for the current request (public, internal, system).</li>
+            <li>For the identified access group retrieve the configured header name.</li>
+            <li>If request attribute usage is enabled, try to retrieve a request attribute with the same name as the configured header name. If it exists, use this as authentication information (continue to point 7).</li>
+            <li>If request attribute usage is not enabled or no attribute was found for the given name, check if header usage is enabled. If not, use "no authentication information" (see point 6 to continue).</li>
+            <li>If header usage is enabled, retrieve request header with the configured name from step 2 and use it as the authentication information.</li>
+            <li>If the authentication information is "not available" at this point, detect whether or not the current access group requires authentication to continue. If it does, fail by responding 403 FORBIDDEN http code.</li>
+            <li>At this point, authentication information has been retrieved and will be used as the "authorized principal" for the rest of the request.</li>
+        </ol>
+        <h2>SPECIAL CASE: ROOT PATH REQUESTS</h2>
+        <p>Agents sometimes request the "root path" directly and expect it to redirect to their agent desk workspace (usually at <code>/co-unblu/desk/ </code>). This causes a problem: Root cannot be properly assigned to a particular access group. By default, unblu applies root requests to the public group. If the configuration says, for whatever reason, that public requires authentication but internal group does not, agents will not be able to access their workspace by just using the base url. In order to circumvent this problem, the following setting allows you to not check authentication at all for root requests.</p><pre xml:space="preserve" class="prettyprint"># let root request pass even without proper authentication
+com.unblu.authentication.idpropagation.trustedheader.letRootRequestPass=true</pre>
+        <h1>Submitting Additional Information alongside Authentication</h1>
+        <p>Regardless of whether <MadCap:xref href="#JEE-base">JEE-based Authentication</MadCap:xref> or <MadCap:xref href="#Trusted">Trusted Header-based Authentication</MadCap:xref> is used, unblu has the possibility to use additional information to describe an authenticated user or even provide some co-browsing (session) specific information, which can later be used in analytics or reporting. The information is always retrieved from additional request headers or request attributes with a configurable name for each access group.</p>
+        <h2>User "display name"</h2>
+        <p>Often, authentication information provided by single-sign on systems is some identifier, contract number or otherwise technical string, which is hardly usable by human beings in a co-browsing session. On the other hand, it is very important for agents and customers to know who they are connected to. It increases trust if the mouse label of the co-browsing mouse contains a name and not just some technical contract number. To support this, unblu allows for the provision of "display names" alongside the basic authentication information.</p>
+        <p>Please be advised that the following settings only specify how the display name information can be retrieved from request information. Whether this information is going to be used, for example, for the mouse labels in co-browsing or whether some other information is to be used can be configured. See <a href="../Server Security/Configuring User Names Displayed.htm">Configuring User Names Displayed</a> for more details.</p>
+        <p><span class="Bolder">NOTE:</span> Although the display name can only be retrieved from request headers or attributes, the configuration of the respective header names is different for JEE-based authentication versus trusted header-based.</p>
+        <h2>Display Name with JEE-based Authentication</h2>
+        <p>When JEE based authentication is used, use these settings:</p><pre xml:space="preserve" class="prettyprint"># display name to extract for public (untrusted) access group
+com.unblu.authentication.idpropagation.jee.headerDisplayName=
+ 
+# display name to extract for internal (trusted) access group
+com.unblu.authentication.idpropagation.jee.headerDisplayNameTrusted=
+ 
+# display name to extract for system access group
+com.unblu.authentication.idpropagation.jee.headerDisplayNameSystem=</pre>
+        <p>Same as for the trusted header name configuration. In general, it is not required to configure header names for all access groups. Instead, it is enough to just configure the header name for the public access group and leave the internal and system access groups with their defaults. Internal and system access groups will pick the public access group header name in that case.</p>
+        <h2>Display Name with Trusted Header-based Authentication</h2>
+        <p>When trusted header based authentication is used, use these settings:</p><pre xml:space="preserve" class="prettyprint"># display name to extract for public (untrusted) access group
+com.unblu.authentication.idpropagation.trustedheader.headerDisplayName=x-unblu-trusted-user-name
+
+# display name to extract for internal (trusted) access group
+com.unblu.authentication.idpropagation.trustedheader.headerDisplayNameTrusted= 
+ 
+# display name to extract for system access group
+com.unblu.authentication.idpropagation.trustedheader.headerDisplayNameSystem=</pre>
+        <p>Same as for the trusted header name configuration. In general, it is not required to configure header names for all access groups. Instead, it is enough to just configure the header name for the public access group and leave the internal and system access groups with their defaults. Internal and system access groups will pick the public access group header name in that case.</p>
+        <h2>Additional Information</h2>
+        <p>The unblu server is able to <a href="Session Log Output Format.htm">log co-browsing session information</a>. This data includes information about the users involved in the co-browsing session. Sometimes it turns out that the authentication data itself is not enough to analyze the session information later on. Since once the unblu SSO distribution is setup properly, authentication information is already transmitted with the above described methods, it is also useful to have additional information sent in a similar way and used by unblu when the session information is written to the log. This is similar to the way "display name" information is transmitted. Such additional information can be provided only by additional request headers or request attributes. Again, configuration property names differ for JEE and trusted header-based authentication configuration.</p>
+        <h2>Additional Information with JEE-based Authentication</h2><pre xml:space="preserve" class="prettyprint"># additional information to extract for public (untrusted) access group
+com.unblu.authentication.idpropagation.jee.headerAdditionalInfo=x-unblu-trusted-additional-information
+
+# additional information to extract for internal (trusted) access group
+com.unblu.authentication.idpropagation.jee.headerAdditionalInfoTrusted=
+
+# additional information to extract for system access group
+com.unblu.authentication.idpropagation.jee.headerAdditionalInfoSystem=</pre>
+        <p>Same as for the trusted header name configuration. In general, it is not required to configure header names for all access groups. Instead, it is enough to just configure the header name for the public access group and leave the internal and system access groups with their defaults. Internal and system access groups will pick the public access group header name in that case.</p>
+        <h2>Additional Information with Trusted Header-based Authentication</h2><pre xml:space="preserve" class="prettyprint"># additional information to extract for public (untrusted) access group
+com.unblu.authentication.idpropagation.trustedheader.headerAdditionalInfo=x-unblu-trusted-additional-information
+ 
+# additional information to extract for internal (trusted) access group
+com.unblu.authentication.idpropagation.trustedheader.headerAdditionalInfoTrusted=
+ 
+# additional information to extract for system access group
+com.unblu.authentication.idpropagation.trustedheader.headerAdditionalInfoSys</pre>
+        <p>Same as for the trusted header name configuration. In general, it is not required to configure header names for all access groups. Instead, it is enough to just configure the header name for the public access group and leave the internal and system access groups with their defaults. Internal and system access groups will pick the public access group header name in that case.</p>
+        <h1>Advanced Authorization Support</h1>
+        <p>Apart from the simple <MadCap:xref href="#Access">Access Control</MadCap:xref> authorization concept explained in this document, there is a more <a href="../Server Security/Advanced Authorization.htm">advanced authorization</a> model available. At the core, this model is based on user roles which then assign permissions to certain access groups requests or actions as a whole.</p>
+        <p>The unblu SSO distribution package supports extract roles, regardless of JEE authentication or trusted header-based authentication configuration from request header or attributes only.</p>
+        <p>Currently supported roles are:</p>
+        <ul>
+            <li><code>WEBUSER</code>: Role representing users with a very low trust level (e.g. anonymous users).</li>
+            <li><code>REGISTERED_USER</code>: Role representing users "known to the system", thus having a certain trust level.</li>
+            <li><code>SUPER_ADMIN</code>: Role representing (system) administration users.</li>
+        </ul>
+        <h2>Default Role Assignment</h2>
+        <p>Requests not providing role information have the following roles applied automatically:</p>
+        <ul>
+            <li>Public (untrusted) access group: WEBUSER role.</li>
+            <li>Internal (trusted) access group: REGISTERED_USER role.</li>
+            <li>System access group: No role.</li>
+        </ul>
+        <h2>Roles with JEE-based Authentication</h2>
+        <p>The following configuration properties define the request header or attribute names to be used to retrieve role information for a user in a specific request:</p><pre xml:space="preserve" class="prettyprint"># roles to extract for public (untrusted) access group
+com.unblu.authentication.idpropagation.jee.headerRoles=x-unblu-trusted-roles
+ 
+# roles to extract for internal (trusted) access group
+com.unblu.authentication.idpropagation.jee.headerRolesTrusted=
+
+
+# roles to extract for system access group
+com.unblu.authentication.idpropagation.jee.headerRolesSystem=</pre>
+        <p>Same as for the trusted header name configuration. In general, it is not required to configure header names for all access groups. Instead, it is enough to just configure the header name for the public access group and leave the internal and system access groups with their defaults. Internal and system access groups will pick the public access group header name in that case..</p>
+        <h2>Roles with Trusted Header-based Authentication</h2>
+        <p>The following configuration properties define the request header or attribute names to be used to retrieve role information for a user in a specific request:</p><pre xml:space="preserve" class="prettyprint"># roles to extract for public (untrusted) access group
+com.unblu.authentication.idpropagation.trustedheader.headerRoles=x-unblu-trusted-roles
+
+# roles to extract for internal (trusted) access group
+com.unblu.authentication.idpropagation.trustedheader.headerRolesTrusted=
+
+# roles to extract for system access group
+com.unblu.authentication.idpropagation.trustedheader.headerRolesSystem=</pre>
+        <p>Same as for the trusted header name configuration. In general, it is not required to configure header names for all access groups. Instead, it is enough to just configure the header name for the public access group and leave the internal and system access groups with their defaults. Internal and system access groups will pick the public access group header name in that case.</p>
+        <p>&#160;</p>
+    </body>
+</html>

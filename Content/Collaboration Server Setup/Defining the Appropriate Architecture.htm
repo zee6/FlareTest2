@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="5" MadCap:lastHeight="1394" MadCap:lastWidth="1182">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>Defining the Appropriate Architecture</h1>
+        <p>Select the drop-down text below to see diagrams of the options.</p>
+        <p>&#160;</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Architecture without the unblu Filter</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p class="p_10">
+                    <img src="../Resources/Images/Server_Setup_Guide_Pictures/Defining the Appropriate Architecture.png" style="background-image: none;mc-thumbnail: popup;mc-thumbnail-max-height: 300px;float: left;margin-left: 10px;margin-right: 10px;margin-top: 10px;margin-bottom: 10px;" class="img_1" />
+                </p>
+                <p>This diagram shows a minimal installation of unblu in a corporate IT infrastructure without a reverse proxy (and no unblu filter). While this setup would give you secure co-browsing there would be no dynamic injection of the unblu snippet, making your system  less efficient than it might otherwise be. Also, without the unblu rendering service you would not be able to define the scope of your co-browsing sessions as easily nor would you be able to share documents with visitors. With no video/audio service defined your agents would not be able to talk to visitors face-to-face.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Architecture with the unblu Filter</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p class="p_10">
+                    <img src="../Resources/Images/Server_Setup_Guide_Pictures/Defining the Appropriate Architecture_1.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 300px;float: left;margin-left: 10px;margin-right: 10px;margin-top: 10px;margin-bottom: 10px;" class="img_1" />
+                </p>
+                <p>This diagram shows the architecture with a reverse proxy and the unblu filter. In this case you have reduced network overhead as the snippet only runs when a session is started, thus saving precious resources. This design also provides you with Resource History data and in-context sessions, as well as general advantages regarding security.</p>
+                <p>&#160;</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Architecture with the Rendering Service</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p style="text-align: center;">
+                    <img src="../Resources/Images/Server_Setup_Guide_Pictures/Defining the Appropriate Architecture_2.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 300px;float: left;margin-left: 10px;margin-right: 10px;margin-top: 10px;margin-bottom: 10px;" class="img_1" />
+                </p>
+                <p>This diagram outlines the architecture with the reverse proxy, the unblu filter, and the unblu rendering service all deployed. The Rendering Service enables document sharing and universal co-browsing.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Architecture with Video</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p style="text-align: center;">
+                    <img src="../Resources/Images/Server_Setup_Guide_Pictures/Defining the Appropriate Architecture_3.png" style="mc-thumbnail: popup;mc-thumbnail-max-height: 300px;float: left;margin-left: 10px;margin-right: 10px;margin-top: 10px;margin-bottom: 10px;" class="img_1" />
+                </p>
+                <p>This is a pictorial representation of the architecture with the tokbox video and audio chat deployed. See  Video and Audio Requirements for more on the video/audio chat feature.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+    </body>
+</html>

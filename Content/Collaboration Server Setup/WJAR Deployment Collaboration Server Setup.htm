@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="8" MadCap:lastHeight="2531" MadCap:lastWidth="1077">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1 class="Heading1">WJAR Deployment — Collaboration Server Setup</h1>
+        <p>The installation is shipped within a single .WAR file. The shipped file is sometimes called a WJAR, because it is a valid .war file but can also be started directly as if it were a jar file (with something like java -jar unblu.war).</p>
+        <p><span class="Bolder">Note:</span> Prior to the release of version 4.2 we shipped multiple types of products (SSO, staticuser, .war, .ear). Now, just one file is shipped which has all of the other types included. </p>
+        <p><span class="Bolder">Note:</span> You should refer to your web server documentation for information on how to install the unblu web application on your web server and, by way of an example, you can find step-by-step (example) instructions on how to install unblu on a Tomcat server here: <a href="Installing unblu on a Tomcat.htm#_Installing_unblu_Enterprise_1">Installing unblu on a Tomcat Server (Example)</a><![CDATA[  ]]></p>
+        <p><span class="Bolder">Note:</span> If you intend to use an IBM WebSphere application server you must create an Enterprise Application Archive (EAR). See <MadCap:xref href="#Running">Running as an Enterprise Application Archive (EAR)</MadCap:xref></p>
+        <p>If you intend to use the Java Naming and Directory Interface (JNDI) when setting up the unblu server, see: <a href="Java Naming and Directory Optional.htm">Java Naming and Directory Interface (Optional)</a></p>
+        <p>We recommend that you run unblu as the root application in your web server. If your web server allows you to specify virtual servers then you can use a virtual server to run unblu in a server root folder, even if it is not technically the root application.</p>
+        <p>There are several ways to run the wjar. </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Running the WJAR on a Web Server</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>To start the wjar execute the following command:</p><pre class="prettyprint">java -jar product.com.unblu.war</pre>
+                <p>If not configured via <a href="Java Naming and Directory Optional.htm">JNDI</a> or system properties, this will automatically select&#160;</p><pre class="prettyprint">product.com.unblu.enterprise.universe.staticusers &#160;</pre>
+                <p>and run it in a jetty webserver on an automatically selected TCP port in the range from 6060 to 7070. (To manually select the TCP port pass "-Dport=&lt;port&gt;" on the command line.)</p>
+                <p>To manually select a specific product execute the following:</p><pre class="prettyprint">java -jar product.com.unblu.war –product &lt;productID&gt;</pre>
+                <p>For a detailed overview see <MadCap:xref href="#Command">Command Line Options</MadCap:xref>.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Running as .WAR on a Java EE Application Server</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>As with the previous releases of unblu, copy the shipped file&#160;</p>
+                <p><code>product.com.unblu.war</code><![CDATA[  ]]></p>
+                <p>into your Java Application Server.</p>
+                <p>If not configured via JNDI&#160;or system properties unblu will automatically select </p><pre class="prettyprint">product.com.unblu.enterprise.universe.staticusers&#160;</pre>
+                <p>as the default to start in the Java Application Server.</p>
+                <p>For a Tomcat example JNDI configuration for root context path installation, see <a href="Java Naming and Directory Optional.htm">Java Naming and Directory Interface</a></p>
+                <p><span class="Bolder">Note:</span> After you have installed the web application, you should be able to reach the unblu login page at http:// localhost:&lt;port number on which your server runs&gt; </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="Running"></a>Running as an Enterprise Application Archive (EAR)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p><span class="Bolder">Note:</span> An EAR is a file with the .ear extension containing both .jar and .war files to be deployed on an application server. EAR files are used to deploy enterprise applications containing Enterprise Java Beans (EJBs), web applications, and 3rd party libraries. It is also a jar file. It has a special directory called APP-INF that contains the application.xml file. Note that APP-INF is WebLogic-specific and does not exist in the Java EE standard.</p>
+                <p>JNDI configuration is done as specified for your Java Application Server and will then apply to the running unblu product. See <a href="Java Naming and Directory Optional.htm">Java Naming and Directory Interface</a> <![CDATA[ ]]></p>
+                <p>Prior to running the desired unblu product as an EAR it is necessary to export either the whole or the selected product as EAR.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Export a specific product</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>To export a specific product as separate wjar execute the following on the command line:</p><pre class="prettyprint">java -jar product.com.unblu.war --product &lt;productID&gt; --export wjar &gt; target.war</pre>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="Command"></a>Command Line Options</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>When running the executable, the following command line options are available:</p>
+                <table style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 2px;border-right-style: solid;border-right-width: 2px;border-top-style: solid;border-top-width: 2px;border-bottom-style: solid;border-bottom-width: 2px;">
+                    <col />
+                    <col />
+                    <thead>
+                        <tr>
+                            <th style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>Options</p>
+                            </th>
+                            <th style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>Description</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>-d,--diag</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>Whether to include diag bundles into product execution/export. </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>-e,--export &lt;arg&gt;</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>Type of export. Possible options: 'ear' or 'wjar'</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>-h,--help  </p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>Display this help message</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>-l,--list</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>Format of output: &lt;display name&gt; (&lt;product ID&gt; version: &lt;version&gt; build: &lt;build&gt; branch: &lt;branch&gt;)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>-o,--output &lt;arg&gt;</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>File to write the exported product to. If not given, output will default to STDOUT.  </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>-p,--product &lt;arg&gt;</p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>ID of the product to start. For example, product.com.unblu.platform </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>-t,--test </p>
+                            </td>
+                            <td style="border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>Whether to include test bundles into product execution/export. </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><span class="Bolder">Note:</span> All of these options are also available for the JNDI configuration; without the dash(es). (Although not all of them are meaningful in the context of <a href="Java Naming and Directory Optional.htm">JNDI</a>.)</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <p>&#160;</p>
+    </body>
+</html>

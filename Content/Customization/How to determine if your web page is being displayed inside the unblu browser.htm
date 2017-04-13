@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="594" MadCap:lastWidth="1155">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>How to determine if your web page is being displayed inside the unblu browser</h1>
+        <p><span class="Bolder">Note: </span>This is a very specific use case. The problem this script solves is: How do you know if you are within an unblu universal co-browsing session or not?</p>
+        <p>If you have a page, for example, that should be in any way different when you are using universal co-browsing then you can use this script to find out whether you are in a universal co-browsing session or not. For example, if you wanted an area on a page to contain special links, or additional information, that only display when you have started a universal co-browsing session you would use this script to tell you if you are in a universal co-browsing session inside the unblu browser.</p>
+        <p>The script checks whether you are inside the unblu browser in order that the code you have written that is intended to be universal co-browse-specific will execute in the right place.</p><pre class="prettyprint">&lt;script type="text/javascript"&gt;
+if( typeof(unbluBrowser) != "undefined" &amp;&amp; unbluBrowser.log) {
+ 
+    // Your code that runs when within a co-browse session
+    // e.g. Load additional CSS
+}
+&lt;/script&gt;</pre>
+        <p>&#160;</p>
+    </body>
+</html>

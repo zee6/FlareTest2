@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="1934" MadCap:lastWidth="1456">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>How to implement the unblu start chat dialog</h1>
+        <p>This example shows how the unblu start dialog works and how it can be implemented.</p>
+        <p>
+            <img src="../Resources/Images/Customization/JSC-10-1.PNG" />
+        </p>
+        <p>After clicking on the 'start chat' button, the following dialog box displays:</p>
+        <p>
+            <img src="../Resources/Images/Customization/JSC-10-2.PNG" />
+        </p>
+        <p><span class="Bolder">Note:</span> All file/object/function names can be changed according to your needs.</p>
+        <ol>
+            <li>Create an HTML page.</li>
+            <li>Create a JavaScript file named 'snippet.js' and paste the snippet into it. The snippet can be found in your account at <a href="http://www.unblu.com/">www.unblu.com</a>. (unblu.com -&gt; myunblu -&gt; administer account -&gt; integration section.)</li>
+        </ol>
+        <p>Keep in mind that the snippet should be placed after the last &lt;meta&gt; tag in the &lt;head&gt; section, but before any other script. All the other JSAPI consuming scripts <span class="Bolder">must only </span>appear after the snippet.</p>
+        <ol MadCap:continue="true">
+            <li>Include the snippet in your HTML file, inside the &lt;head&gt; tag (using the appropriate location of the actual 'snippet.js' file within your project tree).</li>
+        </ol><pre class="prettyprint">&lt;script type="text/javascript" src="js/snippet.js"&gt;&lt;/script&gt;</pre>
+        <ol MadCap:continue="true">
+            <li>Create an empty JavaScript file and include it in your HTML page after the &lt;body&gt; tag. The unblu start session dialog will be triggered by this function when the script is called.</li>
+        </ol><pre class="prettyprint">&lt;script type="text/javascript" src="js/main.js"&gt;&lt;/script&gt;</pre>
+        <ol MadCap:continue="true">
+            <li>Inside 'main.js' you need to declare one variable/object to hold the unblu API and one object to hold the activation element from the HTML page. You also need to add 'eventListener' to this element.</li>
+        </ol><pre class="prettyprint">
+var unbluAPI;
+var el; // activation element
+el = document.getElementById('startChat');
+el.addEventListener('click', start, false);</pre>
+        <ol MadCap:continue="true">
+            <li>Declare the 'start' function, which will get the unblu API and then activate the unblu start session dialog using “unbluAPI.core.visitor.ui.Dialogs.showChatSessionDialog()”</li>
+        </ol><pre class="prettyprint">
+function start() {
+    unblu.registerApiConsumer(function (api) {
+        if (typeof api.fatalError != 'undefined') {
+            return;
+        }
+   
+        unbluAPI = api;
+    }, ['core.visitor.ui']); // Add unblu packages at this location depending on which one of them you need
+   
+    if (unbluAPI) { // if the unblu API is loaded
+        unbluAPI.core.visitor.ui.Dialogs.showChatSessionDialog(); // Showing the start chat session unblu dialog
+}};</pre>
+        <p>The full example implementation can be downloaded from here: <a href="https://dev.unblu.com/confluence/download/attachments/104071326/JSC-10.zip?version=1&amp;modificationDate=1485159424000&amp;api=v2">JSC-10.zip</a></p>
+        <p><span class="Bolder">NOTE:</span> unblu version: 4.x.x (unblu 4 or above)</p>
+        <p>The example must be uploaded to an Apache server, or similar, in order to work correctly.</p>
+        <p>&#160;</p>
+    </body>
+</html>

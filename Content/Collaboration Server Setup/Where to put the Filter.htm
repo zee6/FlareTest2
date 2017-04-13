@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="3" MadCap:lastHeight="1495" MadCap:lastWidth="1142">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h2 class="Heading2">Where to put the Filter</h2>
+        <p>The physical/logical placement of the unblu Filter within the proxy’s filter chain is crucial. The reason for this is that the unblu Collaboration Server needs to process the exact URLs of the resources that are requested by the visitor browser. Often, within a filter chain, that URL, for whatever reason, can be altered on the way to the backend server. </p>
+        <p>Ideally, the unblu Filter should be as close to the front of the request queue as possible. Many potential difficulties can be easily resolved by placing the unblu Filter within the filter chain in such a way as it receives the data before any other filter has had a chance to make any changes to that data.</p>
+        <p>The following diagram shows the flows surrounding the unblu filter.</p>
+        <p>&#160;</p>
+        <p>
+            <img src="../Resources/Images/Server_Setup_Guide_Pictures/Where to put the Filter.png" style="float: left;left: 30px;top: 364px;padding-right: 1em;mc-thumbnail: popup;mc-thumbnail-max-height: auto;" class="img_1" MadCap:mediastyle="@media print { position: absolute;z-index: 0; }" />
+        </p>
+        <p><span class="Bolder">Note that placing the unblu Filter as close as possible to the visitor browser, within the proxy’s filter chain, is a simple rule of thumb that you can use to offset possible problems. </span>We cannot know what any organization has within its filter chain. And it may even be that, within a complex system, it is difficult to be sure of what is being changed where. Therefore, if you know, for sure, that the incoming requests will arrive at the unblu Filter without any modifications of the URL then that will work. But if you have any doubts at all concerning exactly what is happening within your filter chain, then simply placing the unblu Filter at the appropriate position in the filter chain will offset possible problems arising from the integrity of the request not being perfectly intact.</p>
+        <p>When a co-browsing session has started, the unblu Filter will pick up the URLs from the request queue and the image and style sheet data from the response queue.</p>
+        <p><span class="Bolder">Note:</span> The proxy must be configured such that all ‘/unblu’ (slash unblu) requests go to the collaboration server.</p>
+    </body>
+</html>

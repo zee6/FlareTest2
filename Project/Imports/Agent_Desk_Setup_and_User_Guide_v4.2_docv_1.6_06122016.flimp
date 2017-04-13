@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MsWordImport
+  PreserveSourceStyles="true"
+  KeepSourceLinks="false"
+  ConvertInlineFormatting="true"
+  AddContinuedLinks="false"
+  AddContinuedFromLinks="false"
+  ContinuedLinkFormat="(continued in {title})"
+  ContinuedFromLinkFormat="(continued from {title})"
+  UseMaxCharLimit="false"
+  UseMinCharLimit="true"
+  MaxCharLimit="10000"
+  MinCharLimit="50"
+  FilenameLength="24"
+  GeneratePageLayouts="false"
+  UseFirstHeadingAsTopicTitle="true"
+  ConvertEquations="true"
+  LastCollectTime="2017-03-02T13:29:05.9392177+01:00"
+  ProjectName="unbluDemo2"
+  ProjectFolder="C:\unbluDemoHelp\unbluDemo2\unbluDemo2\"
+  AutoSync="false"
+  AutoFitTables="false"
+  UseHeaderRows="false"
+  LastImport="2017-03-02T13:29:41.5917283+01:00">
+  <Files>
+    <Url
+      Source="../../../Agent Desk Word Original/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016.docx"
+      AbsoluteSource="file:///C:/unbluDemoHelp/unbluDemo2/Agent Desk Word Original/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016.docx" />
+  </Files>
+  <ExcludedFiles />
+  <CollectedSourceFiles />
+  <SkippedSourceFiles />
+  <GeneratedFiles>
+    <Url
+      Source="../../Content/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016.htm"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016_1.htm"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Precedence Matters.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Precedence Matters_1.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Precedence Matters.htm"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Creating Users.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Creating Users_1.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Creating Users_2.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Creating Users_3.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Creating Users_4.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Creating Users_5.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Creating Users_6.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Creating Users_7.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Creating Users_8.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Creating Users_9.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Creating Users_10.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Creating Users.htm"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Creating Teams.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Creating Teams_1.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Creating Teams_2.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Creating Teams_3.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Creating Teams_4.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Creating Teams.htm"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Assigning Users to Teams.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Assigning Users to Teams_1.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Assigning Users to Teams_2.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Assigning Users to Teams_3.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Assigning Users to Teams_4.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Assigning Users to Teams.htm"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/The User Profile.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/The User Profile.htm"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/The Queue.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/The Queue_1.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/The Queue_2.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/The Queue_3.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/The Queue_4.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/The Queue_5.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/The Queue_6.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/The Queue_7.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/The Queue_8.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/The Queue_9.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/The Queue_10.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/The Queue_11.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/The Queue_12.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/The Queue_13.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/The Queue_14.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/The Queue_15.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/The Queue.htm"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Live Agent Monitoring.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Live Agent Monitoring.htm"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Statistics.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Statistics_1.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Statistics_2.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Statistics_3.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Statistics_4.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Statistics_5.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Statistics.htm"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Settings Settings.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Settings Settings_1.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Settings Settings_2.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Settings Settings_3.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Settings Settings_4.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Settings Settings_5.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Settings Settings_6.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Settings Settings_7.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Settings Settings.htm"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Canned Responses.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Canned Responses_1.png"
+      TimeStamp="3/2/2017 1:29:20 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Canned Responses_2.png"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Canned Responses.htm"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Migrating to a New Version.png"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Migrating to a New Version_1.png"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Migrating to a New Version_2.png"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Migrating to a New Version.htm"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Migrating Text Values.png"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Migrating Text Values_1.png"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Migrating Text Values_2.png"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Migrating Text Values.htm"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Account.png"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Account_1.png"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Account_2.png"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Account_3.png"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Account_4.png"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Account_5.png"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Account_6.png"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Resources/Images/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Account_7.png"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Account.htm"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016/Global Super Admin Only.htm"
+      TimeStamp="3/2/2017 1:29:22 PM" />
+    <Url
+      Source="../TOCs/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016.fltoc"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Resources/MasterPages/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016.flmsp"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+    <Url
+      Source="../../Content/Resources/Stylesheets/Agent_Desk_Setup_and_User_Guide_v4.2_docv_1.6_06122016.css"
+      TimeStamp="3/2/2017 1:29:21 PM" />
+  </GeneratedFiles>
+  <ParagraphStyles>
+    <Map
+      From="Heading 1"
+      To="h1.Heading 1" />
+    <Map
+      From="Heading 2"
+      To="h2.Heading 2" />
+    <Map
+      From="Heading 3"
+      To="h3.Heading 3" />
+  </ParagraphStyles>
+  <CharacterStyles>
+    <Map
+      From="Hyperlink"
+      To="a.(MS Word Style)" />
+  </CharacterStyles>
+  <NewTopicStyles>
+    <StyleName
+      Name="Heading 1" />
+  </NewTopicStyles>
+  <UsedParagraphStyles>
+    <StyleName
+      Name="Heading 1" />
+    <StyleName
+      Name="Heading 2" />
+    <StyleName
+      Name="Heading 3" />
+    <StyleName
+      Name="List Paragraph" />
+    <StyleName
+      Name="TOC 1" />
+    <StyleName
+      Name="TOC 2" />
+    <StyleName
+      Name="TOC 3" />
+    <StyleName
+      Name="TOC Heading" />
+  </UsedParagraphStyles>
+  <UsedCharacterStyles>
+    <StyleName
+      Name="Hyperlink" />
+  </UsedCharacterStyles>
+</MsWordImport>

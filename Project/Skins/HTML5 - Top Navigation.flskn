@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultSkin
+  Version="2"
+  SkinType="WebHelp2"
+  ComponentType="MasterPage"
+  TemplateName="Fluid"
+  Comment="HTML5 Fluid Layout"
+  EnableResponsiveOutput="true"
+  RemoveImagesOnSave="true"
+  DisplayCommunitySearchResults="false"
+  CommentsInTopic="false">
+  <Stylesheet>
+    <Resources>
+      <Resource
+        Name="logo_1.png">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</Resource>
+    </Resources>
+    <Styles>
+      <Medium
+        Name="Tablet">
+        <Style
+          Name="Navigation Slide Out Button">
+          <Properties></Properties>
+        </Style>
+        <Style
+          Name="Navigation Panel">
+          <Properties></Properties>
+        </Style>
+        <Style
+          Name="Navigation Panel Item">
+          <Properties>
+            <Property
+              Name="LineHeight">1</Property>
+            <Property
+              Name="BorderLeft">outset 1em #dc143c</Property>
+          </Properties>
+        </Style>
+        <Style
+          Name="Search Filter">
+          <Properties></Properties>
+        </Style>
+        <Style
+          Name="Search Filter Drop-down">
+          <Properties></Properties>
+        </Style>
+        <Style
+          Name="Search Filter Drop-down (hover)">
+          <Properties></Properties>
+        </Style>
+      </Medium>
+      <Style
+        Name="Header">
+        <Properties>
+          <Property
+            Name="Height">122px</Property>
+          <Property
+            Name="BackgroundColor">#292928</Property>
+        </Properties>
+      </Style>
+      <Style
+        Name="Menu Item">
+        <Classes>
+          <StyleClass
+            Name="2nd Level">
+            <Properties>
+              <Property
+                Name="PaddingRight">10px</Property>
+              <Property
+                Name="MarginRight">0px</Property>
+            </Properties>
+          </StyleClass>
+          <StyleClass
+            Name="3rd Level">
+            <Properties>
+              <Property
+                Name="PaddingRight">10px</Property>
+            </Properties>
+          </StyleClass>
+          <StyleClass
+            Name="4th Level">
+            <Properties>
+              <Property
+                Name="PaddingRight">10px</Property>
+            </Properties>
+          </StyleClass>
+        </Classes>
+        <Properties></Properties>
+      </Style>
+      <Style
+        Name="Search Input">
+        <Properties>
+          <Property
+            Name="BackgroundColor">#ffffff</Property>
+        </Properties>
+      </Style>
+      <Style
+        Name="Menu">
+        <Properties>
+          <Property
+            Name="Float">right</Property>
+        </Properties>
+      </Style>
+      <Style
+        Name="Logo">
+        <Properties>
+          <Property
+            Name="BackgroundImage">url('logo_1.png')</Property>
+        </Properties>
+      </Style>
+      <Style
+        Name="Search Submit Button">
+        <Properties>
+          <Property
+            Name="BackgroundColor">#f8a73e</Property>
+          <Property
+            Name="BackgroundRepeat">no-repeat</Property>
+        </Properties>
+      </Style>
+      <Style
+        Name="Search Heading">
+        <Properties>
+          <Property
+            Name="FontSize">2.5em</Property>
+        </Properties>
+      </Style>
+      <Style
+        Name="Search Results">
+        <Properties>
+          <Property
+            Name="Display">block</Property>
+          <Property
+            Name="LineHeight">2em</Property>
+          <Property
+            Name="TextIndent">0px</Property>
+        </Properties>
+      </Style>
+      <Style
+        Name="Search Result Abstract">
+        <Properties>
+          <Property
+            Name="PaddingLeft">0px</Property>
+          <Property
+            Name="PaddingTop">5px</Property>
+          <Property
+            Name="PaddingBottom">5px</Property>
+          <Property
+            Name="FontSize">16pt</Property>
+        </Properties>
+      </Style>
+      <Style
+        Name="Search Result Link">
+        <Properties>
+          <Property
+            Name="FontSize">1.5em</Property>
+        </Properties>
+      </Style>
+      <Style
+        Name="Search Result Path">
+        <Properties>
+          <Property
+            Name="Color">#f8a73e</Property>
+          <Property
+            Name="FontSize">1em</Property>
+        </Properties>
+      </Style>
+    </Styles>
+    <Stylesheet></Stylesheet>
+  </Stylesheet>
+  <WebHelpOptions
+    NavigationPanePosition="Right"
+    TopMenuDepth="6" />
+  <Strings>
+    <Stylesheet
+      lang="en-us">
+      <Stylesheet>
+        <Resources>
+          <Resource
+            Name="logo_1.png">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</Resource>
+        </Resources>
+        <Styles>
+          <Medium
+            Name="Tablet">
+            <Style
+              Name="Navigation Slide Out Button">
+              <Properties></Properties>
+            </Style>
+            <Style
+              Name="Navigation Panel">
+              <Properties></Properties>
+            </Style>
+            <Style
+              Name="Navigation Panel Item">
+              <Properties>
+                <Property
+                  Name="LineHeight">1</Property>
+                <Property
+                  Name="BorderLeft">outset 1em #dc143c</Property>
+              </Properties>
+            </Style>
+            <Style
+              Name="Search Filter">
+              <Properties></Properties>
+            </Style>
+            <Style
+              Name="Search Filter Drop-down">
+              <Properties></Properties>
+            </Style>
+            <Style
+              Name="Search Filter Drop-down (hover)">
+              <Properties></Properties>
+            </Style>
+          </Medium>
+          <Style
+            Name="Header">
+            <Properties>
+              <Property
+                Name="Height">122px</Property>
+              <Property
+                Name="BackgroundColor">#292928</Property>
+            </Properties>
+          </Style>
+          <Style
+            Name="Menu Item">
+            <Classes>
+              <StyleClass
+                Name="2nd Level">
+                <Properties>
+                  <Property
+                    Name="PaddingRight">10px</Property>
+                  <Property
+                    Name="MarginRight">0px</Property>
+                </Properties>
+              </StyleClass>
+              <StyleClass
+                Name="3rd Level">
+                <Properties>
+                  <Property
+                    Name="PaddingRight">10px</Property>
+                </Properties>
+              </StyleClass>
+              <StyleClass
+                Name="4th Level">
+                <Properties>
+                  <Property
+                    Name="PaddingRight">10px</Property>
+                </Properties>
+              </StyleClass>
+            </Classes>
+            <Properties></Properties>
+          </Style>
+          <Style
+            Name="Search Input">
+            <Properties>
+              <Property
+                Name="BackgroundColor">#ffffff</Property>
+            </Properties>
+          </Style>
+          <Style
+            Name="Menu">
+            <Properties>
+              <Property
+                Name="Float">right</Property>
+            </Properties>
+          </Style>
+          <Style
+            Name="Logo">
+            <Properties>
+              <Property
+                Name="BackgroundImage">url('logo_1.png')</Property>
+            </Properties>
+          </Style>
+          <Style
+            Name="Search Submit Button">
+            <Properties>
+              <Property
+                Name="BackgroundColor">#f8a73e</Property>
+              <Property
+                Name="BackgroundRepeat">no-repeat</Property>
+            </Properties>
+          </Style>
+          <Style
+            Name="Search Heading">
+            <Properties>
+              <Property
+                Name="FontSize">2.5em</Property>
+            </Properties>
+          </Style>
+          <Style
+            Name="Search Results">
+            <Properties>
+              <Property
+                Name="LineHeight">1em</Property>
+              <Property
+                Name="Display">block</Property>
+            </Properties>
+          </Style>
+          <Style
+            Name="Search Result Abstract">
+            <Properties>
+              <Property
+                Name="PaddingLeft">0px</Property>
+              <Property
+                Name="PaddingTop">5px</Property>
+              <Property
+                Name="PaddingBottom">5px</Property>
+              <Property
+                Name="FontSize">0.8000002em</Property>
+            </Properties>
+          </Style>
+          <Style
+            Name="Search Result Link">
+            <Properties>
+              <Property
+                Name="FontSize">1em</Property>
+            </Properties>
+          </Style>
+          <Style
+            Name="Search Result Path">
+            <Properties>
+              <Property
+                Name="Color">#f8a73e</Property>
+            </Properties>
+          </Style>
+        </Styles>
+        <Stylesheet></Stylesheet>
+      </Stylesheet>
+    </Stylesheet>
+  </Strings>
+</CatapultSkin>

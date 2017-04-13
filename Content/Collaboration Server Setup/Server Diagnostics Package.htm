@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="897" MadCap:lastWidth="1129">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Server Diagnostics Package</h1>
+        <h2>Preliminaries</h2>
+        <p>In order for Unblu to provide swift assistance, our server is capable of providing a diagnostics package as a zip download.</p>
+        <p>This zip gathers valuable information from various internal sources that help Unblu to quickly diagnose a wide variety of issues without having to request a multitude of single files or configuration settings from your system administrators.</p>
+        <p>Unblu support may request that your system administrator acquire the diagnostics package for them.</p>
+        <h2>Access / Download</h2>
+        <p>The diagnostics package is available for download at<code> {UNBLU_SERVER_URL}/sys-unblu/diagnosticsDownload</code>. By navigating to this URL a file save prompt should be triggered which prompts you to save a zip file (<code>unblu_Diagnostic.zip</code>), which then needs be forwarded to Unblu.</p>
+        <p>Access to the server's <code>/sys-unblu/</code> path is restricted to users with elevated privileges.</p>
+        <h2>Contents of the Package</h2>
+        <p>The <code>unblu_Diagnostics.zip</code> contains the following information:</p>
+        <ul>
+            <li><code>JavaSystemProperties.txt</code>: A text file containing all Java configuration properties. For instance, entries such as 'java.vm.vendor': Oracle Corporation.</li>
+            <li><code>LocalizedTexts.txt</code>: Contains a listing of all available texts and translations available on the Unblu Server.</li>
+            <li><code>SystemInformation.txt:</code> Contains information about the system state, such as available memory, to the Java Virtual Machine, as well as Unblu-specific system information such as installed products, their versions, etc.</li>
+            <li><code>logs/</code> : The logs directory contains different log files created from various Unblu products at runtime.</li>
+        </ul>
+        <p><span class="Bolder">Note:</span> In order to keep the file size of the diagnostics package manageable, not all log information may be included. The Unblu server, by default, includes the newest log files up to a combined, compressed file size of 5 MB per log file type (such as regular logs, fatal logs and session logs).</p>
+        <p>&#160;</p>
+    </body>
+</html>

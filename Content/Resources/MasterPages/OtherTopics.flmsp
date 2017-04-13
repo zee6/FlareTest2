@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="7" MadCap:lastHeight="333" MadCap:lastWidth="916">
+    <head>
+        <script type="text/javascript" src="../prettify/prettify.js">
+        </script>
+        <meta charset="utf-8" />
+        <meta name="description" content="" />
+        <meta name="author" content="" /><title></title>
+        <link href="" rel="stylesheet" type="text/css" />
+		<script src="https://use.fontawesome.com/e8054943d7.js"></script>
+    </head>
+    <body>
+        <img src="../prettify/onLoad.png" onload="prettyPrint() " />
+        <div class="content">
+            <div id="contentBody">
+                <div class="row collapse">
+                    <div class="sideContent">
+                        <div class="clearfix">
+                            <MadCap:topicToolbarProxy />
+                        </div>
+                        <MadCap:menuProxy style="mc-toc-depth: 6;mc-context-sensitive: True;mc-include-parent: True;mc-include-siblings: True;mc-include-children: True;" data-mc-skin="/Project/Skins/SideMenu.flskn" />
+                    </div>
+                    <MadCap:breadcrumbsProxy />
+                    <MadCap:bodyProxy />
+                    <p>&#160;</p>
+                    <p>_______________________________________________________________________________________________________________________________________________________________</p>
+                    <p>&#160;</p>
+                    <MadCap:dropDown style="background-color: #ffffff;font-size: 10pt;font-family: 'Open Sans';">
+                        <MadCap:dropDownHead>
+                            <MadCap:dropDownHotspot>Version &amp; Build Information</MadCap:dropDownHotspot>
+                        </MadCap:dropDownHead>
+                        <MadCap:dropDownBody>
+                            <p><MadCap:variable name="General.SoftwareVersionNumber" />
+                            </p>
+                            <p><MadCap:variable name="General.CreatedNewDateTimeVariable" />
+                            </p>
+                            <p><MadCap:variable name="General.NewDateTimeVariable" />
+                            </p>
+                        </MadCap:dropDownBody>
+                    </MadCap:dropDown>
+                    <p>_______________________________________________________________________________________________________________________________________________________________</p>
+                    <p>
+                        <img src="../Images/onLoad.png" />
+                    </p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

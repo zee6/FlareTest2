@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="2133" MadCap:lastWidth="1336">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Reverse Proxy Integration</h1>
+        <p>Unblu can be used with or without a reverse proxy but there are a number of general benefits to using a reverse proxy such as load balancing or security, and it allows you to remove the need for direct access to your servers.</p>
+        <p>The main benefit of integrating a reverse proxy, in the case of the unblu product, is that it allows you to use the unblu filter. The unblu filter can be used inside the filter chain of a reverse proxy to inject the unblu snippet dynamically and accommodate co-browsing-specific communication automatically.</p>
+        <p>For maximum security we recommend filter integration due to its ability to capture and secure resources (such as CSS, images, session-specific pdf).</p>
+        <p>
+            <img src="../Resources/Images/Filter/Proxy_diagram_1.png" style="mc-thumbnail-max-height: auto;mc-thumbnail: popup;" />
+        </p>
+        <h2>Avoid using Microsoft Browsers with your Web Server or use the Configuration below</h2>
+        <p>Although unblu works with all current and popular browsers on the market, there can sometimes be problems specific to the combination of application server/browser/configuration that are out of unblu's control.</p>
+        <p>Such a problem can occur when using Microsoft Internet Explorer or Microsoft Edge with a web server. Note that here, for the sake of clarity, we use the example combination of a Microsoft browser and an Apache server. But while this seems to be the most common setup where this issue is reproduced be aware that it can happen with any modern web server communicating with a Microsoft browser. Also note that, at time of writing, Microsoft has closed the issue as they are apparently unable to reproduce it. <span class="Bolder">This means that you must take action to fix the issue.</span></p>
+        <p>The default 'keep-alive' timeout interval for Apache Tomcat is 20 seconds. The default for Apache httpd is only 5 seconds. In order to ensure optimal performance this value must be increased to at least 75 seconds.</p>
+        <p>Most modern application servers have a timeout value either equal to or greater than 75 seconds (or a more sophisticated way of handling requests where the timeout is either longer or shorter according to load).</p>
+        <p>Note that this problem generates the following error code: "Network Error 0x2ef3, Could not complete the operation due to error 00002ef3."</p>
+        <h2>WARNING! Apache Web Server / Internet Explorer 'Keep-Alive' setting</h2>
+        <p>If you use an Apache web server with Internet Explorer you must increase the Default HTTP persistent connection idle timeout value to at least 75s. Failure to do so may cause a timeout. You may choose to do this using one of the following methods.</p>
+        <ol>
+            <li>Configure the involved HTTP infrastructure (including the application server, proxies, firewall and load balancer) to have <code>KeepAliveTimeout</code> set to 75 seconds.</li>
+            <li>Configure the involved HTTP infrastructure (including the application server, proxies, firewall and load balancer) to have <code>KeepAliveTimeout </code>set to 75 seconds depending on the user agent (only for Internet Explorer).</li>
+            <li>Configure the involved HTTP infrastructure (including the application server, proxies, firewall and load balancer) to selectively turn off <code>KeepAlive </code>for Internet Explorer.</li>
+            <li>Set unblu heartbeat to 1 second. (com.unblu.nio.heartbeatInterval=1)</li>
+        </ol>
+        <p><span class="Bolder">Caution: </span>If workaround 4 is chosen: This MUST be removed if you move to 4.2.x. We recommend using one of the first three solutions, if possible.</p>
+        <h2>Custom Proxies</h2>
+        <p>If you have your own proxy setup in Apache, make sure that it is a non-caching reverse proxy that does not deliver its own (cached) content. Cached content is not processed by mod_unblufilter and cannot be co-browsed.</p>
+        <p><span class="Bolder">Note:</span> Only symmetric mappings should be used. Do not use asymmetric mappings!</p>
+        <p><span class="Bolder">Examples of symmetric mappings:</span>
+        </p>
+        <p>map / to &lt;unbluServer&gt;/</p>
+        <p>or</p>
+        <p><span class="Bolder">/unblu/</span> to &lt;unbluServer&gt;<span class="Bolder">/unblu)</span></p>
+        <h2>System Path Information</h2>
+        <p>unblu path mappings. Configure according to your unblu.properties setup</p><pre class="prettyprint">set static::${env_prefix}unblu_public_path "/unblu"
+set static::${env_prefix}unblu_system_path "/sys-unblu"
+set static::${env_prefix}unblu_restricted_path "/co-unblu"</pre>
+        <p>&#160;</p>
+    </body>
+</html>

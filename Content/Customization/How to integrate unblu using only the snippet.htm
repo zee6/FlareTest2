@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="793" MadCap:lastWidth="1129">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>How to integrate unblu using only the snippet</h1>
+        <p><i>The full example implementation shown below can be downloaded from here:</i> <a href="https://dev.unblu.com/confluence/download/attachments/102793239/JSC-3.zip?version=1&amp;modificationDate=1474372204000&amp;api=v2">JSC-3.zip</a></p>
+        <p>The steps below show how to activate/enable unblu within a website.</p>
+        <p>
+            <img src="../Resources/Images/Customization/JSC-3-2.PNG" style="mc-thumbnail: popup;mc-thumbnail-max-height: 200px;" />
+        </p>
+        <p><span class="Bolder">Note:</span> All the file/object/function names can be changed according to your needs.</p>
+        <ol>
+            <li>Create an HTML page (for example, index.html).</li>
+            <li>Create a JavaScript file called <span class="Bolder">'snippet.js' </span>and paste the snippet into it. The snippet can be found in your account at <a href="http:// www.unblu.com">www.unblu.com</a>. (<span class="Bolder">unblu.com -&gt; myunblu -&gt; administer account -&gt; integration section</span>).</li>
+        </ol>
+        <p>Keep in mind that the snippet should be placed after the last &lt;meta&gt; tag in the &lt;head&gt; section, but before any other script. <span class="Bolder">All of the other JSAPI consuming scripts must only appear after the snippet.</span></p>
+        <ol MadCap:continue="true">
+            <li>Include the snippet in your HTML file inside the &lt;head&gt; tag (using the appropriate location of the actual<span class="Bolder"> 'snippet.js' </span>file within your project tree).</li>
+        </ol><pre class="prettyprint">&lt;script type="text/javascript" src="js/snippet.js"&gt;&lt;/script&gt;</pre>
+        <ol MadCap:continue="true">
+            <li>At this point unblu is included in your web page. You can use it by clicking the <span class="Bolder">'Live Assistance' </span>button.</li>
+        </ol>
+        <p> <![CDATA[ ]]></p>
+    </body>
+</html>
