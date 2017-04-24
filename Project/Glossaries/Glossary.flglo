@@ -432,4 +432,14 @@
     <Definition
       Link="">The Document Object Model (DOM) is a cross-platform and language-independent application programming interface that treats an HTML, XHTML, or XML document as a tree structure wherein each node is an object representing a part of the document. The objects can be manipulated programmatically and any visible changes occurring as a result may then be reflected in the display of the document.</Definition>
   </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term11"
+    Stem=""
+    IgnoreCase="true">
+    <Terms>
+      <Term>Docker Hub</Term>
+    </Terms>
+    <Definition
+      Link="">A cloud-based registry service which allows you to link to code repositories, build your images and test them, stores manually pushed images, and links to Docker Cloud so you can deploy images to your hosts</Definition>
+  </GlossaryEntry>
 </CatapultGlossary>
