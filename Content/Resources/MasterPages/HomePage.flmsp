@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="203" MadCap:lastWidth="929">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="203" MadCap:lastWidth="1097">
     <head>
         <meta charset="utf-8" />
         <meta name="description" content="" />
         <meta name="author" content="" /><title></title>
         <link href="../Stylesheets/StylesForHomePage.css" rel="stylesheet" type="text/css" />
-		<script src="https://use.fontawesome.com/e8054943d7.js"></script>
+        <script src="https://use.fontawesome.com/e8054943d7.js">
+        </script>
     </head>
     <body>
         <div id="contentBody" class="off-canvas-main">
@@ -18,7 +19,7 @@
                         <div class="footer-links"><a href="../../Glossary.htm">Glossary </a><span style="color: #d3d3d3;"><a href="https://www.unblu.com/en/knowledge-base/">Knowledge Base</a></span> <![CDATA[ ]]></div>
                         <p class="Copyright">Copyright © 2017 <MadCap:variable name="General.CompanyName" /></p>
                     </div>
-                    <div class="footer-icons"><a href="https://twitter.com/unblu?lang=en" title="Click here to go to unblu on Twitter." alt="Click here to go to unblu on Twitter."><img src="../Images/TwitterIconOrange.png" /></a> <a href="https://www.facebook.com/unblu/" title="Click here to go to unblu on Facebook." alt="Click here to go to unblu on Facebook."><img src="../Images/FacebookIconOrange.png" /></a></div>
+                    <div class="footer-icons"><a href="https://twitter.com/unblu"><img src="../Images/twitter.svg" style="min-width: 20px;min-height: auto;max-height: auto;max-width: 50px;" /></a> <a href="https://www.facebook.com/unblu/"><img src="../Images/facebook.svg" style="min-width: 20px;max-width: 50px;min-height: auto;max-height: auto;" /></a></div>
                 </div>
             </div>
         </div>
