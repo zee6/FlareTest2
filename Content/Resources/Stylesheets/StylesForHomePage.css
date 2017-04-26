@@ -522,7 +522,8 @@ div.HomePDFSection > div
 
 div.HomePDFSection > div:nth-child(1)
 {
-	width: 33.33333%;
+	width: 100%;
+	margin-left: 0%;
 }
 
 div.HomePDFSection > div:nth-child(2)
@@ -984,7 +985,7 @@ div.HomeHeroSection > div:nth-child(4)
 
 	div.HomeHeroSection > div:nth-child(2)
 	{
-		width: 50%;
+		width: 100%;
 		margin-left: 0%;
 	}
 
