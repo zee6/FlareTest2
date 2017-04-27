@@ -452,4 +452,14 @@
     <Definition
       Link="">Java Servlet Application Programming Interface.</Definition>
   </GlossaryEntry>
+  <GlossaryEntry
+    glossTerm="Glossary.Term45"
+    Stem=""
+    IgnoreCase="false">
+    <Terms>
+      <Term>Context sharing</Term>
+    </Terms>
+    <Definition
+      Link="">Current visitor browser information is kept intact when the agent creates the session.</Definition>
+  </GlossaryEntry>
 </CatapultGlossary>
