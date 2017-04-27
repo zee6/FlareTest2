@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="203" MadCap:lastWidth="1097">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="250" MadCap:lastWidth="1438">
     <head>
         <meta charset="utf-8" />
         <meta name="description" content="" />
@@ -13,7 +13,7 @@
             <MadCap:bodyProxy />
             <div class="footer center">
                 <div class="HomeMasterPageFooter outer-row">
-                    <div><a href="../../Home.htm"><img src="../Images/logo_1.png" alttext="" class="Hyperlinked footer-logo" /></a>
+                    <div><a href="../../Home.htm"><img src="../Images/Unblu_Web_Logo.png" alttext="" class="Hyperlinked footer-logo" style="max-height: auto;max-width: 40%;" /></a>
                     </div>
                     <div>
                         <div class="footer-links"><a href="../../Glossary.htm">Glossary </a><span style="color: #d3d3d3;"><a href="https://www.unblu.com/en/knowledge-base/">Knowledge Base</a></span> <![CDATA[ ]]></div>
