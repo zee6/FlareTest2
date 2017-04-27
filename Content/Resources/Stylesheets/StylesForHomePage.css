@@ -694,13 +694,19 @@ div.HomeHeroSection > div:nth-child(2)
 
 div.HomeHeroSection > div:nth-child(3)
 {
-	width: 8.3333%;
+	width: 100%;
 	margin-left: 0%;
 }
 
 div.HomeHeroSection > div:nth-child(4)
 {
-	width: 8.3333%;
+	width: 100%;
+	margin-left: 0%;
+}
+
+div.HomeHeroSection > div:nth-child(5)
+{
+	width: 100%;
 	margin-left: 0%;
 }
 
@@ -835,6 +841,12 @@ div.HomeHeroSection > div:nth-child(4)
 	}
 
 	div.HomeHeroSection > div:nth-child(4)
+	{
+		width: 8.3333%;
+		margin-left: 0%;
+	}
+
+	div.HomeHeroSection > div:nth-child(5)
 	{
 		width: 8.3333%;
 		margin-left: 0%;
@@ -997,6 +1009,12 @@ div.HomeHeroSection > div:nth-child(4)
 	}
 
 	div.HomeHeroSection > div:nth-child(4)
+	{
+		width: 8.3333%;
+		margin-left: 0%;
+	}
+
+	div.HomeHeroSection > div:nth-child(5)
 	{
 		width: 8.3333%;
 		margin-left: 0%;
