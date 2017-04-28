@@ -28,7 +28,7 @@
       <Term>Embedded Co-browsing</Term>
     </Terms>
     <Definition
-      Link="">Embedded co-browsing captures the visitor browser DOM within a defined domain scope.  Ensures that the agent browser never has to access the organization backend. All communication with the agent browser is done through the unblu server and the unblu server only ‘sees’ the objects that have been previously uploaded by the filter.</Definition>
+      Link="">Embedded co-browsing captures the visitor browser Document Object Model (DOM) within a defined domain scope.  Ensures that the agent browser never has to access the organization backend. All communication with the agent browser is done through the unblu server and the unblu server only ‘sees’ the objects that have been previously uploaded by the filter.</Definition>
   </GlossaryEntry>
   <GlossaryEntry
     glossTerm="Glossary.Term3"

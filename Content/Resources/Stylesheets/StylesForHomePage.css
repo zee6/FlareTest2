@@ -516,8 +516,8 @@ div.HomePDFSection > div
 	float: left;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-	padding-left: 30px;
-	padding-right: 30px;
+	padding-left: 0px;
+	padding-right: 0px;
 }
 
 div.HomePDFSection > div:nth-child(1)
@@ -807,7 +807,8 @@ div.HomeHeroSection > div:nth-child(11)
 
 	div.HomePDFSection > div:nth-child(1)
 	{
-		width: 33.33333%;
+		width: 100%;
+		margin-left: 0%;
 	}
 
 	div.HomePDFSection > div:nth-child(2)
