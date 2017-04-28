@@ -110,9 +110,9 @@
         Name="Search Submit Button">
         <Properties>
           <Property
-            Name="BackgroundColor">#f8a73e</Property>
-          <Property
             Name="BackgroundRepeat">no-repeat</Property>
+          <Property
+            Name="BackgroundColor">#f8781a</Property>
         </Properties>
       </Style>
       <Style
@@ -157,9 +157,9 @@
         Name="Search Result Path">
         <Properties>
           <Property
-            Name="Color">#f8a73e</Property>
-          <Property
             Name="FontSize">1em</Property>
+          <Property
+            Name="Color">#f8781a</Property>
         </Properties>
       </Style>
     </Styles>

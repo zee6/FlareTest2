@@ -19,7 +19,8 @@
                         <div class="footer-links"><a href="../../Glossary.htm">Glossary </a><span style="color: #d3d3d3;"><a href="https://www.unblu.com/en/knowledge-base/">Knowledge Base</a></span> <![CDATA[ ]]></div>
                         <p class="Copyright">Copyright © 2017 <MadCap:variable name="General.CompanyName" /></p>
                     </div>
-                    <div class="footer-icons"><a href="https://twitter.com/unblu"><img src="../Images/twitter.svg" style="min-width: 20px;min-height: auto;max-height: auto;max-width: 50px;" /></a> <img src="../Images/facebook-logo.svg" style="min-height: auto;max-height: auto;min-width: 20px;max-width: 45px;" /></div>
+                    <div class="footer-icons">
+                        <img src="../Images/twitter_Orange.svg" style="min-height: auto;max-height: auto;min-width: 20px;max-width: 40px;" /> <img src="../Images/facebook-letter-logo.svg" style="min-width: 20px;min-height: auto;max-height: auto;max-width: 36px;" /></div>
                 </div>
             </div>
         </div>
