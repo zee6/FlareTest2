@@ -196,7 +196,11 @@
       Link="/Content/Collaboration Server Setup/Server Diagnostics Package.htm" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd"></TocEntry>
     <TocEntry
       Title="[%=System.LinkedTitle%]"
-      Link="/Content/Collaboration Server Setup/Universal and Document Co.htm" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd"></TocEntry>
+      Link="/Content/Collaboration Server Setup/Universal and Document Co.htm" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+      <TocEntry
+        Title="[%=System.LinkedTitle%]"
+        Link="/Content/Collaboration Server Setup/Docker explained.htm" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+    </TocEntry>
     <TocEntry
       Title="Defining the Appropriate Architecture"
       Link="/Content/Collaboration Server Setup/Defining the Appropriate Architecture.htm" />
