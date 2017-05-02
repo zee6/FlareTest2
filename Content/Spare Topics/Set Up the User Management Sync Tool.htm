@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="11" MadCap:lastHeight="9871" MadCap:lastWidth="1031" MadCap:searchable="False">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="11" MadCap:lastHeight="8934" MadCap:lastWidth="1275" MadCap:searchable="False">
     <head><title></title>
         <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" />
     </head>
@@ -17,8 +17,8 @@
                 <p>It is important to put some serious thought into choosing the right synchronization strategy as there are consequences. For example, it makes sense, in a large complex organization, not to have many systems carrying duplicate user data. You already have the data ordered within your own identity management system so syncing should be a perfect solution. However, if you decide, for example, to ‘sync all’ (teams and users) then this would require you to have confidence that current team structures are entirely appropriate for how you want to use the unblu product(s). This is because when you ascribe precedence to your own identity management system you will not then be able to ‘manipulate’ teams from within the unblu Agent Desk.</p>
                 <p>Note: You may be able to enjoy the ‘best of both worlds’ by syncing users but not teams. In this way you could still use the unblu Agent Desk to create (team) structures on-the-fly that will persist through synchronizations. Syncing users but not teams can be an ideal strategy for a large organization who may be unsure as to exactly how they want to structure their visitor-engagement teams. When you are sure you have defined exactly the right structure (by ‘experimenting’ inside the unblu Agent Desk), you can then define the teams’ structure on your identity management system. In this way you can use the flexibility of the unblu Agent Desk in combination with the efficiency of drawing data and data structures from your own identity management system. A caveat here is that handling teams from within the unblu Agent Desk means that you would have to assign users manually, which can be time consuming and prone to error. (Also note that the Synchronization Tool cannot reproduce nested team structures; nesting must be defined from within the unblu Agent Desk.)</p>
                 <p>The User Management Synchronization Tool can insert or delete teams but it cannot update them. ‘Team’ is a standalone entity; if there are no users assigned to a team then that team, as far as the unblu Collaboration Server is concerned, does not exist. If you try to rename a team from within the LDAP directory unblu will drop/delete that team and create a new team, so your previous team settings would be lost.</p>
-                <p>Note: The User Management Synchronization Tool is integrated into the unblu Collaboration Server but it will not start by default. In order to use the tool you must first configure it in the unblu.properties file. See <a href="../Collaboration Server Setup/Synchronization Tool Configuration.htm#_Synchronization_Tool_Configuration">Synchronization Tool Configuration</a> for more on how to get up and running with the User Management Synchronization Tool.</p>
-                <p>Note: You can also configure the Synchronization Tool from directly within the unblu Agent Desk at the Account level. (Note that while configuring the Synchronization Tool via the Agent Desk is possible it is probably only useful for multi-tenancy installations; as it requires ‘Superadmin’ credentials.) See <a href="../Collaboration Server Setup/Per Account Configuration.htm#_Per_Account_Configuration">Per Account Configuration</a>.</p>
+                <p>Note: The User Management Synchronization Tool is integrated into the unblu Collaboration Server but it will not start by default. In order to use the tool you must first configure it in the unblu.properties file. See <a href="../Collaboration Server Setup/User Management Synchronization.htm#Set">Synchronization Tool Configuration</a> for more on how to get up and running with the User Management Synchronization Tool.</p>
+                <p>Note: You can also configure the Synchronization Tool from directly within the unblu Agent Desk at the Account level. (Note that while configuring the Synchronization Tool via the Agent Desk is possible it is probably only useful for multi-tenancy installations; as it requires ‘Superadmin’ credentials.) See <a href="../Collaboration Server Setup/User Management Synchronization.htm#Per">Per Account Configuration</a>.</p>
                 <p>When the User Management Synchronization Tool starts it queries the identity management system using LDAP for users. Users are (uniquely) identified by an ID (sourceID) supplied by the identity management system. This sourceID is used to keep the LDAP users and unblu users in sync.</p>
                 <p>If you decide to synchronize from your identity management system using LDAP, Synchronization Tool precedence means that all attributes defined for synchronization must be set on the LDAP server in order to populate the unblu Collaboration Server database. If you make changes from within the unblu Agent Desk those changes will be lost the next time the synchronization tool runs (if you have defined that attribute to be synced).</p>
                 <p>The first time the tool runs it will sync all users and associated attributes. After this initial run the database will remain relatively unchanged with only the differences being synchronized.</p>
@@ -60,7 +60,7 @@
                     <ul>
                         <li>SourceId: A unique identifier which allows you to reliably sync between the central User Management System and unblu (such as employee #)</li>
                         <li>UserName:<br />UserName is the identifier within the unblu system. (It must be identical to the JEE Principal or Trusted Header UserId and must also be specified in the User Management System.) Note that UserName has an unknown structure and format. The only thing that can be assumed is that it is a string (which does&#160;include&#160;it being a number). In SSO implementations, the UserName is what the corresponding system delivers as output from the authentication process. In reality, that can be technical IDs like i12345, names like ‘Kay Huber’ or anything else that can be represented by a string.</li>
-                        <li>Authorization role (See <a href="../Collaboration Server Setup/Authorization Roles Sync Tool.htm#_Authorization_Roles">Authorization Roles</a>)</li>
+                        <li>Authorization role (See <a href="#Authoriz">Authorization Roles</a>)</li>
                         <li>TeamName</li>
                         <li>Email (optional)</li>
                         <li>FirstName (optional)</li>
@@ -71,7 +71,7 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>Authorization Roles</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="Authoriz"></a>Authorization Roles</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>Note: Authorization Roles are purely technical ‘roles’; in that the unblu Role hierarchy bears no relationship to any internal roles in your organization. The roles should be granted according to how you intend to use the Agent Desk.</p>
@@ -126,7 +126,7 @@
                         <p><a href="https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol" class="Hyperlink_2">https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol</a>
                         </p>
                         <p>The tool supports access to the identity management system using normal LDAP or with startTLS.</p>
-                        <p>The tool first binds and then executes searches with the given configuration (see <a href="../Collaboration Server Setup/Entity Source Configuration.htm#_6.2.1._LDAP-Based_Entity">LDAP-Based Entity Reader Configuration</a>) in order to load team or user information.</p>
+                        <p>The tool first binds and then executes searches with the given configuration (see <a href="#LDAP-Bas">LDAP-Based Entity Reader Configuration</a>) in order to load team or user information.</p>
                         <p>With the loaded information it creates internal user or team representations and maps the retrieved attributes to the model’s attributes. </p>
                     </MadCap:dropDownBody>
                 </MadCap:dropDown>
@@ -175,7 +175,7 @@
                 <MadCap:dropDownHotspot>Entity Source Configuration</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <h1>LDAP-Based Entity Reader Configuration</h1>
+                <h1><a name="LDAP-Bas"></a>LDAP-Based Entity Reader Configuration</h1>
                 <p>The following parts of the LDAP reader are configurable:</p>
                 <p class="CODE">com.unblu.addons.synctool.ldap.serverHostname</p>
                 <p class="CODE">com.unblu.addons.synctool.ldap.serverPort</p>

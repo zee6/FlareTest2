@@ -199,7 +199,7 @@
       Link="/Content/Collaboration Server Setup/Universal and Document Co.htm" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
       <TocEntry
         Title="[%=System.LinkedTitle%]"
-        Link="/Content/Collaboration Server Setup/Docker explained.htm" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+        Link="/Content/Collaboration Server Setup/Docker Explained.htm" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
     </TocEntry>
     <TocEntry
       Title="Defining the Appropriate Architecture"

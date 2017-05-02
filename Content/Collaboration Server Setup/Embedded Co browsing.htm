@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="1288" MadCap:lastWidth="1425">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="1288" MadCap:lastWidth="1366">
     <head><title></title>
         <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" />
     </head>
@@ -18,7 +18,7 @@
         <p>The Agent browser cannot get the images from the organization backend server directly. Once a session is started, everything (the DOM, images, style sheet(s)) is downloaded from the unblu server.</p>
         <p><span class="Bolder">Note:</span> If you intend to use static resources almost exclusively but you have some resources that you want to be retrieved directly from your own backend server it is possible to configure ‘exceptions’, whereby normally inaccessible, session-specific resources can be retrieved from the backend server directly using patterns for resource URLs.</p>
         <p>When the image element is transferred the unblu Collaboration Server creates an alternative URL for mapping purposes. The unblu server never communicates directly with the backend: all communication is done through the unblu Filter. For every filter-uploaded resource the unblu Collaboration Server generates an unblu-internal URL. The generated URL is the URL that the Agent browser sees. So, when the visitor makes a request the unblu server has a mapping to retrieve the actual image and send it to the Agent Desk browser.</p>
-        <p><span class="Bolder">Note:</span> The URL (of the resource/image/CSS etc.) contained in the unblu Filter is sent to the unblu Collaboration server and it MUST match the URL (of the same resource) in the visitor browser. This URL can change according to the exact position of the unblu Filter within the filter chain. If the URLs do not match then the Resource History will not work. See <a href="Where to put the Filter.htm#_Where_to_put">Where to put the Filter</a> for more. </p>
+        <p><span class="Bolder">Note:</span> The URL (of the resource/image/CSS etc.) contained in the unblu Filter is sent to the unblu Collaboration server and it MUST match the URL (of the same resource) in the visitor browser. This URL can change according to the exact position of the unblu Filter within the filter chain. If the URLs do not match then the Resource History will not work. See <a href="Where to put the Filter.htm">Where to put the Filter</a> for more. </p>
         <p>As the actual images and style sheets are not present within the unblu server at the start of the session the filter must be present in the proxy where all the traffic between the visitor and the backend happens.</p>
         <p>&#160;</p>
         <p>

@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="3403" MadCap:lastWidth="1326">
+    <head>
+        <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" type="text/css" />
+        <meta name="description" content="In on-premises installations, unblu uses Docker for the renderingservice component. This is part of universal and document co-browsing. The Docker image &quot;unblu renderingservice&quot; makes it possible to start a &quot;partitioned Linux&quot; which shares the Linux kernel of the host system. For this purpose, a so-called &quot;Docker image&quot; which defines what is part of the &quot;isolated&quot; Linux, is created." />
+    </head>
+    <body>
+        <h1>Docker Explained</h1>
+        <p>Docker is a container system that is used to supplement and augment virtualization. Docker automates the deployment of <a href="https://en.wikipedia.org/wiki/Application_software">applications</a> inside <a href="https://en.wikipedia.org/wiki/Software_container">software containers</a>. Docker containers wrap up a piece of software in a complete filesystem that contains everything it needs to run: code, runtime, system tools, system libraries – anything you can install on a server. This guarantees that it will always run the same, regardless of the environment it is running in.</p>
+        <ul>
+            <li><a href="https://docker.io/">https://docker.io</a> - Explanation of the technology behind Docker containers, Docker hosts etc.</li>
+            <li><a href="https://docs.docker.com/">https://docs.docker.com</a> - Detailed documentation on all aspects of Docker.</li>
+            <li><a href="https://hub.docker.com/">https://hub.docker.com</a> - Platform for companies and open source communities around the world to provide and share Docker images.</li>
+            <li><a href="https://hub.docker.com/r/unblu/renderingservice/">https://hub.docker.com/r/unblu/renderingservice/</a> - The unblu rendering service Docker image, which must be used for universal co-browsing. (Please note the various tags. Make sure to use the image corresponding to the unblu collaboration server version)</li>
+        </ul>
+        <p>In on-premises installations, unblu uses Docker for the renderingservice component. This is part of <a href="Universal and Document Co.htm">universal and document co-browsing.</a> Note that the Docker Hub renderingservice image is not the complete software. Instead, it is only the unblu-prepared image of Linux. The unblu functionality is held exclusively within the unblu collaboration server.</p>
+        <p>When you start the unblu renderingservice Docker image on the Docker host, the image becomes a container. After starting, the container is contacted by the unblu collaboration server via SSH and the rendering service application is "uploaded". As soon as the application is started, it connects again via http or https (as required) back to the server and is ready for use.</p>
+        <p>The Docker image "unblu renderingservice" makes it possible to start a "partitioned Linux" which shares the Linux kernel of the host system. For this purpose, a so-called "Docker image" which defines what is part of the "isolated" Linux, is created.</p>
+        <p>The unblu rendering service was fine-tuned on OpenSUSE and requires predefined packages (fonts, libraries etc.). Since not every customer is able to use OpenSUSE, or because it is complex to prepare the packages "manually" for the different systems, unblu decided instead to create a Docker image, which is based on the official OpenSUSE image and pre-installed packages.</p>
+        <p><span class="Bolder">Note: The fact that the image is based on OpenSUSE and exactly what packets are used is not carved in stone.</span> It is possible that unblu could change the content or the Linux distribution base of the rendering service image in future releases, without prior notice.</p>
+        <p>It is best to imagine the image as an "appliance" or "black box". This does not mean that unblu has secrets regarding the image - on the contrary; since our image is in the Docker Hub, everyone can download and examine it. Unblu adjusts the content of the image as needed. Unblu's Docker images use "tags" that define to which unblu version they belong.</p>
+        <p>It is possible that the Linux tools used have, for example, bugs or vulnerabilities. Since our renderingservice image is based on the official OpenSUSE image and distribution and regularly created Update Manager packets but also new docker images. Unblu, on the other hand, rebuilds its own image on a regular basis, so that the problems fixed by OpenSUSE are also fixed in unblu.</p>
+        <p><span class="Bolder">It is highly recommended to retrieve the renderingservice image directly from Docker hub. Pull the image in a regular fashion and update your Docker container with the new images.</span>
+        </p>
+        <p>However, if this is perceived as too uncertain, there is also the possibility to order the Docker image directly from us - this is only possible on a request basis.</p>
+        <h2>Content Trust in Docker</h2>
+        <p><a href="https://docs.docker.com/engine/security/trust/content_trust/">Content Trust in Docker</a> is an optional feature. That is, customers who would like to pull the unblu renderingservice image with content trust can do so, and customers who don't want don't have to. Correspondingly, renderingservice with tag 4.2 can be pulled with content trust turned on or off. The important part is, that it is possible to pull it with content trust turned on.</p>
+        <p>In order for content trust to work properly with Docker hub, it is required <a href="https://docker.io/">that https://docker.io</a> as well as <a href="https://notary.docker.io/">https://notary.docker.io</a> are accessible from the location where the docker pull is executed. <a href="https://notary.docker.io/">https://notary.docker.io</a> is where the trust keys are located.</p>
+        <p>To check that requirement you may want to use the Docker Notary client (see <a href="https://docs.docker.com/notary/getting_started/">https://docs.docker.com/notary/getting_started/</a> ). The following command shows which images are signed on unblu's Docker Hub account:</p><pre class="prettyprint">
+$ notary -s https://notary.docker.io -d ~/.docker/trust list docker.io/unblu/renderingservice
+NAME       DIGEST                                                              SIZE (BYTES)    ROLE
+----       ------                                                              ------------    ----
+4.2        fd8d037b1c0bfa7599118ccf6516b3d454486b9a26ad1db65ca7b30333cf61d5    742             targets
+develop    5226383889cba03d48dfd7fe72957e4f92c432540616b1accaacc997b5f1d8f4    742             targets
+</pre>
+        <p>It may be necessary to configure http proxies in order to access the servers: <a href="https://docs.docker.com/engine/admin/systemd/#httphttps-proxy">https://docs.docker.com/engine/admin/systemd/#httphttps-proxy</a></p>
+        <p><span class="Bolder">Docker Q &amp; A</span>
+        </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><span class="Bolder">How does unblu ensure that the image is safe from abuse and/or change?</span>
+                </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>We have an account at Docker Hub and provide our images in this context. The security of this account is highly dependent on the operation of the Docker Hub, which is not in our hands. (Nevertheless, it should be be noted that many well-known, and large, companies provide their images on Docker.)</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><span class="Bolder">How can we be sure that the correct software is always downloaded?</span>
+                </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>It is not the complete unblu functionality but only a basic Linux image. Basically, Docker ensures that the transfer is correct and the image integrity is correct when it has been loaded. The images can / should not be downloaded "by hand" but with the help of the docking tools, thus guaranteeing security.</p>
+                <p>In order to provide the images with the highest possible security, you can turn on Docker content trust. All unblu Docker renderingservice images have been built with content trust turned on.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><span class="Bolder">How do I access the Docker image?</span>
+                </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Using the docker pull <code>unblu/renderingservice</code> command on the Docker host. Alternatively, the image can also be loaded on a different system then exported and imported again onto the final Docker host. In this case the Docker host would not need access to the Docker Hub.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><span class="Bolder">Do other banks use the Docker solution?</span>
+                </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Yes. Docker's usage numbers are going through exponential growth with over 12 billion 'pulls'. Docker (the company) claims that their sales pipeline is 'disproportionately' filled with finance companies.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><span class="Bolder">Is there a Docker whitepaper?</span>
+                </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Yes, the Docker docs are excellent: <a href="https://docs.docker.com/">https://docs.docker.com</a></p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><span class="Bolder">Has the Docker hub been checked by an external company?</span>
+                </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Docker itself is usually integrated as a "strategic decision" by a company's IT department. In the context of such a decision it may be that such reviews take place - but this has nothing to do with unblu. To this extent, unblu does not know what customers have clarified beforehand.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><span class="Bolder">Is it possible to get the Docker image directly from unblu?</span>
+                </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Yes, as mentioned above, but not at regular (automated) intervals: only on request.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot style="font-style: normal;"><span class="Bolder">Is Unblu's Docker image signed (keyword content trust)?</span>
+                </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>We have the unblu / renderingservice 4.2 Docker image actually signed and thus Docker's content trust in operation. Content trust is therefore implemented and available according to the Docker documents.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><span class="Bolder">Does the Docker host system check the certificate of the Docker Hub server (Certificate Pinning)?</span>
+                </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The loading of the Docker image from the Docker hub is carried out by means of Docker pull functionality. As far as we can gather, it is currently only checking whether it has been signed by a trustworthy CA - but there seem to be initiatives to explicitly define CAs that are allowed resp. Even to define your own client certificates.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><span class="Bolder">Does Unblu call any Docker commands?</span>
+                </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Neither the unblu collaboration server, nor the rendering service execute Docker commands. It is the responsibility of the admin or infrastructure tools to setup and start the unblu renderingservice docker container.</p>
+                <p>In ongoing operations there is a connection between the unblu collaboration server and the docking container (rendering service) via SSH. The Collaboration Server uses this connection to extract the rendering service from itself at the start and to transfer it to the Docker container. Subsequently, the rendering service is started in the container (again via ssh) from the collaboration server. This connects to https back to the collaboration server. The rendering service will then connect to those sites that are to be viewed together for the co-browsing in a running universal co-browsing session.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><span class="Bolder">What is required to update the Docker container?</span>
+                </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>All Docker-specific actions must be initiated by the administrator (or by appropriate administrator scripts or infrastructure tool such as Puppet etc.). unblu does not use Docker commands. In order to update the Docker container it is necessary to regularly "Docker pull" and to re-start the Docker container.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+    </body>
+</html>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="7" MadCap:lastHeight="10516" MadCap:lastWidth="1183">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="7" MadCap:lastHeight="9360" MadCap:lastWidth="1327">
     <head><title></title>
         <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" />
     </head>
@@ -8,7 +8,7 @@
         <p class="p_7">Given the presence of an LDAP (or similar) server, any enterprise that wants to use their current staff information, held in their identity management system, can map that information into the unblu Collaboration Server on a one-to-one basis. This means that, after the initial setup, existing organizational structures can be mapped to the unblu collaboration server. The tool can then be run according to a schedule in order to ensure that current staff data properly populates the unblu database.</p>
         <p><span class="Bolder">Note:</span> Employing the synchronization tool is not a purely ‘technical’ decision. Business decision makers and process design staff in your organization may want to read Set Up the User Management Synchronization Tool (Optional) in order to define the best strategy for your goals. For example, the way you configure the Synchronization Tool can have a significant impact on how you use the Agent Desk (as different syncing strategies directly affect how you interact with the Agent desk). In short: You can sync ‘everything’; which will give your identity management system precedence, and thus the Agent Desk will reflect the team design already held within your system. Or, if you want to retain flexibility vis-à-vis the Agent Desk, then you can tell the sync tool not to synchronize teams. This will allow you to sync everything except teams, which you can then build and manipulate on-the-fly from within the Agent Desk interface.</p>
         <p>You may also want to read about ‘Single Sign-On’ (SSO) in unblu: <a href="SSO Setup.htm">SSO Setup.htm</a>.</p>
-        <h1>Set Up the User Management Synchronization Tool (Optional)</h1>
+        <h1><a name="Set"></a>Set Up the User Management Synchronization Tool (Optional)</h1>
         <p>Use the topics below first to decide if you want to implement the User Management Synchronization tool, then to implement it.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
@@ -85,7 +85,7 @@
                 <p>Authorization Roles are hierarchical (SUPER_ADMIN is the highest / root node, REGISTERED_USER the lowest role).</p>
                 <p>In the context of the synchronization tool, only ADMIN, SUPERVISOR and REGISTERED_USER are relevant. ADMIN has rights related to the account, all teams and all users. SUPERVISOR has rights related to his team and contained users and REGISTERED_USER only has rights regarding himself.</p>
                 <p><span class="Bolder">Note:</span> Unblu only allows a user to have exactly one role assigned. If a user has multiple Roles assigned in LDAP, the highest role in the unblu role hierarchy will be assigned in Unblu. (If a user has both the ADMIN and REGISTERED_USER Role in LDAP, they will be assigned the ADMIN Role in Unblu.)</p>
-                <p>For more on Authorization Roles see: <a href="../Agent Desk/Introduction to the Agent Desk.htm#The%20Hierarchical%20Nature%20of%20the%20Model" title="This link takes you to a drop-down in the Agent Desk" alt="This link takes you to a drop-down in the Agent Desk">The Hierarchical Nature of the Model</a></p>
+                <p>For more on Authorization Roles see: <a href="../Agent Desk/Introduction to the Agent Desk.htm#The" title="This link takes you to a drop-down in the Agent Desk" alt="This link takes you to a drop-down in the Agent Desk">The Hierarchical Nature of the Model</a></p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
