@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="4062" MadCap:lastWidth="1678" MadCap:fileTags="File Tags/FileTagSetRedoLinks.FixLinksTo">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="8" MadCap:lastHeight="4707" MadCap:lastWidth="1314" MadCap:fileTags="File Tags/FileTagSetRedoLinks.FixLinksTo">
     <head>
         <link href="../Resources/Stylesheets/Collab_Srvr_Concise_Setup_CSS.css" rel="stylesheet" />
+        <meta name="description" content="Limitations of Embedded Co-browsing. Agent Side Limitations. Table of limitations of embedded co-browsing. Using embedded co-browsing the agent can observe the actions of the visitor and they can move their pointer but they cannot interact with the page; only the visitor can trigger actions. (Essentially, the page is 'visually' recreated.) " />
     </head>
     <body>
         <h1 style="text-align: left;">Limitations of Embedded Co-browsing</h1>
@@ -396,113 +397,132 @@
             </tbody>
         </table>
         <p>&#160;</p>
-        <h2>Agent Side Limitations</h2>
-        <p>Embedded co-browsing should only be used in View &amp; Point mode. While it is possible to extend this functionality, the effort required can be significant as 'unknown' features of the site (such as JavaScript(s) and forms) can cause difficulties. Using embedded co-browsing the agent can observe the actions of the visitor and they can move their pointer but they cannot interact with the page; only the visitor can trigger actions. (Essentially, the page is 'visually' recreated.) The permitted agent actions are listed in the table below but we only recommend implementing the first two entries (eventsupport.back &amp; eventsupport.change) which allow the agent to move forward and back in the browser and to enter text (although entering text into forms can be problematic if the forms have any associated dynamic behavior).</p>
-        <p>The embedded co-browsing use case is when your agents will not be expected or required to perform any actions on the page. The visitor remains in control at all times. The agent can watch and they can use their mouse to point: that is all. If you need your agents to do more than viewing and pointing then you should first review whether using 'embedded co-browsing' is the correct strategy. For example, it may be more appropriate to use Universal co-browsing rather than attempting to 'squeeze' extra features out of an embedded implementation. See below for more specific information regarding the limitations imposed by sites that contain forms and JavaScript.</p>
-        <h2>The Agent Cannot Trigger onChange() Form Actions</h2>
-        <p>Some forms use dynamic actions that modify parts of the form when the visitor makes specific inputs. For example, the form may change the address fields depending on the country the customer selects. From unblu’s perspective, the problem is that the actions are triggered only when the user makes a manual input, and not when unblu fills the customer’s form with input from the agent.</p>
-        <p>Therefore, when an agent changes a form field, such as the customer’s home country, the form will not update other fields, such as the street address.</p>
-        <p>This behavior can, in principle, be changed with additional JavaScript programming on the page but it would mean, for example, writing a script that checks the content of the respective form fields once or twice per second, instead of relying on the JavaScript onChange() event.</p>
-        <p>Note: To test this behavior on your site simply attempt to fill-in a form and check if any of the form content changes.</p>
-        <h2>The Agent Does not Trigger JavaScript Events</h2>
-        <p>Most interactions between a page and the user happen via built-in browser behaviors, such as clicking a link or a button. However, it is also possible that the page uses JavaScript to track what the user does, and then react accordingly. However, this will only track the customer’s mouse pointer, and not the agent’s. Consequently, the agent cannot trigger some actions on the page.</p>
-        <p>The customer can operate the website as usual. The Agent may find it impossible to trigger some actions on the website (such as navigating a dynamic image gallery).</p>
-        <p>Note: To detect this behavior on a site, switch off JavaScript and see if you can operate the website. Any behavior that stops working is due to the page using JavaScript. For applications that use JavaScript to run at all, such as a dynamic image gallery, it is difficult to see whether Agents can operate it.</p>
-        <p><span class="Bolder">Note:</span> You can find these 'Agent side actions' under the 'event support' section in the advanced configuration mode of the server (4.2 server required). The settings are marked 'Internal'.</p>
-        <table style="width: 100%;border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-left-color: ;border-right-style: solid;border-right-width: 1px;border-right-color: ;border-top-style: solid;border-top-width: 1px;border-top-color: ;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: ;">
-            <col />
-            <col />
-            <thead>
-                <tr>
-                    <th style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
-                        <p>Agent side actions</p>
-                    </th>
-                    <th style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
-                        <p>Works with embedded co-browsing</p>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
-                        <p>eventsupport.back</p>
-                    </td>
-                    <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
-                        <p>Navigate to the previous page in the navigation history (history.back())</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
-                        <p>eventsupport.change</p>
-                    </td>
-                    <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
-                        <p>Change the text value of &lt;input type="text"&gt; elements or &lt;textarea&gt; elements.</p>
-                        <p>
-                            <img src="../Resources/Images/Server_Setup_Guide_Pictures/icon_warning.png" /> No keyboard events will be transmitted, only the text value of the inputs.</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
-                        <p>eventsupport.click</p>
-                    </td>
-                    <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
-                        <p>Click an element</p>
-                        <p>
-                            <img src="../Resources/Images/Server_Setup_Guide_Pictures/icon_warning.png" /> Only the click will be transmitted, no mouse events such as down, up or move.</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
-                        <p>eventsupport.forward</p>
-                    </td>
-                    <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
-                        <p>Navigate to the next page in the navigation history (history.forward())</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
-                        <p>eventsupport.mark</p>
-                    </td>
-                    <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
-                        <p>Trigger marker (also active in view and point mode)</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
-                        <p>eventsupport.move</p>
-                    </td>
-                    <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
-                        <p>Experimental support for mouse move events.</p>
-                        <p>
-                            <img src="../Resources/Images/Server_Setup_Guide_Pictures/icon_warning.png" /> Not fully tested, no support where not functioning.</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
-                        <p>eventsupport.navigateTo</p>
-                    </td>
-                    <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
-                        <p>Navigate to a url (enter url in navigation bar on agent side and hit enter).</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
-                        <p>eventsupport.scroll</p>
-                    </td>
-                    <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
-                        <p>Change scroll position</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
-                        <p>eventsupport.selection</p>
-                    </td>
-                    <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
-                        <p>Change selected options in select elements, checkboxes and radio buttons</p>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Agent Side Limitations</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Embedded co-browsing should only be used in View &amp; Point mode. While it is possible to extend this functionality, the effort required can be significant as 'unknown' features of the site (such as JavaScript(s) and forms) can cause difficulties. Using embedded co-browsing the agent can observe the actions of the visitor and they can move their pointer but they cannot interact with the page; only the visitor can trigger actions. (Essentially, the page is 'visually' recreated.) The permitted agent actions are listed in the table below but we only recommend implementing the first two entries (eventsupport.back &amp; eventsupport.change) which allow the agent to move forward and back in the browser and to enter text (although entering text into forms can be problematic if the forms have any associated dynamic behavior).</p>
+                <p>The embedded co-browsing use case is when your agents will not be expected or required to perform any actions on the page. The visitor remains in control at all times. The agent can watch and they can use their mouse to point: that is all. If you need your agents to do more than viewing and pointing then you should first review whether using 'embedded co-browsing' is the correct strategy. For example, it may be more appropriate to use Universal co-browsing rather than attempting to 'squeeze' extra features out of an embedded implementation. See below for more specific information regarding the limitations imposed by sites that contain forms and JavaScript.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>The Agent Cannot Trigger onChange() Form Actions</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Some forms use dynamic actions that modify parts of the form when the visitor makes specific inputs. For example, the form may change the address fields depending on the country the customer selects. From unblu’s perspective, the problem is that the actions are triggered only when the user makes a manual input, and not when unblu fills the customer’s form with input from the agent.</p>
+                <p>Therefore, when an agent changes a form field, such as the customer’s home country, the form will not update other fields, such as the street address.</p>
+                <p>This behavior can, in principle, be changed with additional JavaScript programming on the page but it would mean, for example, writing a script that checks the content of the respective form fields once or twice per second, instead of relying on the JavaScript onChange() event.</p>
+                <p>Note: To test this behavior on your site simply attempt to fill-in a form and check if any of the form content changes.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>The Agent Does not Trigger JavaScript Events</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Most interactions between a page and the user happen via built-in browser behaviors, such as clicking a link or a button. However, it is also possible that the page uses JavaScript to track what the user does, and then react accordingly. However, this will only track the customer’s mouse pointer, and not the agent’s. Consequently, the agent cannot trigger some actions on the page.</p>
+                <p>The customer can operate the website as usual. The Agent may find it impossible to trigger some actions on the website (such as navigating a dynamic image gallery).</p>
+                <p>Note: To detect this behavior on a site, switch off JavaScript and see if you can operate the website. Any behavior that stops working is due to the page using JavaScript. For applications that use JavaScript to run at all, such as a dynamic image gallery, it is difficult to see whether Agents can operate it.</p>
+                <p><span class="Bolder">Note:</span> You can find these 'Agent side actions' under the 'event support' section in the advanced configuration mode of the server (4.2 server required). The settings are marked 'Internal'.</p>
+                <table style="width: 100%;border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-left-color: ;border-right-style: solid;border-right-width: 1px;border-right-color: ;border-top-style: solid;border-top-width: 1px;border-top-color: ;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: ;">
+                    <col />
+                    <col />
+                    <thead>
+                        <tr>
+                            <th style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>Agent side actions</p>
+                            </th>
+                            <th style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>Works with embedded co-browsing</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>eventsupport.back</p>
+                            </td>
+                            <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>Navigate to the previous page in the navigation history (history.back())</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>eventsupport.change</p>
+                            </td>
+                            <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>Change the text value of &lt;input type="text"&gt; elements or &lt;textarea&gt; elements.</p>
+                                <p>
+                                    <img src="../Resources/Images/Server_Setup_Guide_Pictures/icon_warning.png" /> No keyboard events will be transmitted, only the text value of the inputs.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>eventsupport.click</p>
+                            </td>
+                            <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>Click an element</p>
+                                <p>
+                                    <img src="../Resources/Images/Server_Setup_Guide_Pictures/icon_warning.png" /> Only the click will be transmitted, no mouse events such as down, up or move.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>eventsupport.forward</p>
+                            </td>
+                            <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>Navigate to the next page in the navigation history (history.forward())</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>eventsupport.mark</p>
+                            </td>
+                            <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>Trigger marker (also active in view and point mode)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>eventsupport.move</p>
+                            </td>
+                            <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>Experimental support for mouse move events.</p>
+                                <p>
+                                    <img src="../Resources/Images/Server_Setup_Guide_Pictures/icon_warning.png" /> Not fully tested, no support where not functioning.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>eventsupport.navigateTo</p>
+                            </td>
+                            <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>Navigate to a url (enter url in navigation bar on agent side and hit enter).</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>eventsupport.scroll</p>
+                            </td>
+                            <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>Change scroll position</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>eventsupport.selection</p>
+                            </td>
+                            <td style="border-top-left-radius: 2px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;border-left-style: solid;border-left-width: 1px;border-right-style: solid;border-right-width: 1px;border-top-style: solid;border-top-width: 1px;border-bottom-style: solid;border-bottom-width: 1px;">
+                                <p>Change selected options in select elements, checkboxes and radio buttons</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <p style="text-align: left;">&#160;</p>
         <p style="text-align: left;">&#160;</p>
     </body>
 </html>
