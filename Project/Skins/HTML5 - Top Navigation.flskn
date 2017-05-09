@@ -33,6 +33,15 @@
             <Property
               Name="BorderLeft">outset 1em #dc143c</Property>
           </Properties>
+          <Classes>
+            <StyleClass
+              Name="Expander Icon">
+              <Properties>
+                <Property
+                  Name="ExpanderBorderColor">#f8781a</Property>
+              </Properties>
+            </StyleClass>
+          </Classes>
         </Style>
         <Style
           Name="Search Filter">
@@ -162,12 +171,33 @@
             Name="Color">#f8781a</Property>
         </Properties>
       </Style>
+      <Medium
+        Name="Mobile">
+        <Style
+          Name="Navigation Panel Item">
+          <Classes>
+            <StyleClass
+              Name="Expander Icon">
+              <Properties>
+                <Property
+                  Name="ExpanderBorderColor">#f8781a</Property>
+              </Properties>
+            </StyleClass>
+          </Classes>
+          <Properties>
+            <Property
+              Name="BorderLeft">outset 1em #f87e25</Property>
+          </Properties>
+        </Style>
+      </Medium>
     </Styles>
     <Stylesheet></Stylesheet>
   </Stylesheet>
   <WebHelpOptions
     NavigationPanePosition="Right"
-    TopMenuDepth="6" />
+    TopMenuDepth="6"
+    OffCanvasMenuStyle="Accordion"
+    EnableSticky="All" />
   <Strings>
     <Stylesheet
       lang="en-us">

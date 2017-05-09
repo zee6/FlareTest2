@@ -14,7 +14,7 @@
   SitemapWebUrl="http://127.0.0.1:8887/HTML5/Sitemap/"
   TabletBreakpoint="1279"
   Skin="/Project/Skins/HTML5 - Top Navigation.flskn"
-  IncludeGlossarySearchResults="false"
+  IncludeGlossarySearchResults="true"
   DefaultUrl="/Content/Home.htm"
   PartialWordSearch="true"
   AbstractLength="500"
